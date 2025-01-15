@@ -16,7 +16,7 @@ Pour installer ce projet, suivez les étapes suivantes :
 
 ## Utilisation
 
-Pour utiliser ce projet, exécutez la commande suivante :
+Pour utiliser ce projet, exécutez la commande suivante : joseph t'es pd weshhh
 
 ```bash
 npm start
