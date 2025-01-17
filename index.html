@@ -1,27 +1,74 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Projet</title>
+    <title>Manuel d'Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Mon Projet</h1>
-    <p>Bienvenue sur mon projet GitHub 8888!</p>
+    <header>
+        <h1>Manuel d'Atelier : Fraisage et Tournage</h1>
+        <nav>
+            <button onclick="showSection('conventionnel')">Fraisage et Tournage Conventionnel</button>
+            <button onclick="showSection('cnc')">Fraisage et Tournage CNC</button>
+            <button onclick="showSection('resources')">Ressources et Annexes</button>
+        </nav>
+    </header>
 
-    <h2>Description</h2>
-    <p>Ce projet est un exemple de comment ajouter du texte sur un site GitHub.</p>
+    <main>
+        <!-- Section Fraisage et Tournage Conventionnel -->
+        <section id="conventionnel" class="content-section">
+            <h2>Fraisage et Tournage Conventionnel</h2>
+            <ul>
+                <li><a href="chapters/fraisage_intro.html">Introduction au Fraisage</a></li>
+                <li><a href="chapters/tournage_intro.html">Introduction au Tournage</a></li>
+                <li><a href="chapters/fraisage_techniques.html">Techniques de Fraisage</a></li>
+                <li><a href="chapters/tournage_techniques.html">Techniques de Tournage</a></li>
+                <li><a href="chapters/securite_conventionnel.html">Sécurité en Atelier Conventionnel</a></li>
+            </ul>
+        </section>
 
-    <h2>Installation</h2>
-    <p>Pour installer ce projet, suivez les étapes suivantes :</p>
-    <ol>
-        <li>Clonez le dépôt</li>
-        <li>Installez les dépendances</li>
-        <li>Lancez le projet</li>
-    </ol>
+        <!-- Section Fraisage et Tournage CNC -->
+        <section id="cnc" class="content-section">
+            <h2>Fraisage et Tournage CNC</h2>
+            <ul>
+                <li><a href="chapters/cnc_intro.html">Introduction aux Machines CNC</a></li>
+                <li><a href="chapters/cnc_fraisage.html">Fraisage CNC</a></li>
+                <li><a href="chapters/cnc_tournage.html">Tournage CNC</a></li>
+                <li><a href="chapters/cnc_programmation.html">Programmation CNC</a></li>
+                <li><a href="chapters/securite_cnc.html">Sécurité avec les CNC</a></li>
+            </ul>
+        </section>
 
-    <h2>Utilisation</h2>
-    <p>Pour utiliser ce projet, exécutez la commande suivante :</p>
-    <pre><code>npm start</code></pre>
+        <!-- Section Ressources et Annexes -->
+        <section id="resources" class="content-section">
+            <h2>Ressources et Annexes</h2>
+            <ul>
+                <li><a href="chapters/outils_mesure.html">Outils de Mesure</a></li>
+                <li><a href="chapters/materiaux.html">Matériaux Utilisés</a></li>
+                <li><a href="chapters/entretien.html">Entretien des Machines</a></li>
+                <li><a href="chapters/glossaire.html">Glossaire des Termes Techniques</a></li>
+                <li><a href="chapters/references.html">Références et Bibliographie</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Manuel d'Atelier - Fraisage et Tournage</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Show default section on page load
+        showSection('conventionnel');
+    </script>
 </body>
 </html>
