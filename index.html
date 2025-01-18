@@ -1,74 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+    
 <head>
+    
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manuel d'Atelier</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script src="calc.js"></script>
+
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 5s, opacity 0.3s;
+        }
+
+        .modal.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #043013;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1A8F3E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #23A455;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            color: white;
+            padding: 10px 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li button {
+            background: linear-gradient(90deg, #ffffff, #f0f0f0);
+            color: #1A8F3E;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li button:hover {
+            background: #23A455;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content">
+            <h2>Bienvenue sur le Manuel d'Atelier</h2>
+            <p>Explorez nos ressources sur le fraisage, le tournage, et la sécurité en atelier.</p>
+            <button onclick="closeModal()">Entrer</button>
+        </div>
+    </div>
+
     <header>
-        <h1>Manuel d'Atelier : Fraisage et Tournage</h1>
+        <h1>Manuel d'Atelier</h1>
         <nav>
-            <button onclick="showSection('conventionnel')">Fraisage et Tournage Conventionnel</button>
-            <button onclick="showSection('cnc')">Fraisage et Tournage CNC</button>
-            <button onclick="showSection('resources')">Ressources et Annexes</button>
+            <ul>
+                <button class="btn-primary" onclick="window.location.href='calc.html'">🧮 Calculateur</button>
+            <button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button>
+            <button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button>
+            <button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button>
+            <button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🖥️ Tournage CNC</button>
+            <button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button>
+            </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Section Fraisage et Tournage Conventionnel -->
-        <section id="conventionnel" class="content-section">
-            <h2>Fraisage et Tournage Conventionnel</h2>
-            <ul>
-                <li><a href="chapters/fraisage_intro.html">Introduction au Fraisage</a></li>
-                <li><a href="chapters/tournage_intro.html">Introduction au Tournage</a></li>
-                <li><a href="chapters/fraisage_techniques.html">Techniques de Fraisage</a></li>
-                <li><a href="chapters/tournage_techniques.html">Techniques de Tournage</a></li>
-                <li><a href="chapters/securite_conventionnel.html">Sécurité en Atelier Conventionnel</a></li>
-            </ul>
+        <section id="welcome">
+            <h2>Bienvenue</h2>
+            <p>Explorez les meilleures pratiques en fraisage et tournage avec des guides interactifs et des ressources détaillées.</p>
+            <img src="img/welcome-image.jpg" alt="Atelier de fraisage" />
+            <button class="btn-primary" onclick="window.location.href='fraisageconv.html'">Commencez Maintenant</button>
         </section>
 
-        <!-- Section Fraisage et Tournage CNC -->
-        <section id="cnc" class="content-section">
-            <h2>Fraisage et Tournage CNC</h2>
-            <ul>
-                <li><a href="chapters/cnc_intro.html">Introduction aux Machines CNC</a></li>
-                <li><a href="chapters/cnc_fraisage.html">Fraisage CNC</a></li>
-                <li><a href="chapters/cnc_tournage.html">Tournage CNC</a></li>
-                <li><a href="chapters/cnc_programmation.html">Programmation CNC</a></li>
-                <li><a href="chapters/securite_cnc.html">Sécurité avec les CNC</a></li>
-            </ul>
+        <section id="resources">
+            <h2>Nos Ressources</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <img src="img/fraisage-conv.jpg" alt="Fraisage Conventionnel">
+                    <h3>Fraisage Conventionnel</h3>
+                    <p>Techniques classiques pour le fraisage manuel.</p>
+                    <button class="btn-primary" onclick="window.location.href='fraisageconv.html'">Découvrir</button>
+                </div>
+                <div class="resource-item">
+                    <img src="img/fraisage-cnc.jpg" alt="Fraisage CNC">
+                    <h3>Fraisage CNC</h3>
+                    <p>Découvrez les technologies avancées d’usinage.</p>
+                    <button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">Explorer</button>
+                </div>
+                <div class="resource-item">
+                    <img src="img/tournage-conv.jpg" alt="Tournage Conventionnel">
+                    <h3>Tournage Conventionnel</h3>
+                    <p>Apprenez les bases et techniques fondamentales.</p>
+                    <button class="btn-primary" onclick="window.location.href='tournageconv.html'">Apprendre</button>
+                </div>
+                <div class="resource-item">
+                    <img src="img/tournage-cnc.jpg" alt="Tournage CNC">
+                    <h3>Tournage CNC</h3>
+                    <p>Plongez dans l’univers du tournage numérique.</p>
+                    <button class="btn-primary" onclick="window.location.href='tournagecnc.html'">Commencer</button>
+                </div>
+                <div class="resource-item">
+                    <img src="img/securite.jpg" alt="Sécurité en atelier">
+                    <h3>Sécurité</h3>
+                    <p>Garantissez un atelier sûr et productif.</p>
+                    <button class="btn-primary" onclick="window.location.href='secuatelier.html'">En savoir plus</button>
+                </div>
+            </div>
         </section>
 
-        <!-- Section Ressources et Annexes -->
-        <section id="resources" class="content-section">
-            <h2>Ressources et Annexes</h2>
-            <ul>
-                <li><a href="chapters/outils_mesure.html">Outils de Mesure</a></li>
-                <li><a href="chapters/materiaux.html">Matériaux Utilisés</a></li>
-                <li><a href="chapters/entretien.html">Entretien des Machines</a></li>
-                <li><a href="chapters/glossaire.html">Glossaire des Termes Techniques</a></li>
-                <li><a href="chapters/references.html">Références et Bibliographie</a></li>
-            </ul>
+        <section id="video-gallery">
+            <h2>Présentation Vidéo</h2>
+            <video controls width="600">
+                <source src="videos/atelier-presentation.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas les vidéos.
+            </video>
+        </section>
+
+        <section id="creator">
+            <h2>À propos du Créateur</h2>
+            <p>Ce site a été conçu par Quentin Huchez pour offrir une ressource éducative et interactive sur le fraisage et le tournage.</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Manuel d'Atelier - Fraisage et Tournage</p>
+        <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
     </footer>
 
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
+        function closeModal() {
+            document.getElementById('welcomeModal').classList.remove('show');
         }
 
-        // Show default section on page load
-        showSection('conventionnel');
+        window.onload = () => {
+            document.getElementById('welcomeModal').classList.add('show');
+        };
     </script>
 </body>
 </html>
