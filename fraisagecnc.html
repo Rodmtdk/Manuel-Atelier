@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraisage CNC</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header style="padding: 10px; background-color: #333; color: #fff; text-align: center;">
+        <h1 style="font-size: 1.8em; margin: 0;">Fraisage CNC</h1>
+        <nav>
+            <ul style="list-style: none; display: flex; justify-content: center; gap: 20px;">
+                <li><button class="btn-primary" onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🖥️ Tournage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction au Fraisage CNC</h2>
+            <p>Le fraisage CNC (Commande Numérique par Calculateur) est une méthode moderne d’usinage permettant de produire des pièces complexes avec une grande précision et efficacité. Cette technologie repose sur des programmes informatiques pour contrôler les mouvements des outils.</p>
+        </section>
+
+        <section id="programmation">
+            <h2>Programmation CNC</h2>
+            <article>
+                <h3>Concepts de Base</h3>
+                <p>Les programmes CNC utilisent des codes G et M pour contrôler les opérations :</p>
+                <ul>
+                    <li><strong>Codes G :</strong> Commandes pour les mouvements de l’outil (G0, G1, etc.).</li>
+                    <li><strong>Codes M :</strong> Commandes auxiliaires (M3 pour la broche, M5 pour l’arrêt).</li>
+                </ul>
+
+                <h3>Élaboration d’un Programme</h3>
+                <p>Les étapes pour créer un programme CNC incluent :</p>
+                <ul>
+                    <li>Analyser le dessin technique de la pièce.</li>
+                    <li>Définir les origines et les références.</li>
+                    <li>Choisir les outils et les paramètres de coupe adaptés.</li>
+                    <li>Écrire et simuler le programme avant l’exécution.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="techniques">
+            <h2>Techniques de Fraisage CNC</h2>
+            <article>
+                <h3>Ébauche et Finition</h3>
+                <p>Les opérations de fraisage CNC sont généralement divisées en deux phases :</p>
+                <ul>
+                    <li><strong>Ébauche :</strong> Retirer rapidement le matériau en excès.</li>
+                    <li><strong>Finition :</strong> Réaliser des passes précises pour atteindre les dimensions finales.</li>
+                </ul>
+
+                <h3>Usinage 3D</h3>
+                <p>Les machines CNC permettent la fabrication de surfaces 3D complexes grâce à des outils spécialisés et des logiciels de CFAO (Conception et Fabrication Assistées par Ordinateur).</p>
+            </article>
+        </section>
+
+        <section id="outils">
+            <h2>Outils pour le Fraisage CNC</h2>
+            <ul>
+                <li><strong>Fraises en carbure monobloc :</strong> Résistantes et adaptées aux vitesses élevées.</li>
+                <li><strong>Outils à plaquettes amovibles :</strong> Économiques pour divers matériaux.</li>
+                <li><strong>Forets à queue conique :</strong> Parfaits pour les perçages profonds.</li>
+                <li><strong>Outils spécialisés :</strong> Pour les formes complexes ou les opérations spécifiques.</li>
+            </ul>
+        </section>
+
+        <section id="securite">
+            <h2>Sécurité en Fraisage CNC</h2>
+            <p>Pour garantir un environnement de travail sûr :</p>
+            <ul>
+                <li>Programmez soigneusement pour éviter les collisions.</li>
+                <li>Utilisez des carters de protection et portez des lunettes.</li>
+                <li>Vérifiez le serrage des pièces avant de démarrer la machine.</li>
+                <li>Ne laissez jamais la machine sans surveillance pendant son fonctionnement.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer style="padding: 10px; background-color: #333; color: #fff; text-align: center;">
+        <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

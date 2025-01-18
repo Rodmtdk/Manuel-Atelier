@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournage CNC</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header style="padding: 10px; background-color: #333; color: #fff; text-align: center;">
+        <h1 style="font-size: 1.8em; margin: 0;">Tournage CNC</h1>
+        <nav>
+            <ul style="list-style: none; display: flex; justify-content: center; gap: 20px;">
+                <li><button class="btn-primary" onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction au Tournage CNC</h2>
+            <p>Le tournage CNC (Commande Numérique par Calculateur) est une méthode avancée d’usinage permettant de produire des pièces cylindriques et coniques avec une précision extrême. Les machines CNC sont pilotées par des programmes numériques pour automatiser les processus.</p>
+        </section>
+
+        <section id="programmation">
+            <h2>Programmation CNC</h2>
+            <article>
+                <h3>Principes de Base</h3>
+                <p>Les programmes CNC utilisent des codes standardisés pour contrôler les opérations :</p>
+                <ul>
+                    <li><strong>Codes G :</strong> Définissent les mouvements de l’outil (ex. G0 pour déplacement rapide, G1 pour une avance linéaire).</li>
+                    <li><strong>Codes M :</strong> Commandes auxiliaires comme M3 pour démarrer la broche.</li>
+                </ul>
+
+                <h3>Création d’un Programme</h3>
+                <p>Pour créer un programme de tournage CNC, il est nécessaire de :</p>
+                <ul>
+                    <li>Analyser les dimensions et tolérances de la pièce.</li>
+                    <li>Sélectionner les outils appropriés.</li>
+                    <li>Définir les vitesses, avances, et profondeurs de coupe.</li>
+                    <li>Simuler le programme pour détecter les erreurs potentielles.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="techniques">
+            <h2>Techniques de Tournage CNC</h2>
+            <article>
+                <h3>Ébauche et Finition</h3>
+                <p>L’ébauche permet de retirer rapidement de grandes quantités de matière, tandis que la finition garantit un état de surface optimal et une précision dimensionnelle.</p>
+
+                <h3>Filetage CNC</h3>
+                <p>Le filetage sur machines CNC est précis et rapide grâce aux cycles prédéfinis tels que G76 ou G33.</p>
+
+                <h3>Usinage de Contours Complexes</h3>
+                <p>Les machines CNC permettent de réaliser des profils complexes en utilisant des outils multi-axes et des programmes avancés.</p>
+            </article>
+        </section>
+
+        <section id="outils">
+            <h2>Outils pour Tournage CNC</h2>
+            <ul>
+                <li><strong>Outils à plaquettes amovibles :</strong> Pour la flexibilité et la réduction des coûts.</li>
+                <li><strong>Barres d’alésage :</strong> Essentielles pour les usinages internes.</li>
+                <li><strong>Outils de filetage :</strong> Précis et adaptés aux cycles CNC.</li>
+                <li><strong>Forets et outils spécialisés :</strong> Pour les perçages profonds et les contours spécifiques.</li>
+            </ul>
+        </section>
+
+        <section id="securite">
+            <h2>Sécurité en Tournage CNC</h2>
+            <p>Pour garantir un environnement sûr :</p>
+            <ul>
+                <li>Effectuez une vérification complète de la machine avant de lancer un programme.</li>
+                <li>Utilisez des lunettes de protection et des équipements adaptés.</li>
+                <li>Respectez les consignes de programmation pour éviter les collisions.</li>
+                <li>Ne laissez pas la machine fonctionner sans surveillance.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer style="padding: 10px; background-color: #333; color: #fff; text-align: center;">
+        <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
