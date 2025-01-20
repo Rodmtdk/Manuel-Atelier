@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-    
 <head>
-    
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manuel d'Atelier</title>
@@ -38,13 +35,8 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            max-width: 600px;
+            max-width: 400px;
             width: 90%;
-        }
-
-        .modal-content img {
-            max-width: 100%;
-            border-radius: 10px;
         }
 
         .modal-content button {
@@ -64,7 +56,7 @@
         header {
             background: linear-gradient(90deg, #1A8F3E, #23A455);
             color: white;
-            padding: 10px 200px;
+            padding: 10px 110px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,11 +64,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            margin: 0;
         }
 
         nav ul {
@@ -95,11 +82,7 @@
             border-radius: 5px;
             font-size: 0.9rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         nav ul li button:hover {
@@ -122,12 +105,14 @@
         <h1>Manuel d'Atelier</h1>
         <nav>
             <ul>
-                <button class="btn-primary" onclick="window.location.href='calc.html'">🧮 Calculateur</button>
-            <button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button>
-            <button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button>
-            <button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button>
-            <button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🖥️ Tournage CNC</button>
-            <button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button>
+                <li><button class="btn-primary" onclick="window.location.href='start.html'">🚀 START</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🌀 Tournage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+                <li><button class="btn-primary" onclick="window.history.back()">🔙 Retour</button></li>
             </ul>
         </nav>
     </header>
@@ -136,12 +121,12 @@
         <section id="welcome">
             <h2>Bienvenue</h2>
             <p>Explorez les meilleures pratiques en fraisage et tournage avec des guides interactifs et des ressources détaillées.</p>
-            <img src="img/welcome-image.jpg" alt="Atelier de fraisage" />
-            <button class="btn-primary" onclick="window.location.href='fraisageconv.html'">Commencez Maintenant</button>
+            <img src="img/welcome-image.jpg" alt="Atelier de fraisage">
         </section>
+        
 
         <section id="resources">
-            <h2>Nos Ressources</h2>
+            <h2>APPRENDRE : </h2>
             <div class="resource-grid">
                 <div class="resource-item">
                     <img src="img/fraisage-conv.jpg" alt="Fraisage Conventionnel">
@@ -149,59 +134,45 @@
                     <p>Techniques classiques pour le fraisage manuel.</p>
                     <button class="btn-primary" onclick="window.location.href='fraisageconv.html'">Découvrir</button>
                 </div>
+                
                 <div class="resource-item">
                     <img src="img/fraisage-cnc.jpg" alt="Fraisage CNC">
                     <h3>Fraisage CNC</h3>
                     <p>Découvrez les technologies avancées d’usinage.</p>
                     <button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">Explorer</button>
                 </div>
+
                 <div class="resource-item">
                     <img src="img/tournage-conv.jpg" alt="Tournage Conventionnel">
                     <h3>Tournage Conventionnel</h3>
                     <p>Apprenez les bases et techniques fondamentales.</p>
                     <button class="btn-primary" onclick="window.location.href='tournageconv.html'">Apprendre</button>
                 </div>
+
                 <div class="resource-item">
                     <img src="img/tournage-cnc.jpg" alt="Tournage CNC">
                     <h3>Tournage CNC</h3>
                     <p>Plongez dans l’univers du tournage numérique.</p>
                     <button class="btn-primary" onclick="window.location.href='tournagecnc.html'">Commencer</button>
                 </div>
+
                 <div class="resource-item">
                     <img src="img/securite.jpg" alt="Sécurité en atelier">
                     <h3>Sécurité</h3>
                     <p>Garantissez un atelier sûr et productif.</p>
                     <button class="btn-primary" onclick="window.location.href='secuatelier.html'">En savoir plus</button>
                 </div>
+
             </div>
         </section>
 
         <section id="video-gallery">
-            <h2>Présentation Vidéo</h2>
+            <h2>Vidéo de présentation 5-axes : </h2>
             <video controls width="600">
                 <source src="videos/atelier-presentation.mp4" type="video/mp4">
                 Votre navigateur ne supporte pas les vidéos.
             </video>
         </section>
 
-        <section id="creator">
-            <h2>À propos du Créateur</h2>
-            <p>Ce site a été conçu par Quentin Huchez pour offrir une ressource éducative et interactive sur le fraisage et le tournage.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
-    </footer>
-
-    <script>
-        function closeModal() {
-            document.getElementById('welcomeModal').classList.remove('show');
-        }
-
-        window.onload = () => {
-            document.getElementById('welcomeModal').classList.add('show');
-        };
-    </script>
-</body>
-</html>
+        <section id="creator"><!DOCTYPE html>
+<html lang="fr">

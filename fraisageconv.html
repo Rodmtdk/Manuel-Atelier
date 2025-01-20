@@ -1,79 +1,223 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fraisage Conventionnel</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+    
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manuel d'Atelier</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+        <script src="calc.js"></script>
+    
+        <style>
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 5s, opacity 0.3s;
+            }
+    
+            .modal.show {
+                visibility: visible;
+                opacity: 1;
+            }
+    
+            .modal-content {
+                background: #043013;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 600px;
+                width: 90%;
+            }
+    
+            .modal-content img {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+    
+            .modal-content button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #1A8F3E;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            .modal-content button:hover {
+                background-color: #23A455;
+            }
+    
+            header {
+                background: linear-gradient(90deg, #1A8F3E, #23A455);
+                color: white;
+                padding: 10px 200px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+    
+            header h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+    
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+                padding: 0;
+                margin: 0;
+            }
+    
+            nav ul li button {
+                background: linear-gradient(90deg, #ffffff, #f0f0f0);
+                color: #1A8F3E;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 5px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: background 0.3s, transform 0.3s;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+    
+            nav ul li button:hover {
+                background: #23A455;
+                color: white;
+                transform: translateY(-2px);
+            }
+        </style>
+    </head>
 <body>
-    <header style="padding: 10px; background-color: #333; color: #fff; text-align: center;">
-        <h1 style="font-size: 1.8em; margin: 0;">Fraisage Conventionnel</h1>
+    <header>
+        <h1>Fraisage Conventionnel</h1>
         <nav>
-            <ul style="list-style: none; display: flex; justify-content: center; gap: 20px;">
-                <li><button class="btn-primary" onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <ul>
+                <li><button class="btn-primary" onclick="window.location.href='start.html'">🚀 START</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🖥️ Tournage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🌀 Tournage CNC</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+                <li><button class="btn-primary" onclick="window.history.back()">🔙 Retour</button></li>
             </ul>
-        </nav>
+        <nav>
     </header>
 
     <main>
-        <section id="introduction">
-            <h2>Introduction au Fraisage Conventionnel</h2>
-            <p>Le fraisage conventionnel est une technique d’usinage permettant de produire des surfaces planes, des rainures, et des formes complexes en utilisant des fraiseuses manuelles ou semi-automatiques.</p>
+        <section>
+            <h2>Qu'est-ce que le Fraisage Conventionnel ?</h2>
+            <p>Le fraisage conventionnel est un procédé d'usinage par enlèvement de matière utilisant des fraiseuses manuelles. L'outil, généralement une fraise, tourne pour enlever la matière de la pièce selon les axes X, Y, et Z.</p>
+            <p>Ce procédé est souvent utilisé pour la fabrication de prototypes, de petites séries et dans les environnements éducatifs pour former les opérateurs à l'usinage manuel.</p>
         </section>
 
-        <section id="techniques">
-            <h2>Techniques de Fraisage</h2>
-            <article>
-                <h3>Réalisation de Surfaces Planes</h3>
-                <p>Pour obtenir une surface plane parfaite, il est essentiel de :</p>
-                <ul>
-                    <li>Choisir une fraise adaptée (fraise à surfacer, fraise deux tailles).</li>
-                    <li>Assurer un bridage correct de la pièce à usiner.</li>
-                    <li>Régler les avances et vitesses en fonction du matériau.</li>
-                </ul>
-
-                <h3>Usinage des Rainures</h3>
-                <p>Les rainures sont usinées à l'aide de fraises cylindriques ou à queue d'aronde. Étapes clés :</p>
-                <ul>
-                    <li>Aligner correctement la pièce.</li>
-                    <li>Effectuer plusieurs passes pour éviter les vibrations.</li>
-                    <li>Vérifier les dimensions avec un pied à coulisse.</li>
-                </ul>
-
-                <h3>Création de Formes Complexes</h3>
-                <p>Les formes complexes nécessitent l'utilisation de gabarits ou d'outils spécifiques comme les fraises à copier ou les diviseurs rotatifs.</p>
-            </article>
-        </section>
-
-        <section id="outils">
-            <h2>Outils Utilisés</h2>
+        <section>
+            <h2>Composants et Fonctionnalités d'une Fraiseuse Conventionnelle</h2>
             <ul>
-                <li><strong>Fraises cylindriques :</strong> Idéales pour les usinages droits et les rainures simples.</li>
-                <li><strong>Fraises à queue d'aronde :</strong> Utilisées pour les assemblages.</li>
-                <li><strong>Fraises hémisphériques :</strong> Parfaites pour les contours complexes.</li>
-                <li><strong>Diviseurs rotatifs :</strong> Pour les opérations nécessitant des angles précis.</li>
+                <li><strong>Table de travail :</strong> Supporte la pièce à usiner et peut être déplacée en X, Y, et parfois en Z.</li>
+                <li><strong>Mandrin :</strong> Maintient l'outil de coupe fermement en place.</li>
+                <li><strong>Manivelles manuelles :</strong> Permettent un contrôle précis des mouvements de la table.</li>
+                <li><strong>Broche :</strong> Fournit la rotation nécessaire pour l'outil de coupe, avec des vitesses ajustables.</li>
+                <li><strong>Système de lubrification :</strong> Essentiel pour réduire la chaleur, prolonger la durée de vie de l'outil et améliorer les états de surface.</li>
+                <li><strong>Échelles de mesure :</strong> Indiquent les déplacements avec précision pour les opérations critiques.</li>
+                <li><strong>Protecteurs de sécurité :</strong> Contribuent à protéger l’opérateur des éclats et des copeaux projetés.</li>
+                <li><strong>Variateur de vitesse :</strong> Permet d’ajuster précisément la vitesse de rotation en fonction du matériau et de l’outil utilisé.</li>
+                <li><strong>Système de refroidissement :</strong> Utilisé pour éviter les surchauffes lors de l’usinage prolongé.</li>
             </ul>
         </section>
 
-        <section id="securite">
-            <h2>Sécurité en Fraisage Conventionnel</h2>
-            <p>Avant de commencer toute opération :</p>
+        <section>
+            <h2>Techniques de Fraisage et Leur Mise en Œuvre</h2>
+            <h3>1. Fraisage en opposition</h3>
+            <p>Cette méthode consiste à faire tourner la fraise dans le sens opposé à l'avance de la pièce. Elle est idéale pour les matériaux tendres, mais génère plus de contraintes sur l'outil et la machine. Privilégiez une lubrification abondante pour améliorer la durée de vie de l’outil.</p>
+            <h3>2. Fraisage en avalant</h3>
+            <p>Ici, la fraise tourne dans le même sens que l'avance de la pièce, réduisant les vibrations et produisant des états de surface de meilleure qualité. Cependant, cette méthode nécessite des machines rigides et des outils bien fixés. Vérifiez toujours le serrage des porte-outils pour éviter tout jeu.</p>
+            <h3>3. Fraisage en bout</h3>
+            <p>Utilisé pour créer des poches ou des surfaces planes. L'outil travaille principalement avec ses faces frontales. Assurez-vous de limiter la profondeur de passe à moins de 30% du diamètre de la fraise pour éviter les efforts excessifs.</p>
+            <h3>4. Fraisage de rainure</h3>
+            <p>Pour les rainures, utilisez des fraises adaptées à la largeur de la rainure et effectuez plusieurs passes légères pour des profondeurs importantes. Maintenez des trajectoires droites pour éviter les vibrations.</p>
+            <h3>5. Fraisage hélicoïdal</h3>
+            <p>Particulièrement utile pour percer des trous de grand diamètre ou pour usiner des vis sans fin. Synchronisez l'avance linéaire avec la rotation pour un enlèvement de matière fluide.</p>
+            <h3>6. Fraisage de forme</h3>
+            <p>Pour des profils complexes, utilisez des fraises spécialement profilées et réalisez une pré-finition avant la passe finale.</p>
+            <h3>7. Fraisage en T</h3>
+            <p>Usinage pour rainures en T, couramment utilisées dans les glissières. Assurez-vous de dégager régulièrement les copeaux pour éviter l’accumulation.</p>
+            <h3>8. Fraisage de chanfrein</h3>
+            <p>Utilisez des fraises à chanfreiner pour ébavurer ou créer des bords inclinés. Réglez précisément l’angle pour correspondre aux spécifications.</p>
+            <h3>9. Fraisage de rainures en queue d’aronde</h3>
+            <p>Technique avancée pour usiner des assemblages mécaniques résistants. Utilisez une fraise spécifique pour un résultat précis et durable.</p>
+            <h3>10. Fraisage en contournage</h3>
+            <p>Utilisé pour suivre des profils complexes avec précision. Adaptez la vitesse d’avance pour éviter les déformations.</p>
+        </section>
+
+        <section>
+            <h2>Paramètres Cruciaux</h2>
+            <h3>Vitesse de Coupe (Vc)</h3>
+            <p>La vitesse de coupe dépend du matériau et de l'outil. Elle est calculée avec la formule :</p>
+            <code>Vc = (π * D * n) / 1000</code>,
+            <p>où D est le diamètre de la fraise et n la vitesse de rotation (tours/min). Utilisez des tables de données pour ajuster ces valeurs en fonction du matériau usiné.</p>
+            <h3>Avance par dent (fz)</h3>
+            <p>Cette valeur indique la distance parcourue par dent de fraise à chaque rotation. Une avance excessive peut entraîner des vibrations, tandis qu’une avance trop faible peut user prématurément l’outil.</p>
+            <h3>Profondeur de Passe (ap)</h3>
+            <p>C'est l'épaisseur de matière retirée à chaque passe. Les passes doivent être optimisées pour équilibrer rapidité et qualité. Pour des matériaux durs, limitez la profondeur de passe à 0,1-0,3 mm.</p>
+            <h3>Largeur de Passe (ae)</h3>
+            <p>La largeur de passe, ou engagement radial, est un paramètre essentiel pour maintenir la stabilité de l’usinage et prolonger la durée de vie des outils.</p>
+        </section>
+
+        <section>
+            <h2>Applications Pratiques</h2>
+            <p>Le fraisage conventionnel est couramment utilisé pour :</p>
             <ul>
-                <li>Vérifiez le bon état de la machine et des outils.</li>
-                <li>Assurez-vous que la pièce est solidement fixée.</li>
-                <li>Portez des équipements de protection individuelle (lunettes, gants).</li>
-                <li>Ne laissez jamais une machine en marche sans surveillance.</li>
+                <li>La fabrication de pièces mécaniques uniques.</li>
+                <li>Les petites séries pour l'industrie.</li>
+                <li>La formation dans les ateliers pédagogiques.</li>
+                <li>Les réparations rapides et les ajustements personnalisés.</li>
+                <li>La création de pièces artistiques ou de prototypes en bois et en métal.</li>
+                <li>La restauration ou modification de pièces existantes.</li>
             </ul>
+        </section>
+
+        <section>
+            <h2>Bonnes Pratiques et Sécurité</h2>
+            <h3>Fixation</h3>
+            <p>Assurez-vous que la pièce et les outils sont bien fixés pour éviter tout déplacement imprévu. Utilisez des étaux ou des brides de serrage adaptées.</p>
+            <h3>Lubrification</h3>
+            <p>Utilisez un lubrifiant adapté pour minimiser la chaleur et les frottements. Vérifiez régulièrement le niveau et la propreté du lubrifiant.</p>
+            <h3>Équipements de Protection Individuelle (EPI)</h3>
+            <ul>
+                <li>Port obligatoire de lunettes de protection.</li>
+                <li>Utilisation de gants adaptés pour manipuler les outils (hors fonctionnement).</li>
+                <li>Vêtements ajustés pour éviter les accrochages.</li>
+                <li>Bouchons d’oreille pour se protéger du bruit dans un atelier bruyant.</li>
+                <li>Chaussures de sécurité pour éviter les blessures dues aux chutes d’objets.</li>
+            </ul>
+            <h3>Surveillance</h3>
+            <p>Surveillez en permanence les vibrations et les signes d’usure des outils pour prévenir tout incident.</p>
         </section>
     </main>
 
-    <footer style="padding: 10px; background-color: #333; color: #fff; text-align: center;">
-        <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
+    <footer>
+        <p>&copy; 2025 Atelier Manuel - Tout sur le Fraisage Conventionnel</p>
     </footer>
 </body>
 </html>

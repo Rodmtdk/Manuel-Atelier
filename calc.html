@@ -1,24 +1,125 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+    <head>
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur d'Usinage</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="calc.js" defer></script>
-</head>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manuel d'Atelier</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+        <script src="calc.js"></script>
+    
+        <style>
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 5s, opacity 0.3s;
+            }
+    
+            .modal.show {
+                visibility: visible;
+                opacity: 1;
+            }
+    
+            .modal-content {
+                background: #043013;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 600px;
+                width: 90%;
+            }
+    
+            .modal-content img {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+    
+            .modal-content button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #1A8F3E;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            .modal-content button:hover {
+                background-color: #23A455;
+            }
+    
+            header {
+                background: linear-gradient(90deg, #1A8F3E, #23A455);
+                color: white;
+                padding: 10px 200px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+    
+            header h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+    
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+                padding: 0;
+                margin: 0;
+            }
+    
+            nav ul li button {
+                background: linear-gradient(90deg, #ffffff, #f0f0f0);
+                color: #1A8F3E;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 5px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: background 0.3s, transform 0.3s;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+    
+            nav ul li button:hover {
+                background: #23A455;
+                color: white;
+                transform: translateY(-2px);
+            }
+        </style>
+    </head>
 <body>
     <header>
-        <h1>Manuel d'Atelier</h1>
+        <h1>Calculateur d'Usinage</h1>
         <nav>
             <ul>
-                <li><a href="index.html" class="btn-primary">Accueil</a></li>
-                <li><a href="fraisageconv.html" class="btn-primary">Fraisage Conventionnel</a></li>
-                <li><a href="fraisagecnc.html" class="btn-primary">Fraisage CNC</a></li>
-                <li><a href="tournageconv.html" class="btn-primary">Tournage Conventionnel</a></li>
-                <li><a href="tournagecnc.html" class="btn-primary">Tournage CNC</a></li>
-                <li><a href="secuatelier.html" class="btn-primary">Sécurité</a></li>
+                <li><button class="btn-primary" onclick="window.location.href='start.html'">🚀 START</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🌀 Tournage CNC</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+                <li><button class="btn-primary" onclick="window.history.back()">🔙 Retour</button></li>
             </ul>
         </nav>
     </header>
