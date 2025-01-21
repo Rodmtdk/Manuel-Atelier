@@ -1,150 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manuel d'Atelier</title>
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js" defer></script>
-        <script src="calc.js" defer></script>
-    
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                background-color: #2b2b2b;
-                color: #f5f5f5;
-            }
-    
-            header {
-                background: linear-gradient(90deg, #1A8F3E, #23A455);
-                color: white;
-                padding: 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-    
-            header h1 {
-                font-size: 2rem;
-                margin: 0;
-            }
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel d'Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="calc.js" defer></script>
+    <body class="fraisageconv">
+    <style>
+        /* Styles généraux optimisés */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            color: #FFFFFF;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0A0D12;
+            padding: 10px 0;
+            border-top: 1px solid #23A455;
+            border-bottom: 1px solid #23A455;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li button {
+            background: #23A455;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        nav ul li button:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1A1A2E;
+            padding: 10px 0;
+            border-radius: 8px;
+            list-style: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 5px 20px;
+        }
+
+        nav ul li ul li button {
+            background: none;
+            color: #FFFFFF;
+            padding: 5px;
+            border: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0A0D12;
+            color: #FFFFFF;
+            border-top: 1px solid #23A455;
+        }
+
+        @media (max-width: 600px) {
             nav ul {
-                list-style: none;
-                display: flex;
-                gap: 20px;
-                padding: 0;
-                margin: 0;
-            }
-    
-            nav ul li button {
-                background: linear-gradient(90deg, #ffffff, #f0f0f0);
-                color: #1A8F3E;
-                border: none;
-                padding: 12px 20px;
-                border-radius: 8px;
-                font-size: 1rem;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
+                flex-direction: column;
                 gap: 10px;
-                transition: background 0.3s, transform 0.3s;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
-    
-            nav ul li button:hover {
-                background: #23A455;
-                color: white;
-                transform: translateY(-3px);
+
+            nav ul li ul {
+                position: static;
             }
-    
-            main {
-                padding: 20px;
+
+            nav ul li ul li {
+                padding: 10px 0;
             }
-    
-            form {
-                margin: 20px 0;
-                padding: 20px;
-                background: #3c3c3c;
-                border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            }
-    
-            form label {
-                display: block;
-                margin-bottom: 10px;
-                font-weight: bold;
-                color: #f5f5f5;
-            }
-    
-            form input, form select {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                font-size: 1rem;
-                background-color: #4a4a4a;
-                color: #f5f5f5;
-            }
-    
-            button#calculateBtn {
-                width: 100%;
-                padding: 12px;
-                font-size: 1.2rem;
-                background-color: #1A8F3E;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background 0.3s;
-            }
-    
-            button#calculateBtn:hover {
-                background-color: #23A455;
-            }
-    
-            .result {
-                margin-top: 20px;
-                padding: 15px;
-                background: #2d6a4f;
-                border: 1px solid #1b4332;
-                border-radius: 5px;
-                color: #f5f5f5;
-            }
-    
-            footer {
-                margin-top: 40px;
-                text-align: center;
-                padding: 20px;
-                background: #1b1b1b;
-                color: #f5f5f5;
-                border-top: 1px solid #333;
-            }
-        </style>
-    </head>
+        }
+    </style>
+</head>
 <body>
     <header>
-        <h1>Fraisage Conventionnel</h1>
-        <nav>
-            <ul>
-                <li><button class="btn-primary" onclick="window.location.href='index.html'">🏠 Accueil</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='start.html'">🚀 START</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️Fraisage CNC</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🌀Tournage CNC</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
-                <li><button class="btn-primary" onclick="window.history.back()">🔙 Retour</button></li>
-            </ul>
-        <nav>
+        <h1>Manuel d'Atelier</h1>
     </header>
-
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <li>
+                <button onclick="window.location.href='start.html'">🚀 Start</button>
+            </li>
+            <li>
+                <button>🛠️ Fraisage</button>
+                <ul>
+                    <li><button onclick="window.location.href='fraisageconv.html'">Fraisage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='fraisagecnc.html'">Fraisage CNC</button></li>
+                </ul>
+            </li>
+            <li>
+                <button>🔧 Tournage</button>
+                <ul>
+                    <li><button onclick="window.location.href='tournageconv.html'">Tournage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='tournagecnc.html'">Tournage CNC</button></li>
+                </ul>
+            </li>
+            <li><button onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
+            <li><button onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            <li><button onclick="window.history.back()">🔙 Retour</button></li>
+        </ul>
+    </nav>
     <main>
         <section>
             <h2>Qu'est-ce que le Fraisage Conventionnel ?</h2>

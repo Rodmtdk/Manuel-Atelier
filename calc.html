@@ -3,186 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel d'Atelier</title>
+    <title>Calculateur d'Usinage</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <script src="calc.js" defer></script>
-
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #2b2b2b;
-            color: #f5f5f5;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
         }
 
         header {
             background: linear-gradient(90deg, #1A8F3E, #23A455);
+            padding: 10px 0;
+            text-align: center;
             color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        header h1 {
-            font-size: 2rem;
-            margin: 0;
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0A0D12;
+            padding: 10px 0;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
-            padding: 0;
             margin: 0;
+            padding: 0;
         }
 
         nav ul li button {
-            background: linear-gradient(90deg, #ffffff, #f0f0f0);
-            color: #1A8F3E;
+            background: #23A455;
+            color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            transition: transform 0.2s, background 0.3s;
         }
 
         nav ul li button:hover {
-            background: #23A455;
-            color: white;
-            transform: translateY(-3px);
+            transform: scale(1.1);
+            background: #1A8F3E;
         }
 
-        main {
+        .calc-container {
+            margin: 30px auto;
             padding: 20px;
+            max-width: 600px;
+            background: #1A1A2E;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
         }
 
-        form {
-            margin: 20px 0;
-            padding: 20px;
-            background: #3c3c3c;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        .calc-container h2 {
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
         }
 
-        form label {
+        .calc-container label {
             display: block;
-            margin-bottom: 10px;
+            color: #E5E5E5;
             font-weight: bold;
-            color: #f5f5f5;
+            margin-bottom: 5px;
         }
 
-        form input, form select {
+        .calc-container input,
+        .calc-container select {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
             border-radius: 5px;
+            border: none;
+            margin-bottom: 15px;
+            background: #101418;
+            color: white;
             font-size: 1rem;
-            background-color: #4a4a4a;
-            color: #f5f5f5;
         }
 
-        button#calculateBtn {
+        .calc-container button {
             width: 100%;
             padding: 12px;
-            font-size: 1.2rem;
-            background-color: #1A8F3E;
+            background: linear-gradient(90deg, #23A455, #1A8F3E);
             color: white;
             border: none;
             border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
 
-        button#calculateBtn:hover {
-            background-color: #23A455;
+        .calc-container button:hover {
+            background: #1A8F3E;
+            transform: scale(1.05);
         }
 
-        .result {
+        .calc-container .result {
+            display: none;
             margin-top: 20px;
-            padding: 15px;
-            background: #2d6a4f;
-            border: 1px solid #1b4332;
+            padding: 20px;
+            background: #0D1117;
+            color: #FFD700;
             border-radius: 5px;
-            color: #f5f5f5;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         footer {
-            margin-top: 40px;
             text-align: center;
-            padding: 20px;
-            background: #1b1b1b;
-            color: #f5f5f5;
-            border-top: 1px solid #333;
+            padding: 10px;
+            background: #0A0D12;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Calculateur d'Usinage</h1>
-        <nav>
-            <ul>
-                <li><button class="btn-primary" onclick="window.location.href='index.html'">🏠 Accueil</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='start.html'">🚀 START</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️Fraisage CNC</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🌀Tournage CNC</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
-                <li><button class="btn-primary" onclick="window.history.back()">🔙 Retour</button></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section>
-            <h2>Calculateur d'Usinage</h2>
-            <p>Sélectionnez un matériau et entrez les paramètres pour effectuer le calcul d'usinage.</p>
-
-            <form id="calcForm">
-                <label for="material">Sélectionner un matériau :</label>
-                <select id="material" required>
-                    <option value="">Choisissez un matériau</option>
-                    <option value="acier">Acier (Vc : 50-120 m/min)</option>
-                    <option value="aluminium">Aluminium (Vc : 150-400 m/min)</option>
-                    <option value="inox">Inox (Vc : 20-60 m/min)</option>
-                    <option value="titane">Titane (Vc : 10-30 m/min)</option>
-                    <option value="plastique">Plastique (Vc : 200-500 m/min)</option>
-                </select>
-                <label>Diamètre de l'outil ou de la pièce (D en mm) :</label>
-                <input type="number" id="d">
-                <label>Avance par dent (fz en mm/dent) :</label>
-                <input type="number" id="fz">
-                <label>Nombre de dents de l'outil :</label>
-                <input type="number" id="z">
-                <label>Profondeur de passe (ap en mm) :</label>
-                <input type="number" id="ap">
-                <label>Largeur de passe (ae en mm) :</label>
-                <input type="number" id="ae">
-                <button type="button" id="calculateBtn">Calculer</button>
-            </form>
-
-            <div id="result" class="result" style="display: none;"></div>
-        </section>
+    <header>Calculateur d'Usinage</header>
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <li><button onclick="window.history.back()">🔙 Retour</button></li>
+        </ul>
+    </nav>
+    <main class="calc-container">
+        <h2>🧮 Calculateur d'Usinage</h2>
+        <form id="calcForm">
+            <label for="material">Sélectionner un matériau :</label>
+            <select id="material" required>
+                <option value="">Choisissez un matériau</option>
+                <option value="acier">Acier (Vc : 50-120 m/min)</option>
+                <option value="aluminium">Aluminium (Vc : 150-400 m/min)</option>
+                <option value="inox">Inox (Vc : 20-60 m/min)</option>
+                <option value="titane">Titane (Vc : 10-30 m/min)</option>
+                <option value="plastique">Plastique (Vc : 200-500 m/min)</option>
+            </select>
+            <label for="d">Diamètre de l'outil ou de la pièce (D en mm) :</label>
+            <input type="number" id="d">
+            <label for="fz">Avance par dent (fz en mm/dent) :</label>
+            <input type="number" id="fz">
+            <label for="z">Nombre de dents de l'outil :</label>
+            <input type="number" id="z">
+            <label for="ap">Profondeur de passe (ap en mm) :</label>
+            <input type="number" id="ap">
+            <label for="ae">Largeur de passe (ae en mm) :</label>
+            <input type="number" id="ae">
+            <button type="button" id="calculateBtn">Calculer</button>
+        </form>
+        <div id="result" class="result"></div>
     </main>
-
     <footer>
         <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
     </footer>
-
     <script>
-        document.getElementById('calculateBtn').addEventListener('click', function() {
+        document.getElementById('calculateBtn').addEventListener('click', function () {
             const material = document.getElementById('material').value;
             const d = parseFloat(document.getElementById('d').value);
             const fz = parseFloat(document.getElementById('fz').value);
@@ -190,40 +172,24 @@
             const ap = parseFloat(document.getElementById('ap').value);
             const ae = parseFloat(document.getElementById('ae').value);
 
-            let vc;
-
-            if (!material) {
-                alert('Veuillez sélectionner un matériau.');
+            if (!material || isNaN(d) || isNaN(fz) || isNaN(z) || isNaN(ap) || isNaN(ae)) {
+                alert('Veuillez remplir tous les champs correctement.');
                 return;
             }
 
-            switch (material) {
-                case 'acier':
-                    vc = 85;
-                    break;
-                case 'aluminium':
-                    vc = 275;
-                    break;
-                case 'inox':
-                    vc = 40;
-                    break;
-                case 'titane':
-                    vc = 20;
-                    break;
-                case 'plastique':
-                    vc = 350;
-                    break;
-            }
-
+            const vcValues = { acier: 85, aluminium: 275, inox: 40, titane: 20, plastique: 350 };
+            const vc = vcValues[material] || null;
             const n = vc ? (vc * 1000) / (Math.PI * d) : null;
-            const vf = fz && z && n ? fz * z * n : null;
+            const vf = n ? fz * z * n : null;
 
             const resultDiv = document.getElementById('result');
             resultDiv.style.display = 'block';
             resultDiv.innerHTML = `
-                <p>Vitesse de coupe (Vc): ${vc ? vc.toFixed(2) : 'Indéterminée'} m/min</p>
-                <p>Vitesse de rotation (N): ${n ? n.toFixed(2) : 'Indéterminée'} tr/min</p>
-                <p>Avance (Vf): ${vf ? vf.toFixed(2) : 'Indéterminée'} mm/min</p>
+                <h3>Résultats :</h3>
+                <p>- Vitesse de rotation (N) : ${n ? n.toFixed(2) : 'Indéterminée'} tr/min</p>
+                <p>- Avance par minute (Vf) : ${vf ? vf.toFixed(2) : 'Indéterminée'} mm/min</p>
+                <p>- Profondeur de passe (ap) : ${ap} mm</p>
+                <p>- Largeur de passe (ae) : ${ae} mm</p>
             `;
         });
     </script>
