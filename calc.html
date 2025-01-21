@@ -110,12 +110,13 @@
     </head>
 <body>
     <header>
-        <h1>Calculateur d'Usinage</h1>
+        <h1>Fraisage CNC</h1>
         <nav>
             <ul>
+                <li><button class="btn-primary" onclick="window.location.href='index.html'">🏠 Accueil</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='start.html'">🚀 START</button></li>
+                <li><button class="btn-primary" onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='fraisageconv.html'">🛠️ Fraisage Conventionnel</button></li>
-                <li><button class="btn-primary" onclick="window.location.href='fraisagecnc.html'">⚙️ Fraisage CNC</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='tournageconv.html'">🔧 Tournage Conventionnel</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='tournagecnc.html'">🌀 Tournage CNC</button></li>
                 <li><button class="btn-primary" onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
@@ -137,17 +138,18 @@
                     <option value="aluminium">Aluminium (Vc : 150-400 m/min)</option>
                     <option value="inox">Inox (Vc : 20-60 m/min)</option>
                     <option value="titane">Titane (Vc : 10-30 m/min)</option>
+                    <option value="plastique">Plastique (Vc : 200-500 m/min)</option>
                 </select>
                 <label>Diamètre de l'outil ou de la pièce (D en mm) :</label>
-                <input type="number" id="d" required>
+                <input type="number" id="d">
                 <label>Avance par dent (fz en mm/dent) :</label>
-                <input type="number" id="fz" required>
+                <input type="number" id="fz">
                 <label>Nombre de dents de l'outil :</label>
-                <input type="number" id="z" required>
+                <input type="number" id="z">
                 <label>Profondeur de passe (ap en mm) :</label>
-                <input type="number" id="ap" required>
+                <input type="number" id="ap">
                 <label>Largeur de passe (ae en mm) :</label>
-                <input type="number" id="ae" required>
+                <input type="number" id="ae">
                 <button type="button" id="calculateBtn">Calculer</button>
             </form>
 
@@ -158,5 +160,52 @@
     <footer>
         <p>&copy; 2025 Manuel d'Atelier. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const material = document.getElementById('material').value;
+            const d = parseFloat(document.getElementById('d').value);
+            const fz = parseFloat(document.getElementById('fz').value);
+            const z = parseFloat(document.getElementById('z').value);
+            const ap = parseFloat(document.getElementById('ap').value);
+            const ae = parseFloat(document.getElementById('ae').value);
+
+            let vc;
+
+            if (!material) {
+                alert('Veuillez sélectionner un matériau.');
+                return;
+            }
+
+            switch (material) {
+                case 'acier':
+                    vc = 85;
+                    break;
+                case 'aluminium':
+                    vc = 275;
+                    break;
+                case 'inox':
+                    vc = 40;
+                    break;
+                case 'titane':
+                    vc = 20;
+                    break;
+                case 'plastique':
+                    vc = 350;
+                    break;
+            }
+
+            const n = vc ? (vc * 1000) / (Math.PI * d) : null;
+            const vf = fz && z && n ? fz * z * n : null;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <p>Vitesse de coupe (Vc): ${vc ? vc.toFixed(2) : 'Indéterminée'} m/min</p>
+                <p>Vitesse de rotation (N): ${n ? n.toFixed(2) : 'Indéterminée'} tr/min</p>
+                <p>Avance (Vf): ${vf ? vf.toFixed(2) : 'Indéterminée'} mm/min</p>
+            `;
+        });
+    </script>
 </body>
 </html>
