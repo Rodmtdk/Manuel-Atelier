@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <script src="calc.js" defer></script>
-    <body class="start"></body>
     <style>
         /* Styles généraux optimisés */
         body {
@@ -125,7 +124,7 @@
         }
     </style>
 </head>
-<body>
+<body class="start">
     <header>
         <h1>Manuel d'Atelier</h1>
     </header>
@@ -156,11 +155,11 @@
     </nav>
     <main>
         <section>
-            <h2>Comment Mettre en Marche et Régler les Machines</h2>
-            <h3>Étapes Générales</h3>
+            <h2>Comment Mettre en Marche et Régler les Machines?</h2>
+            <h3>Étapes Générales :</h3>
             <ol>
                 <li><strong>Inspection :</strong> Vérifiez que la machine est propre, bien lubrifiée et exempte de tout obstacle.</li>
-                <li><strong>Installation de la pièce :</strong> Fixez solidement la pièce à usiner dans le mandrin ou sur la table de travail.</li>
+                <li><strong>Installation de la pièce :</strong> Fixez solidement la pièce à usiner dans le mandrin ou sur la table de travail (étau, brides...).</li>
                 <li><strong>Choix de l’outil :</strong> Sélectionnez un outil adapté à l'opération prévue (fraisage, tournage, rainurage, etc.).</li>
                 <li><strong>Réglage des paramètres :</strong> Ajustez la vitesse de rotation, l’avance et la profondeur de coupe en fonction du matériau.</li>
                 <li><strong>Test :</strong> Effectuez une passe d’essai pour vérifier la précision et ajuster si nécessaire.</li>
@@ -168,20 +167,107 @@
         </section>
 
         <section>
-            <h2>Types de Fraises, Outils de Coupe et Outils de Mesure</h2>
-            <h3>Fraises</h3>
-            <ul>
-                <li><strong>Fraises droites :</strong> Idéales pour les surfaces planes et les rainures simples.</li>
-                <li><strong>Fraises hélicoïdales :</strong> Offrent une meilleure évacuation des copeaux et réduisent les vibrations.</li>
-                <li><strong>Fraises à chanfreiner :</strong> Utilisées pour créer des bords inclinés.</li>
-                <li><strong>Fraises à rainurer :</strong> Spécialisées dans la création de rainures précises.</li>
-            </ul>
-            <h3>Outils de Coupe</h3>
-            <ul>
-                <li><strong>Outils en acier rapide :</strong> Conviennent aux matériaux tendres.</li>
-                <li><strong>Outils en carbure :</strong> Idéaux pour les matériaux durs et les applications à haute vitesse.</li>
-                <li><strong>Outils à plaquettes amovibles :</strong> Offrent flexibilité et rapidité de remplacement.</li>
-            </ul>
+            <h1>Outils de Coupe</h1>
+        
+            <div class="section">
+                <h2>1. Outils de coupe pour le fraisage</h2>
+                <ul>
+                    <li><strong>Fraises cylindriques :</strong> Pour l'usinage des surfaces planes et des rainures.</li>
+                    <li><strong>Fraises à bout plat :</strong> Idéales pour créer des rainures, des poches et des surfaces planes.</li>
+                    <li><strong>Fraises à bout hémisphérique :</strong> Pour les contours 3D et les surfaces courbes.</li>
+                    <li><strong>Fraises à surfacer :</strong> Pour enlever de grandes quantités de matière sur des surfaces planes.</li>
+                    <li><strong>Fraises à chanfreiner :</strong> Pour créer des chanfreins ou des biseaux.</li>
+                    <li><strong>Fraises à rainurer :</strong> Pour les rainures simples, en T ou en queue d'aronde.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>2. Outils de coupe pour le tournage</h2>
+                <ul>
+                    <li><strong>Poinçons à dresser :</strong> Pour l'usinage des faces planes.</li>
+                    <li><strong>Poinçons à gorge :</strong> Pour créer des rainures ou des gorges.</li>
+                    <li><strong>Outils de filetage :</strong> Conçus pour réaliser des filetages internes ou externes.</li>
+                    <li><strong>Outils d'alésage :</strong> Pour élargir ou ajuster les diamètres internes des pièces.</li>
+                    <li><strong>Outils de tronçonnage :</strong> Pour couper une pièce ou séparer une partie de la matière brute.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>3. Outils en carbure monobloc</h2>
+                <p><strong>Caractéristiques :</strong> Résistance élevée à l'usure et dureté exceptionnelle.</p>
+                <p><strong>Applications :</strong></p>
+                <ul>
+                    <li>Usinage de matériaux durs (aciers trempés, inox).</li>
+                    <li>Utilisés pour les vitesses de coupe élevées.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>4. Plaquettes interchangeables (carbure ou céramique)</h2>
+                <p><strong>Caractéristiques :</strong> Plaquettes remplaçables montées sur des porte-outils.</p>
+                <p><strong>Avantages :</strong></p>
+                <ul>
+                    <li>Réduction des temps d'arrêt pour affûtage.</li>
+                    <li>Convient pour le fraisage, le tournage et l'alésage.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>5. Forets</h2>
+                <ul>
+                    <li><strong>Forets hélicoïdaux :</strong> Les plus courants pour percer des trous droits.</li>
+                    <li><strong>Forets à centre :</strong> Utilisés pour des perçages de haute précision.</li>
+                    <li><strong>Forets étagés :</strong> Permettent de réaliser plusieurs diamètres avec un seul outil.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>6. Alésoirs</h2>
+                <p><strong>Caractéristiques :</strong> Outils cylindriques pour ajuster avec précision le diamètre d’un trou.</p>
+                <p><strong>Applications :</strong></p>
+                <ul>
+                    <li>Amélioration de la qualité de surface et de la tolérance des trous percés.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>7. Outils de filetage</h2>
+                <ul>
+                    <li><strong>Tarauds :</strong> Pour créer des filetages internes.</li>
+                    <li><strong>Filières :</strong> Pour les filetages externes.</li>
+                    <li><strong>Plaquettes de filetage :</strong> Utilisées sur machines CNC pour des filetages précis.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>8. Outils pour matériaux spécifiques</h2>
+                <ul>
+                    <li><strong>Outils diamantés :</strong> Usinage ultra-précis de matériaux durs (verre, composites, céramique).</li>
+                    <li><strong>Outils PCD (Polycrystalline Diamond) :</strong> Idéaux pour les matériaux abrasifs comme les composites.</li>
+                    <li><strong>Outils CBN (Cubic Boron Nitride) :</strong> Usinage des aciers trempés.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>9. Outils de coupe à revêtements</h2>
+                <ul>
+                    <li><strong>TiN (Nitrure de titane) :</strong> Réduction de l’usure et meilleure évacuation des copeaux.</li>
+                    <li><strong>TiAlN (Nitrure de titane-aluminium) :</strong> Résistance à la chaleur accrue.</li>
+                    <li><strong>CVD et PVD :</strong> Technologies de revêtement pour les applications exigeantes.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>10. Accessoires courants</h2>
+                <ul>
+                    <li><strong>Mandrins :</strong> Fixation de l'outil sur la machine.</li>
+                    <li><strong>Porte-outils :</strong> Maintien des outils tels que les plaquettes ou les alésoirs.</li>
+                    <li><strong>Clés dynamométriques :</strong> Pour monter les outils en respectant les couples de serrage recommandés.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
             <h3>Outils de Mesure</h3>
             <ul>
                 <li><strong>Pied à coulisse :</strong> Mesures précises des dimensions extérieures, intérieures et des profondeurs.</li>
@@ -192,34 +278,86 @@
         </section>
 
         <section>
-            <h2>Choix des Outils en Fonction des Matériaux</h2>
-            <ul>
-                <li><strong>Acier :</strong> Utilisez des outils en carbure avec une vitesse de coupe modérée. Un bon refroidissement est essentiel pour éviter l'usure prématurée.</li>
-                <li><strong>Aluminium :</strong> Privilégiez les fraises hélicoïdales à haute vitesse. Assurez-vous que les outils sont bien affûtés pour éviter les bavures.</li>
-                <li><strong>Plastiques :</strong> Réduisez la vitesse pour éviter la fonte ou la déformation. Utilisez des outils affûtés et un refroidissement minimal.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Réglage des Paramètres : Vitesse de Coupe, Avance, Profondeur de Coupe</h2>
-            <h3>Vitesse de Coupe</h3>
-            <p>Elle est calculée avec la formule :</p>
-            <code>Vc = (π * D * n) / 1000</code>
-            <p>Où :</p>
-            <ul>
-                <li><strong>Vc :</strong> Vitesse de coupe (m/min).</li>
-                <li><strong>D :</strong> Diamètre de l’outil (mm).</li>
-                <li><strong>n :</strong> Vitesse de rotation (tr/min).</li>
-            </ul>
-            <h3>Avance</h3>
-            <p>Correspond à la distance parcourue par l'outil par rotation ou par dent. Adaptez l'avance pour obtenir une finition optimale sans compromettre la durée de vie de l'outil.</p>
-            <h3>Profondeur de Coupe</h3>
-            <p>Réglez la profondeur en fonction de la rigidité de la machine et de l'outil. Une profondeur de coupe plus importante accélère l'usinage, mais peut augmenter les contraintes mécaniques.</p>
+            <h1>Choix des Outils en Fonction des Matériaux</h1>
+        
+            <div class="section">
+                <h2>1. Acier non allié et faiblement allié</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Acier rapide (HSS) pour les faibles vitesses, plaquettes en carbure revêtues (TiN, TiAlN) pour les vitesses élevées.</li>
+                    <li><strong>Applications :</strong> Usinage général (fraisage, tournage, perçage). Convient pour le dégrossissage et la finition.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>2. Acier allié et aciers trempés</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Outils en carbure monobloc ou plaquettes en carbure. Outils CBN (Cubic Boron Nitride) pour les aciers très durs (>50 HRC).</li>
+                    <li><strong>Applications :</strong> Usinage à haute précision et à haute résistance. Nécessite des outils résistants à l’usure et aux hautes températures.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>3. Fonte</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Plaquettes en carbure sans revêtement pour la fonte grise. Plaquettes en céramique pour les fontes ductiles.</li>
+                    <li><strong>Applications :</strong> Dégrossissage et finition des pièces moulées. Excellente capacité d’absorption des vibrations.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>4. Aluminium et alliages légers</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Outils en carbure monobloc à grande hélice (40°–45°). Outils PCD (Polycrystalline Diamond) pour des finitions ultra-précises.</li>
+                    <li><strong>Applications :</strong> Usinage rapide grâce à la conductivité thermique élevée de l'aluminium. Prévention des bavures et des collages en utilisant des revêtements spécifiques (TiN).</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>5. Inox (acier inoxydable)</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Plaquettes en carbure revêtues (TiAlN, TiCN). Outils avec géométrie positive pour éviter l'accumulation de matière.</li>
+                    <li><strong>Applications :</strong> Usinage de précision à des vitesses modérées. Réduction des vibrations et de l'échauffement pour éviter l'écrouissage.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>6. Titane et alliages de titane</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Plaquettes en carbure à arêtes vives. Outils avec revêtements résistants à la chaleur (TiAlN).</li>
+                    <li><strong>Applications :</strong> Faible conduction thermique nécessite une bonne gestion de la chaleur. Usinage à faible avance et haute précision pour éviter l'usure prématurée.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>7. Matériaux durs et abrasifs (céramique, composites, etc.)</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Outils diamantés (PCD) pour les composites. Outils en céramique ou CBN pour les matériaux durs.</li>
+                    <li><strong>Applications :</strong> Usinage de haute précision et de finition. Nécessitent des machines rigides pour éviter les vibrations.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>8. Plastiques et polymères</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Fraises en HSS ou carbure avec géométrie spécifique pour plastiques. Arêtes vives pour éviter les éclats ou la fusion.</li>
+                    <li><strong>Applications :</strong> Usinage à haute vitesse pour des découpes propres. Gestion de la chaleur pour éviter la déformation.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>Facteurs clés pour le choix des outils</h2>
+                <ul>
+                    <li><strong>Propriétés du matériau :</strong> Dureté, conductivité thermique, ductilité.</li>
+                    <li><strong>Type d'opération :</strong> Dégrossissage, finition, perçage, filetage.</li>
+                    <li><strong>Conditions de coupe :</strong> Vitesse, avance, profondeur de coupe.</li>
+                    <li><strong>Revêtement de l’outil :</strong> Augmente la durabilité et réduit la friction (ex. : TiN, TiAlN).</li>
+                    <li><strong>Système de refroidissement :</strong> Nécessaire pour les matériaux sensibles à la chaleur (titane, inox).</li>
+                </ul>
+            </div>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Manuel d'Atelier - Démarrage et Réglages des Machines</p>
+<footer>
+        <p>&copy; 2025 Manuel d'Atelier</p>
     </footer>
 </body>
 </html>

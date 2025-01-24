@@ -774,4 +774,33 @@ img {
         font-size: 13px;
     }
 }
-
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.btn-primary {
+    background-color: #007bff; /* Couleur bleue */
+    color: white;
+  }
+  
+  button.btn-primary:hover {
+    background-color: #0056b3; /* Couleur bleue plus foncée au survol */
+  }
+  
+  button {
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    background-color: #f0f0f0; /* Gris clair */
+    color: black;
+  }
+  
+  button:hover {
+    background-color: #e0e0e0; /* Gris légèrement plus foncé au survol */
+  }
+  
