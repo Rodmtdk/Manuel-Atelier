@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel d'Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="calc.js" defer></script>
+    <body class="tournageconv">
+    <style>
+        /* Styles généraux optimisés */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            color: #FFFFFF;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0A0D12;
+            padding: 10px 0;
+            border-top: 1px solid #23A455;
+            border-bottom: 1px solid #23A455;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li button {
+            background: #23A455;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        nav ul li button:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1A1A2E;
+            padding: 10px 0;
+            border-radius: 8px;
+            list-style: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 5px 20px;
+        }
+
+        nav ul li ul li button {
+            background: none;
+            color: #FFFFFF;
+            padding: 5px;
+            border: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0A0D12;
+            color: #FFFFFF;
+            border-top: 1px solid #23A455;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li ul {
+                position: static;
+            }
+
+            nav ul li ul li {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manuel d'Atelier</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <li>
+                <button onclick="window.location.href='start.html'">🚀 Start</button>
+            </li>
+            <li>
+                <button>🛠️ Fraisage</button>
+                <ul>
+                    <li><button onclick="window.location.href='fraisageconv.html'">Fraisage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='fraisagecnc.html'">Fraisage CNC</button></li>
+                </ul>
+            </li>
+            <li>
+                <button>🔧 Tournage</button>
+                <ul>
+                    <li><button onclick="window.location.href='tournageconv.html'">Tournage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='tournagecnc.html'">Tournage CNC</button></li>
+                </ul>
+            </li>
+            <li><button onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
+            <li><button onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            <li><button onclick="window.history.back()">🔙 Retour</button></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Qu'est-ce que le Tournage Conventionnel ?</h2>
+            <img src="img/tournage-conv1.jpg" alt="Tournage Conventionnel">
+            <p>Le tournage conventionnel est une méthode d'usinage traditionnelle utilisant des tours manuels. La pièce est fixée sur un mandrin et mise en rotation, tandis qu'un outil de coupe est déplacé manuellement ou à l'aide de chariots pour enlever la matière et façonner la pièce.</p>
+            <p>Cette méthode est couramment utilisée pour les petites séries, les pièces uniques, et les réparations en atelier.</p>
+        </section>
+
+        <section>
+            <h2>Composants d'un Tour Conventionnel</h2>
+            <ul>
+                <li><strong>Mandrin :</strong> Maintient fermement la pièce à usiner.</li>
+                <li><strong>Broche :</strong> Fournit la rotation de la pièce à usiner.</li>
+                <li><strong>Chariot transversal :</strong> Permet de déplacer l'outil perpendiculairement à l'axe de la pièce.</li>
+                <li><strong>Chariot longitudinal :</strong> Permet de déplacer l'outil parallèlement à l'axe de la pièce.</li>
+                <li><strong>Contre-pointe :</strong> Soutient les longues pièces pour éviter les vibrations.</li>
+                <li><strong>Boîte de vitesse :</strong> Ajuste la vitesse de rotation de la broche.</li>
+                <li><strong>Boîte d'avance :</strong> Contrôle la vitesse d'avance de l'outil.</li>
+                <li><strong>Volants :</strong> Utilisés pour déplacer manuellement les chariots et régler la position de l'outil.</li>
+                <img src="img/tournage-conv.jpg" alt="Tournage Conventionnel">
+            </ul>
+        </section>
+
+        <section>
+            <h2>Comment Utiliser un Tour Conventionnel</h2>
+            <ol>
+                <li><strong>Préparation :</strong> Vérifiez que la machine est propre et lubrifiée. Assurez-vous que les outils et les équipements sont en bon état.</li>
+                <li><strong>Installation de la pièce :</strong> Fixez la pièce dans le mandrin et alignez-la correctement.</li>
+                <li><strong>Choix de l'outil :</strong> Sélectionnez un outil adapté à l'opération (dressage, alésage, filetage, etc.).</li>
+                <li><strong>Réglage des paramètres :</strong> Ajustez la vitesse de rotation, l'avance, et la profondeur de coupe en fonction du matériau.</li>
+                <li><strong>Usinage :</strong> Déplacez les chariots pour effectuer l'opération souhaitée. Travaillez avec précaution pour éviter les erreurs ou les accidents.</li>
+                <li><strong>Contrôle :</strong> Vérifiez régulièrement les dimensions de la pièce pour vous assurer qu'elles respectent les spécifications.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Techniques Courantes en Tournage</h2>
+            <ul>
+                <li><strong>Dressage :</strong> Usinage d'une surface plane perpendiculaire à l'axe de la pièce.</li>
+                <li><strong>Cylindrage :</strong> Réduction uniforme du diamètre extérieur de la pièce.</li>
+                <li><strong>Alésage :</strong> Agrandissement ou création de trous cylindriques.</li>
+                <li><strong>Filetage :</strong> Création de filets sur une surface extérieure ou intérieure.</li>
+                <li><strong>Rainurage :</strong> Usinage de rainures ou gorges pour des applications spécifiques.</li>
+                <li><strong>Chanfreinage :</strong> Création de bords inclinés pour améliorer l'assemblage ou la sécurité.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Outils et Accessoires pour le Tournage Conventionnel</h2>
+            <ul>
+                <li><strong>Outils de coupe en acier rapide ou carbure :</strong> Adaptés à divers matériaux et opérations.</li>
+                <li><strong>Plaquettes interchangeables :</strong> Offrent une flexibilité et une efficacité accrues.</li>
+                <li><strong>Mandrins à 3 ou 4 mors :</strong> Pour maintenir solidement des pièces cylindriques ou irrégulières.</li>
+                <li><strong>Contre-pointe :</strong> Essentielle pour les longues pièces.</li>
+                <li><strong>Lunettes :</strong> Fournissent un support supplémentaire pour les pièces longues ou fines.</li>
+            </ul>
+
+            <h2>Types de Mandrins</h2>
+            <p>Les mandrins permettent de maintenir des pièces en place lors des opérations de tournage :</p>
+            <ul>
+                <li><strong>Mandrin à Mors Indépendants :</strong> Réglage individuel de chaque mors.</li>
+                <li><strong>Mandrin à 3 Mors :</strong> Auto-centrant, rapide et précis.</li>
+                <li><strong>Mandrin à 4 Mors :</strong> Idéal pour les pièces asymétriques.</li>
+                <li><strong>Mandrin à 6 Mors :</strong> Répartition uniforme des forces pour des pièces fragiles.</li>
+            </ul>
+
+            <h2>Types de Mors</h2>
+            <p>Les mors se déclinent en plusieurs types selon l'usage :</p>
+            <ul>
+                <li><strong>Mors Doux :</strong> Fabriqués en acier non traité, adaptables.</li>
+                <li><strong>Mors Durs :</strong> En acier trempé, parfaits pour des pièces standardisées.</li>
+                <li><strong>Mors Réversibles :</strong> Adaptables à plusieurs tailles de pièces.</li>
+                <li><strong>Mors Spéciaux :</strong> Conçus pour des formes complexes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Usinage de Pièces Coniques</h2>
+            <p>Le tournage de pièces coniques est une opération essentielle dans de nombreux ateliers. Voici les méthodes principales utilisées pour produire des cônes :</p>
+            <h3>Méthodes pour Tourner un Cône</h3>
+            <ul>
+                <li><strong>Inclinaison du Petit Chariot :</strong> Idéal pour les petits cônes avec un angle précis.</li>
+                <li><strong>Décalage de la Contre-Pointe :</strong> Adapté aux cônes de grande longueur.</li>
+                <li><strong>Outil Forme :</strong> Utilisé pour des cônes avec des angles fixes.</li>
+                <li><strong>Copieur :</strong> Permet de reproduire des profils coniques complexes.</li>
+            </ul>
+            <h3>Calculs pour les Cônes</h3>
+            <p>L'angle du cône peut être calculé avec la formule suivante :</p>
+            <code>tan(α) = (D - d) / (2L)</code>
+            <p>Où :</p>
+            <ul>
+                <li><strong>D :</strong> Diamètre plus grand.</li>
+                <li><strong>d :</strong> Diamètre plus petit.</li>
+                <li><strong>L :</strong> Longueur du cône.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Utilisation d’un Copieur</h2>
+            <p>Les copieurs sont des outils précieux pour reproduire des formes complexes, comme des cônes ou des profils personnalisés, dans un atelier de tournage.</p>
+            <h3>Types de Copieurs</h3>
+            <ul>
+                <li><strong>Copieur Mécanique :</strong> Suit un gabarit fixé pour guider l'outil.</li>
+                <li><strong>Copieur Hydraulique :</strong> Utilise un système hydraulique pour des formes complexes.</li>
+                <li><strong>Copieur Numérique :</strong> Programmation assistée pour des profils précis.</li>
+            </ul>
+            <h3>Avantages</h3>
+            <ul>
+                <li>Production rapide et précise de pièces en série.</li>
+                <li>Reproductibilité élevée pour les formes complexes.</li>
+                <li>Réduction du temps de réglage manuel.</li>
+            </ul>
+        </section>
+        
+
+        <section>
+            <h2>Lecture et Compréhension des Plans Techniques</h2>
+            <p>Pour réaliser une pièce selon un plan :</p>
+            <ul>
+                <li>Identifiez les cotes critiques et les tolérances associées.</li>
+                <li>Interprétez les symboles de finition et de rugosité.</li>
+                <li>Planifiez les étapes d'usinage pour respecter les dimensions spécifiées.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contrôle Qualité et Métrologie</h2>
+            <img src="img/mesure1.jpg" alt="metrologie">
+            <h3>Instruments Utilisés</h3>
+            <ul>
+                <li><strong>Pied à coulisse :</strong> Pour des mesures précises des diamètres et longueurs.</li>
+                <li><strong>Micromètre :</strong> Utile pour les dimensions nécessitant une grande précision.</li>
+                <li><strong>Comparateur :</strong> Vérifie les concentricités et les déviations.</li>
+                <li><strong>Jauge de filetage :</strong> Contrôle la précision des filets usinés.</li>
+            </ul>
+            <h3>Vérification de la Conformité</h3>
+            <p>Chaque pièce doit être mesurée et comparée aux tolérances pour garantir la qualité et l'ajustement.</p>
+        </section>
+
+        <section>
+            <h2>Adaptation aux Matériaux</h2>
+            <p>Les vitesses de coupe, avances et profondeurs de passe doivent être ajustées selon les matériaux :</p>
+            <ul>
+                <li><strong>Acier :</strong> Vitesse de coupe faible, refroidissement intensif.</li>
+                <li><strong>Inox :</strong> Nécessite des outils robustes et une lubrification importante.</li>
+                <li><strong>Aluminium :</strong> Vitesse élevée, faible résistance mécanique.</li>
+                <li><strong>Plastiques :</strong> Vitesse modérée pour éviter la fonte ou la déformation.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Atelier Manuel - Tout sur le Tournage Conventionnel</p>
+    </footer>
+</body>
+</html>

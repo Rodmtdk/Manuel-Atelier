@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel d'Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="calc.js" defer></script>
+    <body class="fraisagecnc">
+    <style>
+        /* Styles généraux optimisés */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            color: #FFFFFF;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0A0D12;
+            padding: 10px 0;
+            border-top: 1px solid #23A455;
+            border-bottom: 1px solid #23A455;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li button {
+            background: #23A455;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        nav ul li button:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1A1A2E;
+            padding: 10px 0;
+            border-radius: 8px;
+            list-style: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 5px 20px;
+        }
+
+        nav ul li ul li button {
+            background: none;
+            color: #FFFFFF;
+            padding: 5px;
+            border: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0A0D12;
+            color: #FFFFFF;
+            border-top: 1px solid #23A455;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li ul {
+                position: static;
+            }
+
+            nav ul li ul li {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manuel d'Atelier</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <li>
+                <button onclick="window.location.href='start.html'">🚀 Start</button>
+            </li>
+            <li>
+                <button>🛠️ Fraisage</button>
+                <ul>
+                    <li><button onclick="window.location.href='fraisageconv.html'">Fraisage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='fraisagecnc.html'">Fraisage CNC</button></li>
+                </ul>
+            </li>
+            <li>
+                <button>🔧 Tournage</button>
+                <ul>
+                    <li><button onclick="window.location.href='tournageconv.html'">Tournage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='tournagecnc.html'">Tournage CNC</button></li>
+                </ul>
+            </li>
+            <li><button onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
+            <li><button onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            <li><button onclick="window.history.back()">🔙 Retour</button></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Qu'est-ce que le Fraisage CNC ?</h2>
+            <img src="img/fraisage-cnc.jpg" alt="Fraisage CNC">
+            <p>Le fraisage CNC (Commande Numérique par Ordinateur) est un procédé d'usinage automatisé utilisant des machines-outils commandées par ordinateur. Cette méthode permet de produire des pièces complexes avec une grande précision et une répétabilité élevée.</p>
+            <p>Ce procédé est couramment utilisé pour des productions en série, des pièces techniques complexes, et dans des environnements nécessitant une haute précision.</p>
+        </section>
+
+        <section>
+            <h2>Composants et Fonctionnalités d'une Fraiseuse CNC</h2>
+            <ul>
+                <img src="img/welcome-image.jpg" alt="Atelier de fraisage">
+
+                <li><strong>Table de travail :</strong> Support pour fixer la pièce, avec des axes motorisés pour le déplacement.</li>
+                <li><strong>Broche :</strong> Rotation rapide de l'outil pour effectuer l'usinage.</li>
+                <li><strong>Commandes numériques :</strong> Interface permettant de programmer les mouvements et opérations.</li>
+                <li><strong>Système de lubrification :</strong> Essentiel pour prolonger la durée de vie des outils et garantir une finition de qualité.</li>
+                <li><strong>Capteurs de position :</strong> Permettent une rétroaction précise pour maintenir les tolérances dimensionnelles.</li>
+                <li><strong>Changeur d'outils automatique :</strong> Optimise le temps en permettant de passer d'un outil à l'autre sans intervention manuelle.</li>
+                <li><strong>Système de refroidissement :</strong> Indispensable pour éviter la surchauffe des outils et des pièces.</li>
+                <li><strong>Contrôle de la vibration :</strong> Ensemble permettant de surveiller et de réduire les vibrations pendant l'usinage (silentblocs, rigidité).</li>
+                <li><strong>Logiciel FAO (Fabrication Assistée par Ordinateur) :</strong> Permet de créer des parcours d’outils optimisés pour chaque opération.</li>
+                
+            </ul>
+        </section>
+
+        <section>
+            <h2>Techniques et Méthodes d'Usinage CNC</h2>
+            <h3>1. Fraisage 3 axes</h3>
+            <p>Les trois axes linéaires (X, Y, Z) permettent d'usiner des pièces planes ou légèrement complexes. Cette méthode est idéale pour des pièces géométriquement simples.</p>
+            <h3>2. Fraisage 4 axes</h3>
+            <p>Un axe de rotation supplémentaire (généralement autour de l'axe X ou Y) permet d'usiner les surfaces cylindriques ou d'accéder à des zones plus complexes.</p>
+            <h3>3. Fraisage 5 axes</h3>
+            <p>Deux axes de rotation supplémentaires permettent d'usiner des pièces très complexes en une seule configuration. Cette méthode est utilisée dans l'aérospatial, l'automobile et les implants médicaux.</p>
+            <h3>4. Fraisage haute vitesse (HSM)</h3>
+            <p>Utilisation de vitesses de broche très élevées pour des opérations de finition ultra-précises et des taux d'enlèvement de matière optimisés.</p>
+            <h3>5. Fraisage trochoïdal</h3>
+            <p>Technique d'usinage qui optimise le contact entre l'outil et la matière pour réduire les contraintes thermiques et mécaniques. Idéal pour des matériaux difficiles à usiner. Le terme trochoïdal fait référence à un type de mouvement ou de trajectoire basé sur une courbe trochoïdale, qui est une courbe tracée par un point attaché à un cercle qui roule le long d'une autre courbe. </p>
+            <h3>6. Usinage adaptatif</h3>
+            <p>Méthode utilisant des parcours d’outils dynamiques pour maintenir une charge constante sur l’outil, augmentant ainsi la productivité et la durée de vie de l’outil.</p>
+            <video controls width="600">
+                <source src="videos/atelier-presentation.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas les vidéos.
+            </video>
+        </section>
+
+        <section>
+            <h2>Paramètres Cruciaux en Fraisage CNC</h2>
+            <h3>Vitesse de broche</h3>
+            <p>Elle est calculée en fonction du matériau, de l'outil et du diamètre de la fraise :</p>
+            <code>n = (Vc * 1000) / (π * D)</code>,
+            <p>où Vc est la vitesse de coupe et D le diamètre de l'outil.</p>
+            <h3>Avance par dent</h3>
+            <p>Indique la quantité de matière enlevée par dent de fraise à chaque rotation. Une avance excessive peut générer des vibrations ou un mauvais état de surface.</p>
+            <h3>Profondeur de coupe</h3>
+            <p>Optimisez la profondeur axiale (ap) et radiale (ae) en fonction de la rigidité de la machine et de la pièce à usiner.</p>
+            <h3>Stratégie d'usinage</h3>
+            <p>Les parcours optimisés, comme le trochoïdal, réduisent l'usure des outils et augmentent la productivité.</p>
+            <h3>Fréquence de vibration</h3>
+            <p>Surveillez les vibrations de la machine et ajustez les paramètres pour éviter les résonances, qui peuvent réduire la qualité de l’usinage.</p>
+        </section>
+
+        <main>
+            <section>
+                <h2>Qu'est-ce que le Fraisage CNC ?</h2>
+                <img src="img/fraisage-cnc.jpg" alt="Fraisage CNC">
+                <p>Le fraisage CNC (Commande Numérique par Ordinateur) est un procédé d'usinage automatisé utilisant des machines-outils commandées par ordinateur. Cette méthode permet de produire des pièces complexes avec une grande précision et une répétabilité élevée.</p>
+            </section>
+    
+            <section>
+                <h2>Composants et Fonctionnalités d'une Fraiseuse CNC</h2>
+                <ul>
+                    <li><strong>Table de travail :</strong> Support pour fixer la pièce, avec des axes motorisés.</li>
+                    <li><strong>Broche :</strong> Rotation rapide de l'outil pour l'usinage.</li>
+                    <li><strong>Changeur d'outils automatique :</strong> Change les outils sans intervention.</li>
+                    <li><strong>Système de lubrification :</strong> Prolonge la durée de vie des outils.</li>
+                </ul>
+            </section>
+    
+            <section>
+                <h2>Types de Mandrins</h2>
+                <p>Les mandrins permettent de maintenir des pièces en place lors des opérations de tournage :</p>
+                <ul>
+                    <li><strong>Mandrin à Mors Indépendants :</strong> Réglage individuel de chaque mors.</li>
+                    <li><strong>Mandrin à 3 Mors :</strong> Auto-centrant, rapide et précis.</li>
+                    <li><strong>Mandrin à 4 Mors :</strong> Idéal pour les pièces asymétriques.</li>
+                    <li><strong>Mandrin à 6 Mors :</strong> Répartition uniforme des forces pour des pièces fragiles.</li>
+                </ul>
+            </section>
+    
+            <section>
+                <h2>Types de Mors</h2>
+                <p>Les mors se déclinent en plusieurs types selon l'usage :</p>
+                <ul>
+                    <li><strong>Mors Doux :</strong> Fabriqués en acier non traité, adaptables.</li>
+                    <li><strong>Mors Durs :</strong> En acier trempé, parfaits pour des pièces standardisées.</li>
+                    <li><strong>Mors Réversibles :</strong> Adaptables à plusieurs tailles de pièces.</li>
+                    <li><strong>Mors Spéciaux :</strong> Conçus pour des formes complexes.</li>
+                </ul>
+            </section>
+    
+            <section>
+                <h2>Contrôle Qualité et Métrologie</h2>
+                <h3>Instruments Utilisés</h3>
+                <ul>
+                    <li><strong>Pied à coulisse :</strong> Mesures extérieures, intérieures et profondeurs.</li>
+                    <li><strong>Micromètre :</strong> Haute précision pour les diamètres.</li>
+                    <li><strong>Comparateur :</strong> Vérification de la planéité.</li>
+                </ul>
+            </section>
+        </main>
+
+        <section>
+            <h2>Lecture et Compréhension des Plans Techniques</h2>
+            <p>Pour réaliser des pièces à partir d'un plan, il est essentiel de :</p>
+            <ul>
+                <li>Lire et interpréter les cotes dimensionnelles et de fonction.</li>
+                <li>Comprendre les tolérances géométriques et dimensionnelles.</li>
+                <li>Déchiffrer les symboles de rugosité et de finition.</li>
+                <li>Suivre les étapes indiquées pour respecter les spécifications techniques.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contrôle Qualité et Métrologie</h2>
+            <img src="img/mesure.jpg" alt="metrologie">
+            <h3>Instruments Utilisés</h3>
+            <ul>
+                <li><strong>Pied à coulisse :</strong> Pour des mesures précises des dimensions extérieures, intérieures et des profondeurs.</li>
+                <li><strong>Micromètre :</strong> Idéal pour mesurer des diamètres et des épaisseurs avec une grande précision.</li>
+                <li><strong>Comparateur :</strong> Utile pour vérifier les déviations et la planéité.</li>
+                <li><strong>Rugosimètre :</strong> Permet de mesurer la rugosité et la finition des surfaces.</li>
+            </ul>
+            <h3>Vérification de la Conformité</h3>
+            <p>Chaque pièce doit être comparée aux tolérances indiquées sur le plan. Les dimensions critiques doivent être mesurées à l'aide d'instruments calibrés pour garantir la conformité.</p>
+        </section>
+
+        <section>
+            <h2>Adaptation aux Matériaux</h2>
+            <h3>Choix du Matériau</h3>
+            <ul>
+                <li><strong>Acier :</strong> Utilisé pour sa robustesse, idéal pour les pièces structurelles.</li>
+                <li><strong>Inox :</strong> Résistant à la corrosion, parfait pour les environnements humides.</li>
+                <li><strong>Aluminium :</strong> Léger et facile à usiner, utilisé pour les pièces aéronautiques et automobiles.</li>
+                <li><strong>Plastiques :</strong> Convient pour des applications légères ou isolantes.</li>
+            </ul>
+            <h3>Paramètres d'Usinage selon le Matériau</h3>
+            <p>Adaptez la vitesse de coupe, l'avance et la profondeur de passe en fonction du matériau :</p>
+            <ul>
+                <li><strong>Acier :</strong> Vitesse de coupe faible, avance modérée.</li>
+                <li><strong>Aluminium :</strong> Vitesse de coupe élevée, faible profondeur de passe.</li>
+                <li><strong>Inox :</strong> Vitesse modérée, lubrification importante.</li>
+                <li><strong>Plastiques :</strong> Vitesse élevée, attention à la surchauffe.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Atelier Manuel - Tout sur le Fraisage CNC</p>
+    </footer>
+</body>
+</html>

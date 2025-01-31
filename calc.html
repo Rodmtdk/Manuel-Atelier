@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur d'Usinage</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <script src="calc.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            padding: 15px 0;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .new-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .calc-container {
+            margin: 50px auto;
+            padding: 30px;
+            max-width: 900px;
+            background: #1A1A2E;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .calc-container h2 {
+            color: #FFD700;
+            margin-bottom: 25px;
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.8rem;
+        }
+
+        .calc-container table {
+            margin: 20px auto;
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .calc-container table th, 
+        .calc-container table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #444;
+            background: #1E1E30;
+            color: #E5E5E5;
+            font-size: 1rem;
+        }
+
+        .calc-container table th {
+            background: #27293D;
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .calc-container input,
+        .calc-container select {
+            width: 90%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #101418;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .icon {
+            margin-right: 5px;
+            color: #FFD700;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <span class="new-label">✨ Nouveau</span>
+        <i class="fas fa-cogs"></i> Calculateur d'Usinage
+    </header>
+    <main class="calc-container">
+        <h2><i class="fas fa-wrench"></i> Calculateur pour le Fraisage</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th><i class="fas fa-tools"></i> Désignation</th>
+                    <th><i class="fas fa-ruler"></i> Ø</th>
+                    <th><i class="fas fa-cog"></i> Z</th>
+                    <th><i class="fas fa-tachometer-alt"></i> Vc (m/min)</th>
+                    <th><i class="fas fa-exchange-alt"></i> fz (mm/dt)</th>
+                    <th><i class="fas fa-sync-alt"></i> n (tr/min)</th>
+                    <th><i class="fas fa-long-arrow-alt-right"></i> Vf (mm/min)</th>
+                    <th><i class="fas fa-industry"></i> Matériau</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fraise</td>
+                    <td><input type="number" id="f_diameter" value="8" oninput="calculateFraisage()"></td>
+                    <td><input type="number" id="f_teeth" value="4" oninput="calculateFraisage()"></td>
+                    <td><input type="number" id="f_vc" value="70" oninput="calculateFraisage()"></td>
+                    <td><input type="number" id="f_fz" value="0.01" oninput="calculateFraisage()"></td>
+                    <td><input type="number" id="f_n" oninput="calculateFraisageReverse('n')"></td>
+                    <td><input type="number" id="f_vf" oninput="calculateFraisageReverse('vf')"></td>
+                    <td>
+                        <select id="f_material" onchange="updateVcFraisage()">
+                            <option value="70">Carbure</option>
+                            <option value="30">HSS</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        function calculateFraisage() {
+            let diameter = parseFloat(document.getElementById('f_diameter').value);
+            let teeth = parseInt(document.getElementById('f_teeth').value);
+            let vc = parseFloat(document.getElementById('f_vc').value);
+            let fz = parseFloat(document.getElementById('f_fz').value);
+            let n = vc && diameter ? (1000 * vc) / (Math.PI * diameter) : parseFloat(document.getElementById('f_n').value);
+            let vf = n && teeth && fz ? teeth * fz * n : parseFloat(document.getElementById('f_vf').value);
+
+            if (vc && diameter) document.getElementById('f_n').value = n.toFixed(2);
+            if (n && teeth && fz) document.getElementById('f_vf').value = vf.toFixed(2);
+        }
+
+        function calculateFraisageReverse(target) {
+            let diameter = parseFloat(document.getElementById('f_diameter').value);
+            let teeth = parseInt(document.getElementById('f_teeth').value);
+            let fz = parseFloat(document.getElementById('f_fz').value);
+            let n = parseFloat(document.getElementById('f_n').value);
+            let vf = parseFloat(document.getElementById('f_vf').value);
+
+            if (target === 'n' && diameter && n) {
+                let vc = (Math.PI * diameter * n) / 1000;
+                document.getElementById('f_vc').value = vc.toFixed(2);
+            }
+
+            if (target === 'vf' && n && teeth) {
+                let fzNew = vf / (n * teeth);
+                document.getElementById('f_fz').value = fzNew.toFixed(4);
+            }
+        }
+
+        function updateVcFraisage() {
+            let material = document.getElementById('f_material').value;
+            document.getElementById('f_vc').value = material;
+            calculateFraisage();
+        }
+    </script>
+</body>
+</html>

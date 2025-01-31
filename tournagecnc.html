@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel d'Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="calc.js" defer></script>
+    <body class="tournagecnc">
+    <style>
+        /* Styles généraux optimisés */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            color: #FFFFFF;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0A0D12;
+            padding: 10px 0;
+            border-top: 1px solid #23A455;
+            border-bottom: 1px solid #23A455;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li button {
+            background: #23A455;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        nav ul li button:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1A1A2E;
+            padding: 10px 0;
+            border-radius: 8px;
+            list-style: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 5px 20px;
+        }
+
+        nav ul li ul li button {
+            background: none;
+            color: #FFFFFF;
+            padding: 5px;
+            border: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0A0D12;
+            color: #FFFFFF;
+            border-top: 1px solid #23A455;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li ul {
+                position: static;
+            }
+
+            nav ul li ul li {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manuel d'Atelier</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <li>
+                <button onclick="window.location.href='start.html'">🚀 Start</button>
+            </li>
+            <li>
+                <button>🛠️ Fraisage</button>
+                <ul>
+                    <li><button onclick="window.location.href='fraisageconv.html'">Fraisage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='fraisagecnc.html'">Fraisage CNC</button></li>
+                </ul>
+            </li>
+            <li>
+                <button>🔧 Tournage</button>
+                <ul>
+                    <li><button onclick="window.location.href='tournageconv.html'">Tournage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='tournagecnc.html'">Tournage CNC</button></li>
+                </ul>
+            </li>
+            <li><button onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
+            <li><button onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            <li><button onclick="window.history.back()">🔙 Retour</button></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Qu'est-ce que le Tournage CNC ?</h2>
+            <img src="img/tournage-cnc.jpg" alt="Tournage CNC">
+            <p>Le tournage CNC (Commande Numérique par Ordinateur) est un procédé d'usinage dans lequel une pièce tourne autour d'un axe tandis qu'un outil de coupe fixe ou mobile enlève la matière. Cette technique automatisée permet de produire des pièces cylindriques avec une précision et une répétabilité exceptionnelles.</p>
+            <p>Il est utilisé dans des industries variées, notamment l'aérospatial, l'automobile, et la fabrication de composants mécaniques de haute précision.</p>
+        </section>
+
+        <section>
+            <h2>Composants d'un Tour CNC</h2>
+            <ul>
+                <li><strong>Mandrin :</strong> Maintient fermement la pièce à usiner.</li>
+                <li><strong>Broche :</strong> Permet à la pièce de tourner à des vitesses contrôlées.</li>
+                <li><strong>Outil de coupe :</strong> Enlève la matière pour façonner la pièce selon les spécifications.</li>
+                <li><strong>Chariot porte-outil :</strong> Déplace l'outil de coupe selon les axes X et Z pour effectuer les opérations.</li>
+                <li><strong>Système de commande numérique :</strong> Interface permettant de programmer les mouvements et paramètres d'usinage.</li>
+                <li><strong>Changeur d'outils automatique :</strong> Permet de changer rapidement entre différents outils pour réaliser des opérations complexes.</li>
+                <li><strong>Système de refroidissement :</strong> Réduit la chaleur générée pendant l'usinage et prolonge la durée de vie des outils.</li>
+                <li><strong>Glissières et guides :</strong> Assurent la précision des mouvements du chariot porte-outil.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Comment Mettre en Marche et Régler un Tour CNC</h2>
+            <ol>
+                <li><strong>Préparation :</strong> Vérifiez que la machine est propre, bien lubrifiée et exempte de tout obstacle.</li>
+                <li><strong>Installation de la pièce :</strong> Fixez solidement la pièce dans le mandrin et vérifiez son alignement.</li>
+                <li><strong>Configuration de l'outil :</strong> Installez l'outil de coupe approprié et effectuez un préréglage.</li>
+                <li><strong>Paramètres de coupe :</strong> Réglez la vitesse de rotation, l'avance et la profondeur de coupe en fonction du matériau.</li>
+                <li><strong>Test initial :</strong> Effectuez une passe d'essai pour vérifier les réglages.</li>
+                <li><strong>Lancement :</strong> Démarrez le programme CNC et surveillez les opérations pour détecter d'éventuelles anomalies.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Types d'Outils et Fraises pour le Tournage CNC</h2>
+            <ul>
+                <li><strong>Outils de coupe standards :</strong> Utilisés pour le dressage, le cylindrage et l'alésage.</li>
+            <p>Réalisé en combinant plusieurs trajectoires pour produire des géométries complexes. Souvent utilisé pour des pièces de haute précision dans l'aéronautique ou l'automobile.</p>
+        </section>
+
+        <section>
+            <h2>Techniques Avancées </h2>
+                       <ul>
+                <li><strong>Tournage Multi-Axes :</strong> Usinage de formes complexes en une seule configuration.</li>
+                <li><strong>Tournage-Milling :</strong> Combinaison du tournage et du fraisage pour des pièces complètes.</li>
+                <li><strong>Tournage Dur :</strong> Usinage de matériaux trempés pour remplacer le meulage.</li>
+                <li><strong>Usinage à Grande Vitesse (HSM) :</strong> Finitions parfaites et réduction des temps de cycle.</li>
+            </ul>
+                        
+            <h3>Applications</h3>
+            <ul>
+                <li><strong>Industrie Automobile :</strong> Fabrication d'arbres et de vis.</li>
+                <li><strong>Industrie Médicale :</strong> Production d'implants et d'instruments chirurgicaux.</li>
+                <li><strong>Aéronautique :</strong> Usinage de pièces en alliages légers et titane.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Applications du Tournage CNC</h2>
+            <ul>
+                <li><strong>Automobile :</strong> Fabrication d’arbres, de vis ou de poulies.</li>
+                <li><strong>Aéronautique :</strong> Usinage de composants légers en alliages complexes.</li>
+                <li><strong>Médical :</strong> Production de vis médicales, implants ou pièces spécifiques.</li>
+                <li><strong>Énergie :</strong> Création de composants pour turbines ou raccords industriels.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Maintenance d’un Tour à commande numérique</h2>
+            <p>Pour garantir une performance optimale, effectuez les entretiens suivants :</p>
+            <ul>
+                <li><strong>Nettoyage :</strong> Retirez les copeaux après chaque utilisation et nettoyez les glissières.</li>
+                <li><strong>Lubrification :</strong> Vérifiez régulièrement le niveau d'huile et appliquez des graisses sur les parties mobiles.</li>
+                <li><strong>Inspection des outils :</strong> Remplacez ou affûtez les outils usés pour éviter des finitions de mauvaise qualité.</li>
+                <li><strong>Calibration :</strong> Assurez-vous que les axes X, Y et Z sont correctement calibrés.</li>
+                <li><strong>Surveillance des vibrations :</strong> Détectez les anomalies pour prévenir les dommages structurels.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Programmation</h2>
+            <p>Le tournage CNC repose sur des programmes qui définissent les opérations à effectuer. Deux méthodes principales sont utilisées :</p>
+            <h3>1. Programmation ISO</h3>
+            <p>Basée sur des codes G et M pour contrôler la machine. Par exemple :</p>
+            <ul>
+                <li><code>G01 :</code> Mouvement linéaire d’interpolation.</li>
+                <li><code>G02 :</code> Mouvement circulaire horaire.</li>
+                <li><code>M03 :</code> Démarrage de la broche en rotation horaire.</li>
+                <li><code>M05 :</code> Arrêt de la broche.</li>
+            </ul>
+            <h3>2. Programmation avec FAO</h3>
+            <p>Utilisation de logiciels comme MasterCAM ou Fusion 360 pour générer des parcours d’outils optimisés.</p>
+        </section>
+
+        <section>
+            <h2>Innovations</h2>
+            <p>Les avancées technologiques permettent d'améliorer la précision et la productivité des machines CNC :</p>
+            <ul>
+                <li><strong>Machines multitâches :</strong> Combinaison du tournage et du fraisage pour réduire les temps de production.</li>
+                <li><strong>Capteurs intelligents :</strong> Surveillance en temps réel pour prévenir les pannes et améliorer la qualité.</li>
+                <li><strong>Fabrication additive hybride :</strong> Permet d’imprimer des structures complexes avant de les usiner pour une finition parfaite.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Astuces pour Réduire les Coûts</h2>
+            <p>Pour une gestion efficace de votre atelier :</p>
+            <ul>
+                <li>Utilisez des outils polyvalents pour réduire les changements d’outils.</li>
+                <li>Optimisez les trajectoires pour réduire le temps d’usinage.</li>
+                <li>Entretenez régulièrement les machines pour éviter les arrêts imprévus.</li>
+                <li>Formez vos opérateurs aux dernières technologies pour améliorer la productivité.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Paramètres Cruciaux</h2>
+            <img src="img/tournage-cnc1.jpg" alt="Tournage CNC">
+            <h3>Vitesse de Rotation</h3>
+            <p>Déterminée par le matériau et le diamètre de la pièce, elle est calculée avec la formule :</p>
+            <code>n = (Vc * 1000) / (π * D)</code>,
+            <p>où Vc est la vitesse de coupe et D le diamètre de la pièce.</p>
+            <h3>Avance</h3>
+            <p>Correspond à la distance parcourue par l'outil à chaque rotation de la pièce. Elle est choisie en fonction de la finition souhaitée et des contraintes d'usinage.</p>
+            <h3>Profondeur de Passe</h3>
+            <p>Définit l'épaisseur de matière enlevée par passe. Une profondeur élevée réduit le temps d'usinage mais peut augmenter les contraintes mécaniques.</p>
+            <h3>Lubrification</h3>
+            <p>Utilisez un lubrifiant adapté au matériau pour améliorer la finition de surface et prolonger la durée de vie de l’outil.</p>
+        </section>
+
+        <section>
+            <h2>Lecture et Compréhension des Plans Techniques</h2>
+            <p>Pour réaliser une pièce selon un plan :</p>
+            <ul>
+                <li>Identifiez les cotes critiques et les tolérances associées.</li>
+                <li>Interprétez les symboles de finition et de rugosité.</li>
+                <li>Planifiez les étapes d'usinage pour respecter les dimensions spécifiées.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contrôle Qualité et Métrologie</h2>
+            <img src="img/mesure.jpg" alt="metrologie">
+            <h3>Instruments Utilisés</h3>
+            <ul>
+                <li><strong>Pied à coulisse :</strong> Pour des mesures précises des diamètres et longueurs.</li>
+                <li><strong>Micromètre :</strong> Utile pour les dimensions nécessitant une grande précision.</li>
+                <li><strong>Comparateur :</strong> Vérifie les concentricités et les déviations.</li>
+                <li><strong>Jauge de filetage :</strong> Contrôle la précision des filets usinés.</li>
+                <li><strong>Rugosimètre :</strong> Permet de mesurer la rugosité et la qualité de finition des surfaces.</li>
+            </ul>
+            <h3>Vérification de la Conformité</h3>
+            <p>Chaque pièce doit être mesurée et comparée aux tolérances pour garantir la qualité et l'ajustement.</p>
+        </section>
+
+        <section>
+            <h2>Adaptation aux Matériaux</h2>
+            <p>Les vitesses de coupe, avances et profondeurs de passe doivent être ajustées selon les matériaux :</p>
+            <ul>
+                <li><strong>Acier :</strong> Vitesse de coupe faible, refroidissement intensif.</li>
+                <li><strong>Inox :</strong> Nécessite des outils robustes et une lubrification importante.</li>
+                <li><strong>Aluminium :</strong> Vitesse élevée, faible résistance mécanique.</li>
+                <li><strong>Plastiques :</strong> Vitesse modérée pour éviter la fonte ou la déformation.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conseils pour l'Optimisation en Atelier</h2>
+            <p>Pour améliorer la productivité et la qualité en atelier :</p>
+            <ul>
+                <li>Planifiez soigneusement les étapes de l’usinage en fonction des priorités.</li>
+                <li>Formez les opérateurs à lire et interpréter les plans techniques.</li>
+                <li>Maintenez un inventaire d'outils bien affûtés et adaptés aux matériaux usinés.</li>
+                <li>Surveillez régulièrement les paramètres de vibration et d’usure des outils.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Atelier Manuel - Tout sur le Tournage CNC</p>
+    </footer>
+</body>
+</html>

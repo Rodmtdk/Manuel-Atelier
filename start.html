@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel d'Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="calc.js" defer></script>
+    <style>
+        /* Styles généraux optimisés */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #101418;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1A8F3E, #23A455);
+            color: #FFFFFF;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0A0D12;
+            padding: 10px 0;
+            border-top: 1px solid #23A455;
+            border-bottom: 1px solid #23A455;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li button {
+            background: #23A455;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        nav ul li button:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1A1A2E;
+            padding: 10px 0;
+            border-radius: 8px;
+            list-style: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 5px 20px;
+        }
+
+        nav ul li ul li button {
+            background: none;
+            color: #FFFFFF;
+            padding: 5px;
+            border: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0A0D12;
+            color: #FFFFFF;
+            border-top: 1px solid #23A455;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li ul {
+                position: static;
+            }
+
+            nav ul li ul li {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body class="start">
+    <header>
+        <h1>Manuel d'Atelier</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button onclick="window.location.href='index.html'">🏠 Accueil</button></li>
+            <li>
+                <button onclick="window.location.href='start.html'">🚀 Start</button>
+            </li>
+            <li>
+                <button>🛠️ Fraisage</button>
+                <ul>
+                    <li><button onclick="window.location.href='fraisageconv.html'">Fraisage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='fraisagecnc.html'">Fraisage CNC</button></li>
+                </ul>
+            </li>
+            <li>
+                <button>🔧 Tournage</button>
+                <ul>
+                    <li><button onclick="window.location.href='tournageconv.html'">Tournage Conventionnel</button></li>
+                    <li><button onclick="window.location.href='tournagecnc.html'">Tournage CNC</button></li>
+                </ul>
+            </li>
+            <li><button onclick="window.location.href='calc.html'">🧮 Calculateur</button></li>
+            <li><button onclick="window.location.href='secuatelier.html'">⚠️ Sécurité</button></li>
+            <li><button onclick="window.history.back()">🔙 Retour</button></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Comment Mettre en Marche et Régler les Machines?</h2>
+            <img src="img/start.jpg" alt="start">
+            <h3>Étapes Générales :</h3>
+            <ol>
+                <li><strong>Inspection :</strong> Vérifiez que la machine est propre, bien lubrifiée et exempte de tout obstacle.</li>
+                <li><strong>Installation de la pièce :</strong> Fixez solidement la pièce à usiner dans le mandrin ou sur la table de travail (étau, brides...).</li>
+                <li><strong>Choix de l’outil :</strong> Sélectionnez un outil adapté à l'opération prévue (fraisage, tournage, rainurage, etc.).</li>
+                <li><strong>Réglage des paramètres :</strong> Ajustez la vitesse de rotation, l’avance et la profondeur de coupe en fonction du matériau.</li>
+                <li><strong>Test :</strong> Effectuez une passe d’essai pour vérifier la précision et ajuster si nécessaire.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h1>Outils de Coupe</h1>
+        
+            <div class="section">
+                <h2>1. Outils de coupe pour le fraisage</h2>
+                <img src="img/outils.jpg" alt="outils"> 
+                
+                <ul>
+                    <li><strong>Fraises cylindriques :</strong> Pour l'usinage des surfaces planes et des rainures.</li>
+                    <li><strong>Fraises à bout plat :</strong> Idéales pour créer des rainures, des poches et des surfaces planes.</li>
+                    <li><strong>Fraises à bout hémisphérique :</strong> Pour les contours 3D et les surfaces courbes.</li>
+                    <li><strong>Fraises à surfacer :</strong> Pour enlever de grandes quantités de matière sur des surfaces planes.</li>
+                    <li><strong>Fraises à chanfreiner :</strong> Pour créer des chanfreins ou des biseaux.</li>
+                    <li><strong>Fraises à rainurer :</strong> Pour les rainures simples, en T ou en queue d'aronde.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>2. Outils de coupe pour le tournage</h2>
+                <img src="img/outils-tournage.jpg" alt="outils"> 
+                <ul>
+                    <li><strong>Poinçons à dresser :</strong> Pour l'usinage des faces planes.</li>
+                    <li><strong>Poinçons à gorge :</strong> Pour créer des rainures ou des gorges.</li>
+                    <li><strong>Outils de filetage :</strong> Conçus pour réaliser des filetages internes ou externes.</li>
+                    <li><strong>Outils d'alésage :</strong> Pour élargir ou ajuster les diamètres internes des pièces.</li>
+                    <li><strong>Outils de tronçonnage :</strong> Pour couper une pièce ou séparer une partie de la matière brute.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>3. Outils en carbure monobloc</h2>
+                <img src="img/outilscarb.jpg" alt="outils"> 
+                <p><strong>Caractéristiques :</strong> Résistance élevée à l'usure et dureté exceptionnelle.</p>
+                <p><strong>Applications :</strong></p>
+                <ul>
+                    <li>Usinage de matériaux durs (aciers trempés, inox).</li>
+                    <li>Utilisés pour les vitesses de coupe élevées.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>4. Plaquettes interchangeables (carbure ou céramique)</h2>
+                <img src="img/cutting.jpg" alt="outils">
+                <p><strong>Caractéristiques :</strong> Plaquettes remplaçables montées sur des porte-outils.</p>
+                <p><strong>Avantages :</strong></p>
+                <ul>
+                    <li>Réduction des temps d'arrêt pour affûtage.</li>
+                    <li>Convient pour le fraisage, le tournage et l'alésage.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>5. Forets</h2>
+                <ul>
+                    <li><strong>Forets hélicoïdaux :</strong> Les plus courants pour percer des trous droits.</li>
+                    <li><strong>Forets à centrer/pointer :</strong> Utilisés pour des perçages de haute précision, ou guidage. Sert pour la contre pointe en tournage.</li>
+                    <li><strong>Forets étagés :</strong> Permettent de réaliser plusieurs diamètres avec un seul outil.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>6. Alésoirs</h2>
+                <img src="img/for.jpg" alt="outils">
+                <p><strong>Caractéristiques :</strong> Outils cylindriques pour ajuster avec précision le diamètre d’un trou.</p>
+                <p><strong>Applications :</strong></p>
+                <ul>
+                    <li>Amélioration de la qualité de surface et de la tolérance des trous percés.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>7. Outils de filetage</h2>
+                <ul>
+                    <li><strong>Tarauds :</strong> Pour créer des filetages internes.</li>
+                    <li><strong>Filières :</strong> Pour les filetages externes.</li>
+                    <li><strong>Plaquettes de filetage :</strong> Utilisées sur machines CNC pour des filetages précis.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>8. Outils pour matériaux spécifiques</h2>
+                <ul>
+                    <li><strong>Outils diamantés :</strong> Usinage ultra-précis de matériaux durs (verre, composites, céramique).</li>
+                    <li><strong>Outils PCD (Polycrystalline Diamond) :</strong> Idéaux pour les matériaux abrasifs comme les composites.</li>
+                    <li><strong>Outils CBN (Cubic Boron Nitride) :</strong> Usinage des aciers trempés.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>9. Outils de coupe à revêtements</h2>
+                <ul>
+                    <li><strong>TiN (Nitrure de titane) :</strong> Réduction de l’usure et meilleure évacuation des copeaux.</li>
+                    <li><strong>TiAlN (Nitrure de titane-aluminium) :</strong> Résistance à la chaleur accrue.</li>
+                    <li><strong>CVD et PVD :</strong> Technologies de revêtement pour les applications exigeantes.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>10. Accessoires courants</h2>
+                <ul>
+                    <li><strong>Mandrins :</strong> Fixation de l'outil sur la machine.</li>
+                    <li><strong>Porte-outils :</strong> Maintien des outils tels que les plaquettes ou les alésoirs.</li>
+                    <li><strong>Clés dynamométriques :</strong> Pour monter les outils en respectant les couples de serrage recommandés.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3>Outils de Mesure</h3>
+            <ul>
+                <li><strong>Pied à coulisse :</strong> Mesures précises des dimensions extérieures, intérieures et des profondeurs.</li>
+                <li><strong>Micromètre :</strong> Pour des mesures de haute précision.</li>
+                <li><strong>Comparateur :</strong> Vérifie les déviations et concentricités.</li>
+                <li><strong>Rugosimètre :</strong> Analyse la finition de surface.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Choix des Outils en Fonction des Matériaux</h1>
+            <img src="img/materiaux.jpg" alt="materiaux">
+        
+            <div class="section">
+                <h2>1. Acier non allié et faiblement allié</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Acier rapide (HSS) pour les faibles vitesses, plaquettes en carbure revêtues (TiN, TiAlN) pour les vitesses élevées.</li>
+                    <li><strong>Applications :</strong> Usinage général (fraisage, tournage, perçage). Convient pour le dégrossissage et la finition.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>2. Acier allié et aciers trempés</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Outils en carbure monobloc ou plaquettes en carbure. Outils CBN (Cubic Boron Nitride) pour les aciers très durs (>50 HRC).</li>
+                    <li><strong>Applications :</strong> Usinage à haute précision et à haute résistance. Nécessite des outils résistants à l’usure et aux hautes températures.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>3. Fonte</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Plaquettes en carbure sans revêtement pour la fonte grise. Plaquettes en céramique pour les fontes ductiles.</li>
+                    <li><strong>Applications :</strong> Dégrossissage et finition des pièces moulées. Excellente capacité d’absorption des vibrations.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>4. Aluminium et alliages légers</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Outils en carbure monobloc à grande hélice (40°–45°). Outils PCD (Polycrystalline Diamond) pour des finitions ultra-précises.</li>
+                    <li><strong>Applications :</strong> Usinage rapide grâce à la conductivité thermique élevée de l'aluminium. Prévention des bavures et des collages en utilisant des revêtements spécifiques (TiN).</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>5. Inox (acier inoxydable)</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Plaquettes en carbure revêtues (TiAlN, TiCN). Outils avec géométrie positive pour éviter l'accumulation de matière.</li>
+                    <li><strong>Applications :</strong> Usinage de précision à des vitesses modérées. Réduction des vibrations et de l'échauffement pour éviter l'écrouissage.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>6. Titane et alliages de titane</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Plaquettes en carbure à arêtes vives. Outils avec revêtements résistants à la chaleur (TiAlN).</li>
+                    <li><strong>Applications :</strong> Faible conduction thermique nécessite une bonne gestion de la chaleur. Usinage à faible avance et haute précision pour éviter l'usure prématurée.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>7. Matériaux durs et abrasifs (céramique, composites, etc.)</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Outils diamantés (PCD) pour les composites. Outils en céramique ou CBN pour les matériaux durs.</li>
+                    <li><strong>Applications :</strong> Usinage de haute précision et de finition. Nécessitent des machines rigides pour éviter les vibrations.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>8. Plastiques et polymères</h2>
+                <ul>
+                    <li><strong>Outils recommandés :</strong> Fraises en HSS ou carbure avec géométrie spécifique pour plastiques. Arêtes vives pour éviter les éclats ou la fusion.</li>
+                    <li><strong>Applications :</strong> Usinage à haute vitesse pour des découpes propres. Gestion de la chaleur pour éviter la déformation.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>Facteurs clés pour le choix des outils</h2>
+                <ul>
+                    <li><strong>Propriétés du matériau :</strong> Dureté, conductivité thermique, ductilité.</li>
+                    <li><strong>Type d'opération :</strong> Dégrossissage, finition, perçage, filetage.</li>
+                    <li><strong>Conditions de coupe :</strong> Vitesse, avance, profondeur de coupe.</li>
+                    <li><strong>Revêtement de l’outil :</strong> Augmente la durabilité et réduit la friction (ex. : TiN, TiAlN).</li>
+                    <li><strong>Système de refroidissement :</strong> Nécessaire pour les matériaux sensibles à la chaleur (titane, inox).</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+<footer>
+        <p>&copy; 2025 Manuel d'Atelier</p>
+    </footer>
+</body>
+</html>
