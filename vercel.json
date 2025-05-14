@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/introfraisage", "destination": "/introfraisage.html" },
+    { "source": "/introtournage", "destination": "/introtournage.html" },
+    { "source": "/fraisageconv", "destination": "/fraisageconv.html" },
+    { "source": "/fraisagecnc", "destination": "/fraisagecnc.html" },
+    { "source": "/tournageconv", "destination": "/tournageconv.html" },
+    { "source": "/tournagecnc", "destination": "/tournagecnc.html" },
+    { "source": "/secuatelier", "destination": "/secuatelier.html" },
+    { "source": "/calc", "destination": "/calc.html" },
+    { "source": "/commande", "destination": "/commande.html" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
