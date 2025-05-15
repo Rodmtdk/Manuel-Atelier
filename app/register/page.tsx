@@ -1,47 +1,55 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
 export default function RegisterPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center">Créer un compte</CardTitle>
-          <CardDescription className="text-center">
-            Rejoignez AtelierConnect Ultra pour accéder à toutes les fonctionnalités
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-2xl font-bold text-center mb-4">Inscription</h1>
+        <p className="text-center text-gray-600 mb-6">Créez votre compte</p>
+
+        <form className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Nom complet</Label>
-            <Input id="name" placeholder="Jean Dupont" />
+            <label htmlFor="name" className="block text-sm font-medium">
+              Nom complet
+            </label>
+            <input id="name" type="text" className="w-full px-3 py-2 border rounded-md" placeholder="Jean Dupont" />
           </div>
+
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="jean.dupont@example.com" />
+            <label htmlFor="email" className="block text-sm font-medium">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              className="w-full px-3 py-2 border rounded-md"
+              placeholder="votre@email.com"
+            />
           </div>
+
           <div className="space-y-2">
-            <Label htmlFor="password">Mot de passe</Label>
-            <Input id="password" type="password" />
+            <label htmlFor="password" className="block text-sm font-medium">
+              Mot de passe
+            </label>
+            <input id="password" type="password" className="w-full px-3 py-2 border rounded-md" />
           </div>
+
           <div className="space-y-2">
-            <Label htmlFor="confirm">Confirmer le mot de passe</Label>
-            <Input id="confirm" type="password" />
+            <label htmlFor="confirmPassword" className="block text-sm font-medium">
+              Confirmer le mot de passe
+            </label>
+            <input id="confirmPassword" type="password" className="w-full px-3 py-2 border rounded-md" />
           </div>
-        </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <Button className="w-full">Créer un compte</Button>
-          <div className="text-center text-sm">
-            Vous avez déjà un compte?{" "}
-            <Link href="/login" className="text-cyan-400 hover:underline">
-              Se connecter
-            </Link>
-          </div>
-        </CardFooter>
-      </Card>
+
+          <button type="submit" className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            S&apos;inscrire
+          </button>
+        </form>
+
+        <div className="mt-4 text-center text-sm">
+          <a href="/login" className="text-blue-600 hover:underline">
+            Déjà un compte? Se connecter
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

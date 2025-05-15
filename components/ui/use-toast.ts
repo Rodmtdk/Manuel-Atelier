@@ -2,70 +2,66 @@
 
 import type React from "react"
 
-import { useState, createContext, useContext } from "react"
+import { useState, useCallback, createContext } from "react"
 
-export type ToastProps = {
-  id?: string
-  title?: string
-  description?: string
-  action?: React.ReactNode
-  variant?: "default" | "destructive"
+type ToastType = "default" | "success" | "error" | "warning"
+
+interface ToastState {
+  open: boolean
+  message: string
+  type: ToastType
+  duration: number
 }
 
-type ToastContextType = {
-  toasts: ToastProps[]
-  addToast: (toast: ToastProps) => void
-  removeToast: (id: string) => void
+interface ToastContextType {
+  toast: (message: string, type?: ToastType, duration?: number) => void
+  dismiss: () => void
+  state: ToastState
+}
+
+const initialState: ToastState = {
+  open: false,
+  message: "",
+  type: "default",
+  duration: 3000,
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined)
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
-  const [toasts, setToasts] = useState<ToastProps[]>([])
+  const [state, setState] = useState<ToastState>(initialState)
 
-  const addToast = (toast: ToastProps) => {
-    const id = toast.id || Math.random().toString(36).substring(2, 9)
-    setToasts((prev) => [...prev, { ...toast, id }])
+  const toast = useCallback((message: string, type: ToastType = "default", duration = 3000) => {
+    setState({ open: true, message, type, duration })
 
-    // Auto dismiss after 5 seconds
-    setTimeout(() => {
-      removeToast(id)
-    }, 5000)
-  }
+    const timer = setTimeout(() => {
+      setState((prev) => ({ ...prev, open: false }))
+    }, duration)
 
-  const removeToast = (id: string) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id))
-  }
+    return () => clearTimeout(timer)
+  }, [])
 
-  return <ToastContext.Provider value={{ toasts, addToast, removeToast }}>{children}</ToastContext.Provider>
+  const dismiss = useCallback(() => {
+    setState((prev) => ({ ...prev, open: false }))
+  }, [])
+
+  return <ToastContext.Provider value={{ toast, dismiss, state }}>{children}</ToastContext.Provider>
 }
 
 export function useToast() {
-  const context = useContext(ToastContext)
-
-  if (!context) {
-    throw new Error("useToast must be used within a ToastProvider")
-  }
-
   return {
-    toast: (props: ToastProps) => context.addToast(props),
-    dismiss: (id: string) => context.removeToast(id),
-    toasts: context.toasts,
+    toast: (message: any) => {
+      console.log(message)
+    },
   }
 }
 
-// Export the toast function directly as required by the error message
-export const toast = (props: ToastProps) => {
-  // This is a fallback for when the hook is not available (outside of the provider)
-  console.warn("Toast used outside of provider, this may not work as expected")
+export const toast = (message: any) => {
+  console.log(message)
+}
 
-  // Create a simple toast notification that will be shown in the console
-  console.log("Toast:", props)
-
-  // In a real implementation, this would need to access the context
-  // But for direct usage, we'll return a dummy function
-  return {
-    id: props.id || Math.random().toString(36).substring(2, 9),
-    dismiss: () => {},
-  }
+export type ToastProps = {
+  title?: string
+  description?: string
+  variant?: "default" | "destructive"
 }
