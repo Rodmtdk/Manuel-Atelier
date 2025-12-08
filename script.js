@@ -1,9 +1,9 @@
 // Script principal pour le site Manuel d'Atelier
 
-// Fonction pour ouvrir le calculateur d'usinage
 function openCalculateur() {
     const width = Math.min(screen.width, 600);
     const height = Math.min(screen.height, 600);
+
     const calcWindow = window.open('', '_blank', `width=${width},height=${height}`);
 
     if (!calcWindow || calcWindow.closed) {
@@ -22,16 +22,23 @@ function openCalculateur() {
         </head>
         <body>
             <h1>Calculateur d'Usinage</h1>
+
             <form id="calcForm">
-                <!-- Inputs du calculateur -->
+                <!-- Ici tu mets tes inputs réels -->
             </form>
+
             <div id="result" class="result" style="display: none;"></div>
-            <script src="calc.js"></script>
         </body>
         </html>
     `);
 
     calcWindow.document.close();
+
+    // Injection propre du script
+    const script = calcWindow.document.createElement("script");
+    script.src = "calc.js";
+    script.defer = true;
+    calcWindow.document.body.appendChild(script);
 }
 
 // Défilement fluide vers une section
@@ -54,12 +61,7 @@ function animateSections() {
         });
     }, { threshold: 0.1 });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    sections.forEach(section => observer.observe(section));
 }
 
-// Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-    animateSections();
-});
+document.addEventListener('DOMContentLoaded', animateSections);
