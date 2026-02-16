@@ -11,7 +11,7 @@ const composants = [
   "Broche : rotation rapide pour l'usinage",
   "Commandes numeriques : interface de programmation",
   "Systeme de lubrification : prolonge la duree de vie",
-  "Capteurs de position : retroaction precise pour tolerances",
+  "Capteurs de position (regles optiques) : asservissement en boucle fermee",
   "Changeur d'outils automatique : optimise le temps",
   "Systeme de refroidissement : evite la surchauffe",
   "Controle de vibration : silentblocs, rigidite",
@@ -45,18 +45,19 @@ const techniques = [
   },
 ]
 
-const mandrins = [
-  "Mandrin a Mors Independants : reglage individuel de chaque mors",
-  "Mandrin a 3 Mors : auto-centrant, rapide et precis",
-  "Mandrin a 4 Mors : ideal pour pieces asymetriques",
-  "Mandrin a 6 Mors : repartition uniforme pour pieces fragiles",
+const serrages = [
+  "Etau de precision : serrage rapide pour pieces prismatiques",
+  "Brides et tirants : fixation directe sur la table pour grandes pieces",
+  "Plateau diviseur : positionnement angulaire precis de la piece",
+  "Mandrin porte-fraise (pince ER) : maintien de l'outil avec concentricite elevee",
+  "Frettage thermique : concentricite optimale pour UGV",
 ]
 
-const mors = [
-  "Mors Doux : acier non traite, adaptables",
-  "Mors Durs : acier trempe, pieces standardisees",
-  "Mors Reversibles : adaptables a plusieurs tailles",
-  "Mors Speciaux : concus pour formes complexes",
+const porteoutils = [
+  "Pinces ER : polyvalentes, differents diametres de serrage",
+  "Mandrins hydrauliques : concentricite < 0,003 mm",
+  "Porte-outils frettage : rigidite maximale pour UGV",
+  "Mandrins Weldon : entrainement positif par vis de serrage",
 ]
 
 export default function FraisageCncPage() {
@@ -89,7 +90,7 @@ export default function FraisageCncPage() {
 
         {/* Fact */}
         <FactCard
-          fact="Un centre d'usinage CNC 5 axes moderne execute ses mouvements avec une precision de positionnement de 0,003 mm. Sa broche tourne a 24 000 tr/min, soit 400 tours par seconde. Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
+          fact="Un centre d'usinage CNC 5 axes moderne execute ses mouvements avec une precision de positionnement de 0,003 mm. Sa broche peut tourner jusqu'a 15 000 - 20 000 tr/min (et plus en UGV). Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
           variant="accent"
           className="mb-4"
         />
@@ -201,8 +202,8 @@ export default function FraisageCncPage() {
 
         <ContentSection title="Montage et Serrage">
           <div className="grid gap-6 sm:grid-cols-2">
-            <InfoCard title="Types de Mandrins" items={mandrins} />
-            <InfoCard title="Types de Mors" items={mors} />
+            <InfoCard title="Systemes de Serrage Piece" items={serrages} />
+            <InfoCard title="Porte-Outils" items={porteoutils} />
           </div>
         </ContentSection>
 
@@ -241,8 +242,8 @@ export default function FraisageCncPage() {
               </thead>
               <tbody>
                 {[
-                  ["Acier", "Faible", "Avance moderee"],
-                  ["Aluminium", "Elevee", "Faible profondeur de passe"],
+                  ["Acier", "Faible a moderee", "Arrosage abondant, carbure revetu"],
+                  ["Aluminium", "Elevee", "Grande helice, aretes vives, evacuation copeaux"],
                   ["Inox", "Moderee", "Lubrification importante"],
                   ["Plastiques", "Elevee", "Eviter la fusion par surchauffe"],
                 ].map(([mat, vit, reco], i) => (

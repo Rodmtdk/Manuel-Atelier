@@ -8,7 +8,7 @@ import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Table de travail : supporte la piece, deplacable en X, Y, et Z",
-  "Mandrin : maintient l'outil de coupe fermement",
+  "Porte-outil (pince ou mandrin porte-fraise) : maintient l'outil de coupe fermement",
   "Manivelles manuelles : controle precis des mouvements de la table",
   "Broche : rotation de l'outil, vitesses ajustables",
   "Systeme de lubrification : reduit la chaleur, prolonge la duree de vie",

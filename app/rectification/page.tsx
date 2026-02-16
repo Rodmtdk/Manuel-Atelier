@@ -221,7 +221,7 @@ export default function RectificationPage() {
           className="my-4"
           facts={[
             {
-              fact: "Une meule de rectification tourne a plus de 2 000 tr/min. A sa surface, chaque grain abrasif atteint une vitesse de 30 m/s, soit 108 km/h - l'equivalent d'un TGV frappant le metal.",
+              fact: "Une meule de rectification tourne a plus de 2 000 tr/min. A sa surface, chaque grain abrasif atteint une vitesse de 30 m/s, soit 108 km/h - l'equivalent d'une voiture sur autoroute frappant le metal.",
               variant: "accent",
             },
             {

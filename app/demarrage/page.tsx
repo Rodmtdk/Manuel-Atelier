@@ -50,7 +50,7 @@ const etapes = [
 const outilsFraisage = [
   "Fraises cylindriques : usinage des surfaces planes et rainures",
   "Fraises a bout plat : rainures, poches et surfaces planes",
-  "Fraises a bout hemispherique : contours 3D et surfaces courbes",
+  "Fraises a bout spherique (boule) : contours 3D et surfaces courbes",
   "Fraises a surfacer : enlever de grandes quantites de matiere",
   "Fraises a chanfreiner : creer des chanfreins ou biseaux",
   "Fraises a rainurer : rainures simples, en T ou en queue d'aronde",
