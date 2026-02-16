@@ -11,7 +11,7 @@ const composants = [
   "Broche : rotation rapide pour l'usinage",
   "Commandes numeriques : interface de programmation",
   "Systeme de lubrification : prolonge la duree de vie",
-  "Capteurs de position : retroaction precise pour tolerances",
+  "Capteurs de position (regles optiques) : asservissement en boucle fermee",
   "Changeur d'outils automatique : optimise le temps",
   "Systeme de refroidissement : evite la surchauffe",
   "Controle de vibration : silentblocs, rigidite",
@@ -45,18 +45,19 @@ const techniques = [
   },
 ]
 
-const mandrins = [
-  "Mandrin a Mors Independants : reglage individuel de chaque mors",
-  "Mandrin a 3 Mors : auto-centrant, rapide et precis",
-  "Mandrin a 4 Mors : ideal pour pieces asymetriques",
-  "Mandrin a 6 Mors : repartition uniforme pour pieces fragiles",
+const serrages = [
+  "Etau de precision : serrage rapide pour pieces prismatiques",
+  "Brides et tirants : fixation directe sur la table pour grandes pieces",
+  "Plateau diviseur : positionnement angulaire precis de la piece",
+  "Mandrin porte-fraise (pince ER) : maintien de l'outil avec concentricite elevee",
+  "Frettage thermique : concentricite optimale pour UGV",
 ]
 
-const mors = [
-  "Mors Doux : acier non traite, adaptables",
-  "Mors Durs : acier trempe, pieces standardisees",
-  "Mors Reversibles : adaptables a plusieurs tailles",
-  "Mors Speciaux : concus pour formes complexes",
+const porteoutils = [
+  "Pinces ER : polyvalentes, differents diametres de serrage",
+  "Mandrins hydrauliques : concentricite < 0,003 mm",
+  "Porte-outils frettage : rigidite maximale pour UGV",
+  "Mandrins Weldon : entrainement positif par vis de serrage",
 ]
 
 export default function FraisageCncPage() {
@@ -89,7 +90,7 @@ export default function FraisageCncPage() {
 
         {/* Fact */}
         <FactCard
-          fact="Un centre d'usinage CNC 5 axes moderne execute ses mouvements avec une precision de positionnement de 0,003 mm. Sa broche tourne a 24 000 tr/min, soit 400 tours par seconde. Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
+          fact="Un centre d'usinage CNC 5 axes moderne execute ses mouvements avec une precision de positionnement de 0,003 mm. Sa broche peut tourner jusqu'a 15 000 - 20 000 tr/min (et plus en UGV). Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
           variant="accent"
           className="mb-4"
         />
@@ -124,7 +125,7 @@ export default function FraisageCncPage() {
                 className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30"
               >
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 font-mono text-sm font-bold text-primary">
-                  {i + 3}ax
+                  {String(i + 1).padStart(2, "0")}
                 </div>
                 <h3 className="mb-2 font-semibold text-foreground">{tech.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{tech.desc}</p>
@@ -168,10 +169,41 @@ export default function FraisageCncPage() {
           </div>
         </ContentSection>
 
+        {/* Image 5 axes */}
+        <ContentSection title="Centre d'Usinage 5 Axes">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="/images/fraisage-5axes.jpg"
+              alt="Centre d'usinage CNC 5 axes travaillant sur une piece aeronautique complexe"
+              caption="Usinage 5 axes simultanes - piece aeronautique en cours de finition"
+            />
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Pourquoi le 5 axes ?</h3>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                Le fraisage 5 axes permet d{"'"}usiner des pieces complexes en une seule mise en position, eliminant les erreurs de repositionnement et reduisant les temps de cycle.
+              </p>
+              <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Reduction du nombre de montages (1 au lieu de 3-5)
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Acces aux zones difficiles sous differents angles
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Meilleure finition de surface grace a l{"'"}orientation optimale de l{"'"}outil
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ContentSection>
+
         <ContentSection title="Montage et Serrage">
           <div className="grid gap-6 sm:grid-cols-2">
-            <InfoCard title="Types de Mandrins" items={mandrins} />
-            <InfoCard title="Types de Mors" items={mors} />
+            <InfoCard title="Systemes de Serrage Piece" items={serrages} />
+            <InfoCard title="Porte-Outils" items={porteoutils} />
           </div>
         </ContentSection>
 
@@ -210,10 +242,10 @@ export default function FraisageCncPage() {
               </thead>
               <tbody>
                 {[
-                  ["Acier", "Faible", "Avance moderee"],
-                  ["Aluminium", "Elevee", "Faible profondeur de passe"],
+                  ["Acier", "Faible a moderee", "Arrosage abondant, carbure revetu"],
+                  ["Aluminium", "Elevee", "Grande helice, aretes vives, evacuation copeaux"],
                   ["Inox", "Moderee", "Lubrification importante"],
-                  ["Plastiques", "Elevee", "Attention a la surchauffe"],
+                  ["Plastiques", "Elevee", "Eviter la fusion par surchauffe"],
                 ].map(([mat, vit, reco], i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="px-6 py-3 font-medium text-foreground">{mat}</td>

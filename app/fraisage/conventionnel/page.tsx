@@ -8,7 +8,7 @@ import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Table de travail : supporte la piece, deplacable en X, Y, et Z",
-  "Mandrin : maintient l'outil de coupe fermement",
+  "Porte-outil (pince ou mandrin porte-fraise) : maintient l'outil de coupe fermement",
   "Manivelles manuelles : controle precis des mouvements de la table",
   "Broche : rotation de l'outil, vitesses ajustables",
   "Systeme de lubrification : reduit la chaleur, prolonge la duree de vie",
@@ -120,7 +120,7 @@ export default function FraisageConvPage() {
 
         {/* Intriguing fact */}
         <FactCard
-          fact="Une fraiseuse conventionnelle Bridgeport, iconique de l'industrie americaine depuis 1938, pese pres de 1 tonne. Sa tete pivotante a revolutionne l'usinage en permettant des angles impossibles a obtenir autrement."
+          fact="La fraiseuse Bridgeport, creee en 1938 aux Etats-Unis, est devenue la reference mondiale des fraiseuses conventionnelles. Pesant environ 900 kg, sa tete orientable a revolutionne l'usinage en permettant des inclinaisons impossibles a obtenir autrement. Elle reste une machine emblematique dans les ateliers du monde entier."
           variant="highlight"
           className="mb-8"
         />

@@ -229,7 +229,7 @@ export default function HomePage() {
           <FactStrip
             facts={[
               {
-                fact: "Un engrenage spiroconique de differentiel automobile tourne a plus de 8 000 tr/min et transmet jusqu'a 500 Nm de couple. La moindre imprecision de 0,01 mm genere un bruit perceptible a l'oreille.",
+                fact: "Un engrenage spiroconique de differentiel automobile tourne jusqu'a 4 000 tr/min et transmet plusieurs centaines de Nm de couple. La moindre imprecision de 0,01 mm genere un bruit perceptible a l'oreille.",
                 variant: "accent",
               },
               {
