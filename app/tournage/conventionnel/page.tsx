@@ -59,6 +59,116 @@ const methodesCone = [
   "Copieur : reproduire des profils coniques complexes",
 ]
 
+const typesMontages = [
+  {
+    title: "Montage en l'air",
+    desc: "Le plus utilise. La piece est maintenue par le mandrin a une seule extremite. Le porte-a-faux ne doit pas depasser 2 fois le diametre de la piece.",
+    coaxialite: "0,2 mm (mors durs) / 0,05 mm (mors doux)",
+  },
+  {
+    title: "Montage mixte",
+    desc: "Piece serree en mandrin + soutenue par la contre-pointe. Necessaire quand la longueur depasse le double du diametre.",
+    coaxialite: "0,01 mm",
+  },
+  {
+    title: "Montage entre pointes",
+    desc: "Piece centree entre pointe fixe et pointe tournante, entrainee par un toc et un plateau pousse-toc. Concentricite maximale.",
+    coaxialite: "0,01 mm",
+  },
+  {
+    title: "Montage en pince",
+    desc: "Pour petites pieces ou barres calibrees (cylindres, carres, hexagones). Concentricite precise pour reprises d'usinage. Serrage par deformation de la pince fendue.",
+    coaxialite: "0,01 mm (mandrin expansible)",
+  },
+  {
+    title: "Montage en lunette fixe",
+    desc: "Bridee sur le banc du tour. Donne de la rigidite pour les usinages trop eloignes du mandrin : dressage de face, percage, alesage.",
+    coaxialite: "Depend du reglage",
+  },
+  {
+    title: "Montage en lunette a suivre",
+    desc: "Vissee sur le chariot, elle accompagne les mouvements longitudinaux de l'outil. Ideale pour les pieces longues et flexibles.",
+    coaxialite: "Depend du reglage",
+  },
+]
+
+const outilsUsinage = [
+  {
+    categorie: "Usinages exterieurs",
+    outils: [
+      "Outil a charioter : ebauche ou finition des diametres exterieurs",
+      "Outil a dresser (45 degres) : dressage des faces et chanfreins",
+      "Outil a saigner (rainurer) : gorges et rainures",
+      "Outil a tronconner : decoupe des pieces apres usinage (lame 2-3 mm d'epaisseur min.)",
+    ],
+  },
+  {
+    categorie: "Usinages interieurs",
+    outils: [
+      "Outil a aleser : chariotage, dressage et alesage interieurs",
+      "Outil a chambrer : evidements interieurs",
+      "Foret a queue conique : gros efforts sur le corps de l'outil",
+      "Foret a plaquettes : grandes vitesses d'avance, arrosage au centre",
+    ],
+  },
+  {
+    categorie: "Outils speciaux",
+    outils: [
+      "Outil a fileter : filetages exterieurs ou interieurs (plaquettes multidents)",
+      "Outil a moleter : impression de surfaces striees (refoulement, pas de 0,3 a 3 mm)",
+      "Outil de forme (barreau ARS) : rayons concaves/convexes, formes a moindre cout",
+      "Outil a carotter : recuperation d'une partie de la piece usinee",
+    ],
+  },
+]
+
+const materiauxOutils = [
+  {
+    title: "Acier rapide (HSS)",
+    desc: "Peu couteux, nombreuses formes. Ne coupe pas les aciers trop durs, pratique pour aciers doux et aluminium.",
+  },
+  {
+    title: "Carbure brase",
+    desc: "Plaquette carbure brasee sur corps acier. Finition de longs alesages ou etats de surface specifiques (on peut l'affuter).",
+  },
+  {
+    title: "Plaquettes carbure",
+    desc: "Agglomeres de cobalt et carbures (tungstene, tantale, titane). Conservent leur durete jusqu'a 1000 degres C. Outils de base en tournage.",
+  },
+  {
+    title: "Plaquettes ceramique",
+    desc: "Oxyde d'aluminium et chrome. Durete comparable au carbure, resistant jusqu'a 1200 degres C. Vitesses de coupe tres elevees, meme sur aciers durs.",
+  },
+  {
+    title: "Plaquettes diamant (PCD)",
+    desc: "Cristal fixe sur corps carbure. Usinage a tres grande vitesse et finition de haute precision. Cout eleve mais evite la rectification. Supporte mal les chocs.",
+  },
+]
+
+const problemesRemedes = [
+  { probleme: "Piece tourne rond aux mors, pas a l'extremite", remede: "En mors doux : realaser. En mors durs : degauchir au comparateur (maillet)" },
+  { probleme: "Vibration de la piece", remede: "Reduire la frequence de rotation, augmenter les avances si la prise de mors le permet" },
+  { probleme: "Flexion sur les pieces de faible diametre", remede: "Limiter les efforts de coupe, outil bien affute" },
+  { probleme: "Le tour fait du cone", remede: "Si pas du a la flexion, regler la broche du tour" },
+]
+
+const ebaucheFinitionTour = {
+  ebauche: [
+    "Enlever le plus gros de la matiere en un temps reduit",
+    "Vitesse de rotation moyenne, grande vitesse d'avance",
+    "Machine puissante, appareillage rigide, porte-a-faux reduit",
+    "Eliminer la croute superficielle liee au brut",
+    "Lubrifier pour prolonger la duree de vie de l'outil",
+  ],
+  finition: [
+    "Augmenter legerement la vitesse de rotation, diminuer l'avance",
+    "Appuis precis, serrages moderes (faibles efforts de coupe)",
+    "Outil de finition adapte au materiau",
+    "Les deux dernieres passes doivent etre identiques",
+    "Le lubrifiant assure : refroidissement (30% chaleur a l'arete), lubrification du tranchant, evacuation des copeaux",
+  ],
+}
+
 export default function TournageConvPage() {
   return (
     <>
@@ -156,26 +266,194 @@ export default function TournageConvPage() {
           />
         </ContentSection>
 
-        <ContentSection title="Montage et Serrage">
+        {/* Types de montages - from PDF 1 */}
+        <ContentSection title="Types de Montages en Tournage">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {typesMontages.map((montage) => (
+              <div key={montage.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
+                <h3 className="mb-2 font-semibold text-foreground">{montage.title}</h3>
+                <p className="mb-3 text-sm leading-relaxed text-muted-foreground">{montage.desc}</p>
+                <div className="rounded-lg bg-secondary px-3 py-2">
+                  <span className="text-xs text-muted-foreground">Coaxialite : </span>
+                  <span className="text-xs font-semibold text-primary">{montage.coaxialite}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <FactCard
+            fact="Plus un mandrin a de mors, plus les efforts de serrage seront divises sur la circonference de la piece. Cela se traduit par moins de deformation : le mandrin 6 mors est ideal pour les pieces a parois minces."
+            variant="default"
+            className="mt-4"
+          />
+        </ContentSection>
+
+        {/* Mandrins et mors - from PDF 3 */}
+        <ContentSection title="Mandrins et Mors">
           <div className="grid gap-6 sm:grid-cols-2">
-            <InfoCard
-              title="Types de Mandrins"
-              items={[
-                "Mandrin a Mors Independants : reglage individuel",
-                "Mandrin a 3 Mors : auto-centrant, rapide et precis",
-                "Mandrin a 4 Mors : ideal pour pieces asymetriques",
-                "Mandrin a 6 Mors : repartition uniforme des forces",
-              ]}
-            />
-            <InfoCard
-              title="Types de Mors"
-              items={[
-                "Mors Doux : acier non traite, adaptables",
-                "Mors Durs : acier trempe, pieces standardisees",
-                "Mors Reversibles : adaptables a plusieurs tailles",
-                "Mors Speciaux : formes complexes",
-              ]}
-            />
+            <div>
+              <h3 className="mb-3 text-lg font-semibold text-foreground">Types de Mandrins</h3>
+              <div className="flex flex-col gap-3">
+                {[
+                  { mors: "Mandrin 2 mors", desc: "Usinages specifiques : brut de fonderie, pieces prismatiques, excentriques" },
+                  { mors: "Mandrin 3 mors (le plus courant)", desc: "Mors dependants (auto-centrant). Utilisation en mors durs ou mors doux" },
+                  { mors: "Mandrin 4 mors independants", desc: "Usinages desaxes : alesage desaxe, came, vilebrequin, pieces cubiques" },
+                  { mors: "Mandrin 4 mors mixte", desc: "Mors a la fois independants et concentriques. Ideal pour les series" },
+                ].map((m, i) => (
+                  <div key={i} className="rounded-xl border border-border bg-card p-4">
+                    <h4 className="mb-1 text-sm font-semibold text-foreground">{m.mors}</h4>
+                    <p className="text-sm text-muted-foreground">{m.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-3 text-lg font-semibold text-foreground">Types de Mors</h3>
+              <div className="flex flex-col gap-3">
+                {[
+                  { mors: "Mors durs (acier trempe)", desc: "Ne pas usiner, rectifies. Concentricite 0,2 mm max. Surfaces striees pour bonne prise. Laissent des empreintes sur la piece." },
+                  { mors: "Mors doux (acier doux ou alu)", desc: "Facilement usinables, bien meilleure concentricite (0,05 mm). Peuvent etre realeses pour chaque piece." },
+                  { mors: "Mors enveloppants", desc: "Alu ou acier doux, pour serrer des pieces fines sans deformation. Enveloppent la quasi-totalite de la piece." },
+                  { mors: "Mors monobloc vs rapportes", desc: "Monobloc : plus rigides mais couteux. Rapportes sur semelle : faciles a fabriquer, standard pour serrage hydraulique." },
+                ].map((m, i) => (
+                  <div key={i} className="rounded-xl border border-border bg-card p-4">
+                    <h4 className="mb-1 text-sm font-semibold text-foreground">{m.mors}</h4>
+                    <p className="text-sm text-muted-foreground">{m.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-6">
+            <h3 className="mb-2 font-semibold text-foreground">Montage des mors : regles essentielles</h3>
+            <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Les mors sont reperes 1, 2, 3 ainsi que les rainures du mandrin. Toujours respecter l{"'"}ordre.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Ne jamais taper sur les mors pour faire tourner rond une piece : il faut les realaser.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Eviter de serrer de la matiere brute avec des mors usines.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Retirer la clef du mandrin AVANT la mise en marche du tour.
+              </li>
+            </ul>
+          </div>
+        </ContentSection>
+
+        {/* Outils de tournage detailles - from PDF 2 */}
+        <ContentSection title="Classification des Outils de Tournage">
+          <div className="flex flex-col gap-6">
+            {outilsUsinage.map((cat) => (
+              <div key={cat.categorie}>
+                <h3 className="mb-3 text-lg font-semibold text-foreground">{cat.categorie}</h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {cat.outils.map((outil, i) => (
+                    <div key={i} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-bold text-primary">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="text-sm leading-relaxed text-muted-foreground">{outil}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 rounded-xl border border-border bg-card p-6">
+            <h3 className="mb-3 font-semibold text-foreground">Reglage de l{"'"}outil sur le tour</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Pour une coupe optimale, l{"'"}arete de coupe doit etre au meme niveau que l{"'"}axe de la piece. L{"'"}outil doit etre sorti de la longueur necessaire a l{"'"}usinage sans exces, pour eviter le porte-a-faux. La mise a hauteur se fait a l{"'"}aide de cales etalons.
+            </p>
+          </div>
+        </ContentSection>
+
+        {/* Materiaux des outils - from PDF 2 */}
+        <ContentSection title="Materiaux des Outils de Tournage">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {materiauxOutils.map((mat) => (
+              <div key={mat.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
+                <h3 className="mb-2 font-semibold text-foreground">{mat.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{mat.desc}</p>
+              </div>
+            ))}
+          </div>
+        </ContentSection>
+
+        {/* Ebauche et finition - from PDF 4 */}
+        <ContentSection title="Ebauche, Semi-finition et Finition">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div>
+              <h3 className="mb-3 text-lg font-semibold text-foreground">Ebauche</h3>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  {ebaucheFinitionTour.ebauche.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-3 text-lg font-semibold text-foreground">Finition</h3>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  {ebaucheFinitionTour.finition.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ContentSection>
+
+        {/* Epaulement - from PDF 5 */}
+        <ContentSection title="Realiser un Epaulement">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Epaulement exterieur</h3>
+              <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
+                L{"'"}epaulement droit consiste a usiner un changement de diametre avec une face plane perpendiculaire a l{"'"}axe. L{"'"}outil a charioter/dresser est l{"'"}outil ideal pour cette operation, combinant chariotage et dressage en un minimum de passes.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Alesage epaule</h3>
+              <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
+                Pour un alesage epaule : centrer d{"'"}abord (bon guidage du foret), puis percer a un diametre inferieur de 2 mm par rapport a l{"'"}alesage voulu. Choisir un outil de section maximale et limiter le porte-a-faux pour eviter les vibrations.
+              </p>
+            </div>
+          </div>
+        </ContentSection>
+
+        {/* Diagnostic problemes - from PDF 3 */}
+        <ContentSection title="Diagnostic des Problemes d'Usinage">
+          <div className="overflow-x-auto rounded-xl border border-border">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border bg-secondary/50">
+                  <th className="px-6 py-3 text-left font-semibold text-foreground">Probleme</th>
+                  <th className="px-6 py-3 text-left font-semibold text-foreground">Remede</th>
+                </tr>
+              </thead>
+              <tbody>
+                {problemesRemedes.map((pr, i) => (
+                  <tr key={i} className="border-b border-border last:border-0">
+                    <td className="px-6 py-3 font-medium text-foreground">{pr.probleme}</td>
+                    <td className="px-6 py-3 text-muted-foreground">{pr.remede}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </ContentSection>
 
