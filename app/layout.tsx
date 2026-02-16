@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Manuel d'Atelier - Usinage & Rectification",
   description:
-    "Encyclopedie complete d'usinage et rectification. Fraisage, tournage, rectification, calculateur de vitesses de coupe et guides professionnels.",
+    "Encyclop\u00e9die compl\u00e8te d'usinage et rectification. Fraisage, tournage, rectification, calculateur de vitesses de coupe et guides professionnels.",
 }
 
 export const viewport: Viewport = {

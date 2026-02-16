@@ -5,6 +5,53 @@ import { ImageShowcase } from "@/components/image-showcase"
 import { VideoGrid } from "@/components/video-embed"
 import { SectionBanner } from "@/components/banner-image"
 import { FactCard } from "@/components/fact-card"
+import { TableOfContents } from "@/components/table-of-contents"
+import { Quiz } from "@/components/quiz"
+
+const tocItemsFraisage = [
+  { id: "composants-fraiseuse", label: "Composants" },
+  { id: "tetes-fraiseuse", label: "T\u00eates de fraiseuse" },
+  { id: "etaux-fraisage", label: "\u00c9taux" },
+  { id: "types-fraises", label: "Types de fraises" },
+  { id: "materiaux-outils-fraisage", label: "Mat\u00e9riaux outils" },
+  { id: "techniques-fraisage", label: "Techniques" },
+  { id: "ebauche-finition-fraisage", label: "\u00c9bauche / Finition" },
+  { id: "securite-fraisage", label: "S\u00e9curit\u00e9" },
+  { id: "quiz-fraisage", label: "Quiz" },
+]
+
+const quizFraisage = [
+  {
+    question: "Pourquoi le fraisage en opposition est-il recommand\u00e9 sur une fraiseuse conventionnelle ?",
+    options: ["Il donne un meilleur \u00e9tat de surface", "Il \u00e9vite le probl\u00e8me du jeu vis-\u00e9crou", "Il use moins l'outil", "Il est plus rapide"],
+    correctIndex: 1,
+    explanation: "Sur une machine conventionnelle avec syst\u00e8me vis-\u00e9crou (et non vis \u00e0 bille), le fraisage en concordance (avalant) provoquerait un rattrapage brutal du jeu. L'opposition \u00e9vite ce probl\u00e8me.",
+  },
+  {
+    question: "Lors du d\u00e9gauchissage d'un \u00e9tau, de quel c\u00f4t\u00e9 ne doit-on jamais d\u00e9placer l'\u00e9tau ?",
+    options: ["Du c\u00f4t\u00e9 de la bride C", "Du c\u00f4t\u00e9 de la bride B (pivot)", "Du c\u00f4t\u00e9 oppos\u00e9 \u00e0 l'op\u00e9rateur", "Peu importe"],
+    correctIndex: 1,
+    explanation: "La bride B sert de pivot (centre de rotation). On ne d\u00e9place jamais l'\u00e9tau du c\u00f4t\u00e9 B ; les ajustements se font du c\u00f4t\u00e9 C en frappant l\u00e9g\u00e8rement au maillet.",
+  },
+  {
+    question: "Quelle est la diff\u00e9rence entre une fraise une taille et une fraise deux tailles ?",
+    options: ["Le nombre de dents", "Le nombre d'ar\u00eates de coupe actives (1 vs 2 faces)", "La mati\u00e8re de l'outil", "La vitesse de rotation"],
+    correctIndex: 1,
+    explanation: "Une fraise 1 taille (fraise-scie) ne coupe que sur sa p\u00e9riph\u00e9rie. Une fraise 2 tailles coupe aussi sur son extr\u00e9mit\u00e9, permettant de plonger et de rainurer.",
+  },
+  {
+    question: "Pourquoi incline-t-on l\u00e9g\u00e8rement la broche de quelques centi\u00e8mes en surfacage ?",
+    options: ["Pour augmenter la vitesse de coupe", "Pour \u00e9viter que la fraise ne talonne", "Pour am\u00e9liorer l'\u00e9vacuation des copeaux", "Pour r\u00e9duire le bruit"],
+    correctIndex: 1,
+    explanation: "Si la broche est parfaitement perpendiculaire, le dos des plaquettes peut frotter sur la surface d\u00e9j\u00e0 usin\u00e9e (talonnage), d\u00e9gradant l'\u00e9tat de surface.",
+  },
+  {
+    question: "En finition, quelle strat\u00e9gie est recommand\u00e9e pour l'avance et la vitesse ?",
+    options: ["Augmenter l'avance, r\u00e9duire la vitesse", "R\u00e9duire l'avance, augmenter l\u00e9g\u00e8rement la vitesse", "Tout au maximum", "Tout au minimum"],
+    correctIndex: 1,
+    explanation: "En finition, on r\u00e9duit l'avance (meilleur Ra) et on augmente l\u00e9g\u00e8rement la vitesse de rotation pour un \u00e9tat de surface optimal.",
+  },
+]
 
 const composants = [
   "Table de travail : supporte la piece, deplacable en X, Y, et Z",
@@ -165,7 +212,8 @@ export default function FraisageConvPage() {
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg"
       />
 
-      <div className="mx-auto max-w-6xl px-4 lg:px-8">
+      <TableOfContents items={tocItemsFraisage} />
+      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
         <ContentSection title="Presentation">
           <div className="rounded-xl border border-border bg-card p-6">
             <p className="leading-relaxed text-muted-foreground">
@@ -237,12 +285,12 @@ export default function FraisageConvPage() {
           />
         </ContentSection>
 
-        <ContentSection title="Composants d'une Fraiseuse Conventionnelle">
+        <ContentSection title="Composants d'une Fraiseuse Conventionnelle" id="composants-fraiseuse">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>
 
         {/* Tetes de fraiseuse - from PDF 1 */}
-        <ContentSection title="Les Tetes de Fraiseuse">
+        <ContentSection title="Les Tetes de Fraiseuse" id="tetes-fraiseuse">
           <div className="rounded-xl border border-border bg-card p-6 mb-4">
             <p className="leading-relaxed text-muted-foreground">
               La tete de fraiseuse comporte un renvoi d{"'"}angle qui permet de passer du fraisage horizontal au fraisage vertical. De la qualite de son reglage dependra la qualite finale de la piece. Il faut toujours controler la precision du reglage de la tete en arrivant sur une machine inconnue.
@@ -269,7 +317,7 @@ export default function FraisageConvPage() {
         </ContentSection>
 
         {/* Etaux - from PDF 2 */}
-        <ContentSection title="Les Etaux de Fraisage">
+        <ContentSection title="Les Etaux de Fraisage" id="etaux-fraisage">
           <div className="grid gap-4 sm:grid-cols-2">
             {typesEtaux.map((etau) => (
               <div key={etau.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -323,7 +371,7 @@ export default function FraisageConvPage() {
         </ContentSection>
 
         {/* Types de fraises - from PDF 3 */}
-        <ContentSection title="Types de Fraises selon leur Usage">
+        <ContentSection title="Types de Fraises selon leur Usage" id="types-fraises">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {typesFreises.map((fraise) => (
               <div key={fraise.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -335,7 +383,7 @@ export default function FraisageConvPage() {
         </ContentSection>
 
         {/* Materiaux outils - from PDF 3 */}
-        <ContentSection title="Materiaux des Outils de Fraisage">
+        <ContentSection title="Materiaux des Outils de Fraisage" id="materiaux-outils-fraisage">
           <div className="grid gap-4 sm:grid-cols-2">
             {materiauxOutils.map((mat) => (
               <div key={mat.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -346,7 +394,7 @@ export default function FraisageConvPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Techniques de Fraisage">
+        <ContentSection title="Techniques de Fraisage" id="techniques-fraisage">
           <div className="grid gap-4 sm:grid-cols-2">
             {techniques.map((tech, i) => (
               <div
@@ -431,7 +479,7 @@ export default function FraisageConvPage() {
         </ContentSection>
 
         {/* Ebauche et finition - from PDF 5 */}
-        <ContentSection title="Ebauche, Semi-finition et Finition">
+        <ContentSection title="Ebauche, Semi-finition et Finition" id="ebauche-finition-fraisage">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <h3 className="mb-3 text-lg font-semibold text-foreground">Ebauche</h3>
@@ -488,7 +536,7 @@ export default function FraisageConvPage() {
           />
         </ContentSection>
 
-        <ContentSection title="Bonnes Pratiques et Securite">
+        <ContentSection title="Bonnes Pratiques et Securite" id="securite-fraisage">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard
               title="Securite machine (selon Compagnons)"
@@ -512,6 +560,14 @@ export default function FraisageConvPage() {
               ]}
             />
           </div>
+        </ContentSection>
+
+        {/* Quiz */}
+        <ContentSection title="Testez vos Connaissances" id="quiz-fraisage">
+          <Quiz
+            title="Quiz - Fraisage Conventionnel"
+            questions={quizFraisage}
+          />
         </ContentSection>
       </div>
     </>
