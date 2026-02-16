@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
+import { VideoGrid } from "@/components/video-embed"
 
 const composants = [
   "Table de travail : support avec axes motorises",
@@ -65,6 +67,41 @@ export default function FraisageCncPage() {
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
+        {/* Visual hero */}
+        <ContentSection title="Le Fraisage CNC en Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
+              alt="Fraisage CNC 5 axes d'un engrenage spiroconique"
+              caption="Usinage 5 axes d'un engrenage spiroconique - precision au micron"
+              priority
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg"
+              alt="Fraises carbure pour usinage CNC"
+              caption="Fraises carbure monobloc pour centres d'usinage CNC"
+            />
+          </div>
+        </ContentSection>
+
+        {/* Videos */}
+        <ContentSection title="Voir en Video">
+          <VideoGrid
+            videos={[
+              {
+                videoId: "9FiqMikfr8A",
+                title: "Fraisage CNC 5 axes - Demonstration",
+                caption: "Usinage CNC 5 axes en action",
+              },
+              {
+                videoId: "Gg2d7wMmq2I",
+                title: "Parcours d'outils et strategies CNC",
+                caption: "Strategies d'usinage : trochoidal et adaptatif",
+              },
+            ]}
+          />
+        </ContentSection>
+
         <ContentSection title="Composants d'une Fraiseuse CNC">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>

@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase } from "@/components/image-showcase"
+import { VideoEmbed } from "@/components/video-embed"
 import { ShieldAlert, AlertTriangle, Heart, Wrench } from "lucide-react"
 
 const epiItems = [
@@ -44,6 +46,24 @@ export default function SecuritePage() {
             </p>
           </div>
         </div>
+
+        {/* Visual - Safety poster */}
+        <ContentSection title="Equipements de Protection - Vue d'ensemble">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg"
+              alt="Panneau Travail et Securite montrant tous les equipements de protection individuelle obligatoires en atelier"
+              caption="EPI obligatoires : lunettes, bottes, gants, casque, protections auditives, masque respiratoire"
+              priority
+              aspectRatio="square"
+            />
+            <VideoEmbed
+              videoId="AYVbCo6VjK0"
+              title="Securite en atelier d'usinage - Les regles essentielles"
+              caption="Les regles de securite en atelier d'usinage"
+            />
+          </div>
+        </ContentSection>
 
         <ContentSection title="Equipements de Protection Individuelle (EPI)">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

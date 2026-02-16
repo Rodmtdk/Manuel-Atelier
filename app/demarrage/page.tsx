@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
+import { VideoEmbed } from "@/components/video-embed"
 import {
   CheckCircle,
   Wrench,
@@ -179,6 +181,23 @@ export default function DemarragePage() {
           </div>
         </ContentSection>
 
+        {/* Visual - Cycle Start */}
+        <ContentSection title="En Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/start-BRWnfvQLdBPz5XZ9W6I4VnKhMpfFzX.jpg"
+              alt="Bouton Cycle Start d'une machine CNC"
+              caption="Bouton CYCLE START - Lancement du programme CNC"
+              aspectRatio="video"
+            />
+            <VideoEmbed
+              videoId="kCAR-NCt0fg"
+              title="Demarrage et reglage d'une machine-outil"
+              caption="Mise en route d'une machine CNC"
+            />
+          </div>
+        </ContentSection>
+
         {/* Cutting tools */}
         <ContentSection title="Outils de Coupe">
           <div className="grid gap-6 sm:grid-cols-2">
@@ -189,6 +208,30 @@ export default function DemarragePage() {
             <InfoCard title="Forets" items={forets} />
             <InfoCard title="Outils de mesure" items={outilsMesure} />
           </div>
+        </ContentSection>
+
+        {/* Tool images */}
+        <ContentSection title="Galerie d'Outils">
+          <ImageGrid
+            images={[
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp",
+                alt: "Collection complete d'outils de coupe professionnels",
+                caption: "Outils a plaquettes interchangeables - Fraisage et percage",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg",
+                alt: "Fraises carbure monobloc de differentes geometries",
+                caption: "Fraises carbure monobloc - Differents revetements et geometries",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils-tournage.jpg-7RVclx58YOJwm1RdyGf4z3lvPmI1NU.png",
+                alt: "Schema des outils de tournage selon normes DIN",
+                caption: "Classification DIN des outils de tournage",
+              },
+            ]}
+            columns={3}
+          />
         </ContentSection>
 
         {/* Materials */}

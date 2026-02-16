@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import {
   Wrench,
   Settings,
@@ -104,6 +105,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Hero image */}
+      <section className="relative border-b border-border">
+        <div className="mx-auto grid max-w-7xl items-center gap-0 lg:grid-cols-2">
+          <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-[420px]">
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
+              alt="Usinage CNC d'un engrenage spiroconique de haute precision"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-background/80" />
+          </div>
+          <div className="flex flex-col gap-4 px-6 py-10 lg:px-12">
+            <span className="inline-block w-fit rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+              Focus technique
+            </span>
+            <h2 className="text-balance text-2xl font-bold text-foreground md:text-3xl">
+              Usinage d{"'"}engrenages spiroconiques
+            </h2>
+            <p className="text-pretty leading-relaxed text-muted-foreground">
+              La rectification spiroconique represente le sommet de la precision
+              en usinage. Decouvrez les techniques de taillage et de rectification
+              des engrenages coniques a denture spirale, essentiels dans
+              l{"'"}aeronautique, l{"'"}automobile et la robotique.
+            </p>
+            <Link
+              href="/rectification"
+              className="group mt-2 flex w-fit items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-all hover:brightness-110"
+            >
+              En savoir plus
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
       <section className="border-b border-border bg-secondary/20 px-4 py-12 lg:px-8">
         <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-8 md:gap-16">
@@ -159,6 +198,71 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Visual gallery */}
+      <section className="border-t border-border bg-secondary/10 px-4 py-20 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+              L{"'"}Atelier en Images
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Un apercu visuel des techniques et des machines couvertes dans ce manuel.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg",
+                alt: "Tournage conventionnel avec copeaux de metal en vol",
+                label: "Tournage conventionnel",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg",
+                alt: "Tour CNC en fonctionnement avec piece en mandrin",
+                label: "Tournage CNC",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg",
+                alt: "Fraisage CNC d'un engrenage spiroconique",
+                label: "Rectification spiroconique",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp",
+                alt: "Collection d'outils de fraisage et de coupe professionnels",
+                label: "Outillage professionnel",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc1.jpg-CIJpZlxFYsEvVVUREnsclrdkD1BAvC.webp",
+                alt: "Usinage CNC de precision sur piece en laiton",
+                label: "Precision CNC",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg",
+                alt: "Equipements de protection individuelle en atelier",
+                label: "Securite en atelier",
+              },
+            ].map((img, i) => (
+              <div
+                key={i}
+                className="group relative aspect-video overflow-hidden rounded-xl border border-border"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
+                  {img.label}
+                </span>
+              </div>
             ))}
           </div>
         </div>

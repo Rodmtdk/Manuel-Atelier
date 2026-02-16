@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase } from "@/components/image-showcase"
+import { VideoGrid } from "@/components/video-embed"
 
 const composants = [
   "Table de travail : supporte la piece, deplacable en X, Y, et Z",
@@ -77,6 +79,41 @@ export default function FraisageConvPage() {
               de petites series et dans les environnements educatifs.
             </p>
           </div>
+        </ContentSection>
+
+        {/* Visual section */}
+        <ContentSection title="Le Fraisage en Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp"
+              alt="Collection d'outils de fraisage professionnels - fraises, forets et plaquettes"
+              caption="Outils de fraisage : fraises a surfacer, fraises a plaquettes, forets"
+              priority
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg"
+              alt="Fraises carbure monobloc avec differents revetements"
+              caption="Fraises carbure monobloc - ebauche et finition"
+            />
+          </div>
+        </ContentSection>
+
+        {/* Videos */}
+        <ContentSection title="Voir en Video">
+          <VideoGrid
+            videos={[
+              {
+                videoId: "gR9xGH-DxWI",
+                title: "Fraisage conventionnel - Techniques de base",
+                caption: "Surfacage et rainurage sur fraiseuse manuelle",
+              },
+              {
+                videoId: "E_N_MFnOPfY",
+                title: "Utilisation d'une fraiseuse conventionnelle",
+                caption: "Reglage et utilisation d'une fraiseuse",
+              },
+            ]}
+          />
         </ContentSection>
 
         <ContentSection title="Composants d'une Fraiseuse Conventionnelle">

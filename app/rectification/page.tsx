@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase } from "@/components/image-showcase"
+import { VideoEmbed, VideoGrid } from "@/components/video-embed"
 
 const composantsCylindrique = [
   "Meule : abrasif lie (corindon, CBN, diamant) qui enleve la matiere par abrasion",
@@ -212,6 +214,144 @@ export default function RectificationPage() {
           </div>
         </ContentSection>
 
+        {/* ============================================= */}
+        {/* RECTIFICATION SPIROCONIQUE - Section majeure */}
+        {/* ============================================= */}
+        <ContentSection title="Rectification Spiroconique" id="spiroconique">
+          {/* Hero image spiroconique */}
+          <div className="mb-8">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
+              alt="Usinage CNC d'un engrenage spiroconique - meule de precision sur denture spirale"
+              caption="Rectification d'un engrenage spiroconique sur machine CNC 5 axes - denture spirale de haute precision"
+              priority
+              aspectRatio="wide"
+            />
+          </div>
+
+          {/* Description */}
+          <div className="mb-8 rounded-xl border border-accent/20 bg-accent/5 p-6">
+            <h3 className="mb-3 text-lg font-semibold text-foreground">
+              Qu{"'"}est-ce que la rectification spiroconique ?
+            </h3>
+            <p className="leading-relaxed text-muted-foreground">
+              La rectification spiroconique est un procede de finition de tres haute precision
+              applique aux engrenages coniques a denture spirale (ou engrenages spiroconiques).
+              Ces engrenages transmettent le mouvement entre deux arbres perpendiculaires ou
+              obliques avec un contact progressif et silencieux. La rectification de leurs flancs
+              de dents est essentielle pour garantir la precision de l{"'"}engrenement, reduire le
+              bruit et prolonger la duree de vie. Ce procede est utilise dans les ponts
+              d{"'"}automobiles, les reducteurs industriels, les transmissions d{"'"}helicopteres et
+              les robots de haute precision.
+            </p>
+          </div>
+
+          {/* Principe et etapes */}
+          <div className="mb-8 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Principe de fonctionnement</h3>
+              <ul className="flex flex-col gap-2.5 text-sm text-muted-foreground">
+                {[
+                  "L'engrenage spiroconique est monte sur un axe de precision",
+                  "Une meule de forme (coupe ou boisseau) rectifie le flanc de chaque dent",
+                  "Le mouvement combine rotation piece + deplacement meule reproduit la geometrie spirale",
+                  "Les machines modernes utilisent 5 a 6 axes CNC synchronises",
+                  "Le procede Gleason ou Klingelnberg definit la geometrie de reference",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Etapes de la rectification</h3>
+              <div className="flex flex-col gap-3">
+                {[
+                  { step: "01", text: "Taillage initial de la denture (fraise-mere ou outil Gleason)" },
+                  { step: "02", text: "Traitement thermique (cementation, trempe)" },
+                  { step: "03", text: "Montage de la piece sur la rectifieuse spiroconique" },
+                  { step: "04", text: "Reglage des parametres : angle de spirale, module, pas" },
+                  { step: "05", text: "Rectification d'ebauche des flancs de dents" },
+                  { step: "06", text: "Rectification de finition pour l'etat de surface final" },
+                  { step: "07", text: "Controle 3D de la portee de denture (Gleason CMM)" },
+                ].map((item) => (
+                  <div key={item.step} className="flex items-start gap-3">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 font-mono text-xs font-bold text-accent">
+                      {item.step}
+                    </span>
+                    <span className="text-sm text-muted-foreground">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Videos spiroconiques */}
+          <div className="mb-8">
+            <h3 className="mb-4 text-lg font-semibold text-foreground">
+              Rectification spiroconique en video
+            </h3>
+            <VideoGrid
+              videos={[
+                {
+                  videoId: "nqwF7mPgjfo",
+                  title: "Rectification d'engrenage spiroconique - Gleason",
+                  caption: "Processus de rectification Gleason sur engrenage conique",
+                },
+                {
+                  videoId: "CBqXXjPmjQU",
+                  title: "Taillage et rectification d'engrenages coniques",
+                  caption: "Taillage et finition d'engrenages spiroconiques",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Parametres specifiques */}
+          <div className="mb-8 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-accent/30 bg-accent/5 p-6 text-center">
+              <div className="mb-2 font-mono text-3xl font-bold text-accent">0,005 mm</div>
+              <div className="text-sm text-muted-foreground">Tolerance sur le profil de dent</div>
+            </div>
+            <div className="rounded-xl border border-accent/30 bg-accent/5 p-6 text-center">
+              <div className="mb-2 font-mono text-3xl font-bold text-accent">Ra 0,4</div>
+              <div className="text-sm text-muted-foreground">Rugosite flanc de dent (um)</div>
+            </div>
+            <div className="rounded-xl border border-accent/30 bg-accent/5 p-6 text-center">
+              <div className="mb-2 font-mono text-3xl font-bold text-accent">DIN 3965</div>
+              <div className="text-sm text-muted-foreground">Norme de qualite engrenages coniques</div>
+            </div>
+          </div>
+
+          {/* Applications spiroconiques */}
+          <div className="grid gap-6 sm:grid-cols-2">
+            <InfoCard
+              title="Applications Spiroconiques"
+              items={[
+                "Ponts arrieres automobiles (differentiels)",
+                "Reducteurs d'helicopteres et turbines",
+                "Transmissions de robots industriels",
+                "Reducteurs de machines-outils",
+                "Engrenages de direction assistee",
+                "Treuils et systemes de levage de precision",
+              ]}
+            />
+            <InfoCard
+              title="Avantages de la denture spirale"
+              items={[
+                "Contact progressif = fonctionnement silencieux",
+                "Meilleure repartition des charges sur les dents",
+                "Capacite de couple superieure a la denture droite",
+                "Rendement de transmission eleve (97-99%)",
+                "Duree de vie prolongee grace a la rectification",
+                "Precision d'engrenement constante dans le temps",
+              ]}
+            />
+          </div>
+        </ContentSection>
+
         {/* Types de rectification */}
         <ContentSection title="Types de Rectification">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -232,6 +372,24 @@ export default function RectificationPage() {
               </div>
             ))}
           </div>
+        </ContentSection>
+
+        {/* Videos rectification generale */}
+        <ContentSection title="La Rectification en Video">
+          <VideoGrid
+            videos={[
+              {
+                videoId: "aBXCJnFmFOI",
+                title: "Rectification cylindrique - Principe et fonctionnement",
+                caption: "Rectification cylindrique exterieure en action",
+              },
+              {
+                videoId: "NB2bHnj-Wvo",
+                title: "Rectification plane sur plateau magnetique",
+                caption: "Surfacage de precision sur rectifieuse plane",
+              },
+            ]}
+          />
         </ContentSection>
 
         {/* Composants machines */}
