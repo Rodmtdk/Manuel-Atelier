@@ -50,7 +50,7 @@ export default function SecuritePage() {
         </div>
 
         <FactCard
-          fact="En France, l'industrie de la metallurgie enregistre pres de 50 000 accidents du travail par an. 80% d'entre eux auraient pu etre evites par le port correct des EPI et le respect des consignes de securite."
+          fact="En France, l'industrie de la metallurgie enregistre environ 40 000 accidents du travail par an (CTN A, 2024). La majorite d'entre eux auraient pu etre evites par le port correct des EPI et le respect des consignes de securite."
           variant="highlight"
           className="mb-4"
         />
@@ -107,6 +107,16 @@ export default function SecuritePage() {
               </div>
             ))}
           </div>
+        </ContentSection>
+
+        {/* Additional safety visual */}
+        <ContentSection title="Les EPI en Detail">
+          <ImageShowcase
+            src="/images/securite-atelier.jpg"
+            alt="Equipements de protection individuelle disposes sur un etabli : lunettes, casque, gants, protections auditives et chaussures de securite"
+            caption="EPI indispensables : chaque equipement protege contre un risque specifique en atelier d'usinage"
+            aspectRatio="wide"
+          />
         </ContentSection>
 
         <ContentSection title="Precautions par Machine">

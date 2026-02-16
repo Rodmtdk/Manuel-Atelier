@@ -114,10 +114,46 @@ export default function TournageCncPage() {
 
         {/* Fact */}
         <FactCard
-          fact="Le premier tour CNC a ete cree au MIT en 1952. Aujourd'hui, un tour CNC multitache peut realiser en une seule prise ce qui necessitait autrefois 5 machines differentes. Certains modeles atteignent une precision de 0,001 mm, soit l'epaisseur d'une cellule humaine."
+          fact="La premiere machine-outil a commande numerique a ete developpee au MIT en 1952 : c'etait une fraiseuse. Les tours CNC sont apparus peu apres. Aujourd'hui, un tour CNC multitache peut realiser en une seule prise ce qui necessitait autrefois 5 machines differentes. Certains modeles atteignent une precision de 0,001 mm, soit dix fois plus petit qu'une cellule humaine."
           variant="accent"
           className="mb-4"
         />
+
+        {/* Tourelle porte-outils */}
+        <ContentSection title="La Tourelle Porte-Outils">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="/images/tournage-cnc-turret.jpg"
+              alt="Tourelle porte-outils d'un tour CNC avec plusieurs outils de coupe montes"
+              caption="Tourelle multi-postes - changement d'outil automatique en moins de 2 secondes"
+            />
+            <div className="flex flex-col gap-4">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="mb-3 font-semibold text-foreground">Role de la tourelle</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  La tourelle (ou revolver) porte-outils est un element cle du tour CNC. Elle permet de monter plusieurs outils simultanement et de passer de l{"'"}un a l{"'"}autre automatiquement pendant l{"'"}usinage, sans intervention de l{"'"}operateur.
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="mb-3 font-semibold text-foreground">Types de tourelles</h3>
+                <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    Tourelle 8 postes : standard pour la plupart des tours CNC
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    Tourelle 12 postes : pour pieces complexes multi-operations
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    Tourelle motorisee : permet le fraisage et le percage decentre
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ContentSection>
 
         <ContentSection title="Composants d'un Tour CNC">
           <InfoCard title="Elements de la machine" items={composants} />
@@ -239,7 +275,7 @@ export default function TournageCncPage() {
               "Nettoyage : retirer les copeaux apres chaque utilisation",
               "Lubrification : verifier le niveau d'huile regulierement",
               "Inspection des outils : remplacer ou affuter les outils uses",
-              "Calibration : verifier les axes X, Y et Z",
+              "Calibration : verifier les axes X et Z",
               "Surveillance des vibrations : detecter les anomalies",
             ]}
           />

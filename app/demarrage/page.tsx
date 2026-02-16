@@ -57,8 +57,8 @@ const outilsFraisage = [
 ]
 
 const outilsTournage = [
-  "Poincons a dresser : usinage des faces planes",
-  "Poincons a gorge : creation de rainures ou gorges",
+  "Outils a dresser : usinage des faces planes (perpendiculaires a l'axe)",
+  "Outils a gorge : creation de rainures ou gorges",
   "Outils de filetage : filetages internes ou externes",
   "Outils d'alesage : ajustement des diametres internes",
   "Outils de tronconnage : couper ou separer la matiere brute",
@@ -135,7 +135,7 @@ const materiaux = [
   {
     title: "Materiaux durs (ceramique, composites)",
     items: [
-      "Outils : diamantes (PCD), ceramique ou CBN",
+      "Outils : diamant polycristallin (PCD), ceramique ou CBN",
       "Applications : haute precision, machines rigides requises",
     ],
   },
@@ -215,7 +215,7 @@ export default function DemarragePage() {
 
         {/* Fact */}
         <FactCard
-          fact="Un outil de coupe en carbure de tungstene peut atteindre une durete de 1 600 HV (Vickers), soit pres de 3 fois plus dur que l'acier trempe. Son revetement TiAlN lui permet de supporter des temperatures de 800 C en contact avec la piece."
+          fact="Un outil de coupe en carbure de tungstene atteint une durete de 1 500 a 2 500 HV (Vickers), soit plus de 3 fois la durete d'un acier trempe. Son revetement TiAlN lui permet de supporter des temperatures de 800 C en contact avec la piece."
           variant="accent"
           className="my-4"
         />
@@ -273,6 +273,32 @@ export default function DemarragePage() {
           caption="Metrologie de precision : controle dimensionnel avec pied a coulisse numerique et suivi SPC"
         />
 
+        {/* Metrologie detail */}
+        <ContentSection title="Metrologie en Detail">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="/images/micrometre-precision.jpg"
+              alt="Micrometre de precision mesurant une piece metallique avec plans techniques en arriere-plan"
+              caption="Micrometre d'exterieur - precision au centieme de millimetre (0,01 mm)"
+            />
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Pourquoi la metrologie ?</h3>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                La metrologie est indissociable de l{"'"}usinage. Sans mesure precise, il est impossible de garantir que les pieces respectent les tolerances demandees par les plans techniques. Chaque outil de mesure a sa plage d{"'"}utilisation et sa precision propre.
+              </p>
+              <div className="rounded-lg bg-secondary p-4">
+                <h4 className="mb-2 text-sm font-semibold text-foreground">Precisions typiques</h4>
+                <ul className="flex flex-col gap-1.5 text-sm text-muted-foreground">
+                  <li><strong className="text-foreground">Pied a coulisse</strong> : 0,02 mm</li>
+                  <li><strong className="text-foreground">Micrometre</strong> : 0,01 mm (jusqu{"'"}a 0,001 mm)</li>
+                  <li><strong className="text-foreground">Comparateur</strong> : 0,01 mm</li>
+                  <li><strong className="text-foreground">Rugosimetre</strong> : 0,001 um (Ra)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ContentSection>
+
         {/* Materials */}
         <ContentSection title="Choix des Outils en Fonction des Materiaux">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -318,7 +344,7 @@ export default function DemarragePage() {
               <tbody>
                 {[
                   ["TiN (Nitrure de titane)", "Reduction de l'usure, meilleure evacuation des copeaux"],
-                  ["TiAlN (Nitrure titane-alu)", "Resistance a la chaleur accrue"],
+                  ["TiAlN (Nitrure de titane-aluminium)", "Resistance a la chaleur accrue, ideal pour aciers durs"],
                   ["CVD / PVD", "Technologies avancees pour applications exigeantes"],
                   ["PCD (Diamant polycristallin)", "Ideal pour materiaux abrasifs et composites"],
                   ["CBN (Nitrure de bore cubique)", "Usinage des aciers trempes"],

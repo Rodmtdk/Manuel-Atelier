@@ -238,7 +238,7 @@ export default function TournageConvPage() {
                   ["Acier", "Faible", "Refroidissement intensif"],
                   ["Inox", "Moderee", "Outils robustes, lubrification importante"],
                   ["Aluminium", "Elevee", "Faible resistance mecanique"],
-                  ["Plastiques", "Moderee", "Eviter fonte ou deformation"],
+                  ["Plastiques", "Moderee", "Eviter la fusion ou la deformation"],
                 ].map(([mat, vit, note], i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="px-6 py-3 font-medium text-foreground">{mat}</td>

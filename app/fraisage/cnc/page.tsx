@@ -124,7 +124,7 @@ export default function FraisageCncPage() {
                 className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30"
               >
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 font-mono text-sm font-bold text-primary">
-                  {i + 3}ax
+                  {String(i + 1).padStart(2, "0")}
                 </div>
                 <h3 className="mb-2 font-semibold text-foreground">{tech.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{tech.desc}</p>
@@ -164,6 +164,37 @@ export default function FraisageCncPage() {
                 Les parcours optimises (trochoidal, adaptatif) reduisent l{"'"}usure
                 des outils et augmentent la productivite.
               </p>
+            </div>
+          </div>
+        </ContentSection>
+
+        {/* Image 5 axes */}
+        <ContentSection title="Centre d'Usinage 5 Axes">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="/images/fraisage-5axes.jpg"
+              alt="Centre d'usinage CNC 5 axes travaillant sur une piece aeronautique complexe"
+              caption="Usinage 5 axes simultanes - piece aeronautique en cours de finition"
+            />
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="mb-3 font-semibold text-foreground">Pourquoi le 5 axes ?</h3>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                Le fraisage 5 axes permet d{"'"}usiner des pieces complexes en une seule mise en position, eliminant les erreurs de repositionnement et reduisant les temps de cycle.
+              </p>
+              <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Reduction du nombre de montages (1 au lieu de 3-5)
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Acces aux zones difficiles sous differents angles
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Meilleure finition de surface grace a l{"'"}orientation optimale de l{"'"}outil
+                </li>
+              </ul>
             </div>
           </div>
         </ContentSection>
@@ -213,7 +244,7 @@ export default function FraisageCncPage() {
                   ["Acier", "Faible", "Avance moderee"],
                   ["Aluminium", "Elevee", "Faible profondeur de passe"],
                   ["Inox", "Moderee", "Lubrification importante"],
-                  ["Plastiques", "Elevee", "Attention a la surchauffe"],
+                  ["Plastiques", "Elevee", "Eviter la fusion par surchauffe"],
                 ].map(([mat, vit, reco], i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="px-6 py-3 font-medium text-foreground">{mat}</td>

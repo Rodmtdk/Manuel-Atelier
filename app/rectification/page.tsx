@@ -20,7 +20,7 @@ const composantsCylindrique = [
 
 const composantsPlane = [
   "Meule plate : abrasif pour usinage de surfaces planes",
-  "Plateau magnetique : maintien de la piece par magnetisme (pieces ferreux)",
+  "Plateau magnetique : maintien de la piece par magnetisme (materiaux ferreux)",
   "Table longitudinale : deplacement alternatif de la piece sous la meule",
   "Chariot transversal : avance laterale entre chaque course de la table",
   "Colonne verticale : reglage de la profondeur de passe en descente",
@@ -176,7 +176,7 @@ const securiteRectif = [
   "Le protecteur de meule doit couvrir au minimum 180 degres",
   "Porter des lunettes de protection et un ecran facial si necessaire",
   "L'arrosage doit etre actif AVANT le contact meule-piece",
-  "Ne jamais utiliser une meule endommagee, fissured ou ayant subi un choc",
+  "Ne jamais utiliser une meule endommagee, fissuree ou ayant subi un choc",
   "Equilibrer la meule apres chaque montage sur son mandrin",
   "Laisser tourner la meule a vide pendant 1 minute apres mise en route",
 ]
@@ -411,6 +411,22 @@ export default function RectificationPage() {
               },
             ]}
           />
+        </ContentSection>
+
+        {/* Images machines */}
+        <ContentSection title="Les Rectifieuses en Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="/images/rectification-cylindrique.jpg"
+              alt="Rectifieuse cylindrique en action avec etincelles et arrosage"
+              caption="Rectification cylindrique exterieure - la meule rectifie un arbre de precision"
+            />
+            <ImageShowcase
+              src="/images/rectification-plane.jpg"
+              alt="Rectifieuse plane avec plateau magnetique et meule plate"
+              caption="Rectification plane - surfacage de precision sur plateau magnetique"
+            />
+          </div>
         </ContentSection>
 
         {/* Composants machines */}

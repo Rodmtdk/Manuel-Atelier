@@ -120,7 +120,7 @@ export default function FraisageConvPage() {
 
         {/* Intriguing fact */}
         <FactCard
-          fact="Une fraiseuse conventionnelle Bridgeport, iconique de l'industrie americaine depuis 1938, pese pres de 1 tonne. Sa tete pivotante a revolutionne l'usinage en permettant des angles impossibles a obtenir autrement."
+          fact="La fraiseuse Bridgeport, creee en 1938 aux Etats-Unis, est devenue la reference mondiale des fraiseuses conventionnelles. Pesant environ 900 kg, sa tete orientable a revolutionne l'usinage en permettant des inclinaisons impossibles a obtenir autrement. Elle reste une machine emblematique dans les ateliers du monde entier."
           variant="highlight"
           className="mb-8"
         />
