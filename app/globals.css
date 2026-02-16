@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: #0A0E17;
+  --color-foreground: #E8ECF1;
+  --color-card: rgba(255, 255, 255, 0.04);
+  --color-card-foreground: #E8ECF1;
+  --color-popover: #111827;
+  --color-popover-foreground: #E8ECF1;
+  --color-primary: #00D972;
+  --color-primary-foreground: #021A0D;
+  --color-secondary: #1A2332;
+  --color-secondary-foreground: #E8ECF1;
+  --color-muted: #151C28;
+  --color-muted-foreground: #8494A7;
+  --color-accent: #0EE6D6;
+  --color-accent-foreground: #021A0D;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-input: #1A2332;
+  --color-ring: #00D972;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --radius: 0.75rem;
+
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: rgba(0, 217, 114, 0.25);
+  }
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 114, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(0, 217, 114, 0.3); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out both;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out both;
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
