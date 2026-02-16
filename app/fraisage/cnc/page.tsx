@@ -3,6 +3,8 @@ import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
 import { VideoGrid } from "@/components/video-embed"
+import { SectionBanner } from "@/components/banner-image"
+import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Table de travail : support avec axes motorises",
@@ -64,6 +66,7 @@ export default function FraisageCncPage() {
         badge="Fraisage CNC"
         title="Fraisage a Commande Numerique"
         subtitle="Procede d'usinage automatise utilisant des machines-outils commandees par ordinateur pour une precision et une repetabilite exceptionnelles."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
@@ -71,18 +74,25 @@ export default function FraisageCncPage() {
         <ContentSection title="Le Fraisage CNC en Images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
-              alt="Fraisage CNC 5 axes d'un engrenage spiroconique"
-              caption="Usinage 5 axes d'un engrenage spiroconique - precision au micron"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
+              alt="Fraisage CNC avec arrosage haute pression et piece en etau"
+              caption="Centre d'usinage CNC en action - arrosage et evacuation de copeaux"
               priority
             />
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg"
-              alt="Fraises carbure pour usinage CNC"
-              caption="Fraises carbure monobloc pour centres d'usinage CNC"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
+              alt="Fraisage CNC 5 axes d'un engrenage spiroconique"
+              caption="Usinage 5 axes d'un engrenage spiroconique"
             />
           </div>
         </ContentSection>
+
+        {/* Fact */}
+        <FactCard
+          fact="Un centre d'usinage CNC 5 axes moderne execute ses mouvements avec une precision de positionnement de 0,003 mm. Sa broche tourne a 24 000 tr/min, soit 400 tours par seconde. Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
+          variant="accent"
+          className="mb-4"
+        />
 
         {/* Videos */}
         <ContentSection title="Voir en Video">

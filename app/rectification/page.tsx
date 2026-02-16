@@ -3,6 +3,7 @@ import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import { VideoEmbed, VideoGrid } from "@/components/video-embed"
+import { FactStrip, FactCard } from "@/components/fact-card"
 
 const composantsCylindrique = [
   "Meule : abrasif lie (corindon, CBN, diamant) qui enleve la matiere par abrasion",
@@ -195,6 +196,7 @@ export default function RectificationPage() {
         badge="Rectification"
         title="Rectification - Usinage de Precision"
         subtitle="Procede d'usinage par abrasion permettant d'atteindre des tolerances de l'ordre du micrometre et des etats de surface exceptionnels. Guide complet des techniques, abrasifs et parametres."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
@@ -213,6 +215,25 @@ export default function RectificationPage() {
             </p>
           </div>
         </ContentSection>
+
+        {/* Intriguing facts */}
+        <FactStrip
+          className="my-4"
+          facts={[
+            {
+              fact: "Une meule de rectification tourne a plus de 2 000 tr/min. A sa surface, chaque grain abrasif atteint une vitesse de 30 m/s, soit 108 km/h - l'equivalent d'un TGV frappant le metal.",
+              variant: "accent",
+            },
+            {
+              fact: "La rectification permet d'atteindre un Ra de 0,025 um, soit un poli quasi-miroir. A cette echelle, les irregularites de surface sont plus petites qu'une bacterie.",
+              variant: "default",
+            },
+            {
+              fact: "Le CBN (Nitrure de Bore Cubique) est le 2e materiau le plus dur au monde apres le diamant. Il resiste a 1 300 C sans se degrader - ideal pour rectifier les aciers trempes.",
+              variant: "highlight",
+            },
+          ]}
+        />
 
         {/* ============================================= */}
         {/* RECTIFICATION SPIROCONIQUE - Section majeure */}

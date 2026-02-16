@@ -3,6 +3,8 @@ import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
 import { VideoEmbed } from "@/components/video-embed"
+import { SectionBanner } from "@/components/banner-image"
+import { FactCard } from "@/components/fact-card"
 import {
   CheckCircle,
   Wrench,
@@ -153,6 +155,7 @@ export default function DemarragePage() {
         badge="Guide de demarrage"
         title="Mise en Marche et Reglage des Machines"
         subtitle="Les etapes fondamentales pour preparer, regler et demarrer vos machines-outils en toute securite."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
@@ -210,7 +213,14 @@ export default function DemarragePage() {
           </div>
         </ContentSection>
 
-        {/* Tool images */}
+        {/* Fact */}
+        <FactCard
+          fact="Un outil de coupe en carbure de tungstene peut atteindre une durete de 1 600 HV (Vickers), soit pres de 3 fois plus dur que l'acier trempe. Son revetement TiAlN lui permet de supporter des temperatures de 800 C en contact avec la piece."
+          variant="accent"
+          className="my-4"
+        />
+
+        {/* Tool images - expanded */}
         <ContentSection title="Galerie d'Outils">
           <ImageGrid
             images={[
@@ -220,9 +230,24 @@ export default function DemarragePage() {
                 caption: "Outils a plaquettes interchangeables - Fraisage et percage",
               },
               {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg",
+                alt: "Plaquettes carbure avec revetements or et noirs de differentes geometries",
+                caption: "Plaquettes carbure - geometries CNMG, WNMG, RCMG",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg",
+                alt: "Forets et fraises carbure de differentes tailles et geometries",
+                caption: "Forets et fraises carbure monobloc",
+              },
+            ]}
+            columns={3}
+          />
+          <ImageGrid
+            images={[
+              {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg",
                 alt: "Fraises carbure monobloc de differentes geometries",
-                caption: "Fraises carbure monobloc - Differents revetements et geometries",
+                caption: "Fraises carbure - ebauche et finition",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils-tournage.jpg-7RVclx58YOJwm1RdyGf4z3lvPmI1NU.png",
@@ -230,9 +255,23 @@ export default function DemarragePage() {
                 caption: "Classification DIN des outils de tournage",
               },
             ]}
-            columns={3}
+            className="mt-4"
           />
         </ContentSection>
+
+        {/* Materiaux banner */}
+        <SectionBanner
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/materiaux.jpg-BlXwqB7QRLjr3067LUcZEpBw7af9wr.webp"
+          alt="Collection de metaux et alliages utilises en usinage - or, argent, zinc, cuivre, titane"
+          caption="Les materiaux d'usinage : aciers, aluminiums, cuivre, titane, inox et alliages exotiques"
+        />
+
+        {/* Metrologie banner */}
+        <SectionBanner
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png"
+          alt="Pied a coulisse numerique mesurant un roulement sur des plans techniques avec tablette de controle"
+          caption="Metrologie de precision : controle dimensionnel avec pied a coulisse numerique et suivi SPC"
+        />
 
         {/* Materials */}
         <ContentSection title="Choix des Outils en Fonction des Materiaux">

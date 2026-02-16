@@ -3,6 +3,7 @@ import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import { VideoEmbed } from "@/components/video-embed"
+import { FactCard } from "@/components/fact-card"
 import { ShieldAlert, AlertTriangle, Heart, Wrench } from "lucide-react"
 
 const epiItems = [
@@ -31,6 +32,7 @@ export default function SecuritePage() {
         badge="Securite"
         title="Securite en Atelier"
         subtitle="Regles essentielles pour prevenir les accidents, proteger les operateurs et garantir un environnement de travail sain."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
@@ -46,6 +48,12 @@ export default function SecuritePage() {
             </p>
           </div>
         </div>
+
+        <FactCard
+          fact="En France, l'industrie de la metallurgie enregistre pres de 50 000 accidents du travail par an. 80% d'entre eux auraient pu etre evites par le port correct des EPI et le respect des consignes de securite."
+          variant="highlight"
+          className="mb-4"
+        />
 
         {/* Visual - Safety poster */}
         <ContentSection title="Equipements de Protection - Vue d'ensemble">

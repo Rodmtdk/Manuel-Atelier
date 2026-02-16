@@ -1,5 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
+import { BannerImage } from "@/components/banner-image"
+import { FactStrip } from "@/components/fact-card"
 import {
   Wrench,
   Settings,
@@ -105,7 +107,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Hero image */}
+      {/* Cinematic banner - mesure/precision */}
+      <BannerImage
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure1-NTzOlWysMlPU9zAL42mKYDBHo9LSGJ.jpg"
+        alt="Plans techniques avec pieces usinees, roulements et pied a coulisse"
+        overlay="gradient"
+        height="md"
+        priority
+      >
+        <div className="mx-auto max-w-7xl">
+          <span className="mb-2 inline-block rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent backdrop-blur-sm">
+            Precision au micron
+          </span>
+          <h2 className="max-w-xl text-balance text-2xl font-bold text-foreground md:text-4xl">
+            Ou chaque centieme de millimetre compte
+          </h2>
+        </div>
+      </BannerImage>
+
+      {/* Hero image - spiroconique */}
       <section className="relative border-b border-border">
         <div className="mx-auto grid max-w-7xl items-center gap-0 lg:grid-cols-2">
           <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-[420px]">
@@ -150,7 +170,7 @@ export default function HomePage() {
             <div key={stat.label} className="flex items-center gap-3 text-center">
               <stat.icon className="h-8 w-8 text-primary" />
               <div>
-                <div className="text-2xl font-bold text-foreground">
+                <div className="animate-shimmer text-2xl font-bold">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -203,7 +223,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Visual gallery */}
+      {/* Intriguing facts */}
+      <section className="border-t border-border px-4 py-16 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <FactStrip
+            facts={[
+              {
+                fact: "Un engrenage spiroconique de differentiel automobile tourne a plus de 8 000 tr/min et transmet jusqu'a 500 Nm de couple. La moindre imprecision de 0,01 mm genere un bruit perceptible a l'oreille.",
+                variant: "accent",
+              },
+              {
+                fact: "Les broches de tours CNC modernes atteignent 15 000 tr/min. A cette vitesse, un copeau d'acier est ejecte a plus de 200 km/h - d'ou l'importance capitale des protections.",
+                variant: "default",
+              },
+              {
+                fact: "La meule de rectification contient des millions de grains abrasifs. Chacun agit comme un micro-outil de coupe, permettant d'atteindre des tolerances de 0,001 mm - soit 50 fois plus fin qu'un cheveu humain.",
+                variant: "highlight",
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Cinematic banner - fraisage action */}
+      <BannerImage
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
+        alt="Fraisage CNC avec arrosage haute pression en pleine action"
+        overlay="gradient"
+        height="sm"
+      >
+        <div className="mx-auto max-w-7xl">
+          <p className="max-w-lg text-sm font-medium text-foreground/80">
+            Fraisage CNC haute pression - L{"'"}arrosage projete a 70 bars refroidit la zone de coupe instantanement
+          </p>
+        </div>
+      </BannerImage>
+
+      {/* Visual gallery - expanded */}
       <section className="border-t border-border bg-secondary/10 px-4 py-20 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
@@ -214,37 +270,45 @@ export default function HomePage() {
               Un apercu visuel des techniques et des machines couvertes dans ce manuel.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+          {/* Bento grid layout */}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3">
+            {/* Large item - top left spanning 2 cols */}
+            <div className="group relative aspect-video overflow-hidden rounded-xl border border-border sm:col-span-2 lg:row-span-2 lg:aspect-auto lg:h-full">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
+                alt="Tournage conventionnel avec copeaux de metal en vol"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <span className="absolute bottom-4 left-4 rounded-lg bg-background/70 px-3 py-1.5 text-sm font-semibold text-foreground backdrop-blur-sm">
+                Tournage conventionnel
+              </span>
+            </div>
+
+            {/* Smaller items */}
             {[
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg",
-                alt: "Tournage conventionnel avec copeaux de metal en vol",
-                label: "Tournage conventionnel",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg",
+                alt: "Fraisage conventionnel avec lubrification sur engrenage",
+                label: "Fraisage conventionnel",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg",
-                alt: "Tour CNC en fonctionnement avec piece en mandrin",
-                label: "Tournage CNC",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg",
+                alt: "Plaquettes carbure de differentes geometries et revetements",
+                label: "Plaquettes de coupe",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg",
-                alt: "Fraisage CNC d'un engrenage spiroconique",
-                label: "Rectification spiroconique",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp",
+                alt: "Fraisage CNC avec arrosage haute pression",
+                label: "Fraisage CNC",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp",
-                alt: "Collection d'outils de fraisage et de coupe professionnels",
-                label: "Outillage professionnel",
-              },
-              {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc1.jpg-CIJpZlxFYsEvVVUREnsclrdkD1BAvC.webp",
-                alt: "Usinage CNC de precision sur piece en laiton",
-                label: "Precision CNC",
-              },
-              {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg",
-                alt: "Equipements de protection individuelle en atelier",
-                label: "Securite en atelier",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/materiaux.jpg-BlXwqB7QRLjr3067LUcZEpBw7af9wr.webp",
+                alt: "Collection de metaux et materiaux d'usinage",
+                label: "Materiaux",
               },
             ].map((img, i) => (
               <div
@@ -256,7 +320,53 @@ export default function HomePage() {
                   alt={img.alt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
+                  {img.label}
+                </span>
+              </div>
+            ))}
+
+            {/* Wide item - bottom spanning 2 cols */}
+            <div className="group relative aspect-video overflow-hidden rounded-xl border border-border sm:col-span-2 lg:aspect-[21/9]">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png"
+                alt="Pied a coulisse digital mesurant un roulement sur plans techniques"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 60vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
+                Metrologie de precision
+              </span>
+            </div>
+
+            {/* Two more items */}
+            {[
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg",
+                alt: "Usinage CNC d'un engrenage spiroconique",
+                label: "Rectification spiroconique",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg",
+                alt: "Forets et fraises carbure monobloc de differentes tailles",
+                label: "Forets et fraises",
+              },
+            ].map((img, i) => (
+              <div
+                key={`btm-${i}`}
+                className="group relative aspect-video overflow-hidden rounded-xl border border-border"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">

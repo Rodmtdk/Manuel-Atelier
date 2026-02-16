@@ -3,6 +3,7 @@ import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
 import { VideoEmbed, VideoGrid } from "@/components/video-embed"
+import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Mandrin : maintient fermement la piece a usiner",
@@ -65,6 +66,7 @@ export default function TournageConvPage() {
         badge="Tournage"
         title="Tournage Conventionnel"
         subtitle="Methode d'usinage traditionnelle utilisant des tours manuels. La piece tourne tandis que l'outil de coupe enleve la matiere."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
@@ -102,6 +104,13 @@ export default function TournageConvPage() {
             ]}
           />
         </ContentSection>
+
+        {/* Fact */}
+        <FactCard
+          fact="Le tour parallele est la plus ancienne machine-outil. Son ancetre, le tour a perche, existait deja en Egypte antique il y a 3 300 ans. Le principe fondamental n'a pas change : la piece tourne, l'outil coupe."
+          variant="highlight"
+          className="mb-4"
+        />
 
         <ContentSection title="Composants d'un Tour Conventionnel">
           <InfoCard title="Elements de la machine" items={composants} />
