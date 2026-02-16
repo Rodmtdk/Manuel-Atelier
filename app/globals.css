@@ -91,3 +91,43 @@
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
+
+/* Parallax-lite for banners */
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-in-out alternate infinite;
+}
+
+/* Subtle shimmer for stat numbers */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 50%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Separator line glow */
+@keyframes line-glow {
+  0%, 100% { opacity: 0.4; width: 2rem; }
+  50% { opacity: 1; width: 4rem; }
+}
+
+.animate-line-glow {
+  animation: line-glow 3s ease-in-out infinite;
+}

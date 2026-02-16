@@ -1,6 +1,9 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
+import { VideoEmbed, VideoGrid } from "@/components/video-embed"
+import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Mandrin : maintient fermement la piece a usiner",
@@ -63,9 +66,52 @@ export default function TournageConvPage() {
         badge="Tournage"
         title="Tournage Conventionnel"
         subtitle="Methode d'usinage traditionnelle utilisant des tours manuels. La piece tourne tandis que l'outil de coupe enleve la matiere."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
+        {/* Visual hero */}
+        <ContentSection title="Le Tournage en Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
+              alt="Tournage conventionnel en action avec copeaux metalliques"
+              caption="Copeaux en vol lors d'une operation de chariotage"
+              priority
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv.jpg-tIcIx0K8YwE4Xd2sM51NjYPfH6LN8F.webp"
+              alt="Tour conventionnel avec piece conique en usinage"
+              caption="Tour parallele en fonctionnement - arrosage actif"
+            />
+          </div>
+        </ContentSection>
+
+        {/* Video */}
+        <ContentSection title="Voir en Video">
+          <VideoGrid
+            videos={[
+              {
+                videoId: "vFyAfXcbUcQ",
+                title: "Tournage conventionnel - Operations de base",
+                caption: "Chariotage et dressage sur tour parallele",
+              },
+              {
+                videoId: "KV1DG5VKvqE",
+                title: "Filetage au tour conventionnel",
+                caption: "Technique de filetage exterieur pas a pas",
+              },
+            ]}
+          />
+        </ContentSection>
+
+        {/* Fact */}
+        <FactCard
+          fact="Le tour parallele est la plus ancienne machine-outil. Son ancetre, le tour a perche, existait deja en Egypte antique il y a 3 300 ans. Le principe fondamental n'a pas change : la piece tourne, l'outil coupe."
+          variant="highlight"
+          className="mb-4"
+        />
+
         <ContentSection title="Composants d'un Tour Conventionnel">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>
@@ -98,6 +144,16 @@ export default function TournageConvPage() {
               </div>
             ))}
           </div>
+        </ContentSection>
+
+        {/* Turning tools diagram */}
+        <ContentSection title="Outils de Tournage - Classification DIN">
+          <ImageShowcase
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils-tournage.jpg-7RVclx58YOJwm1RdyGf4z3lvPmI1NU.png"
+            alt="Schema complet des outils de tournage selon les normes DIN - differentes geometries et applications"
+            caption="Classification DIN des outils de tournage : chaque outil correspond a une operation specifique (dressage, chariotage, alesage, filetage, tronconnage...)"
+            aspectRatio="wide"
+          />
         </ContentSection>
 
         <ContentSection title="Montage et Serrage">

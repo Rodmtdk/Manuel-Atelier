@@ -1,6 +1,9 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
+import { VideoEmbed, VideoGrid } from "@/components/video-embed"
+import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Mandrin : maintient fermement la piece",
@@ -70,9 +73,52 @@ export default function TournageCncPage() {
         badge="Tournage CNC"
         title="Tournage a Commande Numerique"
         subtitle="Procede automatise pour produire des pieces cylindriques avec une precision et une repetabilite exceptionnelles."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
+        {/* Visual hero */}
+        <ContentSection title="Le Tournage CNC en Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg"
+              alt="Tour CNC avec broche haute precision et piece en usinage"
+              caption="Broche de tour CNC avec mandrin hydraulique"
+              priority
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc1.jpg-CIJpZlxFYsEvVVUREnsclrdkD1BAvC.webp"
+              alt="Usinage CNC de precision sur piece en laiton avec outil carbure"
+              caption="Usinage de precision sur piece en laiton - outil carbure a plaquette"
+            />
+          </div>
+        </ContentSection>
+
+        {/* Videos CNC */}
+        <ContentSection title="Voir en Video">
+          <VideoGrid
+            videos={[
+              {
+                videoId: "ZfgXAPlNxas",
+                title: "Tournage CNC - Programmation et usinage",
+                caption: "Cycle d'usinage complet sur tour CNC",
+              },
+              {
+                videoId: "RnIvhlKT7SY",
+                title: "Programmation G-Code tournage CNC",
+                caption: "Codes G et M : programmation ISO en pratique",
+              },
+            ]}
+          />
+        </ContentSection>
+
+        {/* Fact */}
+        <FactCard
+          fact="Le premier tour CNC a ete cree au MIT en 1952. Aujourd'hui, un tour CNC multitache peut realiser en une seule prise ce qui necessitait autrefois 5 machines differentes. Certains modeles atteignent une precision de 0,001 mm, soit l'epaisseur d'une cellule humaine."
+          variant="accent"
+          className="mb-4"
+        />
+
         <ContentSection title="Composants d'un Tour CNC">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>

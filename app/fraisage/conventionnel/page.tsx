@@ -1,6 +1,10 @@
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
+import { ImageShowcase } from "@/components/image-showcase"
+import { VideoGrid } from "@/components/video-embed"
+import { SectionBanner } from "@/components/banner-image"
+import { FactCard } from "@/components/fact-card"
 
 const composants = [
   "Table de travail : supporte la piece, deplacable en X, Y, et Z",
@@ -64,6 +68,7 @@ export default function FraisageConvPage() {
         badge="Fraisage"
         title="Fraisage Conventionnel"
         subtitle="Procede d'usinage par enlevement de matiere utilisant des fraiseuses manuelles. L'outil tourne pour enlever la matiere selon les axes X, Y et Z."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
@@ -77,6 +82,65 @@ export default function FraisageConvPage() {
               de petites series et dans les environnements educatifs.
             </p>
           </div>
+        </ContentSection>
+
+        {/* Visual section */}
+        <ContentSection title="Le Fraisage en Images">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv1-dKnKSz1GCTohz95HLhCALpdTAK4tUZ.jpg"
+              alt="Fraiseuse conventionnelle en action avec outil de coupe et piece metallique"
+              caption="Fraiseuse conventionnelle en action - fraisage de precision sur etau"
+              priority
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg"
+              alt="Fraisage conventionnel avec lubrification sur piece d'engrenage"
+              caption="Lubrification active lors du fraisage d'un engrenage"
+            />
+          </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp"
+              alt="Collection d'outils de fraisage professionnels"
+              caption="Outils a plaquettes interchangeables"
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg"
+              alt="Forets et fraises carbure monobloc"
+              caption="Forets et fraises carbure monobloc"
+            />
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg"
+              alt="Plaquettes carbure pour outils de coupe"
+              caption="Plaquettes de coupe - geometries variees"
+            />
+          </div>
+        </ContentSection>
+
+        {/* Intriguing fact */}
+        <FactCard
+          fact="Une fraiseuse conventionnelle Bridgeport, iconique de l'industrie americaine depuis 1938, pese pres de 1 tonne. Sa tete pivotante a revolutionne l'usinage en permettant des angles impossibles a obtenir autrement."
+          variant="highlight"
+          className="mb-8"
+        />
+
+        {/* Videos */}
+        <ContentSection title="Voir en Video">
+          <VideoGrid
+            videos={[
+              {
+                videoId: "gR9xGH-DxWI",
+                title: "Fraisage conventionnel - Techniques de base",
+                caption: "Surfacage et rainurage sur fraiseuse manuelle",
+              },
+              {
+                videoId: "E_N_MFnOPfY",
+                title: "Utilisation d'une fraiseuse conventionnelle",
+                caption: "Reglage et utilisation d'une fraiseuse",
+              },
+            ]}
+          />
         </ContentSection>
 
         <ContentSection title="Composants d'une Fraiseuse Conventionnelle">
@@ -101,6 +165,30 @@ export default function FraisageConvPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </ContentSection>
+
+        {/* Mise en position diagram */}
+        <ContentSection title="Mise en Position (MIP)">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.jpg-lXAUx3kv4pVWy3yACM3GtT4ZJQDQFd.png"
+              alt="Schema de mise en position isostatique - appuis et serrages"
+              caption="Principe de mise en position isostatique : 6 degres de liberte bloques par les appuis"
+              aspectRatio="square"
+            />
+            <div className="flex flex-col gap-4">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="mb-3 font-semibold text-foreground">Principe isostatique</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Toute piece dans l{"'"}espace possede 6 degres de liberte (3 translations + 3 rotations). La mise en position consiste a eliminer ces 6 degres a l{"'"}aide d{"'"}appuis ponctuels : 3 appuis sur le plan principal, 2 sur le plan secondaire, 1 sur le plan tertiaire.
+                </p>
+              </div>
+              <FactCard
+                fact="Le principe isostatique date du XIXe siecle et reste la base de tout montage d'usinage. Sans lui, impossible de garantir la repetabilite des operations sur des series de pieces."
+                variant="default"
+              />
+            </div>
           </div>
         </ContentSection>
 
