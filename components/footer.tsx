@@ -21,7 +21,7 @@ const sections = [
     links: [
       { label: "Calculateur", href: "/calculateur" },
       { label: "Rectification", href: "/rectification" },
-      { label: "Securite", href: "/securite" },
+      { label: "S\u00e9curit\u00e9", href: "/securite" },
     ],
   },
 ]
@@ -41,8 +41,8 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Encyclopedie complete d{"'"}usinage et de rectification. Toutes les
-              competences pour maitriser l{"'"}atelier.
+              Encyclop\u00e9die compl\u00e8te d{"\u2019"}usinage et de rectification. Toutes les
+              comp\u00e9tences pour ma\u00eetriser l{"\u2019"}atelier.
             </p>
           </div>
           {sections.map((section) => (

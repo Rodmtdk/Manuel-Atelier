@@ -4,6 +4,65 @@ import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
 import { VideoEmbed, VideoGrid } from "@/components/video-embed"
 import { FactCard } from "@/components/fact-card"
+import { TableOfContents } from "@/components/table-of-contents"
+import { Quiz } from "@/components/quiz"
+
+const tocItems = [
+  { id: "images", label: "Le tournage en images" },
+  { id: "composants", label: "Composants du tour" },
+  { id: "utilisation", label: "Comment utiliser un tour" },
+  { id: "techniques", label: "Techniques courantes" },
+  { id: "montages", label: "Types de montages" },
+  { id: "mandrins-et-mors", label: "Mandrins et mors" },
+  { id: "classification-outils", label: "Classification des outils" },
+  { id: "materiaux-outils", label: "Mat\u00e9riaux des outils" },
+  { id: "ebauche-finition", label: "\u00c9bauche et finition" },
+  { id: "realiser-epaulement", label: "\u00c9paulement" },
+  { id: "diagnostic", label: "Diagnostic probl\u00e8mes" },
+  { id: "cones", label: "Pi\u00e8ces coniques" },
+  { id: "controle", label: "Contr\u00f4le qualit\u00e9" },
+  { id: "materiaux", label: "Adaptation mat\u00e9riaux" },
+  { id: "quiz-tournage", label: "Quiz" },
+]
+
+const quizTournage = [
+  {
+    question: "Quel type de montage est recommand\u00e9 quand la longueur de la pi\u00e8ce d\u00e9passe 2 fois son diam\u00e8tre ?",
+    options: ["Montage en l'air", "Montage mixte (mandrin + contre-pointe)", "Montage en pince", "Montage sur plateau"],
+    correctIndex: 1,
+    explanation: "Quand la longueur d\u00e9passe 2\u00d7 le diam\u00e8tre, le porte-\u00e0-faux est trop important en montage en l'air. Le montage mixte ajoute le soutien de la contre-pointe.",
+  },
+  {
+    question: "Quelle est la diff\u00e9rence principale entre mors durs et mors doux ?",
+    options: ["Les mors durs sont en aluminium", "Les mors doux ont une meilleure concentricit\u00e9 (0,05 mm vs 0,2 mm)", "Les mors durs permettent de r\u00e9al\u00e9ser", "Les mors doux laissent des empreintes"],
+    correctIndex: 1,
+    explanation: "Les mors doux, usinables, permettent d'\u00eatre r\u00e9al\u00e9s\u00e9s pour chaque pi\u00e8ce, offrant une concentricit\u00e9 de 0,05 mm contre 0,2 mm pour les mors durs (acier tremp\u00e9).",
+  },
+  {
+    question: "Que doit-on TOUJOURS faire avant de mettre le tour en marche ?",
+    options: ["V\u00e9rifier la vitesse de broche", "Retirer la clef du mandrin", "Mettre les lunettes de protection", "Les trois \u00e0 la fois"],
+    correctIndex: 3,
+    explanation: "Les trois sont indispensables ! Mais le retrait de la clef du mandrin est critique car une clef oubli\u00e9e peut \u00eatre \u00e9ject\u00e9e violemment \u00e0 la mise en route.",
+  },
+  {
+    question: "En \u00e9bauche, quelle strat\u00e9gie adopter pour la vitesse ?",
+    options: ["Vitesse de rotation \u00e9lev\u00e9e, faible avance", "Vitesse de rotation moyenne, grande avance", "Vitesse de rotation faible, faible avance", "Vitesse maximale pour tout"],
+    correctIndex: 1,
+    explanation: "En \u00e9bauche, on privil\u00e9gie une vitesse de rotation moyenne avec une grande avance pour enlever un maximum de mati\u00e8re rapidement.",
+  },
+  {
+    question: "Pour r\u00e9aliser un \u00e9paulement ext\u00e9rieur, quel est l'outil id\u00e9al ?",
+    options: ["Outil \u00e0 tron\u00e7onner", "Outil \u00e0 charioter/dresser", "Outil \u00e0 al\u00e9ser", "Outil \u00e0 fileter"],
+    correctIndex: 1,
+    explanation: "L'outil \u00e0 charioter/dresser combine les deux op\u00e9rations n\u00e9cessaires : le chariotage du diam\u00e8tre et le dressage de la face plane.",
+  },
+  {
+    question: "Quelle formule permet de calculer l'angle d'un c\u00f4ne ?",
+    options: ["tan(\u03b1) = (D + d) / L", "tan(\u03b1) = (D - d) / (2L)", "tan(\u03b1) = D / (2d)", "tan(\u03b1) = L / (D - d)"],
+    correctIndex: 1,
+    explanation: "La formule tan(\u03b1) = (D - d) / (2L) utilise la diff\u00e9rence entre le grand diam\u00e8tre D et le petit d, divis\u00e9e par 2 fois la longueur du c\u00f4ne.",
+  },
+]
 
 const composants = [
   "Mandrin : maintient fermement la piece a usiner",
@@ -179,9 +238,10 @@ export default function TournageConvPage() {
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
       />
 
-      <div className="mx-auto max-w-6xl px-4 lg:px-8">
+      <TableOfContents items={tocItems} />
+      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
         {/* Visual hero */}
-        <ContentSection title="Le Tournage en Images">
+        <ContentSection title="Le Tournage en Images" id="images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
@@ -222,11 +282,11 @@ export default function TournageConvPage() {
           className="mb-4"
         />
 
-        <ContentSection title="Composants d'un Tour Conventionnel">
+        <ContentSection title="Composants d'un Tour Conventionnel" id="composants">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>
 
-        <ContentSection title="Comment Utiliser un Tour">
+        <ContentSection title="Comment Utiliser un Tour" id="utilisation">
           <div className="grid gap-3">
             {etapesUtilisation.map((etape, i) => (
               <div
@@ -242,7 +302,7 @@ export default function TournageConvPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Techniques Courantes">
+        <ContentSection title="Techniques Courantes" id="techniques">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {techniquesCourantes.map((tech, i) => (
               <div
@@ -267,7 +327,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Types de montages - from PDF 1 */}
-        <ContentSection title="Types de Montages en Tournage">
+        <ContentSection title="Types de Montages en Tournage" id="montages">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {typesMontages.map((montage) => (
               <div key={montage.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -288,7 +348,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Mandrins et mors - from PDF 3 */}
-        <ContentSection title="Mandrins et Mors">
+        <ContentSection title="Mandrins et Mors" id="mandrins-et-mors">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <h3 className="mb-3 text-lg font-semibold text-foreground">Types de Mandrins</h3>
@@ -347,7 +407,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Outils de tournage detailles - from PDF 2 */}
-        <ContentSection title="Classification des Outils de Tournage">
+        <ContentSection title="Classification des Outils de Tournage" id="classification-outils">
           <div className="flex flex-col gap-6">
             {outilsUsinage.map((cat) => (
               <div key={cat.categorie}>
@@ -374,7 +434,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Materiaux des outils - from PDF 2 */}
-        <ContentSection title="Materiaux des Outils de Tournage">
+        <ContentSection title="Materiaux des Outils de Tournage" id="materiaux-outils">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {materiauxOutils.map((mat) => (
               <div key={mat.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -386,7 +446,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Ebauche et finition - from PDF 4 */}
-        <ContentSection title="Ebauche, Semi-finition et Finition">
+        <ContentSection title="Ebauche, Semi-finition et Finition" id="ebauche-finition">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <h3 className="mb-3 text-lg font-semibold text-foreground">Ebauche</h3>
@@ -418,7 +478,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Epaulement - from PDF 5 */}
-        <ContentSection title="Realiser un Epaulement">
+        <ContentSection title="Realiser un Epaulement" id="realiser-epaulement">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Epaulement exterieur</h3>
@@ -436,7 +496,7 @@ export default function TournageConvPage() {
         </ContentSection>
 
         {/* Diagnostic problemes - from PDF 3 */}
-        <ContentSection title="Diagnostic des Problemes d'Usinage">
+        <ContentSection title="Diagnostic des Problemes d'Usinage" id="diagnostic">
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
@@ -457,7 +517,7 @@ export default function TournageConvPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Usinage de Pieces Coniques">
+        <ContentSection title="Usinage de Pieces Coniques" id="cones">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard title="Methodes de tournage conique" items={methodesCone} />
             <div className="rounded-xl border border-border bg-card p-6">
@@ -489,7 +549,7 @@ export default function TournageConvPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Controle Qualite">
+        <ContentSection title="Controle Qualite" id="controle">
           <InfoCard
             title="Instruments de Mesure"
             items={[
@@ -501,7 +561,7 @@ export default function TournageConvPage() {
           />
         </ContentSection>
 
-        <ContentSection title="Adaptation aux Materiaux">
+        <ContentSection title="Adaptation aux Materiaux" id="materiaux">
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
@@ -527,6 +587,14 @@ export default function TournageConvPage() {
               </tbody>
             </table>
           </div>
+        </ContentSection>
+
+        {/* Quiz */}
+        <ContentSection title="Testez vos Connaissances" id="quiz-tournage">
+          <Quiz
+            title="Quiz - Tournage Conventionnel"
+            questions={quizTournage}
+          />
         </ContentSection>
       </div>
     </>

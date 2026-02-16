@@ -18,14 +18,14 @@ import {
 const categories = [
   {
     title: "Fraisage Conventionnel",
-    description: "Techniques classiques pour le fraisage traditionnel. Maitrisez les fraiseuses manuelles.",
+    description: "Techniques classiques pour le fraisage traditionnel. Ma\u00eetrisez les fraiseuses manuelles.",
     href: "/fraisage/conventionnel",
     icon: Wrench,
     color: "from-primary/20 to-primary/5",
   },
   {
     title: "Fraisage CNC",
-    description: "Technologies avancees d'usinage numerique. Programmation et parcours d'outils.",
+    description: "Technologies avanc\u00e9es d\u2019usinage num\u00e9rique. Programmation et parcours d\u2019outils.",
     href: "/fraisage/cnc",
     icon: Settings,
     color: "from-accent/20 to-accent/5",
@@ -39,21 +39,21 @@ const categories = [
   },
   {
     title: "Tournage CNC",
-    description: "Tournage numerique haute precision. Programmation ISO et FAO.",
+    description: "Tournage num\u00e9rique haute pr\u00e9cision. Programmation ISO et FAO.",
     href: "/tournage/cnc",
     icon: Settings,
     color: "from-accent/20 to-accent/5",
   },
   {
     title: "Rectification",
-    description: "Techniques de rectification plane et cylindrique. Finitions de haute precision.",
+    description: "Techniques de rectification plane et cylindrique. Finitions de haute pr\u00e9cision.",
     href: "/rectification",
     icon: Disc,
     color: "from-primary/20 to-primary/5",
   },
   {
-    title: "Securite en Atelier",
-    description: "Equipements de protection, regles de securite et premiers secours.",
+    title: "S\u00e9curit\u00e9 en Atelier",
+    description: "\u00c9quipements de protection, r\u00e8gles de s\u00e9curit\u00e9 et premiers secours.",
     href: "/securite",
     icon: ShieldAlert,
     color: "from-destructive/20 to-destructive/5",
@@ -62,7 +62,7 @@ const categories = [
 
 const stats = [
   { value: "7+", label: "Modules complets", icon: BookOpen },
-  { value: "50+", label: "Techniques detaillees", icon: Target },
+  { value: "50+", label: "Techniques d\u00e9taill\u00e9es", icon: Target },
   { value: "3", label: "Calculateurs", icon: Gauge },
 ]
 
@@ -75,17 +75,17 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(14,230,214,0.06),transparent_50%)]" />
         <div className="relative mx-auto max-w-5xl text-center">
           <span className="mb-6 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            Encyclopedie d{"'"}Atelier
+            Encyclop\u00e9die d{"\u2019"}Atelier
           </span>
           <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Manuel d{"'"}Atelier{" "}
+            Manuel d{"\u2019"}Atelier{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Usinage & Rectification
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-            L{"'"}encyclopedie complete qui transmet toutes les competences en
-            fraisage, tournage et rectification. Du debutant au professionnel.
+            L{"\u2019"}encyclop\u00e9die compl\u00e8te qui transmet toutes les comp\u00e9tences en
+            fraisage, tournage et rectification. Du d\u00e9butant au professionnel.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
@@ -107,61 +107,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Cinematic banner - mesure/precision */}
+      {/* Cinematic banner */}
       <BannerImage
         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure1-NTzOlWysMlPU9zAL42mKYDBHo9LSGJ.jpg"
-        alt="Plans techniques avec pieces usinees, roulements et pied a coulisse"
+        alt="Plans techniques avec pi\u00e8ces usin\u00e9es, roulements et pied \u00e0 coulisse"
         overlay="gradient"
         height="md"
         priority
       >
         <div className="mx-auto max-w-7xl">
           <span className="mb-2 inline-block rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent backdrop-blur-sm">
-            Precision au micron
+            Pr\u00e9cision au micron
           </span>
           <h2 className="max-w-xl text-balance text-2xl font-bold text-foreground md:text-4xl">
-            Ou chaque centieme de millimetre compte
+            O\u00f9 chaque centi\u00e8me de millim\u00e8tre compte
           </h2>
         </div>
       </BannerImage>
-
-      {/* Hero image - spiroconique */}
-      <section className="relative border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-0 lg:grid-cols-2">
-          <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-[420px]">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
-              alt="Usinage CNC d'un engrenage spiroconique de haute precision"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-background/80" />
-          </div>
-          <div className="flex flex-col gap-4 px-6 py-10 lg:px-12">
-            <span className="inline-block w-fit rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-              Focus technique
-            </span>
-            <h2 className="text-balance text-2xl font-bold text-foreground md:text-3xl">
-              Usinage d{"'"}engrenages spiroconiques
-            </h2>
-            <p className="text-pretty leading-relaxed text-muted-foreground">
-              La rectification spiroconique represente le sommet de la precision
-              en usinage. Decouvrez les techniques de taillage et de rectification
-              des engrenages coniques a denture spirale, essentiels dans
-              l{"'"}aeronautique, l{"'"}automobile et la robotique.
-            </p>
-            <Link
-              href="/rectification"
-              className="group mt-2 flex w-fit items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-all hover:brightness-110"
-            >
-              En savoir plus
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Stats */}
       <section className="border-b border-border bg-secondary/20 px-4 py-12 lg:px-8">
@@ -188,7 +150,7 @@ export default function HomePage() {
               Apprendre
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Explorez chaque domaine de l{"'"}usinage avec des guides detailles
+              Explorez chaque domaine de l{"\u2019"}usinage avec des guides d\u00e9taill\u00e9s
               et des ressources professionnelles.
             </p>
           </div>
@@ -213,7 +175,7 @@ export default function HomePage() {
                     {cat.description}
                   </p>
                   <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary">
-                    Decouvrir
+                    D\u00e9couvrir
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
@@ -223,150 +185,85 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Intriguing facts */}
+      {/* Facts + feature image */}
       <section className="border-t border-border px-4 py-16 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <FactStrip
-            facts={[
-              {
-                fact: "Un engrenage spiroconique de differentiel automobile tourne jusqu'a 4 000 tr/min et transmet plusieurs centaines de Nm de couple. La moindre imprecision de 0,01 mm genere un bruit perceptible a l'oreille.",
-                variant: "accent",
-              },
-              {
-                fact: "Les broches de tours CNC modernes atteignent 15 000 tr/min. A cette vitesse, un copeau d'acier est ejecte a plus de 200 km/h - d'ou l'importance capitale des protections.",
-                variant: "default",
-              },
-              {
-                fact: "La meule de rectification contient des millions de grains abrasifs. Chacun agit comme un micro-outil de coupe, permettant d'atteindre des tolerances de 0,001 mm - soit 50 fois plus fin qu'un cheveu humain.",
-                variant: "highlight",
-              },
-            ]}
-          />
+          <div className="mb-10 grid items-center gap-8 lg:grid-cols-5">
+            <div className="lg:col-span-2">
+              <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
+                  alt="Usinage CNC d\u2019un engrenage spiroconique de haute pr\u00e9cision"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
+                  Rectification spiroconique
+                </span>
+              </div>
+            </div>
+            <div className="lg:col-span-3">
+              <FactStrip
+                facts={[
+                  {
+                    fact: "Un engrenage spiroconique de diff\u00e9rentiel automobile tourne jusqu\u2019\u00e0 4 000 tr/min et transmet plusieurs centaines de Nm de couple. La moindre impr\u00e9cision de 0,01 mm g\u00e9n\u00e8re un bruit perceptible.",
+                    variant: "accent",
+                  },
+                  {
+                    fact: "Les broches de tours CNC modernes atteignent 15 000 tr/min. \u00c0 cette vitesse, un copeau d\u2019acier est \u00e9ject\u00e9 \u00e0 plus de 200 km/h \u2014 d\u2019o\u00f9 l\u2019importance capitale des protections.",
+                    variant: "default",
+                  },
+                  {
+                    fact: "La meule de rectification contient des millions de grains abrasifs. Chacun agit comme un micro-outil de coupe, permettant des tol\u00e9rances de 0,001 mm \u2014 soit 50 fois plus fin qu\u2019un cheveu humain.",
+                    variant: "highlight",
+                  },
+                ]}
+                className="grid-cols-1"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Cinematic banner - fraisage action */}
-      <BannerImage
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
-        alt="Fraisage CNC avec arrosage haute pression en pleine action"
-        overlay="gradient"
-        height="sm"
-      >
-        <div className="mx-auto max-w-7xl">
-          <p className="max-w-lg text-sm font-medium text-foreground/80">
-            Fraisage CNC haute pression - L{"'"}arrosage projete a 70 bars refroidit la zone de coupe instantanement
-          </p>
-        </div>
-      </BannerImage>
-
-      {/* Visual gallery - expanded */}
-      <section className="border-t border-border bg-secondary/10 px-4 py-20 lg:px-8">
+      {/* Compact gallery */}
+      <section className="border-t border-border bg-secondary/10 px-4 py-16 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
+          <div className="mb-10 text-center">
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-              L{"'"}Atelier en Images
+              L{"\u2019"}Atelier en Images
             </h2>
-            <p className="mt-3 text-muted-foreground">
-              Un apercu visuel des techniques et des machines couvertes dans ce manuel.
-            </p>
           </div>
-
-          {/* Bento grid layout */}
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-3">
-            {/* Large item - top left spanning 2 cols */}
-            <div className="group relative aspect-video overflow-hidden rounded-xl border border-border sm:col-span-2 lg:row-span-2 lg:aspect-auto lg:h-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg"
-                alt="Tournage conventionnel avec copeaux de metal en vol"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              <span className="absolute bottom-4 left-4 rounded-lg bg-background/70 px-3 py-1.5 text-sm font-semibold text-foreground backdrop-blur-sm">
-                Tournage conventionnel
-              </span>
-            </div>
-
-            {/* Smaller items */}
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg",
+                label: "Tournage conventionnel",
+              },
+              {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg",
-                alt: "Fraisage conventionnel avec lubrification sur engrenage",
                 label: "Fraisage conventionnel",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg",
-                alt: "Plaquettes carbure de differentes geometries et revetements",
-                label: "Plaquettes de coupe",
-              },
-              {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp",
-                alt: "Fraisage CNC avec arrosage haute pression",
                 label: "Fraisage CNC",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/materiaux.jpg-BlXwqB7QRLjr3067LUcZEpBw7af9wr.webp",
-                alt: "Collection de metaux et materiaux d'usinage",
-                label: "Materiaux",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png",
+                label: "M\u00e9trologie",
               },
             ].map((img, i) => (
               <div
                 key={i}
-                className="group relative aspect-video overflow-hidden rounded-xl border border-border"
+                className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border"
               >
                 <Image
                   src={img.src}
-                  alt={img.alt}
+                  alt={img.label}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
-                  {img.label}
-                </span>
-              </div>
-            ))}
-
-            {/* Wide item - bottom spanning 2 cols */}
-            <div className="group relative aspect-video overflow-hidden rounded-xl border border-border sm:col-span-2 lg:aspect-[21/9]">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png"
-                alt="Pied a coulisse digital mesurant un roulement sur plans techniques"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 60vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
-                Metrologie de precision
-              </span>
-            </div>
-
-            {/* Two more items */}
-            {[
-              {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg",
-                alt: "Usinage CNC d'un engrenage spiroconique",
-                label: "Rectification spiroconique",
-              },
-              {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg",
-                alt: "Forets et fraises carbure monobloc de differentes tailles",
-                label: "Forets et fraises",
-              },
-            ].map((img, i) => (
-              <div
-                key={`btm-${i}`}
-                className="group relative aspect-video overflow-hidden rounded-xl border border-border"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 <span className="absolute bottom-3 left-3 rounded-lg bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground backdrop-blur-sm">
@@ -378,24 +275,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PDF resources teaser */}
-      <section className="border-t border-border bg-secondary/10 px-4 py-20 lg:px-8">
+      {/* Explore guides CTA */}
+      <section className="border-t border-border px-4 py-16 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <BookOpen className="mx-auto mb-4 h-10 w-10 text-primary" />
           <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-            Ressources PDF incluses
+            Commencez votre apprentissage
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            Plus de 30 fiches techniques PDF couvrant chaque operation d{"'"}usinage
-            en detail, du montage en l{"'"}air au filetage avance.
+            Chaque module contient des guides illustr\u00e9s, des quiz interactifs et
+            des calculateurs pour ma\u00eetriser les techniques d{"\u2019"}usinage.
           </p>
-          <Link
-            href="/demarrage"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-secondary px-6 py-3 text-sm font-semibold text-foreground transition-all hover:bg-secondary/80"
-          >
-            <Rocket className="h-4 w-4" />
-            Explorer les guides
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/demarrage"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+            >
+              <Rocket className="h-4 w-4" />
+              Guide de d\u00e9marrage
+            </Link>
+            <Link
+              href="/calculateur"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-all hover:border-primary/30 hover:bg-secondary"
+            >
+              <Calculator className="h-4 w-4" />
+              Calculateur de vitesses
+            </Link>
+          </div>
         </div>
       </section>
     </>

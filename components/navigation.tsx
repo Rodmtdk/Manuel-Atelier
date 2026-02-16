@@ -15,10 +15,11 @@ import {
   X,
   Disc,
 } from "lucide-react"
+import { SearchDialog } from "@/components/search-dialog"
 
 const navItems = [
   { label: "Accueil", href: "/", icon: Home },
-  { label: "Demarrage", href: "/demarrage", icon: Rocket },
+  { label: "D\u00e9marrage", href: "/demarrage", icon: Rocket },
   {
     label: "Fraisage",
     icon: Wrench,
@@ -37,7 +38,7 @@ const navItems = [
   },
   { label: "Rectification", href: "/rectification", icon: Disc },
   { label: "Calculateur", href: "/calculateur", icon: Calculator },
-  { label: "Securite", href: "/securite", icon: ShieldAlert },
+  { label: "S\u00e9curit\u00e9", href: "/securite", icon: ShieldAlert },
 ]
 
 export function Navigation() {
@@ -119,6 +120,10 @@ export function Navigation() {
             )
           )}
         </nav>
+
+        <div className="flex items-center gap-2">
+          <SearchDialog />
+        </div>
 
         {/* Mobile menu button */}
         <button
