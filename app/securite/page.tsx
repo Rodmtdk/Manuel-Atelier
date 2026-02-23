@@ -1,37 +1,43 @@
+import type { Metadata } from "next"
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
-import { VideoEmbed } from "@/components/video-embed"
 import { FactCard } from "@/components/fact-card"
-import { ShieldAlert, AlertTriangle, Heart, Wrench } from "lucide-react"
+import { ShieldAlert, AlertTriangle, Heart } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Sécurité en Atelier - Manuel d'Atelier",
+  description:
+    "Règles essentielles de sécurité en atelier d'usinage : EPI, précautions machines, premiers secours et maintenance préventive.",
+}
 
 const epiItems = [
   "Casque de protection : contre les chutes d'objets",
-  "Lunettes de securite : protection contre projections de copeaux",
-  "Gants adaptes : protection des mains (hors fonctionnement machine)",
+  "Lunettes de sécurité : protection contre projections de copeaux",
+  "Gants adaptés : protection des mains (hors fonctionnement machine)",
   "Bouchons d'oreilles ou casque antibruit : contre le bruit excessif",
-  "Chaussures de securite : protection contre chutes d'objets lourds",
-  "Vetements ajustes : eviter les accrochages dans les machines",
+  "Chaussures de sécurité : protection contre chutes d'objets lourds",
+  "Vêtements ajustés : éviter les accrochages dans les machines",
 ]
 
 const reglesGenerales = [
   "Lire les notices et consignes d'utilisation avant usage",
-  "Verifier les dispositifs de securite (carters, capots) fonctionnels",
-  "Ne jamais porter de vetements amples ou bijoux pres des machines",
-  "Maintenir l'atelier propre et degage",
-  "Debrancher les machines avant reglage ou entretien",
-  "Utiliser les outils adaptes et verifier leur etat",
-  "Signaler immediatement toute anomalie ou dysfonctionnement",
+  "Vérifier les dispositifs de sécurité (carters, capots) fonctionnels",
+  "Ne jamais porter de vêtements amples ou bijoux près des machines",
+  "Maintenir l'atelier propre et dégagé",
+  "Débrancher les machines avant réglage ou entretien",
+  "Utiliser les outils adaptés et vérifier leur état",
+  "Signaler immédiatement toute anomalie ou dysfonctionnement",
 ]
 
 export default function SecuritePage() {
   return (
     <>
       <PageHeader
-        badge="Securite"
-        title="Securite en Atelier"
-        subtitle="Regles essentielles pour prevenir les accidents, proteger les operateurs et garantir un environnement de travail sain."
+        badge="Sécurité"
+        title="Sécurité en Atelier"
+        subtitle="Règles essentielles pour prévenir les accidents, protéger les opérateurs et garantir un environnement de travail sain."
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg"
       />
 
@@ -42,38 +48,31 @@ export default function SecuritePage() {
           <div>
             <h3 className="font-semibold text-foreground">Attention</h3>
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              La securite en atelier est essentielle. En respectant les consignes,
-              on reduit considerablement les risques lies a l{"'"}utilisation des
-              machines et des outils. Ne negligez jamais les EPI.
+              La sécurité en atelier est essentielle. En respectant les consignes,
+              on réduit considérablement les risques liés à l{"'"}utilisation des
+              machines et des outils. Ne négligez jamais les EPI.
             </p>
           </div>
         </div>
 
         <FactCard
-          fact="En France, l'industrie de la metallurgie enregistre environ 40 000 accidents du travail par an (CTN A, 2024). La majorite d'entre eux auraient pu etre evites par le port correct des EPI et le respect des consignes de securite."
+          fact="En France, l'industrie de la métallurgie enregistre environ 40 000 accidents du travail par an (CTN A, 2024). La majorité d'entre eux auraient pu être évités par le port correct des EPI et le respect des consignes de sécurité."
           variant="highlight"
           className="mb-4"
         />
 
         {/* Visual - Safety poster */}
-        <ContentSection title="Equipements de Protection - Vue d'ensemble">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg"
-              alt="Panneau Travail et Securite montrant tous les equipements de protection individuelle obligatoires en atelier"
-              caption="EPI obligatoires : lunettes, bottes, gants, casque, protections auditives, masque respiratoire"
-              priority
-              aspectRatio="square"
-            />
-            <VideoEmbed
-              videoId="AYVbCo6VjK0"
-              title="Securite en atelier d'usinage - Les regles essentielles"
-              caption="Les regles de securite en atelier d'usinage"
-            />
-          </div>
+        <ContentSection title="Équipements de Protection — Vue d'ensemble">
+          <ImageShowcase
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg"
+            alt="Panneau Travail et Sécurité montrant tous les équipements de protection individuelle obligatoires en atelier"
+            caption="EPI obligatoires : lunettes, bottes, gants, casque, protections auditives, masque respiratoire"
+            priority
+            aspectRatio="wide"
+          />
         </ContentSection>
 
-        <ContentSection title="Equipements de Protection Individuelle (EPI)">
+        <ContentSection title="Équipements de Protection Individuelle (EPI)">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {epiItems.map((item, i) => {
               const [title, desc] = item.split(" : ")
@@ -93,7 +92,7 @@ export default function SecuritePage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Regles Generales de Securite">
+        <ContentSection title="Règles Générales de Sécurité">
           <div className="grid gap-3">
             {reglesGenerales.map((regle, i) => (
               <div
@@ -109,32 +108,40 @@ export default function SecuritePage() {
           </div>
         </ContentSection>
 
-        {/* Additional safety visual */}
-        <ContentSection title="Les EPI en Detail">
-          <ImageShowcase
-            src="/images/securite-atelier.jpg"
-            alt="Equipements de protection individuelle disposes sur un etabli : lunettes, casque, gants, protections auditives et chaussures de securite"
-            caption="EPI indispensables : chaque equipement protege contre un risque specifique en atelier d'usinage"
-            aspectRatio="wide"
-          />
-        </ContentSection>
-
-        <ContentSection title="Precautions par Machine">
+        <ContentSection title="Précautions par Machine">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard
               title="Fraiseuses"
               items={[
-                "Fixer solidement les pieces sur la table",
-                "Verifier que les fraises sont correctement montees",
-                "Eviter de travailler trop pres des fraises en rotation",
+                "Fixer solidement les pièces sur la table",
+                "Vérifier que les fraises sont correctement montées",
+                "Éviter de travailler trop près des fraises en rotation",
               ]}
             />
             <InfoCard
               title="Tours"
               items={[
-                "Contre-pointe ou lunettes pour longues pieces",
-                "Ne jamais mesurer une piece en rotation",
-                "Verifier que le mandrin est bien serre",
+                "Contre-pointe ou lunettes pour longues pièces",
+                "Ne jamais mesurer une pièce en rotation",
+                "Vérifier que le mandrin est bien serré",
+              ]}
+            />
+            <InfoCard
+              title="Rectifieuses"
+              items={[
+                "Vérifier la vitesse maximale marquée sur la meule avant montage",
+                "Ne jamais dépasser la vitesse périphérique indiquée",
+                "Le protecteur de meule doit couvrir au minimum 180 degrés",
+                "Laisser tourner la meule à vide pendant 1 minute après mise en route",
+              ]}
+            />
+            <InfoCard
+              title="Perceuses"
+              items={[
+                "Toujours brider la pièce ou utiliser un étau de perceuse",
+                "Ne jamais tenir la pièce à la main pendant le perçage",
+                "Retirer la clé du mandrin avant la mise en marche",
+                "Utiliser des forets affûtés pour éviter le grippage",
               ]}
             />
           </div>
@@ -148,10 +155,10 @@ export default function SecuritePage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                "Eteindre immediatement la machine",
-                "Alerter les secours et decrire la situation",
-                "Appliquer les premiers soins si necessaire",
-                "Evacuer les zones dangereuses si risque accru",
+                "Éteindre immédiatement la machine",
+                "Alerter les secours et décrire la situation",
+                "Appliquer les premiers soins si nécessaire",
+                "Évacuer les zones dangereuses si risque accru",
               ].map((geste, i) => (
                 <div
                   key={i}
@@ -165,14 +172,14 @@ export default function SecuritePage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Maintenance Preventive et Nettoyage">
+        <ContentSection title="Maintenance Préventive et Nettoyage">
           <InfoCard
-            title="Entretien regulier"
+            title="Entretien régulier"
             items={[
-              "Nettoyer les machines apres chaque utilisation",
-              "Verifier l'etat des outils de coupe regulierement",
-              "Lubrifier les pieces mobiles pour eviter les frottements",
-              "Inspecter les cables electriques et interrupteurs de securite",
+              "Nettoyer les machines après chaque utilisation",
+              "Vérifier l'état des outils de coupe régulièrement",
+              "Lubrifier les pièces mobiles pour éviter les frottements",
+              "Inspecter les câbles électriques et interrupteurs de sécurité",
             ]}
           />
         </ContentSection>

@@ -19,7 +19,7 @@ import { SearchDialog } from "@/components/search-dialog"
 
 const navItems = [
   { label: "Accueil", href: "/", icon: Home },
-  { label: "D\u00e9marrage", href: "/demarrage", icon: Rocket },
+  { label: "Démarrage", href: "/demarrage", icon: Rocket },
   {
     label: "Fraisage",
     icon: Wrench,
@@ -38,7 +38,7 @@ const navItems = [
   },
   { label: "Rectification", href: "/rectification", icon: Disc },
   { label: "Calculateur", href: "/calculateur", icon: Calculator },
-  { label: "S\u00e9curit\u00e9", href: "/securite", icon: ShieldAlert },
+  { label: "Sécurité", href: "/securite", icon: ShieldAlert },
 ]
 
 export function Navigation() {
@@ -123,16 +123,15 @@ export function Navigation() {
 
         <div className="flex items-center gap-2">
           <SearchDialog />
+          {/* Mobile menu button */}
+          <button
+            className="rounded-lg p-2 text-muted-foreground hover:bg-secondary lg:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-
-        {/* Mobile menu button */}
-        <button
-          className="rounded-lg p-2 text-muted-foreground hover:bg-secondary lg:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
       </div>
 
       {/* Mobile nav */}

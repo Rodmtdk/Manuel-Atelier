@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Search, ArrowRight, X, Command } from "lucide-react"
-import { cn } from "@/lib/utils"
 
 interface SearchEntry {
   title: string
@@ -16,37 +15,37 @@ interface SearchEntry {
 const searchIndex: SearchEntry[] = [
   // Accueil
   { title: "Accueil", description: "Page d'accueil du Manuel d'Atelier", href: "/", category: "Navigation", keywords: ["accueil", "home", "manuel", "atelier"] },
-  { title: "Guide de d\u00e9marrage", description: "Les bases de l'usinage : outils, mat\u00e9riaux, m\u00e9trologie", href: "/demarrage", category: "Navigation", keywords: ["d\u00e9marrage", "bases", "d\u00e9butant", "introduction"] },
+  { title: "Guide de démarrage", description: "Les bases de l'usinage : outils, matériaux, métrologie", href: "/demarrage", category: "Navigation", keywords: ["démarrage", "bases", "débutant", "introduction"] },
 
   // Fraisage
-  { title: "Fraisage conventionnel", description: "\u00c9taux, t\u00eates de fraiseuse, outils, opposition/concordance, \u00e9bauche/finition", href: "/fraisage/conventionnel", category: "Fraisage", keywords: ["fraisage", "conventionnel", "\u00e9tau", "t\u00eate", "opposition", "concordance", "\u00e9bauche", "finition", "d\u00e9gauchissage"] },
-  { title: "Fraisage CNC", description: "Programmation, codes G/M, 5 axes, usinage num\u00e9rique", href: "/fraisage/cnc", category: "Fraisage", keywords: ["fraisage", "cnc", "num\u00e9rique", "code g", "5 axes", "programmation", "fao"] },
-  { title: "\u00c9taux de fraisage", description: "Types d'\u00e9taux, d\u00e9gauchissage au comparateur, bridage", href: "/fraisage/conventionnel#etaux-de-fraisage", category: "Fraisage", keywords: ["\u00e9tau", "d\u00e9gauchir", "comparateur", "bridage", "serrage"] },
+  { title: "Fraisage conventionnel", description: "Étaux, têtes de fraiseuse, outils, opposition/concordance, ébauche/finition", href: "/fraisage/conventionnel", category: "Fraisage", keywords: ["fraisage", "conventionnel", "étau", "tête", "opposition", "concordance", "ébauche", "finition", "dégauchissage"] },
+  { title: "Fraisage CNC", description: "Programmation, codes G/M, 5 axes, usinage numérique", href: "/fraisage/cnc", category: "Fraisage", keywords: ["fraisage", "cnc", "numérique", "code g", "5 axes", "programmation", "fao"] },
+  { title: "Étaux de fraisage", description: "Types d'étaux, dégauchissage au comparateur, bridage", href: "/fraisage/conventionnel#etaux-de-fraisage", category: "Fraisage", keywords: ["étau", "dégauchir", "comparateur", "bridage", "serrage"] },
   { title: "Opposition et concordance", description: "Fraisage en opposition vs en avalant (concordance)", href: "/fraisage/conventionnel#techniques-de-fraisage", category: "Fraisage", keywords: ["opposition", "concordance", "avalant", "sens", "coupe"] },
   { title: "Types de fraises", description: "1 taille, 2 tailles, 3 tailles, surfacer, forme", href: "/fraisage/conventionnel#types-de-fraises", category: "Fraisage", keywords: ["fraise", "1 taille", "2 tailles", "3 tailles", "surfacer", "forme", "rainure"] },
 
   // Tournage
-  { title: "Tournage conventionnel", description: "Montages, mandrins, mors, outils, \u00e9bauche/finition, \u00e9paulement", href: "/tournage/conventionnel", category: "Tournage", keywords: ["tournage", "conventionnel", "mandrin", "mors", "\u00e9paulement", "c\u00f4ne", "filetage"] },
-  { title: "Tournage CNC", description: "Tours num\u00e9riques, tourelle, programmation ISO", href: "/tournage/cnc", category: "Tournage", keywords: ["tournage", "cnc", "num\u00e9rique", "tourelle", "code g", "programmation"] },
+  { title: "Tournage conventionnel", description: "Montages, mandrins, mors, outils, ébauche/finition, épaulement", href: "/tournage/conventionnel", category: "Tournage", keywords: ["tournage", "conventionnel", "mandrin", "mors", "épaulement", "cône", "filetage"] },
+  { title: "Tournage CNC", description: "Tours numériques, tourelle, programmation ISO", href: "/tournage/cnc", category: "Tournage", keywords: ["tournage", "cnc", "numérique", "tourelle", "code g", "programmation"] },
   { title: "Types de montages", description: "En l'air, mixte, entre pointes, en pince, lunette", href: "/tournage/conventionnel#types-de-montages", category: "Tournage", keywords: ["montage", "en l'air", "mixte", "entre pointes", "pince", "lunette", "contre-pointe"] },
   { title: "Mandrins et mors", description: "2/3/4 mors, mors durs, mors doux, montage", href: "/tournage/conventionnel#mandrins-et-mors", category: "Tournage", keywords: ["mandrin", "mors", "durs", "doux", "serrage", "3 mors", "4 mors"] },
-  { title: "Outils de tournage", description: "Charioter, dresser, al\u00e9ser, fileter, tron\u00e7onner", href: "/tournage/conventionnel#classification-outils", category: "Tournage", keywords: ["outil", "charioter", "dresser", "al\u00e9ser", "fileter", "tron\u00e7onner", "saigner", "moleter"] },
-  { title: "\u00c9paulement en tournage", description: "R\u00e9alisation d'un \u00e9paulement ext\u00e9rieur et int\u00e9rieur", href: "/tournage/conventionnel#realiser-epaulement", category: "Tournage", keywords: ["\u00e9paulement", "chariotage", "dressage", "al\u00e9sage"] },
+  { title: "Outils de tournage", description: "Charioter, dresser, aléser, fileter, tronçonner", href: "/tournage/conventionnel#classification-outils", category: "Tournage", keywords: ["outil", "charioter", "dresser", "aléser", "fileter", "tronçonner", "saigner", "moleter"] },
+  { title: "Épaulement en tournage", description: "Réalisation d'un épaulement extérieur et intérieur", href: "/tournage/conventionnel#realiser-epaulement", category: "Tournage", keywords: ["épaulement", "chariotage", "dressage", "alésage"] },
 
   // Rectification
-  { title: "Rectification", description: "Rectification plane et cylindrique, meules, dressage", href: "/rectification", category: "Rectification", keywords: ["rectification", "meule", "cylindrique", "plane", "dressage", "abrasif"] },
+  { title: "Rectification", description: "Rectification plane, cylindrique et spiroconique, meules, dressage", href: "/rectification", category: "Rectification", keywords: ["rectification", "meule", "cylindrique", "plane", "dressage", "abrasif", "spiroconique"] },
 
   // Calculateur
-  { title: "Calculateur de vitesses", description: "Calculer Vc, n, Vf, Ra, d\u00e9bit de copeaux", href: "/calculateur", category: "Outils", keywords: ["calculateur", "vitesse", "coupe", "avance", "rpm", "vc", "vf", "ra"] },
+  { title: "Calculateur de vitesses", description: "Calculer Vc, n, Vf, Ra, débit de copeaux", href: "/calculateur", category: "Outils", keywords: ["calculateur", "vitesse", "coupe", "avance", "rpm", "vc", "vf", "ra"] },
 
-  // S\u00e9curit\u00e9
-  { title: "S\u00e9curit\u00e9 en atelier", description: "EPI, pr\u00e9cautions machines, risques, premiers secours", href: "/securite", category: "S\u00e9curit\u00e9", keywords: ["s\u00e9curit\u00e9", "epi", "protection", "lunettes", "gants", "risque", "accident"] },
+  // Sécurité
+  { title: "Sécurité en atelier", description: "EPI, précautions machines, risques, premiers secours", href: "/securite", category: "Sécurité", keywords: ["sécurité", "epi", "protection", "lunettes", "gants", "risque", "accident"] },
 
-  // Technique sp\u00e9cifiques
-  { title: "Vitesse de coupe (Vc)", description: "Formule Vc = \u03c0 \u00d7 D \u00d7 N / 1000", href: "/calculateur", category: "Formules", keywords: ["vitesse de coupe", "vc", "formule", "pi", "diam\u00e8tre"] },
-  { title: "Avance par tour (f)", description: "Param\u00e8tre cl\u00e9 pour la qualit\u00e9 de surface (Ra)", href: "/calculateur", category: "Formules", keywords: ["avance", "tour", "f", "ra", "rugosit\u00e9", "surface"] },
-  { title: "Mat\u00e9riaux d'outils", description: "HSS, carbure, c\u00e9ramique, PCD, CBN, rev\u00eatements", href: "/demarrage", category: "Mat\u00e9riaux", keywords: ["hss", "carbure", "c\u00e9ramique", "pcd", "cbn", "tialn", "tin", "rev\u00eatement", "mat\u00e9riau"] },
-  { title: "Lubrification", description: "R\u00f4le du lubrifiant : refroidir, lubrifier, \u00e9vacuer les copeaux", href: "/fraisage/conventionnel#ebauche-finition", category: "Technique", keywords: ["lubrifiant", "arrosage", "huile", "coupe", "refroidissement"] },
+  // Techniques spécifiques
+  { title: "Vitesse de coupe (Vc)", description: "Formule Vc = π × D × N / 1000", href: "/calculateur", category: "Formules", keywords: ["vitesse de coupe", "vc", "formule", "pi", "diamètre"] },
+  { title: "Avance par tour (f)", description: "Paramètre clé pour la qualité de surface (Ra)", href: "/calculateur", category: "Formules", keywords: ["avance", "tour", "f", "ra", "rugosité", "surface"] },
+  { title: "Matériaux d'outils", description: "HSS, carbure, céramique, PCD, CBN, revêtements", href: "/demarrage", category: "Matériaux", keywords: ["hss", "carbure", "céramique", "pcd", "cbn", "tialn", "tin", "revêtement", "matériau"] },
+  { title: "Lubrification", description: "Rôle du lubrifiant : refroidir, lubrifier, évacuer les copeaux", href: "/fraisage/conventionnel#ebauche-finition", category: "Technique", keywords: ["lubrifiant", "arrosage", "huile", "coupe", "refroidissement"] },
 ]
 
 function normalize(str: string): string {
@@ -157,11 +156,11 @@ export function SearchDialog() {
             <div className="max-h-80 overflow-y-auto p-2">
               {query.length < 2 ? (
                 <div className="px-3 py-8 text-center text-sm text-muted-foreground">
-                  Tapez au moins 2 caract{"\u00e8"}res pour rechercher
+                  Tapez au moins 2 caractères pour rechercher
                 </div>
               ) : results.length === 0 ? (
                 <div className="px-3 py-8 text-center text-sm text-muted-foreground">
-                  Aucun r{"\u00e9"}sultat pour {"\u00ab"} {query} {"\u00bb"}
+                  {"Aucun résultat pour « "}{query}{" »"}
                 </div>
               ) : (
                 <ul role="listbox">
