@@ -1,1 +1,1 @@
-# Manuel Atelier — version Quentin
+# Manuel Atelier — version 2026
