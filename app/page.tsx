@@ -199,8 +199,8 @@ export default function HomePage() {
             <div className="lg:col-span-2">
               <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
-                  alt="Usinage CNC d'un engrenage spiroconique de haute précision"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rectification%20spiroconique-I2klxPyOfPOflNSdRyK7Ua6SOBhhn1.jpg"
+                  alt="Rectification CNC d'un engrenage spiroconique de haute précision"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 40vw"
