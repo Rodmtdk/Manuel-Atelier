@@ -14,9 +14,9 @@ import {
   BookOpen,
   Target,
   Gauge,
-  Layers,
   Flame,
   Thermometer,
+  Droplets,
 } from "lucide-react"
 
 export const metadata: Metadata = {
