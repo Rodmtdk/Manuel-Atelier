@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+import { SidebarNav } from "@/components/sidebar-nav"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -17,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Manuel d'Atelier - Usinage & Rectification",
   description:
-    "Encyclop\u00e9die compl\u00e8te d'usinage et rectification. Fraisage, tournage, rectification, calculateur de vitesses de coupe et guides professionnels.",
+    "Encyclopédie complète d'usinage et rectification. Fraisage, tournage, rectification, calculateur de vitesses de coupe et guides professionnels.",
 }
 
 export const viewport: Viewport = {
@@ -34,9 +33,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans`}>
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <SidebarNav />
+        <main className="min-h-screen pb-20 lg:ml-[72px] lg:pb-0 xl:ml-[244px]">
+          {children}
+        </main>
       </body>
     </html>
   )
