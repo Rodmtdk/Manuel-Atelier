@@ -35,8 +35,34 @@ const searchIndex: SearchEntry[] = [
   // Rectification
   { title: "Rectification", description: "Rectification plane, cylindrique et spiroconique, meules, dressage", href: "/rectification", category: "Rectification", keywords: ["rectification", "meule", "cylindrique", "plane", "dressage", "abrasif", "spiroconique"] },
 
+  // CAO/FAO
+  { title: "CAO/FAO", description: "Conception et Fabrication Assistées par Ordinateur, logiciels, parcours d'outils", href: "/cao-fao", category: "CAO/FAO", keywords: ["cao", "fao", "cam", "cad", "conception", "fabrication", "assistée", "ordinateur", "logiciel", "parcours", "3d"] },
+  { title: "Logiciels CAO", description: "SolidWorks, Fusion 360, FreeCAD, AutoCAD pour la conception 3D", href: "/cao-fao#logiciels-cao", category: "CAO/FAO", keywords: ["solidworks", "fusion", "freecad", "autocad", "logiciel", "cao", "3d", "modélisation"] },
+  { title: "Logiciels FAO", description: "Mastercam, Fusion 360, HSMWorks pour la génération de parcours d'outils", href: "/cao-fao#logiciels-fao", category: "CAO/FAO", keywords: ["mastercam", "fusion", "hsmworks", "fao", "parcours", "outil", "code g", "post-processeur"] },
+  { title: "Formats de fichiers", description: "STEP, IGES, STL, DXF et autres formats d'échange CAO", href: "/cao-fao#formats", category: "CAO/FAO", keywords: ["step", "iges", "stl", "dxf", "dwg", "format", "fichier", "échange", "export", "import"] },
+
   // Calculateur
   { title: "Calculateur de vitesses", description: "Calculer Vc, n, Vf, Ra, débit de copeaux", href: "/calculateur", category: "Outils", keywords: ["calculateur", "vitesse", "coupe", "avance", "rpm", "vc", "vf", "ra"] },
+
+  // Résistance des Matériaux
+  { title: "Résistance des Matériaux", description: "RDM : contraintes, déformations, flexion, torsion, cisaillement", href: "/rdm", category: "RDM", keywords: ["rdm", "résistance", "matériaux", "contrainte", "déformation", "flexion", "torsion"] },
+  { title: "Traction et Compression", description: "Contraintes normales, allongement, loi de Hooke", href: "/rdm#traction-compression", category: "RDM", keywords: ["traction", "compression", "hooke", "allongement", "module young", "contrainte normale"] },
+  { title: "Flexion", description: "Moment fléchissant, flèche, contraintes de flexion", href: "/rdm#flexion", category: "RDM", keywords: ["flexion", "moment", "fléchissant", "flèche", "poutre", "appui"] },
+  { title: "Torsion", description: "Moment de torsion, contraintes tangentielles, angle de rotation", href: "/rdm#torsion", category: "RDM", keywords: ["torsion", "moment", "tangentielle", "arbre", "cisaillement"] },
+  { title: "Cisaillement", description: "Contraintes de cisaillement, assemblages rivetés et boulonnés", href: "/rdm#cisaillement", category: "RDM", keywords: ["cisaillement", "rivet", "boulon", "assemblage", "contrainte tangentielle"] },
+
+  // Soudure
+  { title: "Soudure", description: "Techniques de soudage MIG, MAG, TIG, MMA, positions de soudure", href: "/soudure", category: "Soudure", keywords: ["soudure", "soudage", "mig", "mag", "tig", "mma", "arc", "electrode"] },
+  { title: "Soudage MIG/MAG", description: "Soudage semi-automatique sous gaz protecteur", href: "/soudure#mig-mag", category: "Soudure", keywords: ["mig", "mag", "semi-automatique", "gaz", "fil", "gmaw"] },
+  { title: "Soudage TIG", description: "Soudage à l'arc avec électrode tungstène et gaz inerte", href: "/soudure#tig", category: "Soudure", keywords: ["tig", "tungstène", "argon", "gtaw", "inox", "aluminium"] },
+  { title: "Soudage MMA", description: "Soudage à l'arc avec électrode enrobée", href: "/soudure#mma", category: "Soudure", keywords: ["mma", "smaw", "électrode", "enrobée", "baguette", "arc"] },
+  { title: "Positions de soudure", description: "PA, PB, PC, PD, PE, PF, PG selon ISO 6947", href: "/soudure#positions", category: "Soudure", keywords: ["position", "pa", "pb", "pc", "pd", "pe", "pf", "pg", "iso", "6947"] },
+
+  // Matériaux et Traitements Thermiques
+  { title: "Matériaux et Traitements", description: "Aciers, aluminiums, traitements thermiques, désignations", href: "/materiaux", category: "Matériaux", keywords: ["matériaux", "acier", "aluminium", "traitement", "thermique", "trempe", "revenu"] },
+  { title: "Désignation des aciers", description: "Normes EN, AISI, nuances courantes S235, C45, 42CrMo4", href: "/materiaux#designation-aciers", category: "Matériaux", keywords: ["acier", "désignation", "en", "aisi", "s235", "c45", "42crmo4", "norme"] },
+  { title: "Traitements thermiques", description: "Trempe, revenu, recuit, cémentation, nitruration", href: "/materiaux#traitements-thermiques", category: "Matériaux", keywords: ["trempe", "revenu", "recuit", "cémentation", "nitruration", "traitement", "thermique", "dureté"] },
+  { title: "Aluminium et alliages", description: "Séries 1000 à 7000, propriétés et applications", href: "/materiaux#aluminium", category: "Matériaux", keywords: ["aluminium", "alliage", "2024", "6061", "7075", "série", "léger"] },
 
   // Sécurité
   { title: "Sécurité en atelier", description: "EPI, précautions machines, risques, premiers secours", href: "/securite", category: "Sécurité", keywords: ["sécurité", "epi", "protection", "lunettes", "gants", "risque", "accident"] },

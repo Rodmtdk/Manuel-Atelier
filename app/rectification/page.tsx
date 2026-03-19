@@ -317,8 +317,8 @@ export default function RectificationPage() {
           {/* Hero image spiroconique */}
           <div className="mb-8">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
-              alt="Usinage CNC d'un engrenage spiroconique — meule de précision sur denture spirale"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rectification%20spiroconique-I2klxPyOfPOflNSdRyK7Ua6SOBhhn1.jpg"
+              alt="Rectification CNC d'un engrenage spiroconique — meule de précision sur denture spirale"
               caption="Rectification d'un engrenage spiroconique sur machine CNC 5 axes — denture spirale de haute précision"
               aspectRatio="wide"
             />

@@ -14,6 +14,9 @@ import {
   BookOpen,
   Target,
   Gauge,
+  Layers,
+  Flame,
+  Thermometer,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -56,6 +59,34 @@ const categories = [
     description: "Techniques de rectification plane et cylindrique. Finitions de haute précision.",
     href: "/rectification",
     icon: Disc,
+    color: "from-primary/20 to-primary/5",
+  },
+  {
+    title: "CAO/FAO",
+    description: "Conception et Fabrication Assistées par Ordinateur. Du dessin 3D à l'usinage.",
+    href: "/cao-fao",
+    icon: Layers,
+    color: "from-accent/20 to-accent/5",
+  },
+  {
+    title: "Résistance des Matériaux",
+    description: "RDM : contraintes, déformations, flexion, torsion. Du simple au complexe.",
+    href: "/rdm",
+    icon: Gauge,
+    color: "from-primary/20 to-primary/5",
+  },
+  {
+    title: "Soudure",
+    description: "Techniques de soudage : MIG, MAG, TIG, MMA. Positions, défauts et contrôles.",
+    href: "/soudure",
+    icon: Flame,
+    color: "from-accent/20 to-accent/5",
+  },
+  {
+    title: "Matériaux & Traitements",
+    description: "Aciers, alliages, traitements thermiques : trempe, revenu, cémentation.",
+    href: "/materiaux",
+    icon: Thermometer,
     color: "from-primary/20 to-primary/5",
   },
   {
@@ -199,8 +230,8 @@ export default function HomePage() {
             <div className="lg:col-span-2">
               <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/welcome-image-7F4dkLjnT8Gu3tlBSjjzi3GZiXPvKh.jpg"
-                  alt="Usinage CNC d'un engrenage spiroconique de haute précision"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rectification%20spiroconique-I2klxPyOfPOflNSdRyK7Ua6SOBhhn1.jpg"
+                  alt="Rectification CNC d'un engrenage spiroconique de haute précision"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 40vw"
