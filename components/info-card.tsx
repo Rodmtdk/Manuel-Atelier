@@ -16,9 +16,8 @@ export function InfoCard({
   variant = "default",
   className,
 }: InfoCardProps) {
-  // Ensure items is always an array
-  const safeItems = Array.isArray(items) ? items : []
-  const hasItems = safeItems.length > 0
+  // Always convert items to a safe array to prevent .map() errors on undefined
+  const safeItems: string[] = items && Array.isArray(items) ? items : []
 
   return (
     <div
@@ -31,7 +30,7 @@ export function InfoCard({
       )}
     >
       <h3 className="mb-4 text-lg font-semibold text-foreground">{title}</h3>
-      {hasItems ? (
+      {safeItems.length > 0 ? (
         <ul className="flex flex-col gap-2.5">
           {safeItems.map((item, i) => (
             <li
