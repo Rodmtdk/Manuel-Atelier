@@ -14,6 +14,7 @@ import {
   BookOpen,
   Target,
   Gauge,
+  Layers,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -57,6 +58,13 @@ const categories = [
     href: "/rectification",
     icon: Disc,
     color: "from-primary/20 to-primary/5",
+  },
+  {
+    title: "CAO/FAO",
+    description: "Conception et Fabrication Assistées par Ordinateur. Du dessin 3D à l'usinage.",
+    href: "/cao-fao",
+    icon: Layers,
+    color: "from-accent/20 to-accent/5",
   },
   {
     title: "Sécurité en Atelier",

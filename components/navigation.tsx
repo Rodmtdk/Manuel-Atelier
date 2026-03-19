@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   Disc,
+  Layers,
 } from "lucide-react"
 import { SearchDialog } from "@/components/search-dialog"
 
@@ -37,6 +38,7 @@ const navItems = [
     ],
   },
   { label: "Rectification", href: "/rectification", icon: Disc },
+  { label: "CAO/FAO", href: "/cao-fao", icon: Layers },
   { label: "Calculateur", href: "/calculateur", icon: Calculator },
   { label: "Sécurité", href: "/securite", icon: ShieldAlert },
 ]

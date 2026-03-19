@@ -22,6 +22,7 @@ const sections = [
       { label: "Démarrage", href: "/demarrage" },
       { label: "Calculateur", href: "/calculateur" },
       { label: "Rectification", href: "/rectification" },
+      { label: "CAO/FAO", href: "/cao-fao" },
       { label: "Sécurité", href: "/securite" },
     ],
   },

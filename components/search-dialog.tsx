@@ -35,6 +35,12 @@ const searchIndex: SearchEntry[] = [
   // Rectification
   { title: "Rectification", description: "Rectification plane, cylindrique et spiroconique, meules, dressage", href: "/rectification", category: "Rectification", keywords: ["rectification", "meule", "cylindrique", "plane", "dressage", "abrasif", "spiroconique"] },
 
+  // CAO/FAO
+  { title: "CAO/FAO", description: "Conception et Fabrication Assistées par Ordinateur, logiciels, parcours d'outils", href: "/cao-fao", category: "CAO/FAO", keywords: ["cao", "fao", "cam", "cad", "conception", "fabrication", "assistée", "ordinateur", "logiciel", "parcours", "3d"] },
+  { title: "Logiciels CAO", description: "SolidWorks, Fusion 360, FreeCAD, AutoCAD pour la conception 3D", href: "/cao-fao#logiciels-cao", category: "CAO/FAO", keywords: ["solidworks", "fusion", "freecad", "autocad", "logiciel", "cao", "3d", "modélisation"] },
+  { title: "Logiciels FAO", description: "Mastercam, Fusion 360, HSMWorks pour la génération de parcours d'outils", href: "/cao-fao#logiciels-fao", category: "CAO/FAO", keywords: ["mastercam", "fusion", "hsmworks", "fao", "parcours", "outil", "code g", "post-processeur"] },
+  { title: "Formats de fichiers", description: "STEP, IGES, STL, DXF et autres formats d'échange CAO", href: "/cao-fao#formats", category: "CAO/FAO", keywords: ["step", "iges", "stl", "dxf", "dwg", "format", "fichier", "échange", "export", "import"] },
+
   // Calculateur
   { title: "Calculateur de vitesses", description: "Calculer Vc, n, Vf, Ra, débit de copeaux", href: "/calculateur", category: "Outils", keywords: ["calculateur", "vitesse", "coupe", "avance", "rpm", "vc", "vf", "ra"] },
 
