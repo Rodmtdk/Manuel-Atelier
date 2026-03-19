@@ -335,13 +335,28 @@ function DropdownMenu({
         <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
-      {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl">
-          {category.items.map((item) => (
-            <DropdownItem key={item.label} item={item} pathname={pathname} />
-          ))}
-        </div>
-      )}
+      {/* Menu déroulant avec animation */}
+      <div 
+        className={`absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl transition-all duration-200 origin-top ${
+          open 
+            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
+            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+        }`}
+      >
+        {category.items.map((item, index) => (
+          <div 
+            key={item.label} 
+            className="transition-all duration-200"
+            style={{ 
+              transitionDelay: open ? `${index * 30}ms` : '0ms',
+              opacity: open ? 1 : 0,
+              transform: open ? 'translateX(0)' : 'translateX(-8px)'
+            }}
+          >
+            <DropdownItem item={item} pathname={pathname} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -359,34 +374,42 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
         onMouseLeave={() => setSubOpen(false)}
       >
         <button
-          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+          className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
             item.children.some((c) => pathname === c.href)
               ? "bg-primary/10 text-primary"
               : "text-foreground hover:bg-zinc-800"
           }`}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
           <span className="flex-1 text-left">{item.label}</span>
-          <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          <ChevronRight className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${subOpen ? 'translate-x-1' : 'group-hover:translate-x-0.5'}`} />
         </button>
 
-        {subOpen && (
-          <div className="absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl">
-            {item.children.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
-                  pathname === child.href
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground hover:bg-zinc-800"
-                }`}
-              >
-                {child.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Sous-menu avec animation */}
+        <div 
+          className={`absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl transition-all duration-200 origin-left ${
+            subOpen 
+              ? "opacity-100 scale-100 translate-x-0 pointer-events-auto" 
+              : "opacity-0 scale-95 -translate-x-2 pointer-events-none"
+          }`}
+        >
+          {item.children.map((child, index) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
+                pathname === child.href
+                  ? "bg-primary/10 text-primary"
+                  : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
+              }`}
+              style={{ 
+                transitionDelay: subOpen ? `${index * 40}ms` : '0ms',
+              }}
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
       </div>
     )
   }
@@ -394,11 +417,13 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
   return (
     <Link
       href={item.href!}
-      className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
-        pathname === item.href ? "bg-primary/10 text-primary" : "text-foreground hover:bg-zinc-800"
+      className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
+        pathname === item.href 
+          ? "bg-primary/10 text-primary" 
+          : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
       }`}
     >
-      <Icon className="h-4 w-4" />
+      <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
       <span>{item.label}</span>
     </Link>
   )
@@ -436,23 +461,29 @@ function MobileNavItem({
           />
         </button>
 
-        {expanded && (
-          <div className="ml-8 mt-1 space-y-1 border-l border-border pl-4">
-            {item.children.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                className={`flex items-center rounded-lg px-3 py-2.5 text-sm transition-colors ${
-                  pathname === child.href
-                    ? "bg-primary/10 text-primary font-medium"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`}
-              >
-                {child.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Sous-menu mobile avec animation */}
+        <div 
+          className={`ml-8 mt-1 space-y-1 border-l border-border pl-4 overflow-hidden transition-all duration-300 ${
+            expanded ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          {item.children.map((child, index) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              className={`flex items-center rounded-lg px-3 py-2.5 text-sm transition-all duration-200 ${
+                pathname === child.href
+                  ? "bg-primary/10 text-primary font-medium"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground hover:translate-x-1"
+              }`}
+              style={{ 
+                transitionDelay: expanded ? `${index * 50}ms` : '0ms',
+              }}
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
       </div>
     )
   }
