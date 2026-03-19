@@ -1,4 +1,4 @@
-// Materiaux page - updated
+// Materiaux page - v2 updated
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   AlertTriangle,
   BookOpen,
+  Shield,
 } from "lucide-react"
 import Link from "next/link"
 

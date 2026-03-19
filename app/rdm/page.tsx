@@ -1,4 +1,4 @@
-// RDM page - updated
+// RDM page - v2 updated
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
