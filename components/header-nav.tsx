@@ -190,7 +190,7 @@ export function HeaderNav() {
             {/* Bouton recherche */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex h-10 items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="flex h-10 items-center gap-2 rounded-full border border-border bg-muted px-3 text-sm text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground"
             >
               <Search className="h-4 w-4" />
               <span className="hidden sm:inline">Rechercher...</span>
@@ -242,7 +242,7 @@ export function HeaderNav() {
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 pt-20 backdrop-blur-sm">
           <div
             ref={menuRef}
-            className="w-full max-w-lg mx-4 overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
+            className="w-full max-w-lg mx-4 overflow-hidden rounded-xl border border-border bg-zinc-900 shadow-2xl"
           >
             {/* Champ de recherche */}
             <div className="flex items-center gap-3 border-b border-border p-4">
@@ -336,7 +336,7 @@ function DropdownMenu({
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-card p-2 shadow-xl">
+        <div className="absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl">
           {category.items.map((item) => (
             <DropdownItem key={item.label} item={item} pathname={pathname} />
           ))}
@@ -362,7 +362,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
           className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
             item.children.some((c) => pathname === c.href)
               ? "bg-primary/10 text-primary"
-              : "text-foreground hover:bg-muted"
+              : "text-foreground hover:bg-zinc-800"
           }`}
         >
           <Icon className="h-4 w-4" />
@@ -371,7 +371,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
         </button>
 
         {subOpen && (
-          <div className="absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-card p-2 shadow-xl">
+          <div className="absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl">
             {item.children.map((child) => (
               <Link
                 key={child.href}
@@ -379,7 +379,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                   pathname === child.href
                     ? "bg-primary/10 text-primary"
-                    : "text-foreground hover:bg-muted"
+                    : "text-foreground hover:bg-zinc-800"
                 }`}
               >
                 {child.label}
@@ -395,7 +395,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
     <Link
       href={item.href!}
       className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
-        pathname === item.href ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
+        pathname === item.href ? "bg-primary/10 text-primary" : "text-foreground hover:bg-zinc-800"
       }`}
     >
       <Icon className="h-4 w-4" />

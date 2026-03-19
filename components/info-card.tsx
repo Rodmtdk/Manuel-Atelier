@@ -1,4 +1,5 @@
-// InfoCard component - safe against undefined items
+"use client"
+
 import { cn } from "@/lib/utils"
 import type { ReactNode } from "react"
 
@@ -17,8 +18,46 @@ export function InfoCard({
   variant = "default",
   className,
 }: InfoCardProps) {
-  // Always convert items to a safe array to prevent .map() errors on undefined
-  const safeItems: string[] = items && Array.isArray(items) ? items : []
+  // Render items list if items array is provided and has content
+  const renderItems = () => {
+    if (!items || !Array.isArray(items) || items.length === 0) {
+      return null
+    }
+    
+    return (
+      <ul className="flex flex-col gap-2.5">
+        {items.map((item, i) => (
+          <li
+            key={i}
+            className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
+          >
+            <span
+              className={cn(
+                "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full",
+                variant === "accent" ? "bg-accent" : "bg-primary"
+              )}
+            />
+            {item}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  // Render children content if no items
+  const renderChildren = () => {
+    if (items && Array.isArray(items) && items.length > 0) {
+      return null
+    }
+    if (!children) {
+      return null
+    }
+    return (
+      <div className="text-sm leading-relaxed text-muted-foreground">
+        {children}
+      </div>
+    )
+  }
 
   return (
     <div
@@ -31,28 +70,8 @@ export function InfoCard({
       )}
     >
       <h3 className="mb-4 text-lg font-semibold text-foreground">{title}</h3>
-      {safeItems.length > 0 ? (
-        <ul className="flex flex-col gap-2.5">
-          {safeItems.map((item, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
-            >
-              <span
-                className={cn(
-                  "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full",
-                  variant === "accent" ? "bg-accent" : "bg-primary"
-                )}
-              />
-              {item}
-            </li>
-          ))}
-        </ul>
-      ) : children ? (
-        <div className="text-sm leading-relaxed text-muted-foreground">
-          {children}
-        </div>
-      ) : null}
+      {renderItems()}
+      {renderChildren()}
     </div>
   )
 }
