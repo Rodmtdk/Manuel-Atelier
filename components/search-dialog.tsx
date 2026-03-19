@@ -141,11 +141,12 @@ export function SearchDialog() {
       {/* Trigger button */}
       <button
         onClick={handleOpen}
-        className="flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:text-foreground"
+        className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-sm text-foreground transition-all hover:border-primary/30 hover:bg-secondary"
         aria-label="Rechercher"
       >
-        <Search className="h-3.5 w-3.5" />
+        <Search className="h-4 w-4" />
         <span className="hidden sm:inline">Rechercher...</span>
+        <span className="sm:hidden">Recherche</span>
         <kbd className="ml-2 hidden rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground sm:inline-block">
           <Command className="inline h-2.5 w-2.5" />K
         </kbd>
@@ -153,12 +154,12 @@ export function SearchDialog() {
 
       {/* Modal overlay */}
       {open && (
-        <div className="fixed inset-0 z-[100] flex items-start justify-center px-4 pt-[15vh]">
+        <div className="fixed inset-0 z-[100] flex items-start justify-center px-4 pt-[10vh] sm:pt-[15vh]">
           <div
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-background/90 backdrop-blur-md"
             onClick={handleClose}
           />
-          <div className="relative w-full max-w-lg animate-fade-in rounded-2xl border border-border bg-card shadow-2xl shadow-black/40">
+          <div className="relative w-full max-w-lg animate-fade-in rounded-2xl border border-border bg-card shadow-2xl shadow-black/50">
             {/* Input */}
             <div className="flex items-center gap-3 border-b border-border px-4 py-3">
               <Search className="h-5 w-5 shrink-0 text-muted-foreground" />
