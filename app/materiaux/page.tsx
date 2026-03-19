@@ -14,6 +14,7 @@ import {
   BookOpen,
   Shield,
   Flame,
+  Droplets,
 } from "lucide-react"
 
 import Link from "next/link"
