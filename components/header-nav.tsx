@@ -2,8 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState, useEffect, useRef, useCallback } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect, useRef } from "react"
 import {
   Home,
   Rocket,
@@ -16,12 +15,12 @@ import {
   Gauge,
   Flame,
   Thermometer,
-  Search,
   Menu,
   X,
   ChevronDown,
   ChevronRight,
 } from "lucide-react"
+import { SearchDialog } from "@/components/search-dialog"
 
 interface NavItem {
   label: string
@@ -88,81 +87,20 @@ const navCategories: NavCategory[] = [
   },
 ]
 
-// Index de recherche
-const searchIndex = [
-  { title: "Accueil", href: "/", keywords: ["accueil", "home", "menu"] },
-  { title: "Démarrage", href: "/demarrage", keywords: ["démarrage", "débuter", "commencer", "guide"] },
-  { title: "Fraisage Conventionnel", href: "/fraisage/conventionnel", keywords: ["fraisage", "fraiseuse", "conventionnel", "manuel"] },
-  { title: "Fraisage CNC", href: "/fraisage/cnc", keywords: ["fraisage", "cnc", "numérique", "programmation"] },
-  { title: "Tournage Conventionnel", href: "/tournage/conventionnel", keywords: ["tournage", "tour", "conventionnel", "manuel"] },
-  { title: "Tournage CNC", href: "/tournage/cnc", keywords: ["tournage", "cnc", "numérique", "programmation"] },
-  { title: "Rectification", href: "/rectification", keywords: ["rectification", "meule", "précision", "finition"] },
-  { title: "CAO/FAO", href: "/cao-fao", keywords: ["cao", "fao", "conception", "fabrication", "solidworks", "mastercam"] },
-  { title: "RDM", href: "/rdm", keywords: ["rdm", "résistance", "matériaux", "contrainte", "flexion"] },
-  { title: "Soudure", href: "/soudure", keywords: ["soudure", "soudage", "mig", "tig", "mma"] },
-  { title: "Matériaux", href: "/materiaux", keywords: ["matériaux", "acier", "aluminium", "traitement", "thermique"] },
-  { title: "Calculateur", href: "/calculateur", keywords: ["calculateur", "vitesse", "coupe", "avance"] },
-  { title: "Sécurité", href: "/securite", keywords: ["sécurité", "epi", "protection", "danger"] },
-]
-
 export function HeaderNav() {
   const pathname = usePathname()
-  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
   const [expandedItems, setExpandedItems] = useState<string[]>([])
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const menuRef = useRef<HTMLDivElement>(null)
-
-  // Raccourci clavier Ctrl+K pour la recherche
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
-        e.preventDefault()
-        setSearchOpen(true)
-      }
-      if (e.key === "Escape") {
-        setSearchOpen(false)
-        setMobileMenuOpen(false)
-      }
-    }
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
-
-  // Focus sur le champ de recherche
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus()
-    }
-  }, [searchOpen])
 
   // Fermer le menu mobile lors du changement de page
   useEffect(() => {
     setMobileMenuOpen(false)
-    setSearchOpen(false)
   }, [pathname])
-
-  // Résultats de recherche filtrés
-  const searchResults = searchQuery.trim()
-    ? searchIndex.filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.keywords.some((k) => k.toLowerCase().includes(searchQuery.toLowerCase()))
-      )
-    : []
 
   const toggleExpanded = (label: string) => {
     setExpandedItems((prev) =>
       prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label]
     )
-  }
-
-  const handleSearchSelect = (href: string) => {
-    router.push(href)
-    setSearchQuery("")
-    setSearchOpen(false)
   }
 
   return (
@@ -175,7 +113,7 @@ export function HeaderNav() {
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
               <Wrench className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="hidden font-bold text-foreground sm:inline">Manuel d'Atelier</span>
+            <span className="hidden font-bold text-foreground sm:inline">Manuel d{"'"}Atelier</span>
           </Link>
 
           {/* Navigation desktop - Menu déroulant */}
@@ -187,17 +125,8 @@ export function HeaderNav() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            {/* Bouton recherche */}
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="flex h-10 items-center gap-2 rounded-full border border-border bg-muted px-3 text-sm text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground"
-            >
-              <Search className="h-4 w-4" />
-              <span className="hidden sm:inline">Rechercher...</span>
-              <kbd className="hidden rounded bg-background px-1.5 py-0.5 text-xs font-mono text-muted-foreground md:inline">
-                Ctrl+K
-              </kbd>
-            </button>
+            {/* Composant de recherche */}
+            <SearchDialog />
 
             {/* Bouton menu mobile */}
             <button
@@ -236,61 +165,6 @@ export function HeaderNav() {
           </nav>
         </div>
       )}
-
-      {/* Modal de recherche */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 pt-20 backdrop-blur-sm">
-          <div
-            ref={menuRef}
-            className="w-full max-w-lg mx-4 overflow-hidden rounded-xl border border-border bg-zinc-900 shadow-2xl"
-          >
-            {/* Champ de recherche */}
-            <div className="flex items-center gap-3 border-b border-border p-4">
-              <Search className="h-5 w-5 text-muted-foreground" />
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Rechercher une page..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
-              />
-              <button
-                onClick={() => setSearchOpen(false)}
-                className="rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Résultats */}
-            <div className="max-h-80 overflow-y-auto p-2">
-              {searchQuery.trim() === "" ? (
-                <div className="p-4 text-center text-sm text-muted-foreground">
-                  Tapez pour rechercher...
-                </div>
-              ) : searchResults.length === 0 ? (
-                <div className="p-4 text-center text-sm text-muted-foreground">
-                  Aucun résultat pour "{searchQuery}"
-                </div>
-              ) : (
-                <div className="space-y-1">
-                  {searchResults.map((result) => (
-                    <button
-                      key={result.href}
-                      onClick={() => handleSearchSelect(result.href)}
-                      className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-foreground transition-colors hover:bg-muted"
-                    >
-                      <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                      <span>{result.title}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }
@@ -304,7 +178,7 @@ function DropdownMenu({
   pathname: string
 }) {
   const [open, setOpen] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout>(null)
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -337,7 +211,7 @@ function DropdownMenu({
 
       {/* Menu déroulant avec animation */}
       <div 
-        className={`absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl transition-all duration-200 origin-top ${
+        className={`absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-card p-2 shadow-2xl transition-all duration-200 origin-top ${
           open 
             ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
             : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
@@ -377,7 +251,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
           className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
             item.children.some((c) => pathname === c.href)
               ? "bg-primary/10 text-primary"
-              : "text-foreground hover:bg-zinc-800"
+              : "text-foreground hover:bg-secondary"
           }`}
         >
           <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
@@ -387,7 +261,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
 
         {/* Sous-menu avec animation */}
         <div 
-          className={`absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl transition-all duration-200 origin-left ${
+          className={`absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-card p-2 shadow-2xl transition-all duration-200 origin-left ${
             subOpen 
               ? "opacity-100 scale-100 translate-x-0 pointer-events-auto" 
               : "opacity-0 scale-95 -translate-x-2 pointer-events-none"
@@ -400,7 +274,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
               className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
                 pathname === child.href
                   ? "bg-primary/10 text-primary"
-                  : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
+                  : "text-foreground hover:bg-secondary hover:translate-x-1"
               }`}
               style={{ 
                 transitionDelay: subOpen ? `${index * 40}ms` : '0ms',
@@ -420,7 +294,7 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
       className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
         pathname === item.href 
           ? "bg-primary/10 text-primary" 
-          : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
+          : "text-foreground hover:bg-secondary hover:translate-x-1"
       }`}
     >
       <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />

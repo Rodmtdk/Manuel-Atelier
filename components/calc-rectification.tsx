@@ -81,10 +81,10 @@ export function RectificationCalc() {
   const exportCSV = useCallback(() => {
     const csv = [
       "Parametre;Valeur;Unite",
-      `Diametre meule;${values.wheelDiameter};mm`,
+      `Diamètre meule;${values.wheelDiameter};mm`,
       `Vitesse meule;${values.wheelSpeed};m/s`,
-      `Diametre piece;${values.workDiameter};mm`,
-      `Vitesse piece;${values.workSpeed};m/min`,
+      `Diamètre pièce;${values.workDiameter};mm`,
+      `Vitesse pièce;${values.workSpeed};m/min`,
       `Avance traverse;${values.traverse};mm/tr`,
       `Profondeur de passe;${values.depth};mm`,
       `Tours meule;${nWheel.toFixed(0)};tr/min`,
@@ -107,7 +107,7 @@ export function RectificationCalc() {
     <div className="flex flex-col gap-6">
       {/* Presets */}
       <div className="rounded-xl border border-border bg-card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Preselection type de rectification :</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Présélection type de rectification :</h3>
         <div className="flex flex-wrap gap-2">
           {presets.map((preset) => (
             <button
@@ -124,10 +124,10 @@ export function RectificationCalc() {
       {/* Inputs */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {[
-          { label: "Diametre meule", field: "wheelDiameter" as const, unit: "mm", step: "1" },
+          { label: "Diamètre meule", field: "wheelDiameter" as const, unit: "mm", step: "1" },
           { label: "Vitesse meule (Vs)", field: "wheelSpeed" as const, unit: "m/s", step: "1" },
-          { label: "Diametre piece (Dw)", field: "workDiameter" as const, unit: "mm", step: "0.1" },
-          { label: "Vitesse piece (Vw)", field: "workSpeed" as const, unit: "m/min", step: "1" },
+          { label: "Diamètre pièce (Dw)", field: "workDiameter" as const, unit: "mm", step: "0.1" },
+          { label: "Vitesse pièce (Vw)", field: "workSpeed" as const, unit: "m/min", step: "1" },
           { label: "Avance transversale", field: "traverse" as const, unit: "mm/tr", step: "0.1" },
           { label: "Profondeur de passe (ae)", field: "depth" as const, unit: "mm", step: "0.001" },
         ].map((input) => (
@@ -151,14 +151,14 @@ export function RectificationCalc() {
       {/* Results */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <ResultCard label="Tours meule (n)" value={nWheel.toFixed(0)} unit="tr/min" primary />
-        <ResultCard label="Tours piece (nw)" value={nWork.toFixed(0)} unit="tr/min" primary />
+        <ResultCard label="Tours pièce (nw)" value={nWork.toFixed(0)} unit="tr/min" primary />
         <ResultCard label="Ratio vitesse" value={ratio.toFixed(0)} unit="x" />
         <ResultCard label="Debit specifique (Q')" value={Qprime.toFixed(3)} unit="mm3/s" />
       </div>
 
       {/* Formulas */}
       <div className="rounded-xl border border-border bg-card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Formules utilisees :</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Formules utilisées :</h3>
         <div className="grid gap-2 text-sm sm:grid-cols-2">
           <div className="rounded-lg bg-secondary p-3 font-mono text-xs text-primary">
             n_meule = (Vs x 60000) / (Pi x Ds)
@@ -177,7 +177,7 @@ export function RectificationCalc() {
 
       {/* Reference */}
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Reference vitesses de meule</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Référence vitesses de meule</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -190,8 +190,8 @@ export function RectificationCalc() {
             <tbody>
               {[
                 ["Conventionnelle", "25-35", "Rectification standard"],
-                ["Grande vitesse (HSG)", "60-120", "Production serie"],
-                ["Superfinition", "15-25", "Ra tres faible"],
+                ["Grande vitesse (HSG)", "60-120", "Production série"],
+                ["Superfinition", "15-25", "Ra très faible"],
                 ["CBN/Diamant", "30-80", "Materiaux durs"],
               ].map(([type, vs, app], i) => (
                 <tr key={i} className="border-b border-border/50 last:border-0">
@@ -219,7 +219,7 @@ export function RectificationCalc() {
           className="flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-secondary/80"
         >
           <RotateCcw className="h-4 w-4" />
-          Reinitialiser
+          Réinitialiser
         </button>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { cn } from "@/lib/utils"
-import { ChevronUp } from "lucide-react"
+import { ChevronUp, List } from "lucide-react"
 
 interface TocItem {
   id: string
@@ -64,120 +64,89 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
 
   return (
     <>
-      {/* Desktop sidebar TOC - Style Leonardo da Vinci */}
+      {/* Desktop sidebar TOC */}
       <nav
         className={cn(
-          "hidden xl:block fixed right-6 top-24 z-40 w-64",
+          "hidden xl:block fixed right-6 top-24 z-40 w-56",
           className
         )}
         aria-label="Sommaire"
       >
-        {/* Cadre principal avec bordure ornementale */}
-        <div className="relative">
-          {/* Ornement coin supérieur gauche */}
-          <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-amber-600/40" />
-          {/* Ornement coin supérieur droit */}
-          <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-amber-600/40" />
-          {/* Ornement coin inférieur gauche */}
-          <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-amber-600/40" />
-          {/* Ornement coin inférieur droit */}
-          <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-amber-600/40" />
-          
-          <div className="bg-zinc-950/90 backdrop-blur-xl border border-amber-900/30 p-5">
-            {/* En-tête style manuscrit */}
-            <div className="text-center mb-4 pb-3 border-b border-amber-800/20">
-              <div className="flex items-center justify-center gap-3 mb-1">
-                <span className="h-px w-8 bg-gradient-to-r from-transparent to-amber-600/50" />
-                <svg className="w-5 h-5 text-amber-600/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
-                <span className="h-px w-8 bg-gradient-to-l from-transparent to-amber-600/50" />
-              </div>
-              <h3 className="text-sm font-serif tracking-[0.2em] text-amber-100/90 uppercase">
+        <div className="rounded-2xl border border-border bg-card/95 backdrop-blur-xl p-4 shadow-xl shadow-black/10">
+          {/* En-tête */}
+          <div className="mb-4 pb-3 border-b border-border">
+            <div className="flex items-center gap-2 mb-1">
+              <List className="h-4 w-4 text-primary" />
+              <h3 className="text-sm font-semibold text-foreground">
                 Sommaire
               </h3>
-              <p className="text-[10px] text-amber-600/50 italic mt-1 tracking-wider">
-                Index Capitulorum
-              </p>
             </div>
-
-            {/* Barre de progression */}
-            <div className="relative h-1 bg-zinc-800/50 rounded-full mb-4 overflow-hidden">
-              <div 
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-amber-700 to-amber-500 rounded-full transition-all duration-300"
-                style={{ width: `${scrollProgress}%` }}
-              />
-            </div>
-
-            {/* Liste des items avec numérotation romaine */}
-            <ul className="space-y-0.5">
-              {items.map((item, index) => {
-                const isActive = activeId === item.id
-                const isPast = activeIndex > index
-                const romanNumeral = toRoman(index + 1)
-                
-                return (
-                  <li key={item.id} className="relative">
-                    {/* Ligne de connexion verticale */}
-                    {index < items.length - 1 && (
-                      <div className={cn(
-                        "absolute left-[18px] top-7 w-px h-[calc(100%-4px)]",
-                        isPast ? "bg-amber-600/40" : "bg-zinc-700/30"
-                      )} />
-                    )}
-                    
-                    <button
-                      onClick={() => scrollTo(item.id)}
-                      className={cn(
-                        "group w-full flex items-start gap-3 py-2 px-2 rounded-lg text-left transition-all duration-300",
-                        isActive
-                          ? "bg-amber-900/20"
-                          : "hover:bg-zinc-800/50"
-                      )}
-                    >
-                      {/* Numéro romain avec cercle */}
-                      <div className={cn(
-                        "relative flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center text-[10px] font-serif transition-all duration-300",
-                        isActive
-                          ? "border-amber-500 bg-amber-600/20 text-amber-400 shadow-[0_0_10px_rgba(217,119,6,0.3)]"
-                          : isPast
-                            ? "border-amber-700/50 text-amber-600/70 bg-amber-900/10"
-                            : "border-zinc-700 text-zinc-500 group-hover:border-zinc-600 group-hover:text-zinc-400"
-                      )}>
-                        {romanNumeral}
-                        {isActive && (
-                          <div className="absolute inset-0 rounded-full animate-ping bg-amber-500/20" />
-                        )}
-                      </div>
-                      
-                      {/* Label */}
-                      <span className={cn(
-                        "text-xs leading-relaxed pt-1 transition-all duration-300",
-                        isActive
-                          ? "text-amber-200 font-medium"
-                          : isPast
-                            ? "text-amber-100/60"
-                            : "text-zinc-400 group-hover:text-zinc-300"
-                      )}>
-                        {item.label}
-                      </span>
-                    </button>
-                  </li>
-                )
-              })}
-            </ul>
-
-            {/* Pied de page ornemental */}
-            <div className="mt-4 pt-3 border-t border-amber-800/20 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="h-px w-6 bg-gradient-to-r from-transparent to-amber-600/30" />
-                <svg className="w-3 h-3 text-amber-600/40" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <span className="h-px w-6 bg-gradient-to-l from-transparent to-amber-600/30" />
-              </div>
-            </div>
+            <p className="text-[10px] text-muted-foreground">
+              {items.length} sections
+            </p>
           </div>
+
+          {/* Barre de progression */}
+          <div className="relative h-1 bg-secondary rounded-full mb-4 overflow-hidden">
+            <div 
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
+
+          {/* Liste des items */}
+          <ul className="space-y-0.5">
+            {items.map((item, index) => {
+              const isActive = activeId === item.id
+              const isPast = activeIndex > index
+              
+              return (
+                <li key={item.id} className="relative">
+                  {/* Ligne de connexion verticale */}
+                  {index < items.length - 1 && (
+                    <div className={cn(
+                      "absolute left-[11px] top-7 w-px h-[calc(100%-4px)]",
+                      isPast ? "bg-primary/40" : "bg-border"
+                    )} />
+                  )}
+                  
+                  <button
+                    onClick={() => scrollTo(item.id)}
+                    className={cn(
+                      "group w-full flex items-start gap-3 py-2 px-2 rounded-lg text-left transition-all duration-200",
+                      isActive
+                        ? "bg-primary/10"
+                        : "hover:bg-secondary"
+                    )}
+                  >
+                    {/* Indicateur numérique */}
+                    <div className={cn(
+                      "relative flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center text-[10px] font-mono font-bold transition-all duration-200",
+                      isActive
+                        ? "border-primary bg-primary/20 text-primary"
+                        : isPast
+                          ? "border-primary/50 text-primary/70 bg-primary/5"
+                          : "border-border text-muted-foreground group-hover:border-primary/30 group-hover:text-foreground"
+                    )}>
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    
+                    {/* Label */}
+                    <span className={cn(
+                      "text-xs leading-relaxed pt-1 transition-all duration-200",
+                      isActive
+                        ? "text-primary font-medium"
+                        : isPast
+                          ? "text-foreground/70"
+                          : "text-muted-foreground group-hover:text-foreground"
+                    )}>
+                      {item.label}
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </nav>
 
@@ -186,7 +155,7 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
         {showBackToTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-900/30 bg-zinc-950/90 text-amber-600/70 shadow-lg backdrop-blur-xl transition-all hover:border-amber-600/50 hover:text-amber-500 hover:shadow-amber-900/20"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-lg backdrop-blur-xl transition-all hover:border-primary/50 hover:text-primary"
             aria-label="Retour en haut"
           >
             <ChevronUp className="h-4 w-4" />
@@ -194,10 +163,11 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
         )}
         <div className="relative">
           {isOpen && (
-            <div className="absolute bottom-14 right-0 mb-2 w-72 max-h-[70vh] overflow-y-auto rounded-xl border border-amber-900/30 bg-zinc-950/95 p-4 shadow-2xl backdrop-blur-xl">
+            <div className="absolute bottom-14 right-0 mb-2 w-72 max-h-[70vh] overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-2xl backdrop-blur-xl">
               {/* En-tête mobile */}
-              <div className="text-center mb-3 pb-2 border-b border-amber-800/20">
-                <h3 className="text-sm font-serif tracking-[0.15em] text-amber-100/90 uppercase">
+              <div className="mb-3 pb-2 border-b border-border flex items-center gap-2">
+                <List className="h-4 w-4 text-primary" />
+                <h3 className="text-sm font-semibold text-foreground">
                   Sommaire
                 </h3>
               </div>
@@ -206,7 +176,6 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
               <ul className="space-y-1">
                 {items.map((item, index) => {
                   const isActive = activeId === item.id
-                  const romanNumeral = toRoman(index + 1)
                   
                   return (
                     <li key={item.id}>
@@ -215,15 +184,15 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                         className={cn(
                           "w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-all duration-200",
                           isActive
-                            ? "bg-amber-900/20 text-amber-200"
-                            : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-300"
+                            ? "bg-primary/10 text-primary"
+                            : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                         )}
                       >
                         <span className={cn(
-                          "text-[10px] font-serif w-6 text-center",
-                          isActive ? "text-amber-500" : "text-zinc-600"
+                          "text-[10px] font-mono w-6 text-center font-bold",
+                          isActive ? "text-primary" : "text-muted-foreground"
                         )}>
-                          {romanNumeral}
+                          {String(index + 1).padStart(2, "0")}
                         </span>
                         <span className="text-xs leading-snug">
                           {item.label}
@@ -242,18 +211,12 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
             className={cn(
               "relative flex h-12 w-12 items-center justify-center rounded-full border shadow-lg backdrop-blur-xl transition-all duration-300",
               isOpen
-                ? "border-amber-600 bg-amber-900/30 text-amber-400 shadow-amber-900/30"
-                : "border-amber-900/30 bg-zinc-950/90 text-amber-600/70 hover:border-amber-600/50 hover:text-amber-500"
+                ? "border-primary bg-primary/10 text-primary"
+                : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-primary"
             )}
             aria-label="Ouvrir le sommaire"
           >
-            {/* Icône livre/parchemin */}
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-              <path d="M8 7h8" />
-              <path d="M8 11h6" />
-            </svg>
+            <List className="h-5 w-5" />
             
             {/* Indicateur de progression circulaire */}
             <svg className="absolute inset-0 w-12 h-12 -rotate-90" viewBox="0 0 48 48">
@@ -265,7 +228,7 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeDasharray={`${scrollProgress * 1.38} 138`}
-                className="text-amber-600/50 transition-all duration-300"
+                className="text-primary/50 transition-all duration-300"
               />
             </svg>
           </button>
@@ -273,24 +236,4 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
       </div>
     </>
   )
-}
-
-// Fonction de conversion en chiffres romains
-function toRoman(num: number): string {
-  const romanNumerals: [number, string][] = [
-    [10, "X"],
-    [9, "IX"],
-    [5, "V"],
-    [4, "IV"],
-    [1, "I"],
-  ]
-  
-  let result = ""
-  for (const [value, symbol] of romanNumerals) {
-    while (num >= value) {
-      result += symbol
-      num -= value
-    }
-  }
-  return result
 }

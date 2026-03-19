@@ -65,8 +65,8 @@ export default function FraisageCncPage() {
     <>
       <PageHeader
         badge="Fraisage CNC"
-        title="Fraisage a Commande Numerique"
-        subtitle="Procede d'usinage automatise utilisant des machines-outils commandees par ordinateur pour une precision et une repetabilite exceptionnelles."
+        title="Fraisage à Commande Numérique"
+        subtitle="Procédé d'usinage automatisé utilisant des machines-outils commandées par ordinateur pour une précision et une répétabilité exceptionnelles."
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
       />
 

@@ -83,7 +83,7 @@ export function FraisageCalc() {
     <div className="flex flex-col gap-6">
       {/* Presets */}
       <div className="rounded-xl border border-border bg-card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Preselection materiau / outil :</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Présélection matériau / outil :</h3>
         <div className="flex flex-wrap gap-2">
           {materialPresets.map((preset) => (
             <button
@@ -100,7 +100,7 @@ export function FraisageCalc() {
       {/* Inputs */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {[
-          { label: "Diametre (D)", field: "diameter" as const, unit: "mm", step: "0.1" },
+          { label: "Diamètre (D)", field: "diameter" as const, unit: "mm", step: "0.1" },
           { label: "Nombre de dents (Z)", field: "teeth" as const, unit: "dents", step: "1" },
           { label: "Vitesse de coupe (Vc)", field: "vc" as const, unit: "m/min", step: "1" },
           { label: "Avance par dent (fz)", field: "fz" as const, unit: "mm/dt", step: "0.001" },
@@ -136,7 +136,7 @@ export function FraisageCalc() {
 
       {/* Formulas */}
       <div className="rounded-xl border border-border bg-card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Formules utilisees :</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Formules utilisées :</h3>
         <div className="grid gap-2 text-sm sm:grid-cols-2">
           <div className="rounded-lg bg-secondary p-3 font-mono text-xs text-primary">
             n = (1000 x Vc) / (Pi x D)
@@ -167,7 +167,7 @@ export function FraisageCalc() {
           className="flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-secondary/80"
         >
           <RotateCcw className="h-4 w-4" />
-          Reinitialiser
+          Réinitialiser
         </button>
       </div>
     </div>

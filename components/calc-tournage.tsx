@@ -53,13 +53,13 @@ export function TournageCalc() {
   const exportCSV = useCallback(() => {
     const csv = [
       "Parametre;Valeur;Unite",
-      `Diametre piece;${values.diameter};mm`,
+      `Diamètre pièce;${values.diameter};mm`,
       `Vitesse de coupe;${values.vc};m/min`,
       `Avance;${values.f};mm/tr`,
       `Profondeur de passe;${values.ap};mm`,
       `Vitesse de rotation;${n.toFixed(0)};tr/min`,
       `Avance de travail;${vf.toFixed(0)};mm/min`,
-      `Ra theorique;${Ra.toFixed(2)};um`,
+      `Ra théorique;${Ra.toFixed(2)};um`,
     ].join("\n")
 
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" })
@@ -77,7 +77,7 @@ export function TournageCalc() {
     <div className="flex flex-col gap-6">
       {/* Presets */}
       <div className="rounded-xl border border-border bg-card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Preselection materiau / outil :</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Présélection matériau / outil :</h3>
         <div className="flex flex-wrap gap-2">
           {presets.map((preset) => (
             <button
@@ -94,7 +94,7 @@ export function TournageCalc() {
       {/* Inputs */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { label: "Diametre piece (D)", field: "diameter" as const, unit: "mm", step: "0.1" },
+          { label: "Diamètre pièce (D)", field: "diameter" as const, unit: "mm", step: "0.1" },
           { label: "Vitesse de coupe (Vc)", field: "vc" as const, unit: "m/min", step: "1" },
           { label: "Avance (f)", field: "f" as const, unit: "mm/tr", step: "0.01" },
           { label: "Profondeur (ap)", field: "ap" as const, unit: "mm", step: "0.1" },
@@ -120,13 +120,13 @@ export function TournageCalc() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <ResultCard label="Vitesse de rotation (n)" value={n.toFixed(0)} unit="tr/min" primary />
         <ResultCard label="Avance de travail (Vf)" value={vf.toFixed(0)} unit="mm/min" primary />
-        <ResultCard label="Ra theorique" value={Ra.toFixed(2)} unit="um" />
+        <ResultCard label="Ra théorique" value={Ra.toFixed(2)} unit="um" />
         <ResultCard label="Debit copeaux (Q)" value={Q.toFixed(1)} unit="cm3/min" />
       </div>
 
       {/* Formulas */}
       <div className="rounded-xl border border-border bg-card p-5">
-        <h3 className="mb-3 text-sm font-semibold text-foreground">Formules utilisees :</h3>
+        <h3 className="mb-3 text-sm font-semibold text-foreground">Formules utilisées :</h3>
         <div className="grid gap-2 text-sm sm:grid-cols-2">
           <div className="rounded-lg bg-secondary p-3 font-mono text-xs text-primary">
             n = (1000 x Vc) / (Pi x D)
@@ -157,7 +157,7 @@ export function TournageCalc() {
           className="flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-secondary/80"
         >
           <RotateCcw className="h-4 w-4" />
-          Reinitialiser
+          Réinitialiser
         </button>
       </div>
     </div>

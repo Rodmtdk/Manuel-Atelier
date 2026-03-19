@@ -71,8 +71,8 @@ export default function TournageCncPage() {
     <>
       <PageHeader
         badge="Tournage CNC"
-        title="Tournage a Commande Numerique"
-        subtitle="Procede automatise pour produire des pieces cylindriques avec une precision et une repetabilite exceptionnelles."
+        title="Tournage à Commande Numérique"
+        subtitle="Procédé automatisé pour produire des pièces cylindriques avec une précision et une répétabilité exceptionnelles."
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg"
       />
 

@@ -3,7 +3,7 @@ export function MaterialTable() {
     { name: "Acier doux (S235)", vcHSS: "25-35", vcCarbure: "100-150", fzFraisage: "0.05-0.10", fTournage: "0.15-0.30" },
     { name: "Acier mi-dur (C45)", vcHSS: "20-30", vcCarbure: "80-130", fzFraisage: "0.04-0.08", fTournage: "0.10-0.25" },
     { name: "Acier inox (304)", vcHSS: "15-20", vcCarbure: "60-100", fzFraisage: "0.03-0.06", fTournage: "0.10-0.20" },
-    { name: "Acier trempe (>50HRC)", vcHSS: "-", vcCarbure: "40-80", fzFraisage: "0.02-0.05", fTournage: "0.05-0.15" },
+    { name: "Acier trempé (>50HRC)", vcHSS: "-", vcCarbure: "40-80", fzFraisage: "0.02-0.05", fTournage: "0.05-0.15" },
     { name: "Fonte grise", vcHSS: "15-25", vcCarbure: "80-120", fzFraisage: "0.06-0.12", fTournage: "0.15-0.30" },
     { name: "Aluminium (6061)", vcHSS: "80-150", vcCarbure: "200-500", fzFraisage: "0.08-0.15", fTournage: "0.15-0.40" },
     { name: "Laiton", vcHSS: "60-100", vcCarbure: "150-300", fzFraisage: "0.08-0.12", fTournage: "0.10-0.25" },
@@ -16,13 +16,13 @@ export function MaterialTable() {
     <div className="mt-12">
       <h2 className="mb-6 text-2xl font-bold text-foreground">
         <span className="mr-2 inline-block h-1 w-8 rounded-full bg-primary align-middle" />
-        Table de Reference des Vitesses de Coupe
+        Table de Référence des Vitesses de Coupe
       </h2>
       <div className="overflow-x-auto rounded-xl border border-border">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-secondary/50">
-              <th className="px-4 py-3 text-left font-semibold text-foreground">Materiau</th>
+              <th className="px-4 py-3 text-left font-semibold text-foreground">Matériau</th>
               <th className="px-4 py-3 text-left font-semibold text-foreground">
                 Vc HSS
                 <span className="block text-xs font-normal text-muted-foreground">m/min</span>
