@@ -1,8 +1,8 @@
+import type { Metadata } from "next"
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
-import { VideoEmbed } from "@/components/video-embed"
 import { SectionBanner } from "@/components/banner-image"
 import { FactCard } from "@/components/fact-card"
 import {
@@ -14,136 +14,142 @@ import {
   Zap,
 } from "lucide-react"
 
+export const metadata: Metadata = {
+  title: "Guide de Démarrage - Manuel d'Atelier",
+  description:
+    "Les étapes fondamentales pour préparer, régler et démarrer vos machines-outils en toute sécurité. Outils, matériaux et métrologie.",
+}
+
 const etapes = [
   {
     num: "01",
     title: "Inspection",
-    desc: "Verifiez que la machine est propre, bien lubrifiee et exempte de tout obstacle.",
+    desc: "Vérifiez que la machine est propre, bien lubrifiée et exempte de tout obstacle.",
     icon: CheckCircle,
   },
   {
     num: "02",
-    title: "Installation de la piece",
-    desc: "Fixez solidement la piece a usiner dans le mandrin ou sur la table de travail (etau, brides...).",
+    title: "Installation de la pièce",
+    desc: "Fixez solidement la pièce à usiner dans le mandrin ou sur la table de travail (étau, brides...).",
     icon: Layers,
   },
   {
     num: "03",
     title: "Choix de l'outil",
-    desc: "Selectionnez un outil adapte a l'operation prevue (fraisage, tournage, rainurage, etc.).",
+    desc: "Sélectionnez un outil adapté à l'opération prévue (fraisage, tournage, rainurage, etc.).",
     icon: Wrench,
   },
   {
     num: "04",
-    title: "Reglage des parametres",
-    desc: "Ajustez la vitesse de rotation, l'avance et la profondeur de coupe en fonction du materiau.",
+    title: "Réglage des paramètres",
+    desc: "Ajustez la vitesse de rotation, l'avance et la profondeur de coupe en fonction du matériau.",
     icon: Zap,
   },
   {
     num: "05",
     title: "Test",
-    desc: "Effectuez une passe d'essai pour verifier la precision et ajuster si necessaire.",
+    desc: "Effectuez une passe d'essai pour vérifier la précision et ajuster si nécessaire.",
     icon: Ruler,
   },
 ]
 
 const outilsFraisage = [
   "Fraises cylindriques : usinage des surfaces planes et rainures",
-  "Fraises a bout plat : rainures, poches et surfaces planes",
-  "Fraises a bout spherique (boule) : contours 3D et surfaces courbes",
-  "Fraises a surfacer : enlever de grandes quantites de matiere",
-  "Fraises a chanfreiner : creer des chanfreins ou biseaux",
-  "Fraises a rainurer : rainures simples, en T ou en queue d'aronde",
+  "Fraises à bout plat : rainures, poches et surfaces planes",
+  "Fraises à bout sphérique (boule) : contours 3D et surfaces courbes",
+  "Fraises à surfacer : enlever de grandes quantités de matière",
+  "Fraises à chanfreiner : créer des chanfreins ou biseaux",
+  "Fraises à rainurer : rainures simples, en T ou en queue d'aronde",
 ]
 
 const outilsTournage = [
-  "Outils a dresser : usinage des faces planes (perpendiculaires a l'axe)",
-  "Outils a gorge : creation de rainures ou gorges",
+  "Outils à dresser : usinage des faces planes (perpendiculaires à l'axe)",
+  "Outils à gorge : création de rainures ou gorges",
   "Outils de filetage : filetages internes ou externes",
-  "Outils d'alesage : ajustement des diametres internes",
-  "Outils de tronconnage : couper ou separer la matiere brute",
+  "Outils d'alésage : ajustement des diamètres internes",
+  "Outils de tronçonnage : couper ou séparer la matière brute",
 ]
 
 const outilsCarbure = [
-  "Resistance elevee a l'usure et durete exceptionnelle",
-  "Usinage de materiaux durs (aciers trempes, inox)",
-  "Utilises pour les vitesses de coupe elevees",
+  "Résistance élevée à l'usure et dureté exceptionnelle",
+  "Usinage de matériaux durs (aciers trempés, inox)",
+  "Utilisés pour les vitesses de coupe élevées",
 ]
 
 const plaquettes = [
-  "Plaquettes remplacables montees sur porte-outils",
-  "Reduction des temps d'arret pour affutage",
-  "Convient pour le fraisage, le tournage et l'alesage",
+  "Plaquettes remplaçables montées sur porte-outils",
+  "Réduction des temps d'arrêt pour affûtage",
+  "Convient pour le fraisage, le tournage et l'alésage",
 ]
 
 const forets = [
-  "Forets helicoidaux : les plus courants pour percer des trous droits",
-  "Forets a centrer/pointer : percages de haute precision ou guidage",
-  "Forets etages : plusieurs diametres avec un seul outil",
+  "Forets hélicoïdaux : les plus courants pour percer des trous droits",
+  "Forets à centrer/pointer : perçages de haute précision ou guidage",
+  "Forets étagés : plusieurs diamètres avec un seul outil",
 ]
 
 const outilsMesure = [
-  "Pied a coulisse : mesures des dimensions exterieures, interieures et profondeurs",
-  "Micrometre : mesures de haute precision",
-  "Comparateur : verifie les deviations et concentricites",
-  "Rugosimetre : analyse la finition de surface",
+  "Pied à coulisse : mesures des dimensions extérieures, intérieures et profondeurs",
+  "Micromètre : mesures de haute précision",
+  "Comparateur : vérifie les déviations et concentricités",
+  "Rugosimètre : analyse la finition de surface",
 ]
 
 const materiaux = [
   {
-    title: "Acier non allie",
+    title: "Acier non allié",
     items: [
-      "Outils : HSS pour faibles vitesses, carbure revetu (TiN, TiAlN) pour vitesses elevees",
-      "Applications : usinage general, degrossissage et finition",
+      "Outils : HSS pour faibles vitesses, carbure revêtu (TiN, TiAlN) pour vitesses élevées",
+      "Applications : usinage général, dégrossissage et finition",
     ],
   },
   {
-    title: "Acier allie et trempe",
+    title: "Acier allié et trempé",
     items: [
       "Outils : carbure monobloc ou plaquettes, CBN pour > 50 HRC",
-      "Applications : usinage haute precision et haute resistance",
+      "Applications : usinage haute précision et haute résistance",
     ],
   },
   {
     title: "Fonte",
     items: [
-      "Outils : carbure sans revetement (fonte grise), ceramique (fonte ductile)",
-      "Applications : degrossissage et finition des pieces moulees",
+      "Outils : carbure sans revêtement (fonte grise), céramique (fonte ductile)",
+      "Applications : dégrossissage et finition des pièces moulées",
     ],
   },
   {
-    title: "Aluminium et alliages legers",
+    title: "Aluminium et alliages légers",
     items: [
-      "Outils : carbure grande helice (40-45 deg), PCD pour finitions ultra-precises",
-      "Applications : usinage rapide, prevention des bavures et collages",
+      "Outils : carbure grande hélice (40-45°), PCD pour finitions ultra-précises",
+      "Applications : usinage rapide, prévention des bavures et collages",
     ],
   },
   {
     title: "Inox",
     items: [
-      "Outils : carbure revetu (TiAlN, TiCN), geometrie positive",
-      "Applications : precision a vitesses moderees, eviter l'ecrouissage",
+      "Outils : carbure revêtu (TiAlN, TiCN), géométrie positive",
+      "Applications : précision à vitesses modérées, éviter l'écrouissage",
     ],
   },
   {
     title: "Titane et alliages",
     items: [
-      "Outils : carbure a aretes vives, revetements TiAlN",
-      "Applications : bonne gestion thermique, faible avance et haute precision",
+      "Outils : carbure à arêtes vives, revêtements TiAlN",
+      "Applications : bonne gestion thermique, faible avance et haute précision",
     ],
   },
   {
-    title: "Materiaux durs (ceramique, composites)",
+    title: "Matériaux durs (céramique, composites)",
     items: [
-      "Outils : diamant polycristallin (PCD), ceramique ou CBN",
-      "Applications : haute precision, machines rigides requises",
+      "Outils : diamant polycristallin (PCD), céramique ou CBN",
+      "Applications : haute précision, machines rigides requises",
     ],
   },
   {
-    title: "Plastiques et polymeres",
+    title: "Plastiques et polymères",
     items: [
-      "Outils : HSS ou carbure, aretes vives",
-      "Applications : haute vitesse, gestion de la chaleur pour eviter deformation",
+      "Outils : HSS ou carbure, arêtes vives",
+      "Applications : haute vitesse, gestion de la chaleur pour éviter déformation",
     ],
   },
 ]
@@ -152,15 +158,15 @@ export default function DemarragePage() {
   return (
     <>
       <PageHeader
-        badge="Guide de demarrage"
-        title="Mise en Marche et Reglage des Machines"
-        subtitle="Les etapes fondamentales pour preparer, regler et demarrer vos machines-outils en toute securite."
+        badge="Guide de démarrage"
+        title="Mise en Marche et Réglage des Machines"
+        subtitle="Les étapes fondamentales pour préparer, régler et démarrer vos machines-outils en toute sécurité."
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp"
       />
 
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Steps */}
-        <ContentSection title="Etapes Generales">
+        <ContentSection title="Étapes Générales">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {etapes.map((step) => (
               <div
@@ -186,19 +192,12 @@ export default function DemarragePage() {
 
         {/* Visual - Cycle Start */}
         <ContentSection title="En Images">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/start-BRWnfvQLdBPz5XZ9W6I4VnKhMpfFzX.jpg"
-              alt="Bouton Cycle Start d'une machine CNC"
-              caption="Bouton CYCLE START - Lancement du programme CNC"
-              aspectRatio="video"
-            />
-            <VideoEmbed
-              videoId="kCAR-NCt0fg"
-              title="Demarrage et reglage d'une machine-outil"
-              caption="Mise en route d'une machine CNC"
-            />
-          </div>
+          <ImageShowcase
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/start-BRWnfvQLdBPz5XZ9W6I4VnKhMpfFzX.jpg"
+            alt="Bouton Cycle Start d'une machine CNC"
+            caption="Bouton CYCLE START — Lancement du programme CNC"
+            aspectRatio="wide"
+          />
         </ContentSection>
 
         {/* Cutting tools */}
@@ -215,28 +214,28 @@ export default function DemarragePage() {
 
         {/* Fact */}
         <FactCard
-          fact="Un outil de coupe en carbure de tungstene atteint une durete de 1 500 a 2 500 HV (Vickers), soit plus de 3 fois la durete d'un acier trempe. Son revetement TiAlN lui permet de supporter des temperatures de 800 C en contact avec la piece."
+          fact="Un outil de coupe en carbure de tungstène atteint une dureté de 1 500 à 2 500 HV (Vickers), soit plus de 3 fois la dureté d'un acier trempé. Son revêtement TiAlN lui permet de supporter des températures de 800 °C en contact avec la pièce."
           variant="accent"
           className="my-4"
         />
 
-        {/* Tool images - expanded */}
+        {/* Tool images */}
         <ContentSection title="Galerie d'Outils">
           <ImageGrid
             images={[
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp",
-                alt: "Collection complete d'outils de coupe professionnels",
-                caption: "Outils a plaquettes interchangeables - Fraisage et percage",
+                alt: "Collection complète d'outils de coupe professionnels",
+                caption: "Outils à plaquettes interchangeables — Fraisage et perçage",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg",
-                alt: "Plaquettes carbure avec revetements or et noirs de differentes geometries",
-                caption: "Plaquettes carbure - geometries CNMG, WNMG, RCMG",
+                alt: "Plaquettes carbure avec revêtements or et noirs de différentes géométries",
+                caption: "Plaquettes carbure — géométries CNMG, WNMG, RCMG",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg",
-                alt: "Forets et fraises carbure de differentes tailles et geometries",
+                alt: "Forets et fraises carbure de différentes tailles et géométries",
                 caption: "Forets et fraises carbure monobloc",
               },
             ]}
@@ -246,12 +245,12 @@ export default function DemarragePage() {
             images={[
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg",
-                alt: "Fraises carbure monobloc de differentes geometries",
-                caption: "Fraises carbure - ebauche et finition",
+                alt: "Fraises carbure monobloc de différentes géométries",
+                caption: "Fraises carbure — ébauche et finition",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils-tournage.jpg-7RVclx58YOJwm1RdyGf4z3lvPmI1NU.png",
-                alt: "Schema des outils de tournage selon normes DIN",
+                alt: "Schéma des outils de tournage selon normes DIN",
                 caption: "Classification DIN des outils de tournage",
               },
             ]}
@@ -262,45 +261,38 @@ export default function DemarragePage() {
         {/* Materiaux banner */}
         <SectionBanner
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/materiaux.jpg-BlXwqB7QRLjr3067LUcZEpBw7af9wr.webp"
-          alt="Collection de metaux et alliages utilises en usinage - or, argent, zinc, cuivre, titane"
-          caption="Les materiaux d'usinage : aciers, aluminiums, cuivre, titane, inox et alliages exotiques"
+          alt="Collection de métaux et alliages utilisés en usinage"
+          caption="Les matériaux d'usinage : aciers, aluminiums, cuivre, titane, inox et alliages exotiques"
         />
 
         {/* Metrologie banner */}
         <SectionBanner
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png"
-          alt="Pied a coulisse numerique mesurant un roulement sur des plans techniques avec tablette de controle"
-          caption="Metrologie de precision : controle dimensionnel avec pied a coulisse numerique et suivi SPC"
+          alt="Pied à coulisse numérique mesurant un roulement sur des plans techniques"
+          caption="Métrologie de précision : contrôle dimensionnel avec pied à coulisse numérique et suivi SPC"
         />
 
         {/* Metrologie detail */}
-        <ContentSection title="Metrologie en Detail">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <ImageShowcase
-              src="/images/micrometre-precision.jpg"
-              alt="Micrometre de precision mesurant une piece metallique avec plans techniques en arriere-plan"
-              caption="Micrometre d'exterieur - precision au centieme de millimetre (0,01 mm)"
-            />
-            <div className="rounded-xl border border-border bg-card p-6">
-              <h3 className="mb-3 font-semibold text-foreground">Pourquoi la metrologie ?</h3>
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                La metrologie est indissociable de l{"'"}usinage. Sans mesure precise, il est impossible de garantir que les pieces respectent les tolerances demandees par les plans techniques. Chaque outil de mesure a sa plage d{"'"}utilisation et sa precision propre.
-              </p>
-              <div className="rounded-lg bg-secondary p-4">
-                <h4 className="mb-2 text-sm font-semibold text-foreground">Precisions typiques</h4>
-                <ul className="flex flex-col gap-1.5 text-sm text-muted-foreground">
-                  <li><strong className="text-foreground">Pied a coulisse</strong> : 0,02 mm</li>
-                  <li><strong className="text-foreground">Micrometre</strong> : 0,01 mm (jusqu{"'"}a 0,001 mm)</li>
-                  <li><strong className="text-foreground">Comparateur</strong> : 0,01 mm</li>
-                  <li><strong className="text-foreground">Rugosimetre</strong> : 0,001 um (Ra)</li>
-                </ul>
-              </div>
+        <ContentSection title="Métrologie en Détail">
+          <div className="rounded-xl border border-border bg-card p-6">
+            <h3 className="mb-3 font-semibold text-foreground">Pourquoi la métrologie ?</h3>
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+              La métrologie est indissociable de l{"'"}usinage. Sans mesure précise, il est impossible de garantir que les pièces respectent les tolérances demandées par les plans techniques. Chaque outil de mesure a sa plage d{"'"}utilisation et sa précision propre.
+            </p>
+            <div className="rounded-lg bg-secondary p-4">
+              <h4 className="mb-2 text-sm font-semibold text-foreground">Précisions typiques</h4>
+              <ul className="flex flex-col gap-1.5 text-sm text-muted-foreground">
+                <li><strong className="text-foreground">Pied à coulisse</strong> : 0,02 mm</li>
+                <li><strong className="text-foreground">Micromètre</strong> : 0,01 mm (jusqu{"'"}à 0,001 mm)</li>
+                <li><strong className="text-foreground">Comparateur</strong> : 0,01 mm</li>
+                <li><strong className="text-foreground">Rugosimètre</strong> : 0,001 µm (Ra)</li>
+              </ul>
             </div>
           </div>
         </ContentSection>
 
         {/* Materials */}
-        <ContentSection title="Choix des Outils en Fonction des Materiaux">
+        <ContentSection title="Choix des Outils en Fonction des Matériaux">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {materiaux.map((mat) => (
               <InfoCard key={mat.title} title={mat.title} items={mat.items} />
@@ -309,15 +301,15 @@ export default function DemarragePage() {
           <div className="mt-8 rounded-xl border border-primary/20 bg-primary/5 p-6">
             <h3 className="mb-3 flex items-center gap-2 font-semibold text-foreground">
               <Shield className="h-5 w-5 text-primary" />
-              Facteurs cles pour le choix des outils
+              Facteurs clés pour le choix des outils
             </h3>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                "Proprietes du materiau : durete, conductivite, ductilite",
-                "Type d'operation : degrossissage, finition, percage, filetage",
+                "Propriétés du matériau : dureté, conductivité, ductilité",
+                "Type d'opération : dégrossissage, finition, perçage, filetage",
                 "Conditions de coupe : vitesse, avance, profondeur",
-                "Revetement de l'outil : TiN, TiAlN pour durabilite",
-                "Systeme de refroidissement : necessaire pour titane, inox",
+                "Revêtement de l'outil : TiN, TiAlN pour durabilité",
+                "Système de refroidissement : nécessaire pour titane, inox",
               ].map((item, i) => (
                 <div
                   key={i}
@@ -332,22 +324,22 @@ export default function DemarragePage() {
         </ContentSection>
 
         {/* Coatings */}
-        <ContentSection title="Revetements d'Outils">
+        <ContentSection title="Revêtements d'Outils">
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border bg-secondary/50">
-                  <th className="px-6 py-3 text-left font-semibold text-foreground">Revetement</th>
-                  <th className="px-6 py-3 text-left font-semibold text-foreground">Proprietes</th>
+                  <th className="px-6 py-3 text-left font-semibold text-foreground">Revêtement</th>
+                  <th className="px-6 py-3 text-left font-semibold text-foreground">Propriétés</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["TiN (Nitrure de titane)", "Reduction de l'usure, meilleure evacuation des copeaux"],
-                  ["TiAlN (Nitrure de titane-aluminium)", "Resistance a la chaleur accrue, ideal pour aciers durs"],
-                  ["CVD / PVD", "Technologies avancees pour applications exigeantes"],
-                  ["PCD (Diamant polycristallin)", "Ideal pour materiaux abrasifs et composites"],
-                  ["CBN (Nitrure de bore cubique)", "Usinage des aciers trempes"],
+                  ["TiN (Nitrure de titane)", "Réduction de l'usure, meilleure évacuation des copeaux"],
+                  ["TiAlN (Nitrure de titane-aluminium)", "Résistance à la chaleur accrue, idéal pour aciers durs"],
+                  ["CVD / PVD", "Technologies avancées pour applications exigeantes"],
+                  ["PCD (Diamant polycristallin)", "Idéal pour matériaux abrasifs et composites"],
+                  ["CBN (Nitrure de bore cubique)", "Usinage des aciers trempés"],
                 ].map(([name, desc], i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="px-6 py-3 font-medium text-foreground">{name}</td>

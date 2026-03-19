@@ -19,9 +19,14 @@ const sections = [
   {
     title: "Outils",
     links: [
+      { label: "Démarrage", href: "/demarrage" },
       { label: "Calculateur", href: "/calculateur" },
       { label: "Rectification", href: "/rectification" },
-      { label: "Securite", href: "/securite" },
+      { label: "CAO/FAO", href: "/cao-fao" },
+      { label: "RDM", href: "/rdm" },
+      { label: "Soudure", href: "/soudure" },
+      { label: "Matériaux", href: "/materiaux" },
+      { label: "Sécurité", href: "/securite" },
     ],
   },
 ]
@@ -41,8 +46,8 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Encyclopedie complete d{"'"}usinage et de rectification. Toutes les
-              competences pour maitriser l{"'"}atelier.
+              Encyclopédie complète d{"'"}usinage et de rectification. Toutes les
+              compétences pour maîtriser l{"'"}atelier.
             </p>
           </div>
           {sections.map((section) => (
@@ -66,7 +71,7 @@ export function Footer() {
           ))}
         </div>
         <div className="mt-10 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Manuel d{"'"}Atelier - Usinage &
+          &copy; {new Date().getFullYear()} Manuel d{"'"}Atelier — Usinage &
           Rectification
         </div>
       </div>

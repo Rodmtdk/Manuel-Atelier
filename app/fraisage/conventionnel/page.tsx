@@ -1,156 +1,208 @@
+import type { Metadata } from "next"
 import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
-import { VideoGrid } from "@/components/video-embed"
-import { SectionBanner } from "@/components/banner-image"
 import { FactCard } from "@/components/fact-card"
+import { TableOfContents } from "@/components/table-of-contents"
+import { Quiz } from "@/components/quiz"
+
+export const metadata: Metadata = {
+  title: "Fraisage Conventionnel - Manuel d'Atelier",
+  description:
+    "Guide complet du fraisage conventionnel : composants, têtes de fraiseuse, étaux, types de fraises, techniques d'usinage, ébauche et finition.",
+}
+
+const tocItemsFraisage = [
+  { id: "composants-fraiseuse", label: "Composants" },
+  { id: "tetes-fraiseuse", label: "Têtes de fraiseuse" },
+  { id: "etaux-fraisage", label: "Étaux" },
+  { id: "types-fraises", label: "Types de fraises" },
+  { id: "materiaux-outils-fraisage", label: "Matériaux outils" },
+  { id: "techniques-fraisage", label: "Techniques" },
+  { id: "ebauche-finition-fraisage", label: "Ébauche / Finition" },
+  { id: "securite-fraisage", label: "Sécurité" },
+  { id: "quiz-fraisage", label: "Quiz" },
+]
+
+const quizFraisage = [
+  {
+    question: "Pourquoi le fraisage en opposition est-il recommandé sur une fraiseuse conventionnelle ?",
+    options: ["Il donne un meilleur état de surface", "Il évite le problème du jeu vis-écrou", "Il use moins l'outil", "Il est plus rapide"],
+    correctIndex: 1,
+    explanation: "Sur une machine conventionnelle avec système vis-écrou (et non vis à bille), le fraisage en concordance (avalant) provoquerait un rattrapage brutal du jeu. L'opposition évite ce problème.",
+  },
+  {
+    question: "Lors du dégauchissage d'un étau, de quel côté ne doit-on jamais déplacer l'étau ?",
+    options: ["Du côté de la bride C", "Du côté de la bride B (pivot)", "Du côté opposé à l'opérateur", "Peu importe"],
+    correctIndex: 1,
+    explanation: "La bride B sert de pivot (centre de rotation). On ne déplace jamais l'étau du côté B ; les ajustements se font du côté C en frappant légèrement au maillet.",
+  },
+  {
+    question: "Quelle est la différence entre une fraise une taille et une fraise deux tailles ?",
+    options: ["Le nombre de dents", "Le nombre d'arêtes de coupe actives (1 vs 2 faces)", "La matière de l'outil", "La vitesse de rotation"],
+    correctIndex: 1,
+    explanation: "Une fraise 1 taille (fraise-scie) ne coupe que sur sa périphérie. Une fraise 2 tailles coupe aussi sur son extrémité, permettant de plonger et de rainurer.",
+  },
+  {
+    question: "Pourquoi incline-t-on légèrement la broche de quelques centièmes en surfaçage ?",
+    options: ["Pour augmenter la vitesse de coupe", "Pour éviter que la fraise ne talonne", "Pour améliorer l'évacuation des copeaux", "Pour réduire le bruit"],
+    correctIndex: 1,
+    explanation: "Si la broche est parfaitement perpendiculaire, le dos des plaquettes peut frotter sur la surface déjà usinée (talonnage), dégradant l'état de surface.",
+  },
+  {
+    question: "En finition, quelle stratégie est recommandée pour l'avance et la vitesse ?",
+    options: ["Augmenter l'avance, réduire la vitesse", "Réduire l'avance, augmenter légèrement la vitesse", "Tout au maximum", "Tout au minimum"],
+    correctIndex: 1,
+    explanation: "En finition, on réduit l'avance (meilleur Ra) et on augmente légèrement la vitesse de rotation pour un état de surface optimal.",
+  },
+]
 
 const composants = [
-  "Table de travail : supporte la piece, deplacable en X, Y, et Z",
+  "Table de travail : supporte la pièce, déplaçable en X, Y, et Z",
   "Porte-outil (pince ou mandrin porte-fraise) : maintient l'outil de coupe fermement",
-  "Manivelles manuelles : controle precis des mouvements de la table",
+  "Manivelles manuelles : contrôle précis des mouvements de la table",
   "Broche : rotation de l'outil, vitesses ajustables",
-  "Tete de fraiseuse : renvoi d'angle horizontal/vertical (types Hure, Dufour, Gambin)",
-  "Systeme de lubrification : reduit la chaleur, prolonge la duree de vie",
-  "Echelles de mesure et tambours gradues : deplacements de precision",
-  "Protecteurs de securite : protection contre eclats et copeaux",
-  "Variateur de vitesse : ajustement selon materiau et outil",
-  "Systeme vis-ecrou : deplacements de la table (attention au jeu fonctionnel)",
+  "Tête de fraiseuse : renvoi d'angle horizontal/vertical (types Huré, Dufour, Gambin)",
+  "Système de lubrification : réduit la chaleur, prolonge la durée de vie",
+  "Échelles de mesure et tambours gradués : déplacements de précision",
+  "Protecteurs de sécurité : protection contre éclats et copeaux",
+  "Variateur de vitesse : ajustement selon matériau et outil",
+  "Système vis-écrou : déplacements de la table (attention au jeu fonctionnel)",
 ]
 
 const typesEtaux = [
   {
-    title: "Etau standard",
-    desc: "Etau de fraisage a base fixe, serrage mecanique par vis-ecrou. Le plus courant pour les operations generales. Bridage en 4 points a l'exterieur pour rigidite maximale.",
+    title: "Étau standard",
+    desc: "Étau de fraisage à base fixe, serrage mécanique par vis-écrou. Le plus courant pour les opérations générales. Bridage en 4 points à l'extérieur pour rigidité maximale.",
   },
   {
-    title: "Etau a base rotative",
-    desc: "Possede une base pivotante graduee en degres, permettant d'orienter la piece a l'angle desire. Le reglage precis se fait au comparateur.",
+    title: "Étau à base rotative",
+    desc: "Possède une base pivotante graduée en degrés, permettant d'orienter la pièce à l'angle désiré. Le réglage précis se fait au comparateur.",
   },
   {
-    title: "Etau a serrages multiples",
-    desc: "Permet de serrer plusieurs pieces simultanement pour la production en serie. Gain de temps considerable pour les petites series.",
+    title: "Étau à serrages multiples",
+    desc: "Permet de serrer plusieurs pièces simultanément pour la production en série. Gain de temps considérable pour les petites séries.",
   },
   {
-    title: "Etaux modulables",
-    desc: "Systemes de serrage modulaires adaptables a differentes formes et tailles de pieces. Utilisent des mors speciaux pour pieces cylindriques ou obliques.",
+    title: "Étaux modulables",
+    desc: "Systèmes de serrage modulaires adaptables à différentes formes et tailles de pièces. Utilisent des mors spéciaux pour pièces cylindriques ou obliques.",
   },
 ]
 
 const degauchissageEtau = [
-  "Serrer moyennement la bride B (pivot), puis legerement la bride C",
-  "Mettre le comparateur a 0 du cote B",
-  "Se deplacer vers C et ajuster l'etau en frappant legerement au maillet",
-  "Revenir vers B, controler, recommencer tant que l'ecart depasse 0,01 mm",
-  "Serrer tous les points de bridage, puis controler a nouveau l'alignement",
-  "Ne jamais deplacer l'etau du cote B (centre de rotation)",
+  "Serrer moyennement la bride B (pivot), puis légèrement la bride C",
+  "Mettre le comparateur à 0 du côté B",
+  "Se déplacer vers C et ajuster l'étau en frappant légèrement au maillet",
+  "Revenir vers B, contrôler, recommencer tant que l'écart dépasse 0,01 mm",
+  "Serrer tous les points de bridage, puis contrôler à nouveau l'alignement",
+  "Ne jamais déplacer l'étau du côté B (centre de rotation)",
 ]
 
 const typesFreises = [
   {
     title: "Fraises une taille (fraise-scie)",
-    desc: "Une seule arete de coupe. Utilisee pour le tronconnage, rainures etroites ou ebauche de dentures. Diametre de 20 a 315 mm, faible epaisseur.",
+    desc: "Une seule arête de coupe. Utilisée pour le tronçonnage, rainures étroites ou ébauche de dentures. Diamètre de 20 à 315 mm, faible épaisseur.",
   },
   {
     title: "Fraises deux tailles",
-    desc: "Usinage sur l'extremite et les cotes. Existent en 2 dents (bonne evacuation copeaux) ou multidents (meilleure finition). Certaines ont une coupe au centre permettant de plonger dans la matiere.",
+    desc: "Usinage sur l'extrémité et les côtés. Existent en 2 dents (bonne évacuation copeaux) ou multidents (meilleure finition). Certaines ont une coupe au centre permettant de plonger dans la matière.",
   },
   {
     title: "Fraises trois tailles",
-    desc: "Trois aretes de coupe limitant la flexion. Rainurage avec forte avance. Denture alternee sur les faces laterales.",
+    desc: "Trois arêtes de coupe limitant la flexion. Rainurage avec forte avance. Denture alternée sur les faces latérales.",
   },
   {
-    title: "Fraises a surfacer",
-    desc: "Profondeur de passe limitee par la longueur d'arete des plaquettes. Diametres de 32 a 630 mm. Ideales pour le surfacage de grandes surfaces.",
+    title: "Fraises à surfacer",
+    desc: "Profondeur de passe limitée par la longueur d'arête des plaquettes. Diamètres de 32 à 630 mm. Idéales pour le surfaçage de grandes surfaces.",
   },
   {
-    title: "Fraises a surfacer-dresser",
-    desc: "Deux tailles dont une parallele a l'axe de l'outil. Polyvalentes : dressage, rainurage et surfacage en une seule fraise.",
+    title: "Fraises à surfacer-dresser",
+    desc: "Deux tailles dont une parallèle à l'axe de l'outil. Polyvalentes : dressage, rainurage et surfaçage en une seule fraise.",
   },
   {
     title: "Fraises de forme",
-    desc: "Reproduisent sur la surface la forme de la generatrice de la fraise : fraises boule a plaquettes, a chanfreiner, a rayon, a ve...",
+    desc: "Reproduisent sur la surface la forme de la génératrice de la fraise : fraises boule à plaquettes, à chanfreiner, à rayon, à vé...",
   },
 ]
 
 const techniques = [
   {
     title: "Fraisage en opposition",
-    desc: "Le mouvement d'avance (Mf) et le mouvement de coupe (Mc) sont de sens contraire dans la zone fraisee. L'epaisseur du copeau est faible a l'attaque puis maximale en fin de trajectoire. Fortement recommande sur machines conventionnelles non equipees de vis a bille.",
+    desc: "Le mouvement d'avance (Mf) et le mouvement de coupe (Mc) sont de sens contraire dans la zone fraisée. L'épaisseur du copeau est faible à l'attaque puis maximale en fin de trajectoire. Fortement recommandé sur machines conventionnelles non équipées de vis à bille.",
   },
   {
     title: "Fraisage en avalant (concordance)",
-    desc: "Mf et Mc sont dans le meme sens. Le copeau est maximal a l'attaque puis diminue. Meilleur etat de surface et moins d'usure de l'outil, mais attention au jeu vis-ecrou ! A utiliser en finition sur machine conventionnelle, ou systematiquement sur CNC (vis a bille).",
+    desc: "Mf et Mc sont dans le même sens. Le copeau est maximal à l'attaque puis diminue. Meilleur état de surface et moins d'usure de l'outil, mais attention au jeu vis-écrou ! À utiliser en finition sur machine conventionnelle, ou systématiquement sur CNC (vis à bille).",
   },
   {
-    title: "Fraisage en bout (surfacage)",
-    desc: "Cree des surfaces planes. L'outil travaille avec ses faces frontales. Le plus efficace quand c'est possible. Incliner legerement la broche de quelques centiemes pour eviter que la fraise ne talonne.",
+    title: "Fraisage en bout (surfaçage)",
+    desc: "Crée des surfaces planes. L'outil travaille avec ses faces frontales. Le plus efficace quand c'est possible. Incliner légèrement la broche de quelques centièmes pour éviter que la fraise ne talonne.",
   },
   {
     title: "Fraisage de rainure",
-    desc: "Utilisez des fraises adaptees a la largeur de la rainure et effectuez plusieurs passes legeres pour des profondeurs importantes.",
+    desc: "Utilisez des fraises adaptées à la largeur de la rainure et effectuez plusieurs passes légères pour des profondeurs importantes.",
   },
   {
-    title: "Fraisage helicoidal",
-    desc: "Pour percer des trous de grand diametre ou usiner des vis sans fin. Synchronisez l'avance lineaire avec la rotation.",
+    title: "Fraisage hélicoïdal",
+    desc: "Pour percer des trous de grand diamètre ou usiner des vis sans fin. Synchronisez l'avance linéaire avec la rotation.",
   },
   {
     title: "Fraisage de forme",
-    desc: "Pour des profils complexes, utilisez des fraises profilees et realisez une pre-finition avant la passe finale.",
+    desc: "Pour des profils complexes, utilisez des fraises profilées et réalisez une pré-finition avant la passe finale.",
   },
   {
     title: "Fraisage en T",
-    desc: "Usinage pour rainures en T, couramment utilisees dans les glissieres. Degagez regulierement les copeaux.",
+    desc: "Usinage pour rainures en T, couramment utilisées dans les glissières. Dégagez régulièrement les copeaux.",
   },
   {
     title: "Fraisage de chanfrein",
-    desc: "Fraises a chanfreiner pour ebavurer ou creer des bords inclines. Reglez precisement l'angle selon les specifications.",
+    desc: "Fraises à chanfreiner pour ébavurer ou créer des bords inclinés. Réglez précisément l'angle selon les spécifications.",
   },
   {
     title: "Fraisage en queue d'aronde",
-    desc: "Technique avancee pour assemblages mecaniques resistants. Utilisez une fraise specifique pour un resultat precis et durable.",
+    desc: "Technique avancée pour assemblages mécaniques résistants. Utilisez une fraise spécifique pour un résultat précis et durable.",
   },
   {
     title: "Fraisage en contournage",
-    desc: "Pour suivre des profils complexes avec precision. Adaptez la vitesse d'avance pour eviter les deformations.",
+    desc: "Pour suivre des profils complexes avec précision. Adaptez la vitesse d'avance pour éviter les déformations.",
   },
 ]
 
 const materiauxOutils = [
   {
     title: "Acier rapide (HSS)",
-    desc: "Peu couteux, nombreuses formes disponibles. Capacite de decoupe limitee : ne coupe pas les aciers trop durs, mais tres pratique pour aciers doux et aluminium.",
+    desc: "Peu coûteux, nombreuses formes disponibles. Capacité de découpe limitée : ne coupe pas les aciers trop durs, mais très pratique pour aciers doux et aluminium.",
   },
   {
     title: "Acier rapide au cobalt",
-    desc: "Durete superieure au HSS classique mais plus fragile (eviter les chocs). Meilleure resistance a l'usure grace au cobalt. Aspect visuel tres proche du HSS.",
+    desc: "Dureté supérieure au HSS classique mais plus fragile (éviter les chocs). Meilleure résistance à l'usure grâce au cobalt. Aspect visuel très proche du HSS.",
   },
   {
     title: "Carbure",
-    desc: "Augmentation importante de durete et resistance. Montage rigide et vitesses de coupe appropriees indispensables. Supporte mieux la chaleur, ideal pour grandes cadences.",
+    desc: "Augmentation importante de dureté et résistance. Montage rigide et vitesses de coupe appropriées indispensables. Supporte mieux la chaleur, idéal pour grandes cadences.",
   },
   {
-    title: "Outils revetus (TiN, TiAlN...)",
-    desc: "Corps HSS avec partie tranchante revetue de carbure ou titane. Le revetement en nitrure de titane (TiN) est le plus repandu et permet des vitesses de coupe plus elevees.",
+    title: "Outils revêtus (TiN, TiAlN...)",
+    desc: "Corps HSS avec partie tranchante revêtue de carbure ou titane. Le revêtement en nitrure de titane (TiN) est le plus répandu et permet des vitesses de coupe plus élevées.",
   },
 ]
 
 const ebaucheFinition = {
   ebauche: [
     "Machine puissante et robuste avec appareillage rigide",
-    "Serrages consequents, porte-a-faux reduit",
-    "Outils a grosse denture ou denture brise-copeaux",
+    "Serrages conséquents, porte-à-faux réduit",
+    "Outils à grosse denture ou denture brise-copeaux",
     "Vitesse de rotation moyenne, grande vitesse d'avance",
-    "Lubrifiant recommande pour prolonger la duree de vie de l'outil",
-    "Tracer la piece a quelques mm des cotes pour faciliter l'ebauche",
+    "Lubrifiant recommandé pour prolonger la durée de vie de l'outil",
+    "Tracer la pièce à quelques mm des cotes pour faciliter l'ébauche",
   ],
   finition: [
-    "Augmenter legerement la vitesse de rotation et diminuer l'avance",
-    "Appuis precis, serrages plus moderes (faibles efforts de coupe)",
-    "Outil de finition adapte (denture droite ou helicodale fine)",
-    "Faire les deux dernieres passes identiques pour meilleur resultat",
-    "En roulant : finition en avalant pour meilleur etat de surface",
+    "Augmenter légèrement la vitesse de rotation et diminuer l'avance",
+    "Appuis précis, serrages plus modérés (faibles efforts de coupe)",
+    "Outil de finition adapté (denture droite ou hélicoïdale fine)",
+    "Faire les deux dernières passes identiques pour meilleur résultat",
+    "En roulant : finition en avalant pour meilleur état de surface",
     "Travailler en lubrifiant pour un Ra optimal",
   ],
 }
@@ -161,19 +213,20 @@ export default function FraisageConvPage() {
       <PageHeader
         badge="Fraisage"
         title="Fraisage Conventionnel"
-        subtitle="Procede d'usinage par enlevement de matiere utilisant des fraiseuses manuelles. L'outil tourne pour enlever la matiere selon les axes X, Y et Z."
-        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg"
+        subtitle="Procédé d'usinage par enlèvement de matière utilisant des fraiseuses manuelles. L'outil tourne pour enlever la matière selon les axes X, Y et Z."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conventionnel-aYsSJcdqvA32L4XzZIhn0zgibJa9JN.jpg"
       />
 
-      <div className="mx-auto max-w-6xl px-4 lg:px-8">
-        <ContentSection title="Presentation">
+      <TableOfContents items={tocItemsFraisage} />
+      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
+        <ContentSection title="Présentation">
           <div className="rounded-xl border border-border bg-card p-6">
             <p className="leading-relaxed text-muted-foreground">
-              Le fraisage conventionnel est un procede d{"'"}usinage par enlevement de
-              matiere utilisant des fraiseuses manuelles. L{"'"}outil, generalement une
-              fraise, tourne pour enlever la matiere de la piece selon les axes X, Y
-              et Z. Ce procede est souvent utilise pour la fabrication de prototypes,
-              de petites series et dans les environnements educatifs.
+              Le fraisage conventionnel est un procédé d{"'"}usinage par enlèvement de
+              matière utilisant des fraiseuses manuelles. L{"'"}outil, généralement une
+              fraise, tourne pour enlever la matière de la pièce selon les axes X, Y
+              et Z. Ce procédé est souvent utilisé pour la fabrication de prototypes,
+              de petites séries et dans les environnements éducatifs.
             </p>
           </div>
         </ContentSection>
@@ -182,77 +235,59 @@ export default function FraisageConvPage() {
         <ContentSection title="Le Fraisage en Images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv1-dKnKSz1GCTohz95HLhCALpdTAK4tUZ.jpg"
-              alt="Fraiseuse conventionnelle en action avec outil de coupe et piece metallique"
-              caption="Fraiseuse conventionnelle en action - fraisage de precision sur etau"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conventionnel-aYsSJcdqvA32L4XzZIhn0zgibJa9JN.jpg"
+              alt="Fraiseuse conventionnelle en action avec outil de coupe et pièce métallique"
+              caption="Fraisage conventionnel — surfaçage avec fraise à plaquettes"
               priority
             />
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg"
-              alt="Fraisage conventionnel avec lubrification sur piece d'engrenage"
+              alt="Fraisage conventionnel avec lubrification sur pièce d'engrenage"
               caption="Lubrification active lors du fraisage d'un engrenage"
             />
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp"
-              alt="Collection d'outils de fraisage professionnels"
-              caption="Outils a plaquettes interchangeables"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils%20de%20coupe-6xtY6IzC6x82AchgZdgfHVto6qh6RZ.jpg"
+              alt="Collection d'outils de coupe professionnels à plaquettes"
+              caption="Outils à plaquettes interchangeables"
             />
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/foret%20et%20fraise%20carbure%20monobloc-haexBcTrZNdEQ8XWQQbX2lujVqasnt.jpg"
               alt="Forets et fraises carbure monobloc"
               caption="Forets et fraises carbure monobloc"
             />
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg"
               alt="Plaquettes carbure pour outils de coupe"
-              caption="Plaquettes de coupe - geometries variees"
+              caption="Plaquettes de coupe — géométries variées"
             />
           </div>
         </ContentSection>
 
         {/* Intriguing fact */}
         <FactCard
-          fact="La fraiseuse Bridgeport, creee en 1938 aux Etats-Unis, est devenue la reference mondiale des fraiseuses conventionnelles. Pesant environ 900 kg, sa tete orientable a revolutionne l'usinage en permettant des inclinaisons impossibles a obtenir autrement. Elle reste une machine emblematique dans les ateliers du monde entier."
+          fact="La fraiseuse Bridgeport, créée en 1938 aux États-Unis, est devenue la référence mondiale des fraiseuses conventionnelles. Pesant environ 900 kg, sa tête orientable a révolutionné l'usinage en permettant des inclinaisons impossibles à obtenir autrement. Elle reste une machine emblématique dans les ateliers du monde entier."
           variant="highlight"
           className="mb-8"
         />
 
-        {/* Videos */}
-        <ContentSection title="Voir en Video">
-          <VideoGrid
-            videos={[
-              {
-                videoId: "gR9xGH-DxWI",
-                title: "Fraisage conventionnel - Techniques de base",
-                caption: "Surfacage et rainurage sur fraiseuse manuelle",
-              },
-              {
-                videoId: "E_N_MFnOPfY",
-                title: "Utilisation d'une fraiseuse conventionnelle",
-                caption: "Reglage et utilisation d'une fraiseuse",
-              },
-            ]}
-          />
+        <ContentSection title="Composants d'une Fraiseuse Conventionnelle" id="composants-fraiseuse">
+          <InfoCard title="Éléments de la machine" items={composants} />
         </ContentSection>
 
-        <ContentSection title="Composants d'une Fraiseuse Conventionnelle">
-          <InfoCard title="Elements de la machine" items={composants} />
-        </ContentSection>
-
-        {/* Tetes de fraiseuse - from PDF 1 */}
-        <ContentSection title="Les Tetes de Fraiseuse">
-          <div className="rounded-xl border border-border bg-card p-6 mb-4">
+        {/* Têtes de fraiseuse */}
+        <ContentSection title="Les Têtes de Fraiseuse" id="tetes-fraiseuse">
+          <div className="mb-4 rounded-xl border border-border bg-card p-6">
             <p className="leading-relaxed text-muted-foreground">
-              La tete de fraiseuse comporte un renvoi d{"'"}angle qui permet de passer du fraisage horizontal au fraisage vertical. De la qualite de son reglage dependra la qualite finale de la piece. Il faut toujours controler la precision du reglage de la tete en arrivant sur une machine inconnue.
+              La tête de fraiseuse comporte un renvoi d{"'"}angle qui permet de passer du fraisage horizontal au fraisage vertical. De la qualité de son réglage dépendra la qualité finale de la pièce. Il faut toujours contrôler la précision du réglage de la tête en arrivant sur une machine inconnue.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { title: "Tete Hure", desc: "Reglage par abaque du constructeur. Attention : toujours utiliser l'angle complementaire a l'angle voulu (ex : pour 33 degres, chercher 67 degres sur l'abaque)." },
-              { title: "Tete Dufour", desc: "Reglage en deux etapes obligatoires : d'abord le porte-fraise, puis le renvoi d'angle. Attention au basculement lors du desserrage." },
-              { title: "Tete Gambin", desc: "Meme principe que Dufour, mais sans ordre precis de reglage." },
+              { title: "Tête Huré", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à l'angle voulu (ex : pour 33 degrés, chercher 67 degrés sur l'abaque)." },
+              { title: "Tête Dufour", desc: "Réglage en deux étapes obligatoires : d'abord le porte-fraise, puis le renvoi d'angle. Attention au basculement lors du desserrage." },
+              { title: "Tête Gambin", desc: "Même principe que Dufour, mais sans ordre précis de réglage." },
             ].map((tete) => (
               <div key={tete.title} className="rounded-xl border border-border bg-card p-6">
                 <h3 className="mb-2 font-semibold text-foreground">{tete.title}</h3>
@@ -261,15 +296,15 @@ export default function FraisageConvPage() {
             ))}
           </div>
           <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-6">
-            <h3 className="mb-2 font-semibold text-foreground">Reglage au comparateur</h3>
+            <h3 className="mb-2 font-semibold text-foreground">Réglage au comparateur</h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Fixer le comparateur dans la broche, desserrer legerement toutes les vis de la tete, positionner le comparateur juste sous l{"'"}axe de rotation et le regler sur 0. Mesurer l{"'"}autre cote et faire pivoter la tete jusqu{"'"}au 0. Pour le surfacage, incliner la broche de quelques centiemes pour eviter que la fraise ne talonne.
+              Fixer le comparateur dans la broche, desserrer légèrement toutes les vis de la tête, positionner le comparateur juste sous l{"'"}axe de rotation et le régler sur 0. Mesurer l{"'"}autre côté et faire pivoter la tête jusqu{"'"}au 0. Pour le surfaçage, incliner la broche de quelques centièmes pour éviter que la fraise ne talonne.
             </p>
           </div>
         </ContentSection>
 
-        {/* Etaux - from PDF 2 */}
-        <ContentSection title="Les Etaux de Fraisage">
+        {/* Étaux */}
+        <ContentSection title="Les Étaux de Fraisage" id="etaux-fraisage">
           <div className="grid gap-4 sm:grid-cols-2">
             {typesEtaux.map((etau) => (
               <div key={etau.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -280,7 +315,7 @@ export default function FraisageConvPage() {
           </div>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-foreground">Degauchissage d{"'"}un Etau</h3>
+              <h3 className="mb-3 text-lg font-semibold text-foreground">Dégauchissage d{"'"}un Étau</h3>
               <div className="flex flex-col gap-3">
                 {degauchissageEtau.map((etape, i) => (
                   <div key={i} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
@@ -294,36 +329,36 @@ export default function FraisageConvPage() {
             </div>
             <div className="flex flex-col gap-4">
               <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="mb-3 font-semibold text-foreground">Regles de serrage en etau</h3>
+                <h3 className="mb-3 font-semibold text-foreground">Règles de serrage en étau</h3>
                 <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    Le serrage ne doit pas etre excessif (risque de deformer et marquer la piece)
+                    Le serrage ne doit pas être excessif (risque de déformer et marquer la pièce)
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    Toujours serrer avec la meme pression, surtout pour les series
+                    Toujours serrer avec la même pression, surtout pour les séries
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    Diriger les efforts d{"'"}usinage vers le mors fixe (element le plus rigide)
+                    Diriger les efforts d{"'"}usinage vers le mors fixe (élément le plus rigide)
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    Controler le fond de l{"'"}etau avant degauchissage (pas de copeaux entre etau et table)
+                    Contrôler le fond de l{"'"}étau avant dégauchissage (pas de copeaux entre étau et table)
                   </li>
                 </ul>
               </div>
               <FactCard
-                fact="Un etau se degauchit en moins de dix minutes. Le bridage en 4 points a l'exterieur est le plus efficace. Ca ne sert a rien de serrer avec un tube ou une rallonge !"
+                fact="Un étau se dégauchit en moins de dix minutes. Le bridage en 4 points à l'extérieur est le plus efficace. Ça ne sert à rien de serrer avec un tube ou une rallonge !"
                 variant="default"
               />
             </div>
           </div>
         </ContentSection>
 
-        {/* Types de fraises - from PDF 3 */}
-        <ContentSection title="Types de Fraises selon leur Usage">
+        {/* Types de fraises */}
+        <ContentSection title="Types de Fraises selon leur Usage" id="types-fraises">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {typesFreises.map((fraise) => (
               <div key={fraise.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -334,8 +369,8 @@ export default function FraisageConvPage() {
           </div>
         </ContentSection>
 
-        {/* Materiaux outils - from PDF 3 */}
-        <ContentSection title="Materiaux des Outils de Fraisage">
+        {/* Matériaux outils */}
+        <ContentSection title="Matériaux des Outils de Fraisage" id="materiaux-outils-fraisage">
           <div className="grid gap-4 sm:grid-cols-2">
             {materiauxOutils.map((mat) => (
               <div key={mat.title} className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30">
@@ -346,7 +381,7 @@ export default function FraisageConvPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Techniques de Fraisage">
+        <ContentSection title="Techniques de Fraisage" id="techniques-fraisage">
           <div className="grid gap-4 sm:grid-cols-2">
             {techniques.map((tech, i) => (
               <div
@@ -372,72 +407,72 @@ export default function FraisageConvPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.jpg-lXAUx3kv4pVWy3yACM3GtT4ZJQDQFd.png"
-              alt="Schema de mise en position isostatique - appuis et serrages"
-              caption="Principe de mise en position isostatique : 6 degres de liberte bloques par les appuis"
+              alt="Schéma de mise en position isostatique — appuis et serrages"
+              caption="Principe de mise en position isostatique : 6 degrés de liberté bloqués par les appuis"
               aspectRatio="square"
             />
             <div className="flex flex-col gap-4">
               <div className="rounded-xl border border-border bg-card p-6">
                 <h3 className="mb-3 font-semibold text-foreground">Principe isostatique</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  Toute piece dans l{"'"}espace possede 6 degres de liberte (3 translations + 3 rotations). La mise en position consiste a eliminer ces 6 degres a l{"'"}aide d{"'"}appuis ponctuels : 3 appuis sur le plan principal, 2 sur le plan secondaire, 1 sur le plan tertiaire.
+                  Toute pièce dans l{"'"}espace possède 6 degrés de liberté (3 translations + 3 rotations). La mise en position consiste à éliminer ces 6 degrés à l{"'"}aide d{"'"}appuis ponctuels : 3 appuis sur le plan principal, 2 sur le plan secondaire, 1 sur le plan tertiaire.
                 </p>
               </div>
               <FactCard
-                fact="Le principe isostatique date du XIXe siecle et reste la base de tout montage d'usinage. Sans lui, impossible de garantir la repetabilite des operations sur des series de pieces."
+                fact="Le principe isostatique date du XIXe siècle et reste la base de tout montage d'usinage. Sans lui, impossible de garantir la répétabilité des opérations sur des séries de pièces."
                 variant="default"
               />
             </div>
           </div>
         </ContentSection>
 
-        <ContentSection title="Parametres Cruciaux">
+        <ContentSection title="Paramètres Cruciaux">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Vitesse de Coupe (Vc)</h3>
               <p className="mb-3 text-sm text-muted-foreground">
-                Depend du materiau et de l{"'"}outil. Calculee avec la formule :
+                Dépend du matériau et de l{"'"}outil. Calculée avec la formule :
               </p>
               <div className="rounded-lg bg-secondary p-4 font-mono text-sm text-primary">
                 Vc = (Pi x D x n) / 1000
               </div>
               <p className="mt-2 text-xs text-muted-foreground">
-                D = diametre de la fraise, n = vitesse de rotation (tr/min)
+                D = diamètre de la fraise, n = vitesse de rotation (tr/min)
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Avance par dent (fz)</h3>
               <p className="text-sm text-muted-foreground">
-                Distance parcourue par dent de fraise a chaque rotation. Une avance
-                excessive entraine des vibrations, une avance trop faible use
-                prematurement l{"'"}outil.
+                Distance parcourue par dent de fraise à chaque rotation. Une avance
+                excessive entraîne des vibrations, une avance trop faible use
+                prématurément l{"'"}outil.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Profondeur de Passe (ap)</h3>
               <p className="text-sm text-muted-foreground">
-                Epaisseur de matiere retiree par passe. Pour les materiaux durs, limitez
-                a 0,1-0,3 mm. Equilibrez rapidite et qualite.
+                Épaisseur de matière retirée par passe. Pour les matériaux durs, limitez
+                à 0,1-0,3 mm. Équilibrez rapidité et qualité.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Largeur de Passe (ae)</h3>
               <p className="text-sm text-muted-foreground">
-                Engagement radial essentiel pour maintenir la stabilite de l{"'"}usinage
-                et prolonger la duree de vie des outils.
+                Engagement radial essentiel pour maintenir la stabilité de l{"'"}usinage
+                et prolonger la durée de vie des outils.
               </p>
             </div>
           </div>
         </ContentSection>
 
-        {/* Ebauche et finition - from PDF 5 */}
-        <ContentSection title="Ebauche, Semi-finition et Finition">
+        {/* Ébauche et finition */}
+        <ContentSection title="Ébauche, Semi-finition et Finition" id="ebauche-finition-fraisage">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-foreground">Ebauche</h3>
+              <h3 className="mb-3 text-lg font-semibold text-foreground">Ébauche</h3>
               <div className="rounded-xl border border-border bg-card p-6">
                 <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                  L{"'"}ebauche consiste a enlever le plus gros de la matiere en un temps reduit. Elle sert a eliminer la croute superficielle et les fortes surepaisseurs d{"'"}usinage.
+                  L{"'"}ébauche consiste à enlever le plus gros de la matière en un temps réduit. Elle sert à éliminer la croûte superficielle et les fortes surépaisseurs d{"'"}usinage.
                 </p>
                 <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
                   {ebaucheFinition.ebauche.map((item, i) => (
@@ -453,7 +488,7 @@ export default function FraisageConvPage() {
               <h3 className="mb-3 text-lg font-semibold text-foreground">Finition</h3>
               <div className="rounded-xl border border-border bg-card p-6">
                 <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                  La finition sert a respecter les specifications du dessin de definition. La finition exterieure est le gage de qualite d{"'"}un usinage et, souvent, de l{"'"}ouvrier lui-meme.
+                  La finition sert à respecter les spécifications du dessin de définition. La finition extérieure est le gage de qualité d{"'"}un usinage et, souvent, de l{"'"}opérateur lui-même.
                 </p>
                 <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
                   {ebaucheFinition.finition.map((item, i) => (
@@ -469,7 +504,7 @@ export default function FraisageConvPage() {
           <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-6">
             <h3 className="mb-2 font-semibold text-foreground">La Lubrification</h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Le lubrifiant (liquide refrigerant) assure 3 fonctions : <strong className="text-foreground">refroidir l{"'"}arete de l{"'"}outil</strong> (30% de la chaleur se concentre a cet endroit), <strong className="text-foreground">lubrifier le tranchant</strong> (moins de frottement = moins de chaleur), et <strong className="text-foreground">evacuer les copeaux</strong> (meilleure finition). L{"'"}huile de coupe doit etre correctement dosee pour eviter l{"'"}oxydation.
+              Le lubrifiant (liquide réfrigérant) assure 3 fonctions : <strong className="text-foreground">refroidir l{"'"}arête de l{"'"}outil</strong> (30% de la chaleur se concentre à cet endroit), <strong className="text-foreground">lubrifier le tranchant</strong> (moins de frottement = moins de chaleur), et <strong className="text-foreground">évacuer les copeaux</strong> (meilleure finition). L{"'"}huile de coupe doit être correctement dosée pour éviter l{"'"}oxydation.
             </p>
           </div>
         </ContentSection>
@@ -478,40 +513,48 @@ export default function FraisageConvPage() {
           <InfoCard
             title="Utilisations courantes"
             items={[
-              "Fabrication de pieces mecaniques uniques",
-              "Petites series pour l'industrie",
-              "Formation dans les ateliers pedagogiques",
-              "Reparations rapides et ajustements personnalises",
-              "Creation de pieces artistiques ou prototypes en bois et metal",
-              "Restauration ou modification de pieces existantes",
+              "Fabrication de pièces mécaniques uniques",
+              "Petites séries pour l'industrie",
+              "Formation dans les ateliers pédagogiques",
+              "Réparations rapides et ajustements personnalisés",
+              "Création de pièces artistiques ou prototypes en bois et métal",
+              "Restauration ou modification de pièces existantes",
             ]}
           />
         </ContentSection>
 
-        <ContentSection title="Bonnes Pratiques et Securite">
+        <ContentSection title="Bonnes Pratiques et Sécurité" id="securite-fraisage">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard
-              title="Securite machine (selon Compagnons)"
+              title="Sécurité machine"
               items={[
                 "Fermer les carters avant toute mise en route",
-                "Ne pas s'approcher a moins de 50 cm d'un outil en rotation",
+                "Ne pas s'approcher à moins de 50 cm d'un outil en rotation",
                 "Ne pas laisser pendre les manches du bleu de travail",
-                "Cheveux longs attaches et dans le col",
-                "Ne pas mettre la broche en rotation si l'outil est mal fixe",
-                "La fraise avale tout ce qui n'est pas fermement bride (pieces, chiffons, doigts...)",
+                "Cheveux longs attachés et dans le col",
+                "Ne pas mettre la broche en rotation si l'outil est mal fixé",
+                "La fraise avale tout ce qui n'est pas fermement bridé (pièces, chiffons, doigts...)",
               ]}
             />
             <InfoCard
-              title="Equipements de Protection (EPI)"
+              title="Équipements de Protection (EPI)"
               items={[
                 "Port obligatoire de lunettes de protection",
-                "Gants adaptes pour manipuler les outils (hors fonctionnement)",
-                "Vetements ajustes pour eviter les accrochages",
+                "Gants adaptés pour manipuler les outils (hors fonctionnement)",
+                "Vêtements ajustés pour éviter les accrochages",
                 "Bouchons d'oreilles contre le bruit",
-                "Chaussures de securite contre les chutes d'objets",
+                "Chaussures de sécurité contre les chutes d'objets",
               ]}
             />
           </div>
+        </ContentSection>
+
+        {/* Quiz */}
+        <ContentSection title="Testez vos Connaissances" id="quiz-fraisage">
+          <Quiz
+            title="Quiz - Fraisage Conventionnel"
+            questions={quizFraisage}
+          />
         </ContentSection>
       </div>
     </>

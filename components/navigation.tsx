@@ -14,11 +14,16 @@ import {
   Menu,
   X,
   Disc,
+  Layers,
+  Gauge,
+  Flame,
+  Thermometer,
 } from "lucide-react"
+import { SearchDialog } from "@/components/search-dialog"
 
 const navItems = [
   { label: "Accueil", href: "/", icon: Home },
-  { label: "Demarrage", href: "/demarrage", icon: Rocket },
+  { label: "Démarrage", href: "/demarrage", icon: Rocket },
   {
     label: "Fraisage",
     icon: Wrench,
@@ -36,8 +41,12 @@ const navItems = [
     ],
   },
   { label: "Rectification", href: "/rectification", icon: Disc },
+  { label: "CAO/FAO", href: "/cao-fao", icon: Layers },
+  { label: "RDM", href: "/rdm", icon: Gauge },
+  { label: "Soudure", href: "/soudure", icon: Flame },
+  { label: "Matériaux", href: "/materiaux", icon: Thermometer },
   { label: "Calculateur", href: "/calculateur", icon: Calculator },
-  { label: "Securite", href: "/securite", icon: ShieldAlert },
+  { label: "Sécurité", href: "/securite", icon: ShieldAlert },
 ]
 
 export function Navigation() {
@@ -120,14 +129,17 @@ export function Navigation() {
           )}
         </nav>
 
-        {/* Mobile menu button */}
-        <button
-          className="rounded-lg p-2 text-muted-foreground hover:bg-secondary lg:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <SearchDialog />
+          {/* Mobile menu button */}
+          <button
+            className="rounded-lg p-2 text-muted-foreground hover:bg-secondary lg:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile nav */}
