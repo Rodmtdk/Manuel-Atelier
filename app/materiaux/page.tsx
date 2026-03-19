@@ -1,4 +1,4 @@
-// Materiaux page - v2 updated
+// Materiaux page - v3 fixed
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
