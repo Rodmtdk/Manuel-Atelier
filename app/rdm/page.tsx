@@ -1,9 +1,11 @@
-// RDM page - v3 fixed
+// RDM page - version 4.0 - no icon props on InfoCard
 import type { Metadata } from "next"
+
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
+
 import {
   Gauge,
   ArrowRight,
@@ -13,6 +15,7 @@ import {
   ArrowUpDown,
   RotateCcw,
 } from "lucide-react"
+
 import Link from "next/link"
 
 export const metadata: Metadata = {
