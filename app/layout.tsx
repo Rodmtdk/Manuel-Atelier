@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
-import { SidebarNav } from "@/components/sidebar-nav"
+import { HeaderNav } from "@/components/header-nav"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -33,8 +33,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans`}>
-        <SidebarNav />
-        <main className="min-h-screen pb-20 lg:ml-[72px] lg:pb-0 xl:ml-[244px]">
+        <HeaderNav />
+        <main className="min-h-screen pt-16">
           {children}
         </main>
       </body>

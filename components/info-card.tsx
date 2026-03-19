@@ -1,3 +1,4 @@
+// InfoCard component - safe against undefined items
 import { cn } from "@/lib/utils"
 import type { ReactNode } from "react"
 
