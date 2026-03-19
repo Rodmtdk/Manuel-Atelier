@@ -1,3 +1,4 @@
+//rebuild
 // Materiaux page - version 4.0 - no icon props on InfoCard
 import type { Metadata } from "next"
 
