@@ -20,7 +20,7 @@ import {
   Flame,
   Thermometer,
   Droplets,
-  Layers,
+
 } from "lucide-react"
 
 export const metadata: Metadata = {
