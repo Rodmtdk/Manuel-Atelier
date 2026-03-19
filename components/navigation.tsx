@@ -15,6 +15,9 @@ import {
   X,
   Disc,
   Layers,
+  Gauge,
+  Flame,
+  Thermometer,
 } from "lucide-react"
 import { SearchDialog } from "@/components/search-dialog"
 
@@ -39,6 +42,9 @@ const navItems = [
   },
   { label: "Rectification", href: "/rectification", icon: Disc },
   { label: "CAO/FAO", href: "/cao-fao", icon: Layers },
+  { label: "RDM", href: "/rdm", icon: Gauge },
+  { label: "Soudure", href: "/soudure", icon: Flame },
+  { label: "Matériaux", href: "/materiaux", icon: Thermometer },
   { label: "Calculateur", href: "/calculateur", icon: Calculator },
   { label: "Sécurité", href: "/securite", icon: ShieldAlert },
 ]

@@ -15,6 +15,8 @@ import {
   Target,
   Gauge,
   Layers,
+  Flame,
+  Thermometer,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -65,6 +67,27 @@ const categories = [
     href: "/cao-fao",
     icon: Layers,
     color: "from-accent/20 to-accent/5",
+  },
+  {
+    title: "Résistance des Matériaux",
+    description: "RDM : contraintes, déformations, flexion, torsion. Du simple au complexe.",
+    href: "/rdm",
+    icon: Gauge,
+    color: "from-primary/20 to-primary/5",
+  },
+  {
+    title: "Soudure",
+    description: "Techniques de soudage : MIG, MAG, TIG, MMA. Positions, défauts et contrôles.",
+    href: "/soudure",
+    icon: Flame,
+    color: "from-accent/20 to-accent/5",
+  },
+  {
+    title: "Matériaux & Traitements",
+    description: "Aciers, alliages, traitements thermiques : trempe, revenu, cémentation.",
+    href: "/materiaux",
+    icon: Thermometer,
+    color: "from-primary/20 to-primary/5",
   },
   {
     title: "Sécurité en Atelier",

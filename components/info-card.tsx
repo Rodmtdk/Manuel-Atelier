@@ -9,7 +9,7 @@ interface InfoCardProps {
   className?: string
 }
 
-export function InfoCard({ title, items, children, variant = "default", className }: InfoCardProps) {
+export function InfoCard({ title, items = [], children, variant = "default", className }: InfoCardProps) {
   return (
     <div
       className={cn(
@@ -21,7 +21,7 @@ export function InfoCard({ title, items, children, variant = "default", classNam
       )}
     >
       <h3 className="mb-4 text-lg font-semibold text-foreground">{title}</h3>
-      {items ? (
+      {items && items.length > 0 ? (
         <ul className="flex flex-col gap-2.5">
           {items.map((item, i) => (
             <li

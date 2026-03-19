@@ -30,8 +30,8 @@ export default function CaoFaoPage() {
     <>
       {/* Hero Banner */}
       <BannerImage
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freisage-cnc-pbqDleTJcJ18UadCQqDwQxAGLH5eYm.webp"
-        alt="Fraisage CNC 5 axes en action - usinage d'une pièce complexe en aluminium"
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CAO000-UJyG7nlP3mSmwSHn30f9E18byVDuNP.jpg"
+        alt="Environnement CAO/FAO complet : FreeCAD, simulation d'usinage et mise en plan technique"
         height="lg"
         overlay="gradient"
         priority
