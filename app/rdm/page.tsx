@@ -1,3 +1,4 @@
+// RDM page - updated
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
@@ -5,10 +6,6 @@ import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import {
   Gauge,
-  ArrowUpDown,
-  RotateCcw,
-  Maximize2,
-  Scissors,
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
@@ -91,7 +88,6 @@ export default function RDMPage() {
               <div className="grid gap-4 sm:grid-cols-2 mb-8">
                 <InfoCard
                   title="Contrainte (σ ou τ)"
-                  icon={ArrowUpDown}
                   items={[
                     "Force par unité de surface (MPa = N/mm²)",
                     "σ = F / S pour les contraintes normales",
@@ -100,7 +96,6 @@ export default function RDMPage() {
                 />
                 <InfoCard
                   title="Déformation (ε)"
-                  icon={Maximize2}
                   items={[
                     "Allongement relatif (sans unité)",
                     "ε = ΔL / L₀",
@@ -234,7 +229,6 @@ export default function RDMPage() {
               <div className="grid gap-4 sm:grid-cols-3 mb-8">
                 <InfoCard
                   title="Moment fléchissant Mf"
-                  icon={RotateCcw}
                   items={[
                     "Produit de la force par le bras de levier",
                     "Unité : N·mm ou N·m",
@@ -243,7 +237,6 @@ export default function RDMPage() {
                 />
                 <InfoCard
                   title="Contrainte de flexion"
-                  icon={ArrowUpDown}
                   items={[
                     "σ = Mf × y / I",
                     "Maximale sur les fibres extrêmes",
@@ -252,7 +245,6 @@ export default function RDMPage() {
                 />
                 <InfoCard
                   title="Flèche f"
-                  icon={Maximize2}
                   items={[
                     "Déformation transversale",
                     "Dépend de E, I et du chargement",
@@ -383,7 +375,6 @@ export default function RDMPage() {
               <div className="grid gap-4 sm:grid-cols-2 mb-8">
                 <InfoCard
                   title="Cisaillement simple"
-                  icon={Scissors}
                   items={[
                     "τ = F / S",
                     "Une seule section cisaillée",
@@ -392,7 +383,6 @@ export default function RDMPage() {
                 />
                 <InfoCard
                   title="Cisaillement double"
-                  icon={Scissors}
                   items={[
                     "τ = F / (2 × S)",
                     "Deux sections cisaillées",

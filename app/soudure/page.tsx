@@ -1,3 +1,4 @@
+// Soudure page - updated
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
@@ -5,14 +6,10 @@ import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import {
   Flame,
-  Zap,
-  Shield,
-  Eye,
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
   BookOpen,
-  Settings,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -92,7 +89,6 @@ export default function SoudurePage() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-8">
                 <InfoCard
                   title="MMA (111)"
-                  icon={Zap}
                   items={[
                     "Électrode enrobée",
                     "Polyvalent, extérieur",
@@ -101,7 +97,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="MIG/MAG (131/135)"
-                  icon={Settings}
                   items={[
                     "Fil continu + gaz",
                     "Productivité élevée",
@@ -110,7 +105,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="TIG (141)"
-                  icon={Flame}
                   items={[
                     "Tungstène + argon",
                     "Haute qualité",
@@ -119,7 +113,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="SAW (121)"
-                  icon={Shield}
                   items={[
                     "Arc submergé",
                     "Forte pénétration",
@@ -238,7 +231,6 @@ export default function SoudurePage() {
               <div className="grid gap-4 sm:grid-cols-2 mb-8">
                 <InfoCard
                   title="MIG (131)"
-                  icon={Shield}
                   items={[
                     "Gaz : Argon pur ou Ar/He",
                     "Matériaux : Aluminium, inox",
@@ -247,7 +239,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="MAG (135)"
-                  icon={Flame}
                   items={[
                     "Gaz : CO₂ ou Ar/CO₂ (82/18)",
                     "Matériaux : Aciers carbone",
@@ -531,7 +522,6 @@ export default function SoudurePage() {
               <div className="grid gap-4 sm:grid-cols-2 mb-8">
                 <InfoCard
                   title="Contrôles Non Destructifs"
-                  icon={Eye}
                   items={[
                     "Visuel (VT) — obligatoire, premier niveau",
                     "Ressuage (PT) — défauts débouchants",
@@ -542,7 +532,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="Qualifications"
-                  icon={CheckCircle2}
                   items={[
                     "QMOS — Qualification Mode Opératoire",
                     "QS — Qualification Soudeur (ISO 9606)",
@@ -587,7 +576,6 @@ export default function SoudurePage() {
               <div className="grid gap-4 sm:grid-cols-3">
                 <InfoCard
                   title="Protection des yeux"
-                  icon={Eye}
                   items={[
                     "Cagoule avec filtre adapté",
                     "Teinte 9-13 selon intensité",
@@ -596,7 +584,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="Protection respiratoire"
-                  icon={Shield}
                   items={[
                     "Ventilation/aspiration localisée",
                     "Masque FFP2/FFP3 si nécessaire",
@@ -605,7 +592,6 @@ export default function SoudurePage() {
                 />
                 <InfoCard
                   title="Protection corporelle"
-                  icon={Shield}
                   items={[
                     "Veste cuir ou ignifugée",
                     "Gants cuir manchettes longues",

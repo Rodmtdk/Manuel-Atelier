@@ -1,3 +1,4 @@
+// Materiaux page - updated
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
 import { ContentSection } from "@/components/content-section"
@@ -5,13 +6,10 @@ import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import {
   Thermometer,
-  Flame,
-  Shield,
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
   BookOpen,
-  Droplets,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -98,7 +96,6 @@ export default function MateriauxPage() {
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <InfoCard
                   title="Résistance"
-                  icon={Shield}
                   items={[
                     "Re — Limite élastique",
                     "Rm — Résistance traction",
@@ -107,7 +104,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Rigidité"
-                  icon={Shield}
                   items={[
                     "E — Module d'Young",
                     "G — Module de Coulomb",
@@ -116,7 +112,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Ductilité"
-                  icon={Droplets}
                   items={[
                     "A% — Allongement rupture",
                     "Capacité déformation",
@@ -125,7 +120,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Dureté"
-                  icon={Thermometer}
                   items={[
                     "HRC — Rockwell C",
                     "HB — Brinell",
@@ -364,7 +358,6 @@ export default function MateriauxPage() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <InfoCard
                   title="Laiton (Cu-Zn)"
-                  icon={Droplets}
                   items={[
                     "Excellent usinage (décolletage)",
                     "Bonne conductivité",
@@ -373,7 +366,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Bronze (Cu-Sn)"
-                  icon={Shield}
                   items={[
                     "Résistance à l'usure",
                     "Frottement (coussinets)",
@@ -382,7 +374,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Titane"
-                  icon={Shield}
                   items={[
                     "Légèreté + résistance",
                     "Biocompatible, aéro/médical",
@@ -391,7 +382,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Fonte"
-                  icon={Shield}
                   items={[
                     "Excellente usinabilité",
                     "Amortissement vibrations",
@@ -400,7 +390,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Cuivre pur"
-                  icon={Droplets}
                   items={[
                     "Conductivité max",
                     "Électricité, thermique",
@@ -409,7 +398,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Inconel"
-                  icon={Flame}
                   items={[
                     "Superalliage Ni-Cr",
                     "Haute température",
@@ -538,7 +526,6 @@ export default function MateriauxPage() {
               <div className="grid gap-4 sm:grid-cols-2 mb-6">
                 <InfoCard
                   title="Cémentation"
-                  icon={Flame}
                   items={[
                     "Diffusion de carbone en surface",
                     "Aciers bas carbone (16MnCr5)",
@@ -547,7 +534,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Nitruration"
-                  icon={Shield}
                   items={[
                     "Diffusion d'azote (500-550°C)",
                     "Très dure (HV 1000+), sans trempe",
@@ -556,7 +542,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Carbonitruration"
-                  icon={Flame}
                   items={[
                     "C + N simultanés",
                     "Trempe huile ou gaz",
@@ -565,7 +550,6 @@ export default function MateriauxPage() {
                 />
                 <InfoCard
                   title="Trempe superficielle"
-                  icon={Thermometer}
                   items={[
                     "Induction ou flamme",
                     "Chauffage localisé rapide",
