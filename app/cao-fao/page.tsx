@@ -1,7 +1,19 @@
 import type { Metadata } from "next"
 import { BannerImage } from "@/components/banner-image"
-import { ContentSection, InfoCard, HighlightBox, ImageShowcase, TableBlock } from "@/components/content-blocks"
-import { Layers, Monitor, Cpu, FileCode, Cog, ArrowRight, CheckCircle2 } from "lucide-react"
+import { ContentSection } from "@/components/content-section"
+import { InfoCard } from "@/components/info-card"
+import { ImageShowcase } from "@/components/image-showcase"
+import {
+  Layers,
+  Monitor,
+  Cpu,
+  FileCode,
+  Cog,
+  ArrowRight,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+} from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -61,10 +73,13 @@ export default function CaoFaoPage() {
             </InfoCard>
           </div>
 
-          <HighlightBox variant="info" className="mt-8">
-            Le workflow moderne intègre souvent CAO et FAO dans un même logiciel (Fusion 360, SolidWorks CAM)
-            pour fluidifier le passage de la conception à la fabrication.
-          </HighlightBox>
+          <div className="mt-8 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4">
+            <Lightbulb className="h-5 w-5 shrink-0 text-primary mt-0.5" />
+            <p className="text-sm text-muted-foreground">
+              Le workflow moderne intègre souvent CAO et FAO dans un même logiciel (Fusion 360, SolidWorks CAM)
+              pour fluidifier le passage de la conception à la fabrication.
+            </p>
+          </div>
         </ContentSection>
 
         {/* CAO Section */}
@@ -82,18 +97,59 @@ export default function CaoFaoPage() {
             aspectRatio="wide"
           />
 
-          <TableBlock
-            caption="Principaux logiciels de CAO"
-            headers={["Logiciel", "Éditeur", "Points forts", "Usage"]}
-            rows={[
-              ["SolidWorks", "Dassault Systèmes", "Paramétrique puissant, écosystème riche", "Industrie, PME"],
-              ["Fusion 360", "Autodesk", "Cloud, CAO+FAO intégré, accessible", "Makers, PME, formation"],
-              ["Inventor", "Autodesk", "Mécanique, simulation, gestion données", "Industrie mécanique"],
-              ["FreeCAD", "Open Source", "Gratuit, paramétrique, extensible", "Hobbyistes, formation"],
-              ["CATIA", "Dassault Systèmes", "Surfaces complexes, aéronautique", "Grandes entreprises"],
-              ["NX", "Siemens", "Tout-en-un CAO/FAO/IAO", "Industrie automobile, aéro"],
-            ]}
-          />
+          <div className="mt-8 overflow-x-auto">
+            <table className="w-full text-sm">
+              <caption className="mb-3 text-left text-base font-semibold text-foreground">
+                Principaux logiciels de CAO
+              </caption>
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Logiciel</th>
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Éditeur</th>
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Points forts</th>
+                  <th className="py-3 text-left font-semibold text-foreground">Usage</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">SolidWorks</td>
+                  <td className="py-3 pr-4">Dassault Systèmes</td>
+                  <td className="py-3 pr-4">Paramétrique puissant, écosystème riche</td>
+                  <td className="py-3">Industrie, PME</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">Fusion 360</td>
+                  <td className="py-3 pr-4">Autodesk</td>
+                  <td className="py-3 pr-4">Cloud, CAO+FAO intégré, accessible</td>
+                  <td className="py-3">Makers, PME, formation</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">Inventor</td>
+                  <td className="py-3 pr-4">Autodesk</td>
+                  <td className="py-3 pr-4">Mécanique, simulation, gestion données</td>
+                  <td className="py-3">Industrie mécanique</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">FreeCAD</td>
+                  <td className="py-3 pr-4">Open Source</td>
+                  <td className="py-3 pr-4">Gratuit, paramétrique, extensible</td>
+                  <td className="py-3">Hobbyistes, formation</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">CATIA</td>
+                  <td className="py-3 pr-4">Dassault Systèmes</td>
+                  <td className="py-3 pr-4">Surfaces complexes, aéronautique</td>
+                  <td className="py-3">Grandes entreprises</td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-4 font-medium text-foreground">NX</td>
+                  <td className="py-3 pr-4">Siemens</td>
+                  <td className="py-3 pr-4">Tout-en-un CAO/FAO/IAO</td>
+                  <td className="py-3">Industrie automobile, aéro</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <div className="rounded-xl border border-border bg-card p-4">
@@ -135,24 +191,61 @@ export default function CaoFaoPage() {
             aspectRatio="wide"
           />
 
-          <TableBlock
-            caption="Principaux logiciels de FAO"
-            headers={["Logiciel", "Spécialité", "Machines supportées"]}
-            rows={[
-              ["Mastercam", "Référence industrielle, très complet", "Fraisage 2-5 axes, tournage, électroérosion"],
-              ["Fusion 360 CAM", "Intégré à la CAO, cloud", "Fraisage 3-5 axes, tournage, découpe"],
-              ["HSMWorks", "Plugin SolidWorks", "Fraisage, tournage"],
-              ["Esprit", "Multi-technologies", "Fraisage, tournage, électroérosion fil"],
-              ["PowerMill", "Usinage 5 axes complexe", "Moules, matrices, aéronautique"],
-              ["TopSolid", "CAO/FAO intégré français", "Fraisage, tournage, tôlerie"],
-            ]}
-          />
+          <div className="mt-8 overflow-x-auto">
+            <table className="w-full text-sm">
+              <caption className="mb-3 text-left text-base font-semibold text-foreground">
+                Principaux logiciels de FAO
+              </caption>
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Logiciel</th>
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Spécialité</th>
+                  <th className="py-3 text-left font-semibold text-foreground">Machines supportées</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">Mastercam</td>
+                  <td className="py-3 pr-4">Référence industrielle, très complet</td>
+                  <td className="py-3">Fraisage 2-5 axes, tournage, électroérosion</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">Fusion 360 CAM</td>
+                  <td className="py-3 pr-4">Intégré à la CAO, cloud</td>
+                  <td className="py-3">Fraisage 3-5 axes, tournage, découpe</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">HSMWorks</td>
+                  <td className="py-3 pr-4">Plugin SolidWorks</td>
+                  <td className="py-3">Fraisage, tournage</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">Esprit</td>
+                  <td className="py-3 pr-4">Multi-technologies</td>
+                  <td className="py-3">Fraisage, tournage, électroérosion fil</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">PowerMill</td>
+                  <td className="py-3 pr-4">Usinage 5 axes complexe</td>
+                  <td className="py-3">Moules, matrices, aéronautique</td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-4 font-medium text-foreground">TopSolid</td>
+                  <td className="py-3 pr-4">CAO/FAO intégré français</td>
+                  <td className="py-3">Fraisage, tournage, tôlerie</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <HighlightBox variant="warning" className="mt-8">
-            <strong>Post-processeur :</strong> Chaque combinaison machine/CN nécessite un post-processeur
-            spécifique. Un programme généré pour une Fanuc ne fonctionnera pas directement sur une Siemens.
-            Vérifiez toujours la compatibilité avant d{"'"}envoyer un programme en machine.
-          </HighlightBox>
+          <div className="mt-8 flex items-start gap-3 rounded-xl border border-destructive/20 bg-destructive/5 p-4">
+            <AlertTriangle className="h-5 w-5 shrink-0 text-destructive mt-0.5" />
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Post-processeur :</strong> Chaque combinaison machine/CN nécessite un post-processeur
+              spécifique. Un programme généré pour une Fanuc ne fonctionnera pas directement sur une Siemens.
+              Vérifiez toujours la compatibilité avant d{"'"}envoyer un programme en machine.
+            </p>
+          </div>
 
           <div className="mt-8">
             <h4 className="font-semibold text-foreground mb-4">Étapes du workflow FAO</h4>
@@ -185,18 +278,59 @@ export default function CaoFaoPage() {
             de conservation des paramètres.
           </p>
 
-          <TableBlock
-            caption="Formats d'échange CAO courants"
-            headers={["Format", "Extension", "Type", "Usage recommandé"]}
-            rows={[
-              ["STEP", ".step, .stp", "Solide paramétrique", "Échange universel, FAO, archivage"],
-              ["IGES", ".iges, .igs", "Surfaces, courbes", "Ancien standard, compatibilité legacy"],
-              ["STL", ".stl", "Maillage triangulé", "Impression 3D, visualisation"],
-              ["DXF/DWG", ".dxf, .dwg", "2D / 3D", "Plans, découpe laser/plasma"],
-              ["Parasolid", ".x_t, .x_b", "Solide", "Échange SolidWorks, NX, Solid Edge"],
-              ["JT", ".jt", "Léger, visualisation", "Revue de conception, PLM"],
-            ]}
-          />
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <caption className="mb-3 text-left text-base font-semibold text-foreground">
+                Formats d{"'"}échange CAO courants
+              </caption>
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Format</th>
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Extension</th>
+                  <th className="py-3 pr-4 text-left font-semibold text-foreground">Type</th>
+                  <th className="py-3 text-left font-semibold text-foreground">Usage recommandé</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">STEP</td>
+                  <td className="py-3 pr-4">.step, .stp</td>
+                  <td className="py-3 pr-4">Solide paramétrique</td>
+                  <td className="py-3">Échange universel, FAO, archivage</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">IGES</td>
+                  <td className="py-3 pr-4">.iges, .igs</td>
+                  <td className="py-3 pr-4">Surfaces, courbes</td>
+                  <td className="py-3">Ancien standard, compatibilité legacy</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">STL</td>
+                  <td className="py-3 pr-4">.stl</td>
+                  <td className="py-3 pr-4">Maillage triangulé</td>
+                  <td className="py-3">Impression 3D, visualisation</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">DXF/DWG</td>
+                  <td className="py-3 pr-4">.dxf, .dwg</td>
+                  <td className="py-3 pr-4">2D / 3D</td>
+                  <td className="py-3">Plans, découpe laser/plasma</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-3 pr-4 font-medium text-foreground">Parasolid</td>
+                  <td className="py-3 pr-4">.x_t, .x_b</td>
+                  <td className="py-3 pr-4">Solide</td>
+                  <td className="py-3">Échange SolidWorks, NX, Solid Edge</td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-4 font-medium text-foreground">JT</td>
+                  <td className="py-3 pr-4">.jt</td>
+                  <td className="py-3 pr-4">Léger, visualisation</td>
+                  <td className="py-3">Revue de conception, PLM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <InfoCard title="Format recommandé : STEP AP214" variant="accent">
@@ -259,11 +393,14 @@ export default function CaoFaoPage() {
             </div>
           </div>
 
-          <HighlightBox variant="tip" className="mt-8">
-            <strong>Conseil :</strong> Créez une bibliothèque d{"'"}outils dans votre FAO avec les paramètres
-            de coupe validés pour chaque matériau. Cela accélère la programmation et garantit la cohérence
-            des programmes.
-          </HighlightBox>
+          <div className="mt-8 flex items-start gap-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
+            <Lightbulb className="h-5 w-5 shrink-0 text-accent mt-0.5" />
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Conseil :</strong> Créez une bibliothèque d{"'"}outils dans votre FAO avec les paramètres
+              de coupe validés pour chaque matériau. Cela accélère la programmation et garantit la cohérence
+              des programmes.
+            </p>
+          </div>
         </ContentSection>
 
         {/* CTA vers CNC */}
@@ -278,17 +415,17 @@ export default function CaoFaoPage() {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/fraisage/cnc"
+              href="/fraisage/conventionnel"
               className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
             >
-              Fraisage CNC
+              Fraisage
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="/tournage/cnc"
+              href="/tournage/conventionnel"
               className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-all hover:border-primary/30 hover:bg-secondary"
             >
-              Tournage CNC
+              Tournage
             </Link>
           </div>
         </section>
