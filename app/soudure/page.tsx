@@ -1,6 +1,7 @@
 // Soudure page - updated
 import type { Metadata } from "next"
-import { BannerImage } from "@/components/banner-image"
+import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     "Guide complet du soudage : MIG, MAG, TIG, MMA. Positions de soudure, défauts, contrôles et qualifications.",
 }
 
-const sommaire = [
+const tocItems = [
   { id: "introduction", label: "Introduction au Soudage" },
   { id: "mma", label: "Soudage MMA (Électrode Enrobée)" },
   { id: "mig-mag", label: "Soudage MIG/MAG" },
@@ -33,53 +34,17 @@ const sommaire = [
 export default function SoudurePage() {
   return (
     <>
-      <BannerImage
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13986-IMG_0007-zxPSp6oWVueTLylc3V677N01bWrwEz.jpg"
-        alt="Cordon de soudure TIG parfait sur acier inoxydable avec coloration arc-en-ciel"
-        overlay="gradient"
-        height="md"
-        priority
-      >
-        <div className="mx-auto max-w-7xl">
-          <span className="mb-2 inline-block rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent backdrop-blur-sm">
-            Techniques de Soudage
-          </span>
-          <h1 className="max-w-3xl text-balance text-3xl font-bold text-foreground md:text-5xl">
-            Soudure
-          </h1>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            Du soudage à l{"'"}arc aux procédés avancés : maîtrisez les techniques d{"'"}assemblage par fusion.
-          </p>
-        </div>
-      </BannerImage>
+      <PageHeader
+        badge="Soudure"
+        title="Techniques de Soudage"
+        subtitle="Du soudage à l'arc aux procédés avancés : maîtrisez les techniques d'assemblage par fusion. MIG, MAG, TIG, MMA."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13986-IMG_0007-zxPSp6oWVueTLylc3V677N01bWrwEz.jpg"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
-          {/* Sommaire */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 rounded-xl border border-border bg-card p-5">
-              <h2 className="mb-4 flex items-center gap-2 font-semibold text-foreground">
-                <BookOpen className="h-4 w-4 text-primary" />
-                Sommaire
-              </h2>
-              <nav className="flex flex-col gap-1">
-                {sommaire.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </aside>
-
-          {/* Contenu principal */}
-          <div className="space-y-16">
-            {/* Introduction */}
-            <ContentSection title="Introduction au Soudage" id="introduction">
+      <TableOfContents items={tocItems} />
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
+        {/* Introduction */}
+        <ContentSection title="Introduction au Soudage" id="introduction">
               <p className="mb-6 text-muted-foreground leading-relaxed">
                 Le <strong className="text-foreground">soudage</strong> est un procédé d{"'"}assemblage permanent qui consiste 
                 à créer une continuité métallique entre deux pièces par fusion locale. Plusieurs procédés existent, 
@@ -567,7 +532,7 @@ export default function SoudurePage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-destructive">•</span>
-                      <strong className="text-foreground">Électrocution</strong> — surtout en milieu humide
+                      <strong className="text-foreground">Électrocution</strong> �� surtout en milieu humide
                     </li>
                   </ul>
                 </div>
@@ -601,24 +566,22 @@ export default function SoudurePage() {
               </div>
             </ContentSection>
 
-            {/* CTA */}
-            <div className="rounded-2xl border border-border bg-card p-8 text-center">
-              <Flame className="mx-auto mb-4 h-10 w-10 text-accent" />
-              <h3 className="text-xl font-bold text-foreground">
-                Découvrez les matériaux et traitements thermiques
-              </h3>
-              <p className="mt-2 text-muted-foreground">
-                Comprenez les propriétés des métaux pour mieux les souder.
-              </p>
-              <Link
-                href="/materiaux"
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
-              >
-                Matériaux et Traitements
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+        {/* CTA */}
+        <div className="my-12 rounded-2xl border border-border bg-card p-8 text-center">
+          <Flame className="mx-auto mb-4 h-10 w-10 text-accent" />
+          <h3 className="text-xl font-bold text-foreground">
+            Découvrez les matériaux et traitements thermiques
+          </h3>
+          <p className="mt-2 text-muted-foreground">
+            Comprenez les propriétés des métaux pour mieux les souder.
+          </p>
+          <Link
+            href="/materiaux"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+          >
+            Matériaux et Traitements
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </>

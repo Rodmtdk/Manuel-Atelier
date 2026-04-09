@@ -223,7 +223,7 @@ export default function RectificationPage() {
       />
 
       <TableOfContents items={tocItems} />
-      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Introduction */}
         <ContentSection title="Présentation" id="presentation">
           <div className="rounded-xl border border-border bg-card p-6">

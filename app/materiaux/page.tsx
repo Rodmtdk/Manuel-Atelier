@@ -2,7 +2,8 @@
 // Materiaux page - version 4.0 - no icon props on InfoCard
 import type { Metadata } from "next"
 
-import { BannerImage } from "@/components/banner-image"
+import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     "Guide complet des matériaux métalliques et traitements thermiques : aciers, aluminiums, trempe, revenu, cémentation, nitruration.",
 }
 
-const sommaire = [
+const tocItems = [
   { id: "introduction", label: "Introduction aux Matériaux" },
   { id: "designation-aciers", label: "Désignation des Aciers" },
   { id: "familles-aciers", label: "Familles d'Aciers" },
@@ -40,53 +41,17 @@ const sommaire = [
 export default function MateriauxPage() {
   return (
     <>
-      <BannerImage
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/echantillons-de-materiaux-industriels-metal-composite-bois-et-plastique-szerZ0oUB7GKbO8FlNcY8Hwe77A7iS.webp"
-        alt="Échantillons de matériaux industriels : aluminium, acier, laiton, titane, carbone, bois, plastique"
-        overlay="gradient"
-        height="md"
-        priority
-      >
-        <div className="mx-auto max-w-7xl">
-          <span className="mb-2 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur-sm">
-            Science des Matériaux
-          </span>
-          <h1 className="max-w-3xl text-balance text-3xl font-bold text-foreground md:text-5xl">
-            Matériaux et Traitements Thermiques
-          </h1>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            Connaître les métaux et leurs traitements pour optimiser l{"'"}usinage et la conception.
-          </p>
-        </div>
-      </BannerImage>
+      <PageHeader
+        badge="Matériaux"
+        title="Matériaux et Traitements Thermiques"
+        subtitle="Connaître les métaux et leurs traitements pour optimiser l'usinage et la conception."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/echantillons-de-materiaux-industriels-metal-composite-bois-et-plastique-szerZ0oUB7GKbO8FlNcY8Hwe77A7iS.webp"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
-          {/* Sommaire */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 rounded-xl border border-border bg-card p-5">
-              <h2 className="mb-4 flex items-center gap-2 font-semibold text-foreground">
-                <BookOpen className="h-4 w-4 text-primary" />
-                Sommaire
-              </h2>
-              <nav className="flex flex-col gap-1">
-                {sommaire.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </aside>
-
-          {/* Contenu principal */}
-          <div className="space-y-16">
-            {/* Introduction */}
-            <ContentSection title="Introduction aux Matériaux" id="introduction">
+      <TableOfContents items={tocItems} />
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
+        {/* Introduction */}
+        <ContentSection title="Introduction aux Matériaux" id="introduction">
               <p className="mb-6 text-muted-foreground leading-relaxed">
                 Le choix du <strong className="text-foreground">matériau</strong> est déterminant pour la fonction 
                 de la pièce, son usinabilité et son coût. Chaque famille de métaux possède des caractéristiques 
@@ -656,24 +621,22 @@ export default function MateriauxPage() {
               </div>
             </ContentSection>
 
-            {/* CTA */}
-            <div className="rounded-2xl border border-border bg-card p-8 text-center">
-              <Thermometer className="mx-auto mb-4 h-10 w-10 text-primary" />
-              <h3 className="text-xl font-bold text-foreground">
-                Calculez vos conditions de coupe
-              </h3>
-              <p className="mt-2 text-muted-foreground">
-                Utilisez le calculateur pour adapter Vc et f à vos matériaux.
-              </p>
-              <Link
-                href="/calculateur"
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
-              >
-                Accéder au Calculateur
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+        {/* CTA */}
+        <div className="my-12 rounded-2xl border border-border bg-card p-8 text-center">
+          <Thermometer className="mx-auto mb-4 h-10 w-10 text-primary" />
+          <h3 className="text-xl font-bold text-foreground">
+            Calculez vos conditions de coupe
+          </h3>
+          <p className="mt-2 text-muted-foreground">
+            Utilisez le calculateur pour adapter Vc et f à vos matériaux.
+          </p>
+          <Link
+            href="/calculateur"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+          >
+            Accéder au Calculateur
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </>
