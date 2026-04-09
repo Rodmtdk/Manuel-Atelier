@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { HeaderNav } from "@/components/header-nav"
+import { Footer } from "@/components/footer"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <main className="min-h-screen pt-16">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   )

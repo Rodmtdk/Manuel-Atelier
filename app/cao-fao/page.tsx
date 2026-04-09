@@ -1,6 +1,6 @@
 // CAO/FAO page - v2 updated
 import type { Metadata } from "next"
-import { BannerImage } from "@/components/banner-image"
+import { PageHeader } from "@/components/page-header"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
@@ -29,29 +29,15 @@ export const metadata: Metadata = {
 export default function CaoFaoPage() {
   return (
     <>
-      {/* Hero Banner */}
-      <BannerImage
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CAO000-UJyG7nlP3mSmwSHn30f9E18byVDuNP.jpg"
-        alt="Environnement CAO/FAO complet : FreeCAD, simulation d'usinage et mise en plan technique"
-        height="lg"
-        overlay="gradient"
-        priority
-      >
-        <div className="mx-auto max-w-4xl">
-          <span className="mb-4 inline-block rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent backdrop-blur-sm">
-            Du virtuel au réel
-          </span>
-          <h1 className="text-balance text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
-            CAO/FAO
-          </h1>
-          <p className="mt-4 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">
-            Conception et Fabrication Assistées par Ordinateur — De la modélisation 3D à l{"'"}usinage CNC
-          </p>
-        </div>
-      </BannerImage>
+      <PageHeader
+        badge="CAO/FAO"
+        title="Conception et Fabrication Assistées par Ordinateur"
+        subtitle="De la modélisation 3D à l'usinage CNC. Logiciels, formats, usinage 3-4-5 axes, pièces taillées masse et mécano-soudées."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CAO000-UJyG7nlP3mSmwSHn30f9E18byVDuNP.jpg"
+      />
 
       {/* Main Content */}
-      <div className="mx-auto max-w-4xl px-4 py-12 lg:px-8 lg:py-16">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Introduction */}
         <ContentSection title="Introduction à la CAO/FAO" id="introduction">
           <p className="text-muted-foreground leading-relaxed">

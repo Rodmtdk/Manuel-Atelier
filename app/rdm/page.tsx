@@ -1,7 +1,8 @@
 // RDM page - version 4.0 - no icon props on InfoCard
 import type { Metadata } from "next"
 
-import { BannerImage } from "@/components/banner-image"
+import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     "Guide complet de résistance des matériaux : traction, compression, flexion, torsion, cisaillement. Du simple au complexe.",
 }
 
-const sommaire = [
+const tocItems = [
   { id: "introduction", label: "Introduction à la RDM" },
   { id: "traction-compression", label: "Traction et Compression" },
   { id: "flexion", label: "Flexion" },
@@ -37,27 +38,15 @@ const sommaire = [
 export default function RDMPage() {
   return (
     <>
-      <BannerImage
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3526-UVAZdmrgJQWz7NJAdEg0jYf8L9AOrO.webp"
-        alt="Simulation numérique de contraintes sur une pièce mécanique"
-        overlay="gradient"
-        height="md"
-        priority
-      >
-        <div className="mx-auto max-w-7xl">
-          <span className="mb-2 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary backdrop-blur-sm">
-            Résistance des Matériaux
-          </span>
-          <h1 className="max-w-3xl text-balance text-3xl font-bold text-foreground md:text-5xl">
-            Résistance des Matériaux (RDM)
-          </h1>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            Des concepts fondamentaux aux calculs avancés : maîtrisez les contraintes et déformations.
-          </p>
-        </div>
-      </BannerImage>
+      <PageHeader
+        badge="RDM"
+        title="Résistance des Matériaux"
+        subtitle="Des concepts fondamentaux aux calculs avancés : maîtrisez les contraintes et déformations."
+        backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3526-UVAZdmrgJQWz7NJAdEg0jYf8L9AOrO.webp"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+      <TableOfContents items={tocItems} />
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
           {/* Sommaire */}
           <aside className="hidden lg:block">
