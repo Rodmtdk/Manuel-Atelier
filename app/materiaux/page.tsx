@@ -1,4 +1,3 @@
-//rebuild
 // Materiaux page - version 4.0 - no icon props on InfoCard
 import type { Metadata } from "next"
 
@@ -16,7 +15,6 @@ import {
   BookOpen,
   Shield,
   Flame,
-  Droplets,
 } from "lucide-react"
 
 import Link from "next/link"
@@ -642,5 +640,3 @@ export default function MateriauxPage() {
     </>
   )
 }
-
-
