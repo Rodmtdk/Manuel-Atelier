@@ -12,7 +12,6 @@ import {
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
-  BookOpen,
   Shield,
   Flame,
   Droplets,
