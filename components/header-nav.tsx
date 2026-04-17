@@ -88,7 +88,6 @@ const navCategories: NavCategory[] = [
   },
 ]
 
-// Index de recherche
 const searchIndex = [
   { title: "Accueil", href: "/", keywords: ["accueil", "home", "menu"] },
   { title: "Démarrage", href: "/demarrage", keywords: ["démarrage", "débuter", "commencer", "guide"] },
@@ -112,10 +111,10 @@ export function HeaderNav() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [expandedItems, setExpandedItems] = useState<string[]>([])
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
-  const menuRef = useRef<HTMLDivElement>(null)
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Raccourci clavier Ctrl+K pour la recherche
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "k") {
@@ -125,26 +124,34 @@ export function HeaderNav() {
       if (e.key === "Escape") {
         setSearchOpen(false)
         setMobileMenuOpen(false)
+        setActiveDropdown(null)
       }
     }
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
-  // Focus sur le champ de recherche
   useEffect(() => {
     if (searchOpen && searchInputRef.current) {
       searchInputRef.current.focus()
     }
   }, [searchOpen])
 
-  // Fermer le menu mobile lors du changement de page
   useEffect(() => {
     setMobileMenuOpen(false)
     setSearchOpen(false)
+    setActiveDropdown(null)
   }, [pathname])
 
-  // Résultats de recherche filtrés
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => setActiveDropdown(null)
+    if (activeDropdown) {
+      document.addEventListener("click", handleClickOutside)
+      return () => document.removeEventListener("click", handleClickOutside)
+    }
+  }, [activeDropdown])
+
   const searchResults = searchQuery.trim()
     ? searchIndex.filter(
         (item) =>
@@ -165,32 +172,52 @@ export function HeaderNav() {
     setSearchOpen(false)
   }
 
+  const handleDropdownEnter = useCallback((title: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+    setActiveDropdown(title)
+  }, [])
+
+  const handleDropdownLeave = useCallback(() => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null)
+    }, 100)
+  }, [])
+
   return (
     <>
       {/* Header fixe */}
-      <header className="fixed top-0 left-0 right-0 z-50 h-16 border-b border-border/50 bg-background/95 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-header h-16 border-b border-border/50 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+          <Link href="/" className="group flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary transition-smooth group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/20">
               <Wrench className="h-5 w-5 text-primary-foreground" />
             </div>
-            <span className="hidden font-bold text-foreground sm:inline">Manuel d'Atelier</span>
+            <span className="hidden font-bold text-foreground sm:inline">Manuel d&apos;Atelier</span>
           </Link>
 
-          {/* Navigation desktop - Menu déroulant */}
+          {/* Navigation desktop */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navCategories.map((category) => (
-              <DropdownMenu key={category.title} category={category} pathname={pathname} />
+              <DropdownMenu 
+                key={category.title} 
+                category={category} 
+                pathname={pathname}
+                isOpen={activeDropdown === category.title}
+                onEnter={() => handleDropdownEnter(category.title)}
+                onLeave={handleDropdownLeave}
+              />
             ))}
           </nav>
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            {/* Bouton recherche */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex h-10 items-center gap-2 rounded-full border border-border bg-muted px-3 text-sm text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground"
+              className="flex h-10 items-center gap-2 rounded-full border border-border bg-muted/50 px-3 text-sm text-muted-foreground transition-smooth hover:border-primary/30 hover:bg-muted hover:text-foreground"
             >
               <Search className="h-4 w-4" />
               <span className="hidden sm:inline">Rechercher...</span>
@@ -199,10 +226,9 @@ export function HeaderNav() {
               </kbd>
             </button>
 
-            {/* Bouton menu mobile */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-smooth hover:bg-muted hover:text-foreground lg:hidden"
               aria-label="Menu"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -211,40 +237,51 @@ export function HeaderNav() {
         </div>
       </header>
 
-      {/* Menu mobile plein écran */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-background pt-16 lg:hidden">
-          <nav className="h-full overflow-y-auto p-4">
-            {navCategories.map((category) => (
-              <div key={category.title} className="mb-6">
-                <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  {category.title}
-                </h3>
-                <div className="space-y-1">
-                  {category.items.map((item) => (
-                    <MobileNavItem
-                      key={item.label}
-                      item={item}
-                      pathname={pathname}
-                      expanded={expandedItems.includes(item.label)}
-                      onToggle={() => toggleExpanded(item.label)}
-                    />
-                  ))}
-                </div>
+      {/* Menu mobile */}
+      <div 
+        className={`fixed inset-0 z-dropdown bg-background pt-16 lg:hidden transition-all duration-300 ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <nav className="h-full overflow-y-auto p-4">
+          {navCategories.map((category, catIndex) => (
+            <div 
+              key={category.title} 
+              className="mb-6"
+              style={{ 
+                animationDelay: mobileMenuOpen ? `${catIndex * 50}ms` : '0ms',
+              }}
+            >
+              <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                {category.title}
+              </h3>
+              <div className="space-y-1">
+                {category.items.map((item, itemIndex) => (
+                  <MobileNavItem
+                    key={item.label}
+                    item={item}
+                    pathname={pathname}
+                    expanded={expandedItems.includes(item.label)}
+                    onToggle={() => toggleExpanded(item.label)}
+                    delay={mobileMenuOpen ? (catIndex * 50) + (itemIndex * 30) : 0}
+                  />
+                ))}
               </div>
-            ))}
-          </nav>
-        </div>
-      )}
+            </div>
+          ))}
+        </nav>
+      </div>
 
       {/* Modal de recherche */}
       {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 pt-20 backdrop-blur-sm">
+        <div 
+          className="fixed inset-0 z-modal flex items-start justify-center bg-black/70 pt-20 backdrop-blur-sm animate-fade-in"
+          onClick={() => setSearchOpen(false)}
+        >
           <div
-            ref={menuRef}
-            className="w-full max-w-lg mx-4 overflow-hidden rounded-xl border border-border bg-zinc-900 shadow-2xl"
+            className="w-full max-w-lg mx-4 overflow-hidden rounded-xl border border-border bg-zinc-900/95 shadow-2xl backdrop-blur-xl animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Champ de recherche */}
             <div className="flex items-center gap-3 border-b border-border p-4">
               <Search className="h-5 w-5 text-muted-foreground" />
               <input
@@ -257,13 +294,12 @@ export function HeaderNav() {
               />
               <button
                 onClick={() => setSearchOpen(false)}
-                className="rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+                className="rounded-md p-1 text-muted-foreground transition-fast hover:bg-muted hover:text-foreground"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            {/* Résultats */}
             <div className="max-h-80 overflow-y-auto p-2">
               {searchQuery.trim() === "" ? (
                 <div className="p-4 text-center text-sm text-muted-foreground">
@@ -271,15 +307,16 @@ export function HeaderNav() {
                 </div>
               ) : searchResults.length === 0 ? (
                 <div className="p-4 text-center text-sm text-muted-foreground">
-                  Aucun résultat pour "{searchQuery}"
+                  Aucun résultat pour &quot;{searchQuery}&quot;
                 </div>
               ) : (
                 <div className="space-y-1">
-                  {searchResults.map((result) => (
+                  {searchResults.map((result, index) => (
                     <button
                       key={result.href}
                       onClick={() => handleSearchSelect(result.href)}
-                      className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-foreground transition-colors hover:bg-muted"
+                      className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-foreground transition-fast hover:bg-zinc-800"
+                      style={{ animationDelay: `${index * 30}ms` }}
                     >
                       <ChevronRight className="h-4 w-4 text-muted-foreground" />
                       <span>{result.title}</span>
@@ -295,27 +332,19 @@ export function HeaderNav() {
   )
 }
 
-// Menu déroulant desktop
 function DropdownMenu({
   category,
   pathname,
+  isOpen,
+  onEnter,
+  onLeave,
 }: {
   category: NavCategory
   pathname: string
+  isOpen: boolean
+  onEnter: () => void
+  onLeave: () => void
 }) {
-  const [open, setOpen] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout>()
-
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current)
-    setOpen(true)
-  }
-
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150)
-  }
-
-  // Vérifier si un item de cette catégorie est actif
   const isActive = category.items.some((item) => {
     if (item.href) return pathname === item.href
     if (item.children) return item.children.some((child) => pathname === child.href)
@@ -323,37 +352,36 @@ function DropdownMenu({
   })
 
   return (
-    <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div 
+      className="relative"
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+    >
       <button
-        className={`flex h-9 items-center gap-1 rounded-lg px-3 text-sm font-medium transition-colors ${
+        className={`flex h-9 items-center gap-1 rounded-lg px-3 text-sm font-medium transition-smooth ${
           isActive
             ? "bg-primary/10 text-primary"
             : "text-muted-foreground hover:bg-muted hover:text-foreground"
         }`}
       >
         {category.title}
-        <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
-      {/* Menu déroulant avec animation */}
       <div 
-        className={`absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl transition-all duration-200 origin-top ${
-          open 
+        className={`absolute left-0 top-full z-dropdown mt-2 min-w-[220px] rounded-xl border border-border bg-zinc-900/95 p-2 shadow-2xl backdrop-blur-xl transition-all duration-200 origin-top ${
+          isOpen 
             ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
             : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
         }`}
       >
         {category.items.map((item, index) => (
           <div 
-            key={item.label} 
-            className="transition-all duration-200"
-            style={{ 
-              transitionDelay: open ? `${index * 30}ms` : '0ms',
-              opacity: open ? 1 : 0,
-              transform: open ? 'translateX(0)' : 'translateX(-8px)'
-            }}
+            key={item.label}
+            className={`transition-all duration-150 ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}
+            style={{ transitionDelay: isOpen ? `${index * 30}ms` : '0ms' }}
           >
-            <DropdownItem item={item} pathname={pathname} />
+            <DropdownItem item={item} pathname={pathname} parentOpen={isOpen} />
           </div>
         ))}
       </div>
@@ -361,50 +389,61 @@ function DropdownMenu({
   )
 }
 
-// Item de menu déroulant desktop
-function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
+function DropdownItem({ item, pathname, parentOpen }: { item: NavItem; pathname: string; parentOpen: boolean }) {
   const [subOpen, setSubOpen] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const Icon = item.icon
+
+  const handleSubEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setSubOpen(true)
+  }
+
+  const handleSubLeave = () => {
+    timeoutRef.current = setTimeout(() => setSubOpen(false), 80)
+  }
+
+  // Reset submenu when parent closes
+  useEffect(() => {
+    if (!parentOpen) setSubOpen(false)
+  }, [parentOpen])
 
   if (item.children) {
     return (
       <div
         className="relative"
-        onMouseEnter={() => setSubOpen(true)}
-        onMouseLeave={() => setSubOpen(false)}
+        onMouseEnter={handleSubEnter}
+        onMouseLeave={handleSubLeave}
       >
         <button
-          className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
+          className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-fast ${
             item.children.some((c) => pathname === c.href)
               ? "bg-primary/10 text-primary"
               : "text-foreground hover:bg-zinc-800"
           }`}
         >
-          <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+          <Icon className="h-4 w-4 transition-transform duration-150 group-hover:scale-110" />
           <span className="flex-1 text-left">{item.label}</span>
-          <ChevronRight className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${subOpen ? 'translate-x-1' : 'group-hover:translate-x-0.5'}`} />
+          <ChevronRight className={`h-4 w-4 text-muted-foreground transition-transform duration-150 ${subOpen ? 'translate-x-0.5' : ''}`} />
         </button>
 
-        {/* Sous-menu avec animation */}
         <div 
-          className={`absolute left-full top-0 ml-1 min-w-[180px] rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl transition-all duration-200 origin-left ${
+          className={`absolute left-full top-0 z-dropdown ml-2 min-w-[180px] rounded-xl border border-border bg-zinc-900/95 p-2 shadow-2xl backdrop-blur-xl transition-all duration-150 origin-left ${
             subOpen 
               ? "opacity-100 scale-100 translate-x-0 pointer-events-auto" 
-              : "opacity-0 scale-95 -translate-x-2 pointer-events-none"
+              : "opacity-0 scale-95 -translate-x-1 pointer-events-none"
           }`}
         >
           {item.children.map((child, index) => (
             <Link
               key={child.href}
               href={child.href}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
+              className={`block rounded-lg px-3 py-2.5 text-sm transition-fast ${
                 pathname === child.href
                   ? "bg-primary/10 text-primary"
-                  : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
+                  : "text-foreground hover:bg-zinc-800 hover:translate-x-0.5"
               }`}
-              style={{ 
-                transitionDelay: subOpen ? `${index * 40}ms` : '0ms',
-              }}
+              style={{ transitionDelay: subOpen ? `${index * 25}ms` : '0ms' }}
             >
               {child.label}
             </Link>
@@ -417,29 +456,30 @@ function DropdownItem({ item, pathname }: { item: NavItem; pathname: string }) {
   return (
     <Link
       href={item.href!}
-      className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200 ${
+      className={`group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-fast ${
         pathname === item.href 
           ? "bg-primary/10 text-primary" 
-          : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
+          : "text-foreground hover:bg-zinc-800 hover:translate-x-0.5"
       }`}
     >
-      <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+      <Icon className="h-4 w-4 transition-transform duration-150 group-hover:scale-110" />
       <span>{item.label}</span>
     </Link>
   )
 }
 
-// Item de navigation mobile
 function MobileNavItem({
   item,
   pathname,
   expanded,
   onToggle,
+  delay,
 }: {
   item: NavItem
   pathname: string
   expanded: boolean
   onToggle: () => void
+  delay: number
 }) {
   const Icon = item.icon
 
@@ -447,21 +487,20 @@ function MobileNavItem({
     const isChildActive = item.children.some((c) => pathname === c.href)
 
     return (
-      <div>
+      <div style={{ animationDelay: `${delay}ms` }} className="animate-fade-in">
         <button
           onClick={onToggle}
-          className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors ${
+          className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-fast ${
             isChildActive ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
           }`}
         >
           <Icon className="h-5 w-5" />
           <span className="flex-1 font-medium">{item.label}</span>
           <ChevronDown
-            className={`h-5 w-5 text-muted-foreground transition-transform ${expanded ? "rotate-180" : ""}`}
+            className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
           />
         </button>
 
-        {/* Sous-menu mobile avec animation */}
         <div 
           className={`ml-8 mt-1 space-y-1 border-l border-border pl-4 overflow-hidden transition-all duration-300 ${
             expanded ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
@@ -471,14 +510,12 @@ function MobileNavItem({
             <Link
               key={child.href}
               href={child.href}
-              className={`flex items-center rounded-lg px-3 py-2.5 text-sm transition-all duration-200 ${
+              className={`flex items-center rounded-lg px-3 py-2.5 text-sm transition-fast ${
                 pathname === child.href
                   ? "bg-primary/10 text-primary font-medium"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground hover:translate-x-1"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
               }`}
-              style={{ 
-                transitionDelay: expanded ? `${index * 50}ms` : '0ms',
-              }}
+              style={{ transitionDelay: expanded ? `${index * 40}ms` : '0ms' }}
             >
               {child.label}
             </Link>
@@ -491,11 +528,12 @@ function MobileNavItem({
   return (
     <Link
       href={item.href!}
-      className={`flex items-center gap-3 rounded-xl px-3 py-3 transition-colors ${
+      className={`flex items-center gap-3 rounded-xl px-3 py-3 transition-fast ${
         pathname === item.href
           ? "bg-primary/10 text-primary font-medium"
           : "text-foreground hover:bg-muted"
       }`}
+      style={{ animationDelay: `${delay}ms` }}
     >
       <Icon className="h-5 w-5" />
       <span>{item.label}</span>

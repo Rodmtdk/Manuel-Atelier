@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { cn } from "@/lib/utils"
-import { ChevronUp, List, ChevronRight } from "lucide-react"
+import { ChevronUp, List, ChevronRight, X } from "lucide-react"
 
 interface TocItem {
   id: string
@@ -64,15 +64,16 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
 
   return (
     <>
-      {/* Desktop sidebar TOC - style identique au menu déroulant */}
+      {/* Desktop sidebar TOC */}
       <nav
         className={cn(
-          "hidden xl:block fixed right-6 top-24 z-40 w-64",
+          "hidden xl:block fixed right-6 top-24 w-64",
+          "z-40",
           className
         )}
         aria-label="Sommaire"
       >
-        <div className="rounded-xl border border-border bg-zinc-900 p-4 shadow-2xl">
+        <div className="rounded-xl border border-border bg-zinc-900/95 p-4 shadow-2xl backdrop-blur-xl">
           {/* Header */}
           <div className="flex items-center gap-2 mb-3 pb-3 border-b border-border">
             <List className="h-4 w-4 text-primary" />
@@ -84,13 +85,13 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
           {/* Progress bar */}
           <div className="relative h-1 bg-zinc-800 rounded-full mb-4 overflow-hidden">
             <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300 ease-out"
               style={{ width: `${scrollProgress}%` }}
             />
           </div>
 
           {/* Items list */}
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {items.map((item, index) => {
               const isActive = activeId === item.id
               const isPast = activeIndex > index
@@ -100,21 +101,21 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   className={cn(
-                    "group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200",
+                    "group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-fast",
                     isActive
                       ? "bg-primary/10 text-primary"
                       : isPast
-                        ? "text-foreground/70 hover:bg-zinc-800 hover:text-foreground hover:translate-x-1"
-                        : "text-muted-foreground hover:bg-zinc-800 hover:text-foreground hover:translate-x-1"
+                        ? "text-foreground/70 hover:bg-zinc-800 hover:text-foreground"
+                        : "text-muted-foreground hover:bg-zinc-800 hover:text-foreground"
                   )}
                 >
                   <ChevronRight className={cn(
-                    "h-3 w-3 flex-shrink-0 transition-transform duration-200",
+                    "h-3 w-3 flex-shrink-0 transition-all duration-150",
                     isActive 
-                      ? "text-primary" 
+                      ? "text-primary translate-x-0.5" 
                       : "text-muted-foreground group-hover:translate-x-0.5"
                   )} />
-                  <span className="text-left leading-snug">{item.label}</span>
+                  <span className="text-left leading-snug truncate">{item.label}</span>
                 </button>
               )
             })}
@@ -122,30 +123,52 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
         </div>
       </nav>
 
-      {/* Mobile floating TOC button + dropdown */}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2 xl:hidden">
-        {showBackToTop && (
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-zinc-900 text-muted-foreground shadow-2xl transition-all hover:bg-zinc-800 hover:text-primary"
-            aria-label="Retour en haut"
-          >
-            <ChevronUp className="h-4 w-4" />
-          </button>
-        )}
+      {/* Mobile floating TOC */}
+      <div className="fixed bottom-4 right-4 flex flex-col items-end gap-2 xl:hidden z-40">
+        {/* Back to top button */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={cn(
+            "flex h-10 w-10 items-center justify-center rounded-full border border-border bg-zinc-900/95 text-muted-foreground shadow-2xl backdrop-blur-xl transition-all duration-300",
+            showBackToTop 
+              ? "opacity-100 translate-y-0 pointer-events-auto hover:bg-zinc-800 hover:text-primary" 
+              : "opacity-0 translate-y-4 pointer-events-none"
+          )}
+          aria-label="Retour en haut"
+        >
+          <ChevronUp className="h-4 w-4" />
+        </button>
+
+        {/* TOC dropdown */}
         <div className="relative">
-          {isOpen && (
-            <div className="absolute bottom-14 right-0 mb-2 w-72 max-h-[70vh] overflow-y-auto rounded-xl border border-border bg-zinc-900 p-2 shadow-2xl">
-              {/* Mobile header */}
-              <div className="flex items-center gap-2 mb-2 px-3 py-2 border-b border-border">
+          {/* Mobile TOC panel */}
+          <div 
+            className={cn(
+              "absolute bottom-14 right-0 mb-2 w-72 max-h-[60vh] overflow-hidden rounded-xl border border-border bg-zinc-900/95 shadow-2xl backdrop-blur-xl transition-all duration-200 origin-bottom-right",
+              isOpen 
+                ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
+                : "opacity-0 scale-95 translate-y-2 pointer-events-none"
+            )}
+          >
+            {/* Mobile header */}
+            <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-border">
+              <div className="flex items-center gap-2">
                 <List className="h-4 w-4 text-primary" />
                 <h3 className="text-sm font-medium text-foreground">
                   Sommaire
                 </h3>
               </div>
-              
-              {/* Mobile list */}
-              <div className="space-y-1">
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-1 rounded-md text-muted-foreground hover:bg-zinc-800 hover:text-foreground transition-fast"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            
+            {/* Mobile list */}
+            <div className="overflow-y-auto max-h-[calc(60vh-56px)] p-2">
+              <div className="space-y-0.5">
                 {items.map((item, index) => {
                   const isActive = activeId === item.id
                   
@@ -154,13 +177,13 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                       key={item.id}
                       onClick={() => scrollTo(item.id)}
                       className={cn(
-                        "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-all duration-200",
+                        "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-fast",
                         isActive
                           ? "bg-primary/10 text-primary"
-                          : "text-foreground hover:bg-zinc-800 hover:translate-x-1"
+                          : "text-foreground hover:bg-zinc-800"
                       )}
                       style={{ 
-                        transitionDelay: `${index * 30}ms`,
+                        transitionDelay: isOpen ? `${index * 20}ms` : '0ms',
                       }}
                     >
                       <ChevronRight className={cn(
@@ -175,23 +198,23 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                 })}
               </div>
             </div>
-          )}
+          </div>
           
           {/* Mobile floating button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={cn(
-              "relative flex h-12 w-12 items-center justify-center rounded-full border shadow-2xl transition-all duration-300",
+              "relative flex h-12 w-12 items-center justify-center rounded-full border shadow-2xl backdrop-blur-xl transition-all duration-200",
               isOpen
                 ? "border-primary bg-primary/20 text-primary"
-                : "border-border bg-zinc-900 text-muted-foreground hover:bg-zinc-800 hover:text-primary"
+                : "border-border bg-zinc-900/95 text-muted-foreground hover:bg-zinc-800 hover:text-primary hover:border-primary/30"
             )}
             aria-label="Ouvrir le sommaire"
           >
             <List className="w-5 h-5" />
             
-            {/* Circular progress indicator */}
-            <svg className="absolute inset-0 w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+            {/* Circular progress */}
+            <svg className="absolute inset-0 w-12 h-12 -rotate-90 pointer-events-none" viewBox="0 0 48 48">
               <circle
                 cx="24"
                 cy="24"
@@ -200,7 +223,7 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeDasharray={`${scrollProgress * 1.38} 138`}
-                className="text-primary/60 transition-all duration-300"
+                className="text-primary/50 transition-all duration-300"
               />
             </svg>
           </button>

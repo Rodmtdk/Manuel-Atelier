@@ -33,23 +33,26 @@ const sections = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-zinc-950/50">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
           <div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+            <Link href="/" className="group inline-flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary transition-all duration-200 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/20">
                 <Wrench className="h-4 w-4 text-primary-foreground" />
               </div>
-              <span className="font-bold text-foreground">
-                Manuel d{"'"}Atelier
+              <span className="font-bold text-foreground transition-colors duration-200 group-hover:text-primary">
+                Manuel d&apos;Atelier
               </span>
-            </div>
+            </Link>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Encyclopédie complète d{"'"}usinage et de rectification. Toutes les
-              compétences pour maîtriser l{"'"}atelier.
+              Encyclopédie complète d&apos;usinage et de rectification. Toutes les
+              compétences pour maîtriser l&apos;atelier.
             </p>
           </div>
+
+          {/* Navigation sections */}
           {sections.map((section) => (
             <div key={section.title}>
               <h3 className="mb-3 text-sm font-semibold text-foreground">
@@ -60,8 +63,9 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      className="group inline-flex items-center text-sm text-muted-foreground transition-all duration-200 hover:text-primary hover:translate-x-0.5"
                     >
+                      <span className="mr-1.5 h-px w-0 bg-primary transition-all duration-200 group-hover:w-2" />
                       {link.label}
                     </Link>
                   </li>
@@ -70,9 +74,15 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-10 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Manuel d{"'"}Atelier — Usinage &
-          Rectification
+
+        {/* Copyright */}
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+          <p className="text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} Manuel d&apos;Atelier
+          </p>
+          <p className="text-xs text-muted-foreground/60">
+            Usinage &bull; Rectification &bull; Conception
+          </p>
         </div>
       </div>
     </footer>
