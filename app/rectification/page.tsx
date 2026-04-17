@@ -270,7 +270,7 @@ export default function RectificationPage() {
             />
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rectification-cylindrique-CAWVuw4NMmULnZB8Ja9lveDPxQQGY1.webp"
-              alt="Rectification cylindrique extérieure avec pièce montée entre pointes"
+              alt="Rectification cylindrique extérieure "
               caption="Rectification cylindrique extérieure — pièce montée entre pointes"
             />
           </div>
