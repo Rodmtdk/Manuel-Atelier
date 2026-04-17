@@ -327,18 +327,65 @@ export default function RectificationPage() {
           {/* Description */}
           <div className="mb-8 rounded-xl border border-accent/20 bg-accent/5 p-6">
             <h3 className="mb-3 text-lg font-semibold text-foreground">
-              Qu{"'"}est-ce que la rectification spiroconique ?
+              Qu{"'"}est-ce qu{"'"}une denture spiro-conique ?
             </h3>
+            <p className="mb-4 leading-relaxed text-muted-foreground">
+              Comme son nom l{"'"}indique, une denture spiro-conique est une denture conique où 
+              chaque dent a une forme de spirale. Le procédé de taillage de ces dentures est 
+              complexe et met en oeuvre des mouvements relatifs entre la pièce à tailler, 
+              l{"'"}outil de coupe et son porte-outils.
+            </p>
+            <p className="mb-4 leading-relaxed text-muted-foreground">
+              Contrairement aux engrenages cylindriques, la définition mathématique de 
+              l{"'"}engrenage est la conséquence du procédé de fabrication. Ce sont les 
+              constructeurs qui, en fonction de la cinématique de leurs machines-outils, 
+              ont défini les différentes géométries d{"'"}engrenages spiro-coniques.
+            </p>
             <p className="leading-relaxed text-muted-foreground">
-              La rectification spiroconique est un procédé de finition de très haute précision
-              appliqué aux engrenages coniques à denture spirale (ou engrenages spiroconiques).
               Ces engrenages transmettent le mouvement entre deux arbres perpendiculaires ou
               obliques avec un contact progressif et silencieux. La rectification de leurs flancs
               de dents est essentielle pour garantir la précision de l{"'"}engrènement, réduire le
-              bruit et prolonger la durée de vie. Ce procédé est utilisé dans les ponts
-              d{"'"}automobiles, les réducteurs industriels, les transmissions d{"'"}hélicoptères et
-              les robots de haute précision.
+              bruit et prolonger la durée de vie.
             </p>
+          </div>
+
+          {/* Standards de fabrication */}
+          <div className="mb-8 rounded-xl border border-primary/20 bg-primary/5 p-6">
+            <h3 className="mb-4 text-lg font-semibold text-foreground">
+              Les deux standards de fabrication
+            </h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-lg border border-border bg-card p-4">
+                <h4 className="mb-2 font-semibold text-primary">Procédé GLEASON</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  Épaisseur de dent constante. Standard principalement utilisé outre-Atlantique 
+                  (États-Unis).
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-4">
+                <h4 className="mb-2 font-semibold text-accent">Procédé KLINGELNBERG / OERLIKON</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  Hauteur de dent constante. Standard européen, largement répandu en Europe.
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 rounded-lg border border-border bg-background/50 p-4">
+              <h4 className="mb-2 font-semibold text-foreground">Capacités de fabrication typiques</h4>
+              <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Diamètres : de 50 mm à 2500 mm
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Module : à partir de 1.5 mm
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Finitions disponibles (selon DIN 3965) : rodée (qualité 8/9), HPGS (qualité 6), fraisée 5 axes (qualité 6), rectifiée (jusqu{"'"}à qualité 4)
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Principe et étapes */}
