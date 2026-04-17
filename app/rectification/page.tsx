@@ -264,26 +264,26 @@ export default function RectificationPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rectification-B2JCTjKvrTDXxkArwiNcJCkij9deYA.jpeg"
-              alt="Rectification cylindrique en action avec étincelles"
-              caption="Rectification cylindrique extérieure — la meule rectifie un arbre de précision"
+              alt="Dressage de face d'un cylindre en rectification"
+              caption="Dressage de face d'un cylindre"
               priority
             />
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rectification-cylindrique-CAWVuw4NMmULnZB8Ja9lveDPxQQGY1.webp"
-              alt="Rectification cylindrique de précision avec meule et pièce montée entre pointes"
-              caption="Rectification cylindrique intérieure — finition d'un alésage de haute précision"
+              alt="Rectification cylindrique extérieure avec pièce montée entre pointes"
+              caption="Rectification cylindrique extérieure — pièce montée entre pointes"
             />
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rectification%20conventionelle-bfSBkjAng3P6HQAnRDkSRB9GAXgJXc.jpg"
-              alt="Rectification conventionnelle avec arrosage sur pièce cylindrique"
-              caption="Rectification conventionnelle — arrosage actif et pièce montée en mandrin"
+              alt="Rectification conventionnelle avec pièce montée entre pointes"
+              caption="Rectification conventionnelle — pièce montée entre pointes"
             />
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WIN_20251013_14_04_50_Pro-NqDRhy1U4HMyDjEdV70IITxlC1WmyW.jpg"
-              alt="Meule de rectification en action sur machine conventionnelle"
-              caption="Meule de rectification plane en fonctionnement"
+              alt="Rectification de denture sur machine conventionnelle"
+              caption="Rectification de denture"
             />
           </div>
         </ContentSection>
