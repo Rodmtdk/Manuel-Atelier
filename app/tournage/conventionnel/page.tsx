@@ -96,7 +96,7 @@ const techniquesCourantes = [
     desc: "Usinage d'une surface plane perpendiculaire à l'axe de la pièce.",
   },
   {
-    title: "Cylindrage",
+    title: "Chariotage",
     desc: "Réduction uniforme du diamètre extérieur de la pièce.",
   },
   {
