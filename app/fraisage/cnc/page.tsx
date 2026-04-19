@@ -221,25 +221,51 @@ export default function FraisageCncPage() {
         </ContentSection>
 
         <ContentSection title="Contrôle Qualité et Métrologie">
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <InfoCard
-              title="Instruments Utilisés"
+              title="Instruments Manuels"
               items={[
                 "Pied à coulisse : mesures extérieures, intérieures et profondeurs",
                 "Micromètre : haute précision pour les diamètres",
-                "Comparateur : vérification de la planéité",
-                "Rugosimètre : mesure la rugosité de surface",
+                "Comparateur : vérification de la planéité et du faux-rond",
+                "Rugosimètre : mesure la rugosité de surface (Ra, Rz)",
+              ]}
+            />
+            <InfoCard
+              title="MMT (Machine à Mesurer Tridimensionnelle)"
+              items={[
+                "Mesure 3D de pièces complexes avec précision micrométrique",
+                "Palpage mécanique ou optique (laser, caméra)",
+                "Comparaison directe avec le modèle CAO",
+                "Rapport de contrôle automatisé et traçabilité",
               ]}
             />
             <InfoCard
               title="Lecture de Plans Techniques"
               items={[
-                "Lire et interpréter les cotes dimensionnelles et de fonction",
-                "Comprendre les tolérances géométriques et dimensionnelles",
+                "Lire et interpréter les cotes dimensionnelles",
+                "Comprendre les tolérances géométriques (ISO GPS)",
                 "Déchiffrer les symboles de rugosité et de finition",
-                "Suivre les étapes pour respecter les spécifications",
+                "Suivre les gammes de contrôle",
               ]}
             />
+          </div>
+          <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-6">
+            <h4 className="mb-3 font-semibold text-foreground">Types de MMT</h4>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="rounded-lg border border-border bg-card p-4">
+                <h5 className="mb-2 font-medium text-primary">MMT à portique</h5>
+                <p className="text-sm text-muted-foreground">Structure rigide pour pièces lourdes. Précision jusqu{"'"}à 1 µm. Environnement climatisé requis.</p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-4">
+                <h5 className="mb-2 font-medium text-accent">MMT à bras articulé</h5>
+                <p className="text-sm text-muted-foreground">Portable et flexible. Idéal pour contrôle en atelier. Précision de 20 à 50 µm.</p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-4">
+                <h5 className="mb-2 font-medium text-foreground">MMT optique</h5>
+                <p className="text-sm text-muted-foreground">Scanner laser ou lumière structurée. Mesure rapide de surfaces complexes et nuages de points.</p>
+              </div>
+            </div>
           </div>
         </ContentSection>
 
@@ -256,7 +282,7 @@ export default function FraisageCncPage() {
               <tbody>
                 {[
                   ["Acier", "Faible à modérée", "Arrosage abondant, carbure revêtu"],
-                  ["Aluminium", "Élevée", "Grande hélice, arêtes vives, évacuation copeaux"],
+                  ["Aluminium", "��levée", "Grande hélice, arêtes vives, évacuation copeaux"],
                   ["Inox", "Modérée", "Lubrification importante"],
                   ["Plastiques", "Élevée", "Éviter la fusion par surchauffe"],
                 ].map(([mat, vit, reco], i) => (
