@@ -1,12 +1,8 @@
-
-import { Layers } from "lucide-react"
-
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { BannerImage } from "@/components/banner-image"
 import { FactStrip } from "@/components/fact-card"
-
 import {
   Wrench,
   Settings,
@@ -18,10 +14,9 @@ import {
   BookOpen,
   Target,
   Gauge,
+  Layers,
   Flame,
   Thermometer,
-  Droplets,
-
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -118,16 +113,16 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(14,230,214,0.06),transparent_50%)]" />
         <div className="relative mx-auto max-w-5xl text-center">
           <span className="mb-6 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            Encyclopédie d'Atelier
+            Encyclopédie d{"'"}Atelier
           </span>
           <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Manuel d'Atelier{" "}
+            Manuel d{"'"}Atelier{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Usinage & Rectification
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-            L'encyclopédie complète qui transmet toutes les compétences en
+            L{"'"}encyclopédie complète qui transmet toutes les compétences en
             fraisage, tournage et rectification. Du débutant au professionnel.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -193,7 +188,7 @@ export default function HomePage() {
               Apprendre
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Explorez chaque domaine de l'usinage avec des guides détaillés
+              Explorez chaque domaine de l{"'"}usinage avec des guides détaillés
               et des ressources professionnelles.
             </p>
           </div>
@@ -275,7 +270,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-              L'Atelier en Images
+              L{"'"}Atelier en Images
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -285,7 +280,7 @@ export default function HomePage() {
                 label: "Tournage conventionnel",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conv-tubZTGEt01gknbdEw46e5E2wB02vyw.jpg",
                 label: "Fraisage conventionnel",
               },
               {
@@ -327,7 +322,7 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
             Chaque module contient des guides illustrés, des quiz interactifs et
-            des calculateurs pour maîtriser les techniques d'usinage.
+            des calculateurs pour maîtriser les techniques d{"'"}usinage.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link

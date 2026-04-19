@@ -226,50 +226,35 @@ export default function DemarragePage() {
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils.jpg-bZqaPg57JOVBcIk9ZYxNpQkHNaPTSO.webp",
                 alt: "Collection complète d'outils de coupe professionnels",
-                caption: "Outils à plaquettes interchangeables — Fraisage et perçage",
+                caption: "Outils a plaquettes interchangeables",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cutting-DoKGVvDxuVBZOSn3g5WWeeHkhQN40G.jpg",
-                alt: "Plaquettes carbure avec revêtements or et noirs de différentes géométries",
-                caption: "Plaquettes carbure — géométries CNMG, WNMG, RCMG",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plaquettes%20carbure%20g%C3%A9om%C3%A9tries%20CNMG%2C%20WNMG%2C%20RCMG.jpg-RvChG1nBW8kNi3kxy6Zp4EfZm03NBM.webp",
+                alt: "Plaquettes carbure de differentes geometries CNMG, WNMG, RCMG",
+                caption: "Plaquettes carbure — geometries CNMG, WNMG, RCMG",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-KBe9cVu5utQUNcXTMoBzxPD2ByHmyV.jpg",
-                alt: "Forets et fraises carbure de différentes tailles et géométries",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Forets%20et%20fraises%20carbure%20monobloc-xaEIAJdfXgO6IT4qn0L2fVJMQ00VRb.jpg",
+                alt: "Forets et fraises carbure monobloc avec revetements TiN",
                 caption: "Forets et fraises carbure monobloc",
               },
             ]}
             columns={3}
-          />
-          <ImageGrid
-            images={[
-              {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outilscarb-3fKqIQV2fcFnKqu1KhHcJUZtUlg1Qr.jpg",
-                alt: "Fraises carbure monobloc de différentes géométries",
-                caption: "Fraises carbure — ébauche et finition",
-              },
-              {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/outils-tournage.jpg-7RVclx58YOJwm1RdyGf4z3lvPmI1NU.png",
-                alt: "Schéma des outils de tournage selon normes DIN",
-                caption: "Classification DIN des outils de tournage",
-              },
-            ]}
-            className="mt-4"
           />
         </ContentSection>
 
         {/* Materiaux banner */}
         <SectionBanner
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/materiaux.jpg-BlXwqB7QRLjr3067LUcZEpBw7af9wr.webp"
-          alt="Collection de métaux et alliages utilisés en usinage"
-          caption="Les matériaux d'usinage : aciers, aluminiums, cuivre, titane, inox et alliages exotiques"
+          alt="Collection de metaux et alliages utilises en usinage"
+          caption="Echantillons de materiaux — aciers, aluminiums, cuivre, titane, inox"
         />
 
         {/* Metrologie banner */}
         <SectionBanner
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png"
-          alt="Pied à coulisse numérique mesurant un roulement sur des plans techniques"
-          caption="Métrologie de précision : contrôle dimensionnel avec pied à coulisse numérique et suivi SPC"
+          alt="Pied a coulisse numerique mesurant un roulement"
+          caption="Controle dimensionnel avec pied a coulisse numerique"
         />
 
         {/* Metrologie detail */}

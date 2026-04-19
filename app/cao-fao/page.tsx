@@ -1,7 +1,19 @@
 // CAO/FAO page - v2 updated
 import type { Metadata } from "next"
 import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
+
+const tocItems = [
+  { id: "introduction", label: "Introduction à la CAO/FAO" },
+  { id: "logiciels-cao", label: "Logiciels de CAO" },
+  { id: "logiciels-fao", label: "Logiciels de FAO" },
+  { id: "axes", label: "Usinage 3, 4 et 5 axes" },
+  { id: "taillee-masse", label: "Pièces taillées masse" },
+  { id: "mecano-soudees", label: "Pièces mécano-soudées" },
+  { id: "formats", label: "Formats de fichiers" },
+  { id: "bonnes-pratiques", label: "Bonnes pratiques" },
+]
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import {
@@ -36,6 +48,7 @@ export default function CaoFaoPage() {
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CAO000-UJyG7nlP3mSmwSHn30f9E18byVDuNP.jpg"
       />
 
+      <TableOfContents items={tocItems} />
       {/* Main Content */}
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Introduction */}
@@ -188,8 +201,8 @@ export default function CaoFaoPage() {
 
           <ImageShowcase
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0348-bis-e1704459718413-ZuGzjauqHOaGt8qeFFquJ4PSDbguZE.jpg"
-            alt="Tour CNC avec arrosage haute pression - usinage d'un vilebrequin"
-            caption="L'usinage CNC complexe nécessite une programmation FAO soignée pour optimiser les parcours"
+            alt="Vis sans fin rectifiée sur tour CNC"
+            caption="Rectification de vis sans fin — programmation FAO pour parcours complexes"
             aspectRatio="wide"
           />
 

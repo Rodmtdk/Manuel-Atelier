@@ -10,7 +10,6 @@ import {
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
-  BookOpen,
 } from "lucide-react"
 import Link from "next/link"
 

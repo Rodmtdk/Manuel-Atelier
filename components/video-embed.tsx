@@ -2,20 +2,24 @@ import { cn } from "@/lib/utils"
 import { Play } from "lucide-react"
 
 interface VideoEmbedProps {
-  videoId: string
+  videoId?: string
+  src?: string
   title: string
   caption?: string
   className?: string
-  platform?: "youtube" | "youtube-short"
+  platform?: "youtube" | "youtube-short" | "mp4"
 }
 
 export function VideoEmbed({
   videoId,
+  src,
   title,
   caption,
   className,
   platform = "youtube",
 }: VideoEmbedProps) {
+  const isMP4 = platform === "mp4" || !!src
+
   const embedUrl =
     platform === "youtube-short"
       ? `https://www.youtube.com/embed/${videoId}`
@@ -27,19 +31,33 @@ export function VideoEmbed({
   return (
     <figure
       className={cn(
-        "overflow-hidden rounded-xl border border-border bg-card",
+        "overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/30",
         className
       )}
     >
       <div className={cn("relative w-full", aspectClass)}>
-        <iframe
-          src={embedUrl}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full"
-          loading="lazy"
-        />
+        {isMP4 ? (
+          <video
+            src={src}
+            title={title}
+            controls
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <track kind="captions" />
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+        ) : (
+          <iframe
+            src={embedUrl}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+            loading="lazy"
+          />
+        )}
       </div>
       {caption && (
         <figcaption className="flex items-center gap-2 border-t border-border bg-secondary/30 px-4 py-3 text-sm text-muted-foreground">
@@ -53,10 +71,11 @@ export function VideoEmbed({
 
 interface VideoGridProps {
   videos: {
-    videoId: string
+    videoId?: string
+    src?: string
     title: string
     caption?: string
-    platform?: "youtube" | "youtube-short"
+    platform?: "youtube" | "youtube-short" | "mp4"
   }[]
   className?: string
 }
@@ -68,6 +87,7 @@ export function VideoGrid({ videos, className }: VideoGridProps) {
         <VideoEmbed
           key={i}
           videoId={vid.videoId}
+          src={vid.src}
           title={vid.title}
           caption={vid.caption}
           platform={vid.platform}

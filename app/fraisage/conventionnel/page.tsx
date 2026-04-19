@@ -63,7 +63,7 @@ const composants = [
   "Porte-outil (pince ou mandrin porte-fraise) : maintient l'outil de coupe fermement",
   "Manivelles manuelles : contrôle précis des mouvements de la table",
   "Broche : rotation de l'outil, vitesses ajustables",
-  "Tête de fraiseuse : renvoi d'angle horizontal/vertical (types Huré, Dufour, Gambin)",
+  "Tête de fraiseuse : renvoi d'angle horizontal/vertical (types Huron, Dufour, Gambin)",
   "Système de lubrification : réduit la chaleur, prolonge la durée de vie",
   "Échelles de mesure et tambours gradués : déplacements de précision",
   "Protecteurs de sécurité : protection contre éclats et copeaux",
@@ -218,7 +218,7 @@ export default function FraisageConvPage() {
       />
 
       <TableOfContents items={tocItemsFraisage} />
-      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <ContentSection title="Présentation">
           <div className="rounded-xl border border-border bg-card p-6">
             <p className="leading-relaxed text-muted-foreground">
@@ -235,9 +235,9 @@ export default function FraisageConvPage() {
         <ContentSection title="Le Fraisage en Images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conventionnel-aYsSJcdqvA32L4XzZIhn0zgibJa9JN.jpg"
-              alt="Fraiseuse conventionnelle en action avec outil de coupe et pièce métallique"
-              caption="Fraisage conventionnel — surfaçage avec fraise à plaquettes"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conv-tubZTGEt01gknbdEw46e5E2wB02vyw.jpg"
+              alt="Surfacage avec fraise a plaquettes sur bloc aluminium"
+              caption="Surfacage avec fraise a plaquettes — copeaux en projection"
               priority
             />
             <ImageShowcase
@@ -285,7 +285,7 @@ export default function FraisageConvPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { title: "Tête Huré", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à l'angle voulu (ex : pour 33 degrés, chercher 67 degrés sur l'abaque)." },
+              { title: "Tête Huron", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à 90° (ex : pour 33°, chercher 57° sur l'abaque car 90° - 33° = 57°)." },
               { title: "Tête Dufour", desc: "Réglage en deux étapes obligatoires : d'abord le porte-fraise, puis le renvoi d'angle. Attention au basculement lors du desserrage." },
               { title: "Tête Gambin", desc: "Même principe que Dufour, mais sans ordre précis de réglage." },
             ].map((tete) => (

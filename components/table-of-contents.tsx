@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { cn } from "@/lib/utils"
-import { ChevronUp } from "lucide-react"
+import { ChevronUp, List, ChevronRight, X, ChevronLeft } from "lucide-react"
 
 interface TocItem {
   id: string
@@ -17,6 +17,7 @@ interface TableOfContentsProps {
 export function TableOfContents({ items, className }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("")
   const [isOpen, setIsOpen] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
 
@@ -64,199 +65,193 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
 
   return (
     <>
-      {/* Desktop sidebar TOC - Style Leonardo da Vinci */}
+      {/* Desktop sidebar TOC - Collapsible */}
       <nav
         className={cn(
-          "hidden xl:block fixed right-6 top-24 z-40 w-64",
+          "hidden xl:block fixed top-24 z-40 transition-all duration-300 ease-out",
+          isCollapsed ? "right-0" : "right-6",
           className
         )}
         aria-label="Sommaire"
       >
-        {/* Cadre principal avec bordure ornementale */}
-        <div className="relative">
-          {/* Ornement coin supérieur gauche */}
-          <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-amber-600/40" />
-          {/* Ornement coin supérieur droit */}
-          <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-amber-600/40" />
-          {/* Ornement coin inférieur gauche */}
-          <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-amber-600/40" />
-          {/* Ornement coin inférieur droit */}
-          <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-amber-600/40" />
-          
-          <div className="bg-zinc-950/90 backdrop-blur-xl border border-amber-900/30 p-5">
-            {/* En-tête style manuscrit */}
-            <div className="text-center mb-4 pb-3 border-b border-amber-800/20">
-              <div className="flex items-center justify-center gap-3 mb-1">
-                <span className="h-px w-8 bg-gradient-to-r from-transparent to-amber-600/50" />
-                <svg className="w-5 h-5 text-amber-600/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
-                <span className="h-px w-8 bg-gradient-to-l from-transparent to-amber-600/50" />
+        {/* Collapsed state - vertical tab */}
+        <button
+          onClick={() => setIsCollapsed(false)}
+          className={cn(
+            "absolute right-0 top-0 flex items-center justify-center rounded-l-lg border border-r-0 border-border bg-zinc-900/95 shadow-xl backdrop-blur-xl transition-all duration-300",
+            isCollapsed 
+              ? "w-10 h-24 opacity-100 translate-x-0" 
+              : "w-0 h-0 opacity-0 translate-x-full overflow-hidden"
+          )}
+          aria-label="Ouvrir le sommaire"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <ChevronLeft className="h-4 w-4 text-primary" />
+            <div className="writing-mode-vertical text-xs font-medium text-muted-foreground">
+              Sommaire
+            </div>
+            {/* Mini progress */}
+            <div className="h-8 w-1 rounded-full bg-zinc-800 overflow-hidden">
+              <div 
+                className="w-full bg-primary rounded-full transition-all duration-300"
+                style={{ height: `${scrollProgress}%` }}
+              />
+            </div>
+          </div>
+        </button>
+
+        {/* Expanded panel */}
+        <div 
+          className={cn(
+            "w-64 rounded-xl border border-border bg-zinc-900/95 shadow-2xl backdrop-blur-xl transition-all duration-300 origin-right",
+            isCollapsed 
+              ? "opacity-0 scale-x-0 translate-x-full pointer-events-none" 
+              : "opacity-100 scale-x-100 translate-x-0"
+          )}
+        >
+          <div className="p-4">
+            {/* Header with collapse button */}
+            <div className="flex items-center justify-between gap-2 mb-3 pb-3 border-b border-border">
+              <div className="flex items-center gap-2">
+                <List className="h-4 w-4 text-primary" />
+                <h3 className="text-sm font-medium text-foreground">Sommaire</h3>
               </div>
-              <h3 className="text-sm font-serif tracking-[0.2em] text-amber-100/90 uppercase">
-                Sommaire
-              </h3>
-              <p className="text-[10px] text-amber-600/50 italic mt-1 tracking-wider">
-                Index Capitulorum
-              </p>
+              <button
+                onClick={() => setIsCollapsed(true)}
+                className="p-1.5 rounded-md text-muted-foreground hover:bg-zinc-800 hover:text-foreground transition-colors"
+                aria-label="Reduire le sommaire"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </div>
 
-            {/* Barre de progression */}
-            <div className="relative h-1 bg-zinc-800/50 rounded-full mb-4 overflow-hidden">
+            {/* Progress bar */}
+            <div className="relative h-1 bg-zinc-800 rounded-full mb-4 overflow-hidden">
               <div 
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-amber-700 to-amber-500 rounded-full transition-all duration-300"
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${scrollProgress}%` }}
               />
             </div>
 
-            {/* Liste des items avec numérotation romaine */}
-            <ul className="space-y-0.5">
+            {/* Items list */}
+            <div className="space-y-0.5 max-h-[60vh] overflow-y-auto pr-1 scrollbar-thin">
               {items.map((item, index) => {
                 const isActive = activeId === item.id
                 const isPast = activeIndex > index
-                const romanNumeral = toRoman(index + 1)
                 
                 return (
-                  <li key={item.id} className="relative">
-                    {/* Ligne de connexion verticale */}
-                    {index < items.length - 1 && (
-                      <div className={cn(
-                        "absolute left-[18px] top-7 w-px h-[calc(100%-4px)]",
-                        isPast ? "bg-amber-600/40" : "bg-zinc-700/30"
-                      )} />
+                  <button
+                    key={item.id}
+                    onClick={() => scrollTo(item.id)}
+                    className={cn(
+                      "group flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm transition-all duration-150",
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : isPast
+                          ? "text-foreground/70 hover:bg-zinc-800 hover:text-foreground"
+                          : "text-muted-foreground hover:bg-zinc-800 hover:text-foreground"
                     )}
-                    
-                    <button
-                      onClick={() => scrollTo(item.id)}
-                      className={cn(
-                        "group w-full flex items-start gap-3 py-2 px-2 rounded-lg text-left transition-all duration-300",
-                        isActive
-                          ? "bg-amber-900/20"
-                          : "hover:bg-zinc-800/50"
-                      )}
-                    >
-                      {/* Numéro romain avec cercle */}
-                      <div className={cn(
-                        "relative flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center text-[10px] font-serif transition-all duration-300",
-                        isActive
-                          ? "border-amber-500 bg-amber-600/20 text-amber-400 shadow-[0_0_10px_rgba(217,119,6,0.3)]"
-                          : isPast
-                            ? "border-amber-700/50 text-amber-600/70 bg-amber-900/10"
-                            : "border-zinc-700 text-zinc-500 group-hover:border-zinc-600 group-hover:text-zinc-400"
-                      )}>
-                        {romanNumeral}
-                        {isActive && (
-                          <div className="absolute inset-0 rounded-full animate-ping bg-amber-500/20" />
-                        )}
-                      </div>
-                      
-                      {/* Label */}
-                      <span className={cn(
-                        "text-xs leading-relaxed pt-1 transition-all duration-300",
-                        isActive
-                          ? "text-amber-200 font-medium"
-                          : isPast
-                            ? "text-amber-100/60"
-                            : "text-zinc-400 group-hover:text-zinc-300"
-                      )}>
-                        {item.label}
-                      </span>
-                    </button>
-                  </li>
+                  >
+                    <ChevronRight className={cn(
+                      "h-3 w-3 flex-shrink-0 transition-transform duration-150",
+                      isActive 
+                        ? "text-primary translate-x-0.5" 
+                        : "text-muted-foreground group-hover:translate-x-0.5"
+                    )} />
+                    <span className="text-left leading-snug truncate">{item.label}</span>
+                  </button>
                 )
               })}
-            </ul>
-
-            {/* Pied de page ornemental */}
-            <div className="mt-4 pt-3 border-t border-amber-800/20 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <span className="h-px w-6 bg-gradient-to-r from-transparent to-amber-600/30" />
-                <svg className="w-3 h-3 text-amber-600/40" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <span className="h-px w-6 bg-gradient-to-l from-transparent to-amber-600/30" />
-              </div>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile floating TOC button + dropdown */}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2 xl:hidden">
-        {showBackToTop && (
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-900/30 bg-zinc-950/90 text-amber-600/70 shadow-lg backdrop-blur-xl transition-all hover:border-amber-600/50 hover:text-amber-500 hover:shadow-amber-900/20"
-            aria-label="Retour en haut"
-          >
-            <ChevronUp className="h-4 w-4" />
-          </button>
-        )}
+      {/* Mobile floating TOC */}
+      <div className="fixed bottom-4 right-4 flex flex-col items-end gap-2 xl:hidden z-40">
+        {/* Back to top button */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={cn(
+            "flex h-10 w-10 items-center justify-center rounded-full border border-border bg-zinc-900/95 text-muted-foreground shadow-xl backdrop-blur-xl transition-all duration-200",
+            showBackToTop 
+              ? "opacity-100 translate-y-0 pointer-events-auto hover:bg-zinc-800 hover:text-primary" 
+              : "opacity-0 translate-y-4 pointer-events-none"
+          )}
+          aria-label="Retour en haut"
+        >
+          <ChevronUp className="h-4 w-4" />
+        </button>
+
+        {/* TOC dropdown */}
         <div className="relative">
-          {isOpen && (
-            <div className="absolute bottom-14 right-0 mb-2 w-72 max-h-[70vh] overflow-y-auto rounded-xl border border-amber-900/30 bg-zinc-950/95 p-4 shadow-2xl backdrop-blur-xl">
-              {/* En-tête mobile */}
-              <div className="text-center mb-3 pb-2 border-b border-amber-800/20">
-                <h3 className="text-sm font-serif tracking-[0.15em] text-amber-100/90 uppercase">
-                  Sommaire
-                </h3>
+          {/* Mobile TOC panel */}
+          <div 
+            className={cn(
+              "absolute bottom-14 right-0 mb-2 w-72 max-h-[60vh] overflow-hidden rounded-xl border border-border bg-zinc-900/95 shadow-2xl backdrop-blur-xl transition-all duration-200 origin-bottom-right",
+              isOpen 
+                ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" 
+                : "opacity-0 scale-95 translate-y-2 pointer-events-none"
+            )}
+          >
+            {/* Mobile header */}
+            <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-border">
+              <div className="flex items-center gap-2">
+                <List className="h-4 w-4 text-primary" />
+                <h3 className="text-sm font-medium text-foreground">Sommaire</h3>
               </div>
-              
-              {/* Liste mobile */}
-              <ul className="space-y-1">
-                {items.map((item, index) => {
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="p-1 rounded-md text-muted-foreground hover:bg-zinc-800 hover:text-foreground transition-colors"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            
+            {/* Mobile list */}
+            <div className="overflow-y-auto max-h-[calc(60vh-56px)] p-2">
+              <div className="space-y-0.5">
+                {items.map((item) => {
                   const isActive = activeId === item.id
-                  const romanNumeral = toRoman(index + 1)
                   
                   return (
-                    <li key={item.id}>
-                      <button
-                        onClick={() => scrollTo(item.id)}
-                        className={cn(
-                          "w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-all duration-200",
-                          isActive
-                            ? "bg-amber-900/20 text-amber-200"
-                            : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-300"
-                        )}
-                      >
-                        <span className={cn(
-                          "text-[10px] font-serif w-6 text-center",
-                          isActive ? "text-amber-500" : "text-zinc-600"
-                        )}>
-                          {romanNumeral}
-                        </span>
-                        <span className="text-xs leading-snug">
-                          {item.label}
-                        </span>
-                      </button>
-                    </li>
+                    <button
+                      key={item.id}
+                      onClick={() => scrollTo(item.id)}
+                      className={cn(
+                        "flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left transition-colors",
+                        isActive
+                          ? "bg-primary/10 text-primary"
+                          : "text-foreground hover:bg-zinc-800"
+                      )}
+                    >
+                      <ChevronRight className={cn(
+                        "h-3 w-3 flex-shrink-0",
+                        isActive ? "text-primary" : "text-muted-foreground"
+                      )} />
+                      <span className="text-sm leading-snug">{item.label}</span>
+                    </button>
                   )
                 })}
-              </ul>
+              </div>
             </div>
-          )}
+          </div>
           
-          {/* Bouton flottant mobile */}
+          {/* Mobile floating button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={cn(
-              "relative flex h-12 w-12 items-center justify-center rounded-full border shadow-lg backdrop-blur-xl transition-all duration-300",
+              "relative flex h-12 w-12 items-center justify-center rounded-full border shadow-xl backdrop-blur-xl transition-all duration-200",
               isOpen
-                ? "border-amber-600 bg-amber-900/30 text-amber-400 shadow-amber-900/30"
-                : "border-amber-900/30 bg-zinc-950/90 text-amber-600/70 hover:border-amber-600/50 hover:text-amber-500"
+                ? "border-primary bg-primary/20 text-primary"
+                : "border-border bg-zinc-900/95 text-muted-foreground hover:bg-zinc-800 hover:text-primary hover:border-primary/30"
             )}
             aria-label="Ouvrir le sommaire"
           >
-            {/* Icône livre/parchemin */}
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-              <path d="M8 7h8" />
-              <path d="M8 11h6" />
-            </svg>
+            <List className="w-5 h-5" />
             
-            {/* Indicateur de progression circulaire */}
-            <svg className="absolute inset-0 w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+            {/* Circular progress */}
+            <svg className="absolute inset-0 w-12 h-12 -rotate-90 pointer-events-none" viewBox="0 0 48 48">
               <circle
                 cx="24"
                 cy="24"
@@ -265,32 +260,33 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeDasharray={`${scrollProgress * 1.38} 138`}
-                className="text-amber-600/50 transition-all duration-300"
+                className="text-primary/50 transition-all duration-300"
               />
             </svg>
           </button>
         </div>
       </div>
+
+      {/* CSS for vertical text */}
+      <style jsx>{`
+        .writing-mode-vertical {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+        .scrollbar-thin::-webkit-scrollbar {
+          width: 4px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+          background: rgba(255,255,255,0.1);
+          border-radius: 2px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+          background: rgba(255,255,255,0.2);
+        }
+      `}</style>
     </>
   )
-}
-
-// Fonction de conversion en chiffres romains
-function toRoman(num: number): string {
-  const romanNumerals: [number, string][] = [
-    [10, "X"],
-    [9, "IX"],
-    [5, "V"],
-    [4, "IV"],
-    [1, "I"],
-  ]
-  
-  let result = ""
-  for (const [value, symbol] of romanNumerals) {
-    while (num >= value) {
-      result += symbol
-      num -= value
-    }
-  }
-  return result
 }

@@ -12,7 +12,6 @@ import {
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
-  BookOpen,
   ArrowUpDown,
   RotateCcw,
 } from "lucide-react"
@@ -47,32 +46,8 @@ export default function RDMPage() {
 
       <TableOfContents items={tocItems} />
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[280px_1fr]">
-          {/* Sommaire */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 rounded-xl border border-border bg-card p-5">
-              <h2 className="mb-4 flex items-center gap-2 font-semibold text-foreground">
-                <BookOpen className="h-4 w-4 text-primary" />
-                Sommaire
-              </h2>
-              <nav className="flex flex-col gap-1">
-                {sommaire.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </aside>
-
-          {/* Contenu principal */}
-          <div className="space-y-16">
-            {/* Introduction */}
-            <ContentSection title="Introduction à la RDM" id="introduction">
+        {/* Introduction */}
+        <ContentSection title="Introduction à la RDM" id="introduction">
               <p className="mb-6 text-muted-foreground leading-relaxed">
                 La <strong className="text-foreground">Résistance des Matériaux</strong> (RDM) est la science qui permet 
                 de dimensionner les pièces mécaniques pour qu{"'"}elles résistent aux efforts qu{"'"}elles subissent. 
@@ -491,23 +466,21 @@ export default function RDMPage() {
             </ContentSection>
 
             {/* CTA */}
-            <div className="rounded-2xl border border-border bg-card p-8 text-center">
-              <Gauge className="mx-auto mb-4 h-10 w-10 text-primary" />
-              <h3 className="text-xl font-bold text-foreground">
-                Prêt à dimensionner vos pièces ?
-              </h3>
-              <p className="mt-2 text-muted-foreground">
-                Utilisez le calculateur pour vérifier rapidement vos contraintes.
-              </p>
-              <Link
-                href="/calculateur"
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
-              >
-                Accéder au Calculateur
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
+        <div className="my-12 rounded-2xl border border-border bg-card p-8 text-center">
+          <Gauge className="mx-auto mb-4 h-10 w-10 text-primary" />
+          <h3 className="text-xl font-bold text-foreground">
+            Prêt à dimensionner vos pièces ?
+          </h3>
+          <p className="mt-2 text-muted-foreground">
+            Utilisez le calculateur pour vérifier rapidement vos contraintes.
+          </p>
+          <Link
+            href="/calculateur"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
+          >
+            Accéder au Calculateur
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </>

@@ -96,7 +96,7 @@ const techniquesCourantes = [
     desc: "Usinage d'une surface plane perpendiculaire à l'axe de la pièce.",
   },
   {
-    title: "Cylindrage",
+    title: "Chariotage",
     desc: "Réduction uniforme du diamètre extérieur de la pièce.",
   },
   {
@@ -245,7 +245,7 @@ export default function TournageConvPage() {
       />
 
       <TableOfContents items={tocItems} />
-      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Visual hero */}
         <ContentSection title="Le Tournage en Images" id="images">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -263,9 +263,9 @@ export default function TournageConvPage() {
           </div>
           <div className="mt-4">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0348-bis-e1704459718413-ZuGzjauqHOaGt8qeFFquJ4PSDbguZE.jpg"
-              alt="Tour CNC en action sur pièce complexe avec arrosage"
-              caption="Usinage d'un vilebrequin — précision et complexité des formes"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournageconv-IOob20j3zPb7t7IV8VeAPSg1vBbZnb.jpg"
+              alt="Tourneur professionnel sur tour conventionnel"
+              caption="Tournage conventionnel — savoir-faire et précision manuelle"
               aspectRatio="wide"
             />
           </div>

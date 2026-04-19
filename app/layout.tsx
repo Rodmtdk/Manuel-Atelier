@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="fr" className="dark bg-background">
       <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans`}>
         <HeaderNav />
         <main className="min-h-screen pt-16">

@@ -18,7 +18,6 @@ export function InfoCard({
   variant = "default",
   className,
 }: InfoCardProps) {
-  // Render items list if items array is provided and has content
   const renderItems = () => {
     if (!items || !Array.isArray(items) || items.length === 0) {
       return null
@@ -33,7 +32,7 @@ export function InfoCard({
           >
             <span
               className={cn(
-                "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full",
+                "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-125",
                 variant === "accent" ? "bg-accent" : "bg-primary"
               )}
             />
@@ -44,7 +43,6 @@ export function InfoCard({
     )
   }
 
-  // Render children content if no items
   const renderChildren = () => {
     if (items && Array.isArray(items) && items.length > 0) {
       return null
@@ -62,16 +60,32 @@ export function InfoCard({
   return (
     <div
       className={cn(
-        "rounded-xl border bg-card p-6 backdrop-blur-sm transition-all hover:shadow-lg",
+        "group relative rounded-xl border bg-card/50 p-6 backdrop-blur-sm",
+        "transition-all duration-300 ease-out",
+        "hover:-translate-y-1",
         variant === "accent"
-          ? "border-accent/30 hover:border-accent/50 hover:shadow-accent/5"
-          : "border-border hover:border-primary/30 hover:shadow-primary/5",
+          ? "border-accent/20 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
+          : "border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5",
         className
       )}
     >
-      <h3 className="mb-4 text-lg font-semibold text-foreground">{title}</h3>
-      {renderItems()}
-      {renderChildren()}
+      {/* Subtle gradient overlay on hover */}
+      <div 
+        className={cn(
+          "absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+          variant === "accent"
+            ? "bg-gradient-to-br from-accent/5 to-transparent"
+            : "bg-gradient-to-br from-primary/5 to-transparent"
+        )}
+      />
+      
+      <div className="relative">
+        <h3 className="mb-4 text-lg font-semibold text-foreground transition-colors duration-200 group-hover:text-foreground">
+          {title}
+        </h3>
+        {renderItems()}
+        {renderChildren()}
+      </div>
     </div>
   )
 }
