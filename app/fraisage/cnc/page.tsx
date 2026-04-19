@@ -105,9 +105,10 @@ export default function FraisageCncPage() {
                 caption: "Usinage CNC 5 axes en action",
               },
               {
-                videoId: "Gg2d7wMmq2I",
-                title: "Parcours d'outils et strategies CNC",
-                caption: "Strategies d'usinage : trochoidal et adaptatif",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comparaison%20entre%20usinage%20trocho%C3%AFdal%20et%20usinage%20cl-lrNnJjrhrwKUKckxnMjnv03YVZfFt6.mp4",
+                title: "Comparaison usinage trochoidal vs classique",
+                caption: "Comparaison entre usinage trochoidal et usinage classique",
+                platform: "mp4",
               },
             ]}
           />
