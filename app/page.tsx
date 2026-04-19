@@ -280,7 +280,7 @@ export default function HomePage() {
                 label: "Tournage conventionnel",
               },
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-conv-hQ6MZQwEpYMaXRitgcZN6oyAZnH21I.jpg",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conv-tubZTGEt01gknbdEw46e5E2wB02vyw.jpg",
                 label: "Fraisage conventionnel",
               },
               {
