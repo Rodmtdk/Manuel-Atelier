@@ -9,7 +9,7 @@ import { FactCard } from "@/components/fact-card"
 
 const tocItems = [
   { id: "images", label: "Le Fraisage CNC en Images" },
-  { id: "videos", label: "Voir en Video" },
+  { id: "videos", label: "Voir en Vidéo" },
   { id: "techniques", label: "Techniques de Fraisage" },
   { id: "5axes", label: "Centre d'Usinage 5 Axes" },
   { id: "composants", label: "Composants" },
@@ -17,57 +17,57 @@ const tocItems = [
 ]
 
 const composants = [
-  "Table de travail : support avec axes motorises",
+  "Table de travail : support avec axes motorisés",
   "Broche : rotation rapide pour l'usinage",
-  "Commandes numeriques : interface de programmation",
-  "Systeme de lubrification : prolonge la duree de vie",
-  "Capteurs de position (regles optiques) : asservissement en boucle fermee",
+  "Commandes numériques : interface de programmation",
+  "Système de lubrification : prolonge la durée de vie",
+  "Capteurs de position (règles optiques) : asservissement en boucle fermée",
   "Changeur d'outils automatique : optimise le temps",
-  "Systeme de refroidissement : evite la surchauffe",
-  "Controle de vibration : silentblocs, rigidite",
-  "Logiciel FAO : parcours d'outils optimises",
+  "Système de refroidissement : évite la surchauffe",
+  "Contrôle de vibration : silentblocs, rigidité",
+  "Logiciel FAO : parcours d'outils optimisés",
 ]
 
 const techniques = [
   {
     title: "Fraisage 3 axes",
-    desc: "Les trois axes lineaires (X, Y, Z) permettent d'usiner des pieces planes ou legerement complexes. Methode ideale pour des pieces geometriquement simples.",
+    desc: "Les trois axes linéaires (X, Y, Z) permettent d'usiner des pièces planes ou légèrement complexes. Méthode idéale pour des pièces géométriquement simples.",
   },
   {
     title: "Fraisage 4 axes",
-    desc: "Un axe de rotation supplementaire (autour de X ou Y) permet d'usiner les surfaces cylindriques ou d'acceder a des zones plus complexes.",
+    desc: "Un axe de rotation supplémentaire (autour de X ou Y) permet d'usiner les surfaces cylindriques ou d'accéder à des zones plus complexes.",
   },
   {
     title: "Fraisage 5 axes",
-    desc: "Deux axes de rotation supplementaires pour pieces tres complexes en une seule configuration. Utilise en aerospatial, automobile et implants medicaux.",
+    desc: "Deux axes de rotation supplémentaires pour pièces très complexes en une seule configuration. Utilisé en aérospatial, automobile et implants médicaux.",
   },
   {
     title: "Fraisage haute vitesse (HSM)",
-    desc: "Vitesses de broche tres elevees pour finitions ultra-precises et taux d'enlevement de matiere optimises.",
+    desc: "Vitesses de broche très élevées pour finitions ultra-précises et taux d'enlèvement de matière optimisés.",
   },
   {
-    title: "Fraisage trochoidal",
-    desc: "Optimise le contact outil/matiere pour reduire les contraintes thermiques et mecaniques. Ideal pour materiaux difficiles.",
+    title: "Fraisage trochoïdal",
+    desc: "Optimise le contact outil/matière pour réduire les contraintes thermiques et mécaniques. Idéal pour matériaux difficiles.",
   },
   {
     title: "Usinage adaptatif",
-    desc: "Parcours d'outils dynamiques pour maintenir une charge constante, augmentant productivite et duree de vie de l'outil.",
+    desc: "Parcours d'outils dynamiques pour maintenir une charge constante, augmentant productivité et durée de vie de l'outil.",
   },
 ]
 
 const serrages = [
-  "Etau de precision : serrage rapide pour pieces prismatiques",
-  "Brides et tirants : fixation directe sur la table pour grandes pieces",
-  "Plateau diviseur : positionnement angulaire precis de la piece",
-  "Mandrin porte-fraise (pince ER) : maintien de l'outil avec concentricite elevee",
-  "Frettage thermique : concentricite optimale pour UGV",
+  "Étau de précision : serrage rapide pour pièces prismatiques",
+  "Brides et tirants : fixation directe sur la table pour grandes pièces",
+  "Plateau diviseur : positionnement angulaire précis de la pièce",
+  "Mandrin porte-fraise (pince ER) : maintien de l'outil avec concentricité élevée",
+  "Frettage thermique : concentricité optimale pour UGV",
 ]
 
 const porteoutils = [
-  "Pinces ER : polyvalentes, differents diametres de serrage",
-  "Mandrins hydrauliques : concentricite < 0,003 mm",
-  "Porte-outils frettage : rigidite maximale pour UGV",
-  "Mandrins Weldon : entrainement positif par vis de serrage",
+  "Pinces ER : polyvalentes, différents diamètres de serrage",
+  "Mandrins hydrauliques : concentricité < 0,003 mm",
+  "Porte-outils frettage : rigidité maximale pour UGV",
+  "Mandrins Weldon : entraînement positif par vis de serrage",
 ]
 
 export default function FraisageCncPage() {
@@ -75,8 +75,8 @@ export default function FraisageCncPage() {
     <>
       <PageHeader
         badge="Fraisage CNC"
-        title="Fraisage a Commande Numerique"
-        subtitle="Procede d'usinage automatise utilisant des machines-outils commandees par ordinateur pour une precision et une repetabilite exceptionnelles."
+        title="Fraisage à Commande Numérique"
+        subtitle="Procédé d'usinage automatisé utilisant des machines-outils commandées par ordinateur pour une précision et une répétabilité exceptionnelles."
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
       />
 
@@ -87,8 +87,8 @@ export default function FraisageCncPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
-              alt="Fraisage CNC avec arrosage haute pression et piece en etau"
-              caption="Centre d'usinage CNC en action - arrosage et evacuation de copeaux"
+              alt="Fraisage CNC avec arrosage haute pression et pièce en étau"
+              caption="Centre d'usinage CNC en action — arrosage et évacuation de copeaux"
               priority
             />
             <ImageShowcase
@@ -101,25 +101,25 @@ export default function FraisageCncPage() {
 
         {/* Fact */}
         <FactCard
-          fact="Un centre d'usinage CNC 5 axes moderne execute ses mouvements avec une precision de positionnement de 0,003 mm. Sa broche peut tourner jusqu'a 15 000 - 20 000 tr/min (et plus en UGV). Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
+          fact="Un centre d'usinage CNC 5 axes moderne exécute ses mouvements avec une précision de positionnement de 0,003 mm. Sa broche peut tourner jusqu'à 15 000 - 20 000 tr/min (et plus en UGV). Le changeur d'outils automatique permute un outil en moins de 1,5 seconde."
           variant="accent"
           className="mb-4"
         />
 
         {/* Videos */}
-        <ContentSection title="Voir en Video" id="videos">
+        <ContentSection title="Voir en Vidéo" id="videos">
           <VideoGrid
             videos={[
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/TIMTOS%202013%20Centre%20d_usinage%205%20axes-sX9fmnL5LIxxT9eHHrAv7YR68movN2.mp4",
                 title: "Centre d'usinage 5 axes",
-                caption: "Demonstration d'un centre d'usinage 5 axes",
+                caption: "Démonstration d'un centre d'usinage 5 axes",
                 platform: "mp4",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comparaison%20entre%20usinage%20trocho%C3%AFdal%20et%20usinage%20cl-lrNnJjrhrwKUKckxnMjnv03YVZfFt6.mp4",
-                title: "Comparaison usinage trochoidal vs classique",
-                caption: "Comparaison entre usinage trochoidal et usinage classique",
+                title: "Comparaison usinage trochoïdal vs classique",
+                caption: "Comparaison entre usinage trochoïdal et usinage classique",
                 platform: "mp4",
               },
             ]}
@@ -127,10 +127,10 @@ export default function FraisageCncPage() {
         </ContentSection>
 
         <ContentSection title="Composants d'une Fraiseuse CNC" id="composants">
-          <InfoCard title="Elements de la machine" items={composants} />
+          <InfoCard title="Éléments de la machine" items={composants} />
         </ContentSection>
 
-        <ContentSection title="Techniques et Methodes d'Usinage CNC" id="techniques">
+        <ContentSection title="Techniques et Méthodes d'Usinage CNC" id="techniques">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {techniques.map((tech, i) => (
               <div
@@ -147,36 +147,36 @@ export default function FraisageCncPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Parametres Cruciaux">
+        <ContentSection title="Paramètres Cruciaux">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Vitesse de broche</h3>
               <div className="mb-3 rounded-lg bg-secondary p-4 font-mono text-sm text-primary">
-                n = (Vc x 1000) / (Pi x D)
+                n = (Vc × 1000) / (π × D)
               </div>
               <p className="text-sm text-muted-foreground">
-                Vc = vitesse de coupe, D = diametre de l{"'"}outil
+                Vc = vitesse de coupe, D = diamètre de l{"'"}outil
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Avance par dent</h3>
               <p className="text-sm text-muted-foreground">
-                Quantite de matiere enlevee par dent a chaque rotation. Avance
-                excessive = vibrations ou mauvais etat de surface.
+                Quantité de matière enlevée par dent à chaque rotation. Avance
+                excessive = vibrations ou mauvais état de surface.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Profondeur de coupe</h3>
               <p className="text-sm text-muted-foreground">
-                Optimisez ap (axiale) et ae (radiale) en fonction de la rigidite
-                machine et piece.
+                Optimisez ap (axiale) et ae (radiale) en fonction de la rigidité
+                machine et pièce.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
-              <h3 className="mb-3 font-semibold text-foreground">Strategie d{"'"}usinage</h3>
+              <h3 className="mb-3 font-semibold text-foreground">Stratégie d{"'"}usinage</h3>
               <p className="text-sm text-muted-foreground">
-                Les parcours optimises (trochoidal, adaptatif) reduisent l{"'"}usure
-                des outils et augmentent la productivite.
+                Les parcours optimisés (trochoïdal, adaptatif) réduisent l{"'"}usure
+                des outils et augmentent la productivité.
               </p>
             </div>
           </div>
@@ -185,28 +185,28 @@ export default function FraisageCncPage() {
         {/* Image 5 axes */}
         <ContentSection title="Centre d'Usinage 5 Axes" id="5axes">
           <div className="grid gap-4 sm:grid-cols-2">
-<ImageShowcase
-  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
-  alt="Centre d'usinage CNC 5 axes travaillant sur une piece aeronautique complexe"
-  caption="Usinage 5 axes simultanes - piece aeronautique en cours de finition"
-/>
+            <ImageShowcase
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
+              alt="Centre d'usinage CNC 5 axes travaillant sur une pièce aéronautique complexe"
+              caption="Usinage 5 axes simultanés — pièce aéronautique en cours de finition"
+            />
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Pourquoi le 5 axes ?</h3>
               <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                Le fraisage 5 axes permet d{"'"}usiner des pieces complexes en une seule mise en position, eliminant les erreurs de repositionnement et reduisant les temps de cycle.
+                Le fraisage 5 axes permet d{"'"}usiner des pièces complexes en une seule mise en position, éliminant les erreurs de repositionnement et réduisant les temps de cycle.
               </p>
               <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  Reduction du nombre de montages (1 au lieu de 3-5)
+                  Réduction du nombre de montages (1 au lieu de 3-5)
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  Acces aux zones difficiles sous differents angles
+                  Accès aux zones difficiles sous différents angles
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  Meilleure finition de surface grace a l{"'"}orientation optimale de l{"'"}outil
+                  Meilleure finition de surface grâce à l{"'"}orientation optimale de l{"'"}outil
                 </li>
               </ul>
             </div>
@@ -215,50 +215,50 @@ export default function FraisageCncPage() {
 
         <ContentSection title="Montage et Serrage" id="serrage">
           <div className="grid gap-6 sm:grid-cols-2">
-            <InfoCard title="Systemes de Serrage Piece" items={serrages} />
+            <InfoCard title="Systèmes de Serrage Pièce" items={serrages} />
             <InfoCard title="Porte-Outils" items={porteoutils} />
           </div>
         </ContentSection>
 
-        <ContentSection title="Controle Qualite et Metrologie">
+        <ContentSection title="Contrôle Qualité et Métrologie">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard
-              title="Instruments Utilises"
+              title="Instruments Utilisés"
               items={[
-                "Pied a coulisse : mesures exterieures, interieures et profondeurs",
-                "Micrometre : haute precision pour les diametres",
-                "Comparateur : verification de la planeite",
-                "Rugosimetre : mesure la rugosite de surface",
+                "Pied à coulisse : mesures extérieures, intérieures et profondeurs",
+                "Micromètre : haute précision pour les diamètres",
+                "Comparateur : vérification de la planéité",
+                "Rugosimètre : mesure la rugosité de surface",
               ]}
             />
             <InfoCard
               title="Lecture de Plans Techniques"
               items={[
-                "Lire et interpreter les cotes dimensionnelles et de fonction",
-                "Comprendre les tolerances geometriques et dimensionnelles",
-                "Dechiffrer les symboles de rugosite et de finition",
-                "Suivre les etapes pour respecter les specifications",
+                "Lire et interpréter les cotes dimensionnelles et de fonction",
+                "Comprendre les tolérances géométriques et dimensionnelles",
+                "Déchiffrer les symboles de rugosité et de finition",
+                "Suivre les étapes pour respecter les spécifications",
               ]}
             />
           </div>
         </ContentSection>
 
-        <ContentSection title="Adaptation aux Materiaux">
+        <ContentSection title="Adaptation aux Matériaux">
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border bg-secondary/50">
-                  <th className="px-6 py-3 text-left font-semibold text-foreground">Materiau</th>
+                  <th className="px-6 py-3 text-left font-semibold text-foreground">Matériau</th>
                   <th className="px-6 py-3 text-left font-semibold text-foreground">Vitesse</th>
                   <th className="px-6 py-3 text-left font-semibold text-foreground">Recommandations</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Acier", "Faible a moderee", "Arrosage abondant, carbure revetu"],
-                  ["Aluminium", "Elevee", "Grande helice, aretes vives, evacuation copeaux"],
-                  ["Inox", "Moderee", "Lubrification importante"],
-                  ["Plastiques", "Elevee", "Eviter la fusion par surchauffe"],
+                  ["Acier", "Faible à modérée", "Arrosage abondant, carbure revêtu"],
+                  ["Aluminium", "Élevée", "Grande hélice, arêtes vives, évacuation copeaux"],
+                  ["Inox", "Modérée", "Lubrification importante"],
+                  ["Plastiques", "Élevée", "Éviter la fusion par surchauffe"],
                 ].map(([mat, vit, reco], i) => (
                   <tr key={i} className="border-b border-border last:border-0">
                     <td className="px-6 py-3 font-medium text-foreground">{mat}</td>
