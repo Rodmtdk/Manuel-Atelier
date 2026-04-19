@@ -273,7 +273,7 @@ export default function HomePage() {
               L{"'"}Atelier en Images
             </h2>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-conv1-AeqQSvQl5OISTypBxTtimDtx2X231w.jpg",
@@ -286,6 +286,14 @@ export default function HomePage() {
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp",
                 label: "Fraisage CNC",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Forets%20et%20fraises%20carbure%20monobloc-xaEIAJdfXgO6IT4qn0L2fVJMQ00VRb.jpg",
+                label: "Forets et fraises carbure",
+              },
+              {
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plaquettes%20carbure%20g%C3%A9om%C3%A9tries%20CNMG%2C%20WNMG%2C%20RCMG.jpg-RvChG1nBW8kNi3kxy6Zp4EfZm03NBM.webp",
+                label: "Plaquettes carbure",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mesure.jpg-d9PceTfRum5SrQA2rafUKjXyvPzUJe.png",
