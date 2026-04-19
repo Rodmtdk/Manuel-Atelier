@@ -63,7 +63,7 @@ const composants = [
   "Porte-outil (pince ou mandrin porte-fraise) : maintient l'outil de coupe fermement",
   "Manivelles manuelles : contrôle précis des mouvements de la table",
   "Broche : rotation de l'outil, vitesses ajustables",
-  "Tête de fraiseuse : renvoi d'angle horizontal/vertical (types Huré, Dufour, Gambin)",
+  "Tête de fraiseuse : renvoi d'angle horizontal/vertical (types Huron, Dufour, Gambin)",
   "Système de lubrification : réduit la chaleur, prolonge la durée de vie",
   "Échelles de mesure et tambours gradués : déplacements de précision",
   "Protecteurs de sécurité : protection contre éclats et copeaux",
@@ -285,7 +285,7 @@ export default function FraisageConvPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { title: "Tête Huré", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à l'angle voulu (ex : pour 33 degrés, chercher 67 degrés sur l'abaque)." },
+              { title: "Tête Huron", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à l'angle voulu (ex : pour 33 degrés, chercher 67 degrés sur l'abaque)." },
               { title: "Tête Dufour", desc: "Réglage en deux étapes obligatoires : d'abord le porte-fraise, puis le renvoi d'angle. Attention au basculement lors du desserrage." },
               { title: "Tête Gambin", desc: "Même principe que Dufour, mais sans ordre précis de réglage." },
             ].map((tete) => (
