@@ -100,7 +100,7 @@ export default function FraisageCncPage() {
           <VideoGrid
             videos={[
               {
-                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/TIMTOS%202013%20Centre%20d_usinage%205%20axes-EVvwFDwG7YkNdZMvUMSVPrTUXVKM4D.mp4",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/TIMTOS%202013%20Centre%20d_usinage%205%20axes-kFF20RlzLEfFRo5v00QZdBoIyYux56.mp4",
                 title: "Centre d'usinage 5 axes",
                 caption: "Demonstration d'un centre d'usinage 5 axes",
                 platform: "mp4",
