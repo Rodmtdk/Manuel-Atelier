@@ -1,9 +1,18 @@
 import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
 import { VideoEmbed, VideoGrid } from "@/components/video-embed"
 import { FactCard } from "@/components/fact-card"
+
+const tocItems = [
+  { id: "images", label: "Le Tournage CNC en Images" },
+  { id: "composants", label: "Composants d'un Tour CNC" },
+  { id: "mise-en-route", label: "Mise en Route" },
+  { id: "techniques", label: "Techniques Avancées" },
+  { id: "codes", label: "Codes G et M" },
+]
 
 const composants = [
   "Mandrin : maintient fermement la piece",
@@ -76,9 +85,10 @@ export default function TournageCncPage() {
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg"
       />
 
+      <TableOfContents items={tocItems} />
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Visual hero */}
-        <ContentSection title="Le Tournage CNC en Images">
+        <ContentSection title="Le Tournage CNC en Images" id="images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournage-cnc-bHB1tYlh0iLkVkt0Yih2NFjNnnOD4n.jpg"
@@ -155,11 +165,11 @@ export default function TournageCncPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Composants d'un Tour CNC">
+        <ContentSection title="Composants d'un Tour CNC" id="composants">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>
 
-        <ContentSection title="Mise en Route">
+        <ContentSection title="Mise en Route" id="mise-en-route">
           <div className="grid gap-3">
             {etapesMiseEnRoute.map((etape, i) => (
               <div
@@ -175,7 +185,7 @@ export default function TournageCncPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Techniques Avancees">
+        <ContentSection title="Techniques Avancees" id="techniques">
           <div className="grid gap-4 sm:grid-cols-2">
             {techniquesAvancees.map((tech, i) => (
               <div
@@ -224,7 +234,7 @@ export default function TournageCncPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Programmation ISO - Codes G et M">
+        <ContentSection title="Programmation ISO - Codes G et M" id="codes">
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>

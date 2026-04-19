@@ -1,10 +1,20 @@
 import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase, ImageGrid } from "@/components/image-showcase"
 import { VideoGrid } from "@/components/video-embed"
 import { SectionBanner } from "@/components/banner-image"
 import { FactCard } from "@/components/fact-card"
+
+const tocItems = [
+  { id: "images", label: "Le Fraisage CNC en Images" },
+  { id: "videos", label: "Voir en Video" },
+  { id: "techniques", label: "Techniques de Fraisage" },
+  { id: "5axes", label: "Centre d'Usinage 5 Axes" },
+  { id: "composants", label: "Composants" },
+  { id: "serrage", label: "Serrage et Porte-outils" },
+]
 
 const composants = [
   "Table de travail : support avec axes motorises",
@@ -70,9 +80,10 @@ export default function FraisageCncPage() {
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
       />
 
+      <TableOfContents items={tocItems} />
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Visual hero */}
-        <ContentSection title="Le Fraisage CNC en Images">
+        <ContentSection title="Le Fraisage CNC en Images" id="images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
@@ -96,7 +107,7 @@ export default function FraisageCncPage() {
         />
 
         {/* Videos */}
-        <ContentSection title="Voir en Video">
+        <ContentSection title="Voir en Video" id="videos">
           <VideoGrid
             videos={[
               {
@@ -115,11 +126,11 @@ export default function FraisageCncPage() {
           />
         </ContentSection>
 
-        <ContentSection title="Composants d'une Fraiseuse CNC">
+        <ContentSection title="Composants d'une Fraiseuse CNC" id="composants">
           <InfoCard title="Elements de la machine" items={composants} />
         </ContentSection>
 
-        <ContentSection title="Techniques et Methodes d'Usinage CNC">
+        <ContentSection title="Techniques et Methodes d'Usinage CNC" id="techniques">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {techniques.map((tech, i) => (
               <div
@@ -172,7 +183,7 @@ export default function FraisageCncPage() {
         </ContentSection>
 
         {/* Image 5 axes */}
-        <ContentSection title="Centre d'Usinage 5 Axes">
+        <ContentSection title="Centre d'Usinage 5 Axes" id="5axes">
           <div className="grid gap-4 sm:grid-cols-2">
 <ImageShowcase
   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
@@ -202,7 +213,7 @@ export default function FraisageCncPage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Montage et Serrage">
+        <ContentSection title="Montage et Serrage" id="serrage">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard title="Systemes de Serrage Piece" items={serrages} />
             <InfoCard title="Porte-Outils" items={porteoutils} />

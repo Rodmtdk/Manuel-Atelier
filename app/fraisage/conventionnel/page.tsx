@@ -218,7 +218,7 @@ export default function FraisageConvPage() {
       />
 
       <TableOfContents items={tocItemsFraisage} />
-      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <ContentSection title="Présentation">
           <div className="rounded-xl border border-border bg-card p-6">
             <p className="leading-relaxed text-muted-foreground">

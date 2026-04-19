@@ -245,7 +245,7 @@ export default function TournageConvPage() {
       />
 
       <TableOfContents items={tocItems} />
-      <div className="mx-auto max-w-6xl px-4 lg:px-8 xl:mr-64 xl:max-w-5xl">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Visual hero */}
         <ContentSection title="Le Tournage en Images" id="images">
           <div className="grid gap-4 sm:grid-cols-2">

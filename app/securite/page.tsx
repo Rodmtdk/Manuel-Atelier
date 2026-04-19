@@ -1,10 +1,18 @@
 import type { Metadata } from "next"
 import { PageHeader } from "@/components/page-header"
+import { TableOfContents } from "@/components/table-of-contents"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
 import { FactCard } from "@/components/fact-card"
 import { ShieldAlert, AlertTriangle, Heart } from "lucide-react"
+
+const tocItems = [
+  { id: "epi", label: "Equipements de Protection" },
+  { id: "regles", label: "Regles Generales" },
+  { id: "machines", label: "Securite Machines" },
+  { id: "secours", label: "Premiers Secours" },
+]
 
 export const metadata: Metadata = {
   title: "Sécurité en Atelier - Manuel d'Atelier",
@@ -41,6 +49,7 @@ export default function SecuritePage() {
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/securite-ASW5ItCQnmTVL3n5eRq0nrQKHhXZh8.jpg"
       />
 
+      <TableOfContents items={tocItems} />
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         {/* Alert banner */}
         <div className="my-8 flex items-start gap-4 rounded-xl border border-destructive/30 bg-destructive/5 p-6">
@@ -72,7 +81,7 @@ export default function SecuritePage() {
           />
         </ContentSection>
 
-        <ContentSection title="Équipements de Protection Individuelle (EPI)">
+        <ContentSection title="Équipements de Protection Individuelle (EPI)" id="epi">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {epiItems.map((item, i) => {
               const [title, desc] = item.split(" : ")
@@ -92,7 +101,7 @@ export default function SecuritePage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Règles Générales de Sécurité">
+        <ContentSection title="Règles Générales de Sécurité" id="regles">
           <div className="grid gap-3">
             {reglesGenerales.map((regle, i) => (
               <div
@@ -108,7 +117,7 @@ export default function SecuritePage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Précautions par Machine">
+        <ContentSection title="Précautions par Machine" id="machines">
           <div className="grid gap-6 sm:grid-cols-2">
             <InfoCard
               title="Fraiseuses"
@@ -147,7 +156,7 @@ export default function SecuritePage() {
           </div>
         </ContentSection>
 
-        <ContentSection title="Gestes de Premiers Secours">
+        <ContentSection title="Gestes de Premiers Secours" id="secours">
           <div className="rounded-xl border border-primary/20 bg-primary/5 p-6">
             <div className="mb-4 flex items-center gap-2">
               <Heart className="h-5 w-5 text-primary" />
