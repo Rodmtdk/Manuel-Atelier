@@ -263,9 +263,9 @@ export default function TournageConvPage() {
           </div>
           <div className="mt-4">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0348-bis-e1704459718413-ZuGzjauqHOaGt8qeFFquJ4PSDbguZE.jpg"
-              alt="Tour CNC en action sur pièce complexe avec arrosage"
-              caption="Usinage d'un vilebrequin — précision et complexité des formes"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tournageconv-IOob20j3zPb7t7IV8VeAPSg1vBbZnb.jpg"
+              alt="Tourneur professionnel sur tour conventionnel"
+              caption="Tournage conventionnel — savoir-faire et précision manuelle"
               aspectRatio="wide"
             />
           </div>

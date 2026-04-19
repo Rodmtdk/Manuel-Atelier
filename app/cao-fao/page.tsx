@@ -188,8 +188,8 @@ export default function CaoFaoPage() {
 
           <ImageShowcase
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0348-bis-e1704459718413-ZuGzjauqHOaGt8qeFFquJ4PSDbguZE.jpg"
-            alt="Tour CNC avec arrosage haute pression - usinage d'un vilebrequin"
-            caption="L'usinage CNC complexe nécessite une programmation FAO soignée pour optimiser les parcours"
+            alt="Vis sans fin rectifiée sur tour CNC"
+            caption="Rectification de vis sans fin — programmation FAO pour parcours complexes"
             aspectRatio="wide"
           />
 
