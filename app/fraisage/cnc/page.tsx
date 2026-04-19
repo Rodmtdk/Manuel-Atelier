@@ -100,9 +100,10 @@ export default function FraisageCncPage() {
           <VideoGrid
             videos={[
               {
-                videoId: "9FiqMikfr8A",
-                title: "Fraisage CNC 5 axes - Demonstration",
-                caption: "Usinage CNC 5 axes en action",
+                src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/TIMTOS%202013%20Centre%20d_usinage%205%20axes-ikke17KE4XnKzzJokFW7x8J5MiCbou.mp4",
+                title: "Centre d'usinage 5 axes",
+                caption: "Demonstration d'un centre d'usinage 5 axes",
+                platform: "mp4",
               },
               {
                 src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Comparaison%20entre%20usinage%20trocho%C3%AFdal%20et%20usinage%20cl-lrNnJjrhrwKUKckxnMjnv03YVZfFt6.mp4",
