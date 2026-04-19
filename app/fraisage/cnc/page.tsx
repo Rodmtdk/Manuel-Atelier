@@ -174,11 +174,11 @@ export default function FraisageCncPage() {
         {/* Image 5 axes */}
         <ContentSection title="Centre d'Usinage 5 Axes">
           <div className="grid gap-4 sm:grid-cols-2">
-            <ImageShowcase
-              src="/images/fraisage-5axes.jpg"
-              alt="Centre d'usinage CNC 5 axes travaillant sur une piece aeronautique complexe"
-              caption="Usinage 5 axes simultanes - piece aeronautique en cours de finition"
-            />
+<ImageShowcase
+  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage-cnc.jpg-4r4iswSu1DX2bbB1n0dejMY2mR79bC.webp"
+  alt="Centre d'usinage CNC 5 axes travaillant sur une piece aeronautique complexe"
+  caption="Usinage 5 axes simultanes - piece aeronautique en cours de finition"
+/>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-3 font-semibold text-foreground">Pourquoi le 5 axes ?</h3>
               <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
