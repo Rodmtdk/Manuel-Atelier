@@ -235,9 +235,9 @@ export default function FraisageConvPage() {
         <ContentSection title="Le Fraisage en Images">
           <div className="grid gap-4 sm:grid-cols-2">
             <ImageShowcase
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conventionnel-aYsSJcdqvA32L4XzZIhn0zgibJa9JN.jpg"
-              alt="Fraiseuse conventionnelle en action avec outil de coupe et pièce métallique"
-              caption="Fraisage conventionnel — surfaçage avec fraise à plaquettes"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fraisage%20conv-tubZTGEt01gknbdEw46e5E2wB02vyw.jpg"
+              alt="Surfacage avec fraise a plaquettes sur bloc aluminium"
+              caption="Surfacage avec fraise a plaquettes — copeaux en projection"
               priority
             />
             <ImageShowcase
