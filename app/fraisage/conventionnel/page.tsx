@@ -285,7 +285,7 @@ export default function FraisageConvPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { title: "Tête Huron", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à l'angle voulu (ex : pour 33 degrés, chercher 67 degrés sur l'abaque)." },
+              { title: "Tête Huron", desc: "Réglage par abaque du constructeur. Attention : toujours utiliser l'angle complémentaire à 90° (ex : pour 33°, chercher 57° sur l'abaque car 90° - 33° = 57°)." },
               { title: "Tête Dufour", desc: "Réglage en deux étapes obligatoires : d'abord le porte-fraise, puis le renvoi d'angle. Attention au basculement lors du desserrage." },
               { title: "Tête Gambin", desc: "Même principe que Dufour, mais sans ordre précis de réglage." },
             ].map((tete) => (
