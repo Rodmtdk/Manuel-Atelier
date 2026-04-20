@@ -531,7 +531,7 @@ export default function SoudurePage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-destructive">•</span>
-                      <strong className="text-foreground">Électrocution</strong> �� surtout en milieu humide
+                      <strong className="text-foreground">Électrocution</strong> — surtout en milieu humide
                     </li>
                   </ul>
                 </div>

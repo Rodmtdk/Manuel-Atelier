@@ -68,7 +68,7 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
       {/* Desktop sidebar TOC - Collapsible */}
       <nav
         className={cn(
-          "hidden xl:block fixed top-24 z-40 transition-all duration-300 ease-out",
+          "hidden lg:block fixed top-24 z-40 transition-all duration-300 ease-out",
           isCollapsed ? "right-0" : "right-6",
           className
         )}
@@ -168,7 +168,7 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
       </nav>
 
       {/* Mobile floating TOC */}
-      <div className="fixed bottom-4 right-4 flex flex-col items-end gap-2 xl:hidden z-40">
+      <div className="fixed bottom-4 right-4 flex flex-col items-end gap-2 lg:hidden z-40">
         {/* Back to top button */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

@@ -282,7 +282,7 @@ export default function FraisageCncPage() {
               <tbody>
                 {[
                   ["Acier", "Faible à modérée", "Arrosage abondant, carbure revêtu"],
-                  ["Aluminium", "��levée", "Grande hélice, arêtes vives, évacuation copeaux"],
+                  ["Aluminium", "Élevée", "Grande hélice, arêtes vives, évacuation copeaux"],
                   ["Inox", "Modérée", "Lubrification importante"],
                   ["Plastiques", "Élevée", "Éviter la fusion par surchauffe"],
                 ].map(([mat, vit, reco], i) => (
