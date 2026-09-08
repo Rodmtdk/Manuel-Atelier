@@ -89,7 +89,7 @@ const navCategories: NavCategory[] = [
 ]
 
 const searchIndex = [
-  { title: "Accueil", href: "/", keywords: ["accueil", "home", "menu"] },
+  { title: "Accueil", href: "/", keywords: ["accueil", "home", "menu", "manuel", "atelier"] },
   { title: "Démarrage", href: "/demarrage", keywords: ["démarrage", "débuter", "commencer", "guide"] },
   { title: "Fraisage Conventionnel", href: "/fraisage/conventionnel", keywords: ["fraisage", "fraiseuse", "conventionnel", "manuel"] },
   { title: "Fraisage CNC", href: "/fraisage/cnc", keywords: ["fraisage", "cnc", "numérique", "programmation"] },
@@ -101,8 +101,39 @@ const searchIndex = [
   { title: "Soudure", href: "/soudure", keywords: ["soudure", "soudage", "mig", "tig", "mma"] },
   { title: "Matériaux", href: "/materiaux", keywords: ["matériaux", "acier", "aluminium", "traitement", "thermique"] },
   { title: "Calculateur", href: "/calculateur", keywords: ["calculateur", "vitesse", "coupe", "avance"] },
-  { title: "Sécurité", href: "/securite", keywords: ["sécurité", "epi", "protection", "danger"] },
+  { title: "Sécurité", href: "/securite", keywords: ["sécurité", "epi", "protection", "danger", "risque", "machine", "premiers secours", "lunettes", "gants"] },
 ]
+
+const navigationSearchIndex = navCategories.flatMap((category) =>
+  category.items.flatMap((item) => {
+    const entries = item.href
+      ? [{
+          title: item.label,
+          href: item.href,
+          keywords: [category.title, item.label, item.href.replace(/[\/-]/g, " ")],
+        }]
+      : []
+
+    return [
+      ...entries,
+      ...(item.children ?? []).map((child) => ({
+        title: `${item.label} — ${child.label}`,
+        href: child.href,
+        keywords: [category.title, item.label, child.label, child.href.replace(/[\/-]/g, " ")],
+      })),
+    ]
+  })
+)
+
+function normalizeSearchText(value: string): string {
+  return value
+    .toLocaleLowerCase("fr-FR")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’']/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+}
 
 export function HeaderNav() {
   const pathname = usePathname()
@@ -152,12 +183,15 @@ export function HeaderNav() {
     }
   }, [activeDropdown])
 
-  const searchResults = searchQuery.trim()
-    ? searchIndex.filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.keywords.some((k) => k.toLowerCase().includes(searchQuery.toLowerCase()))
-      )
+  const searchableEntries = [...searchIndex, ...navigationSearchIndex]
+  const searchResults = normalizeSearchText(searchQuery)
+    ? searchableEntries
+        .filter((item, index, entries) => entries.findIndex((candidate) => candidate.href === item.href && candidate.title === item.title) === index)
+        .filter((item) => {
+          const searchableText = normalizeSearchText([item.title, ...item.keywords].join(" "))
+          const queryWords = normalizeSearchText(searchQuery).split(" ")
+          return queryWords.every((word) => searchableText.includes(word))
+        })
     : []
 
   const toggleExpanded = (label: string) => {
