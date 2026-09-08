@@ -105,11 +105,24 @@ const searchIndex = [
 ]
 
 const navigationSearchIndex = navCategories.flatMap((category) =>
-  category.items.map((item) => ({
-    title: item.label,
-    href: item.href,
-    keywords: [category.title, item.label, item.href.replace(/[\/-]/g, " ")],
-  }))
+  category.items.flatMap((item) => {
+    const entries = item.href
+      ? [{
+          title: item.label,
+          href: item.href,
+          keywords: [category.title, item.label, item.href.replace(/[\/-]/g, " ")],
+        }]
+      : []
+
+    return [
+      ...entries,
+      ...(item.children ?? []).map((child) => ({
+        title: `${item.label} — ${child.label}`,
+        href: child.href,
+        keywords: [category.title, item.label, child.label, child.href.replace(/[\/-]/g, " ")],
+      })),
+    ]
+  })
 )
 
 function normalizeSearchText(value: string): string {
