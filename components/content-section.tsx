@@ -45,7 +45,7 @@ export function ContentSection({
       id={id} 
       className={cn(
         "py-12 scroll-mt-24",
-        "transition-all duration-700 ease-out",
+        "transition-all duration-[350ms] ease-out",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
         className
       )}
@@ -54,14 +54,14 @@ export function ContentSection({
         <span 
           className={cn(
             "inline-block h-1 w-8 rounded-full bg-gradient-to-r from-primary to-accent",
-            "transition-all duration-500 delay-200",
+            "transition-all duration-[250ms] delay-100",
             isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
           )}
           style={{ transformOrigin: "left" }}
         />
         <span 
           className={cn(
-            "transition-all duration-500 delay-300",
+            "transition-all duration-[250ms] delay-150",
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
           )}
         >
@@ -70,7 +70,7 @@ export function ContentSection({
       </h2>
       <div 
         className={cn(
-          "transition-all duration-600 delay-400",
+          "transition-all duration-[300ms] delay-200",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       >
