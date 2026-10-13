@@ -122,12 +122,12 @@ const parametres = [
   {
     title: "Vitesse de meule (Vs)",
     content: "Vitesse périphérique de la meule en m/s. Conventionnel : 25-35 m/s. Grande vitesse (HSG) : 60-120 m/s. Un mauvais réglage peut provoquer l'éclatement de la meule.",
-    formula: "Vs = (π × Ds × ns) / (1000 × 60)",
+    formula: "Vs = (π × Ds × ns) / 60\u00A0000",
   },
   {
     title: "Vitesse de pièce (Vw)",
     content: "Vitesse périphérique de la pièce en m/min. Typiquement 10-30 m/min. Le ratio Vs/Vw influence la qualité de surface et le taux d'enlèvement.",
-    formula: "Vw = (π × Dw × nw) / 1000",
+    formula: "Vw = (π × Dw × nw) / 1\u00A0000",
   },
   {
     title: "Profondeur de passe (ae)",
@@ -152,10 +152,10 @@ const defauts = [
     ],
   },
   {
-    title: "Chattering (vibrations)",
+    title: "Broutement",
     items: [
       "Cause : déséquilibre de la meule, jeu dans les paliers, résonance",
-      "Conséquence : motifs réguliers ondulants sur la surface",
+      "Conséquence : marbrures, motifs réguliers ondulants sur la surface",
       "Solution : équilibrer la meule, vérifier les roulements, modifier les vitesses",
       "Prévention : dressage soigné, meule bien équilibrée après montage",
     ],
@@ -245,7 +245,7 @@ export default function RectificationPage() {
           className="my-4"
           facts={[
             {
-              fact: "Une meule de rectification tourne à plus de 2 000 tr/min. À sa surface, chaque grain abrasif atteint une vitesse de 30 m/s, soit 108 km/h — l'équivalent d'une voiture sur autoroute frappant le métal.",
+              fact: "Une meule de rectification tourne à plus de 2\u00A0000\u00A0tr/min. À sa surface, chaque grain abrasif atteint une vitesse de 30\u00A0m/s, soit 108\u00A0km/h — l'équivalent d'une voiture sur autoroute frappant le métal.",
               variant: "accent",
             },
             {
@@ -253,7 +253,7 @@ export default function RectificationPage() {
               variant: "default",
             },
             {
-              fact: "Le CBN (Nitrure de Bore Cubique) est le 2e matériau le plus dur au monde après le diamant. Il résiste à 1 300 °C sans se dégrader — idéal pour rectifier les aciers trempés.",
+              fact: "Le CBN (nitrure de bore cubique) est le 2e matériau le plus dur au monde après le diamant. Il résiste à 1\u00A0300\u00A0°C sans se dégrader — idéal pour rectifier les aciers trempés.",
               variant: "highlight",
             },
           ]}
@@ -356,16 +356,15 @@ export default function RectificationPage() {
             </h3>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-lg border border-border bg-card p-4">
-                <h4 className="mb-2 font-semibold text-primary">Procédé GLEASON</h4>
+                <h4 className="mb-2 font-semibold text-primary">Procédé Gleason</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Épaisseur de dent constante. Standard principalement utilisé outre-Atlantique 
-                  (États-Unis).
+                  Hauteur de dent variable, décroissante vers l{"'"}apex. L{"'"}épaisseur de dent varie aussi le long du profil. Standard principalement utilisé outre-Atlantique (États-Unis).
                 </p>
               </div>
               <div className="rounded-lg border border-border bg-card p-4">
-                <h4 className="mb-2 font-semibold text-accent">Procédé KLINGELNBERG / OERLIKON</h4>
+                <h4 className="mb-2 font-semibold text-accent">Procédé Klingelnberg / Oerlikon</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Hauteur de dent constante. Standard européen, largement répandu en Europe.
+                  Hauteur de dent constante, avec des génératrices parallèles. Standard européen, largement répandu en Europe.
                 </p>
               </div>
             </div>
@@ -437,7 +436,7 @@ export default function RectificationPage() {
               <div className="text-sm text-muted-foreground">Tolérance sur le profil de dent</div>
             </div>
             <div className="rounded-xl border border-accent/30 bg-accent/5 p-6 text-center">
-              <div className="mb-2 font-mono text-3xl font-bold text-accent">Ra 0,4</div>
+              <div className="mb-2 font-mono text-3xl font-bold text-accent">Ra{"\u00A0"}0,4</div>
               <div className="text-sm text-muted-foreground">Rugosité flanc de dent (µm)</div>
             </div>
             <div className="rounded-xl border border-accent/30 bg-accent/5 p-6 text-center">
