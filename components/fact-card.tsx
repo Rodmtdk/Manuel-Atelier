@@ -34,7 +34,7 @@ export function FactCard({
       bg: "bg-primary/5",
       icon: Info,
       iconColor: "text-primary",
-      label: "Detail fascinant",
+      label: "Détail fascinant",
     },
   }
 
