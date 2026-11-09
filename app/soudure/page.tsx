@@ -582,6 +582,24 @@ export default function SoudurePage() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+
+        <div className="my-8 rounded-2xl border border-accent/25 bg-accent/5 p-8 text-center">
+          <h3 className="text-xl font-bold text-foreground">
+            Retrouvez nos ressources dédiées à la soudure
+          </h3>
+          <p className="mt-2 text-muted-foreground">
+            Consultez notre site spécialisé pour approfondir les techniques et procédés de soudage.
+          </p>
+          <a
+            href="https://sectionsoudure.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-all hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Visiter Sectionsoudure
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </>
   )
