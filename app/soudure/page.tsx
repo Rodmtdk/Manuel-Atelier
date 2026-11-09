@@ -2,6 +2,7 @@
 import type { Metadata } from "next"
 import { PageHeader } from "@/components/page-header"
 import { TableOfContents } from "@/components/table-of-contents"
+import { SectionsoudurePopup } from "@/components/sectionsoudure-popup"
 import { ContentSection } from "@/components/content-section"
 import { InfoCard } from "@/components/info-card"
 import { ImageShowcase } from "@/components/image-showcase"
@@ -582,6 +583,8 @@ export default function SoudurePage() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+
+        <SectionsoudurePopup />
       </div>
     </>
   )
